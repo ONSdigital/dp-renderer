@@ -1,0 +1,21 @@
+---
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: 1.16.5
+
+inputs:
+  - name: dp-renderer
+
+outputs:
+  - name: build
+
+caches:
+  - path: go/
+
+run:
+  path: dp-renderer/ci/scripts/build.sh
