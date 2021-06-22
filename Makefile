@@ -22,9 +22,16 @@ debug:
 	go build -tags 'debug' $(LDFLAGS) -o $(BINPATH)/dp-renderer
 	HUMAN_LOG=1 DEBUG=1 $(BINPATH)/dp-renderer
 
+.PHONY: generate-prod
+generate-prod:
+	# build the production version
+	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -o data.go -pkg assets locales/...
+	{ echo "// +build production\n"; cat assets/data.go; } > assets/data.go.new
+	mv assets/data.go.new assets/data.go
+
 .PHONY: test
-test:
-	go test -race -cover ./...
+test: generate-prod
+	go test -race -cover -tags 'production' ./...
 
 .PHONY: convey
 convey:
