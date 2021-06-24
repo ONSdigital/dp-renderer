@@ -21,16 +21,6 @@ func InitialiseLocalisationsHelper(assetFn func(name string) ([]byte, error)) {
 	localizers = initLocalizer(bundle)
 }
 
-// InitLocalizer is used to initialise the localizer
-func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
-	m := make(map[string]*i18n.Localizer)
-	for _, locale := range common.SupportedLanguages {
-		m[locale] = i18n.NewLocalizer(bundle, locale)
-
-	}
-	return m
-}
-
 // InitLocaleBundle is used to initialise the locale bundle
 func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, error) {
 	bundle := i18n.NewBundle(language.English)
@@ -50,6 +40,16 @@ func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, 
 	}
 
 	return bundle, nil
+}
+
+// InitLocalizer is used to initialise the localizer
+func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
+	m := make(map[string]*i18n.Localizer)
+	for _, locale := range common.SupportedLanguages {
+		m[locale] = i18n.NewLocalizer(bundle, locale)
+
+	}
+	return m
 }
 
 func Localise(key string, language string, plural int, templateArguments ...string) string {

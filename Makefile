@@ -30,7 +30,7 @@ generate-prod:
 	mv assets/data.go.new assets/data.go
 
 .PHONY: test
-test: generate-prod
+test:
 	go test -race -cover -tags 'production' ./...
 
 .PHONY: convey
