@@ -1,20 +1,20 @@
-dp-renderer
-================
+# dp-renderer
+
 The rendering library for Digital Publishing frontend services
 
-### Getting started
+## Getting started
 
 * Run `make debug`
 
-### Dependencies
+## Dependencies
 
 * No further dependencies other than those defined in `go.mod`
 
-### Contributing
+## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### License
+## License
 
 Copyright © 2021, Office for National Statistics (https://www.ons.gov.uk)
 
