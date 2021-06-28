@@ -29,8 +29,8 @@ type FeatureFlags struct {
 }
 
 //NewPage instantiates the base Page type with configurable fields
-func NewPage(path, domain string) *Page {
-	return &Page{
+func NewPage(path, domain string) Page {
+	return Page{
 		PatternLibraryAssetsPath: path,
 		SiteDomain:               domain,
 	}
