@@ -212,6 +212,11 @@ one = "Population and migration"
 description = "Well-being"
 one = "Well-being"
 
+[Methodology]
+description = "Methodology"
+one = "Methodology"
+other = "Methodology"
+
 [SearchKeywordTimeSeriesID]
 description = "Search for a keyword(s) or time series ID"
 one = "Search for a keyword(s) or time series ID"
