@@ -7,7 +7,7 @@ import (
 
 	"github.com/ONSdigital/dp-renderer/client"
 	"github.com/ONSdigital/dp-renderer/model"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 )
 
 type Render struct {
@@ -34,10 +34,10 @@ func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName stri
 		r.error(w, 500, model.ErrorResponse{
 			Error: err.Error(),
 		})
-		log.Event(ctx, "failed to render template", log.Error(err), log.ERROR)
+		log.Error(ctx, "failed to render template", err)
 		return
 	}
-	log.Event(ctx, "rendered template", log.Data{"template": templateName}, log.INFO)
+	log.Info(ctx, "rendered template", log.Data{"template": templateName})
 }
 
 // NewBasePageModel wraps around the model package's NewPage function, but injects the assets path and site domain from the render struct.

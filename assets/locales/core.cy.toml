@@ -326,6 +326,10 @@ two = "Save changes"
 few = "Save changes"
 other = "Save changes"
 
+[SurveyTakingPart]
+description = "Taking part in a survey?"
+one = "Cymryd rhan mewn arolwg?"
+
 [CookiesBannerHeading]
 description = "Tell us whether you accept cookies"
 one = "Tell us whether you accept cookies"

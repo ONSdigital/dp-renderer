@@ -320,6 +320,10 @@ description = "Save changes"
 one = "Save change"
 other = "Save changes"
 
+[SurveyTakingPart]
+description = "Taking part in a survey?"
+one = "Taking part in a survey?"
+
 [CookiesBannerHeading]
 description = "Tell us whether you accept cookies"
 one = "Tell us whether you accept cookies"
