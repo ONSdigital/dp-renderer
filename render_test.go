@@ -1,17 +1,20 @@
 package render_test
 
 import (
+	"errors"
+	"fmt"
+	"io"
 	"net/http/httptest"
 	"testing"
 
 	render "github.com/ONSdigital/dp-renderer"
-	"github.com/ONSdigital/dp-renderer/client"
+	"github.com/ONSdigital/dp-renderer/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
 func TestRenderPageMethod(t *testing.T) {
 	Convey("Given the renderer is instantiated with a render client", t, func() {
-		mockClient := client.NewMockRenderingClient([]string{"test-article-page", "test-homepage"})
+		mockClient := newMockRenderingClient([]string{"test-article-page", "test-homepage"})
 		renderer := render.New(mockClient, "path/to/assets", "site-domain")
 		w := httptest.NewRecorder()
 
@@ -37,4 +40,32 @@ func TestRenderPageMethod(t *testing.T) {
 			})
 		})
 	})
+}
+
+type mockRenderClient struct {
+	TemplateNames             []string
+	ValidBuildHTMLMethodCalls int
+	ValidSetErrorMethodCalls  int
+}
+
+func newMockRenderingClient(templateNames []string) *mockRenderClient {
+	return &mockRenderClient{
+		TemplateNames: templateNames,
+	}
+}
+
+func (m *mockRenderClient) BuildHTML(w io.Writer, status int, templateName string, pageModel interface{}) error {
+	for _, value := range m.TemplateNames {
+		if value == templateName {
+			fmt.Println(value)
+			m.ValidBuildHTMLMethodCalls++
+			return nil
+		}
+	}
+	return errors.New("Failed to build page")
+}
+
+func (m *mockRenderClient) SetError(w io.Writer, status int, errorModel model.ErrorResponse) error {
+	m.ValidSetErrorMethodCalls++
+	return errors.New("An error occurred when building the page")
 }
