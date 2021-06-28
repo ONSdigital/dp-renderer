@@ -41,7 +41,7 @@ func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName stri
 }
 
 // NewBasePageModel wraps around the model package's NewPage function, but injects the assets path and site domain from the render struct.
-// This is to negate the need for to have to provide these values for every new page created in a frontend service
+// This is to negate the need for the caller to have to provide these values for every new page created in a frontend service
 func (r *Render) NewBasePageModel() *model.Page {
 	return model.NewPage(r.PatternLibraryAssetsPath, r.SiteDomain)
 }
