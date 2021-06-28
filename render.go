@@ -17,16 +17,18 @@ type Render struct {
 	PatternLibraryAssetsPath, SiteDomain string
 }
 
-func New(client client.Renderer) *Render {
+func New(client client.Renderer, assetsPath, siteDomain string) *Render {
 	return &Render{
-		client: client,
-		hMutex: &sync.Mutex{},
-		jMutex: &sync.Mutex{},
+		client:                   client,
+		hMutex:                   &sync.Mutex{},
+		jMutex:                   &sync.Mutex{},
+		PatternLibraryAssetsPath: assetsPath,
+		SiteDomain:               siteDomain,
 	}
 }
 
-// Page resolves the rendering of a specific page with a given model and template name
-func (r *Render) Page(w io.Writer, pageModel interface{}, templateName string) {
+// BuildPage resolves the rendering of a specific page with a given model and template name
+func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName string) {
 	ctx := context.Background()
 	if err := r.render(w, 200, templateName, pageModel); err != nil {
 		r.error(w, 500, model.ErrorResponse{
@@ -36,6 +38,12 @@ func (r *Render) Page(w io.Writer, pageModel interface{}, templateName string) {
 		return
 	}
 	log.Event(ctx, "rendered template", log.Data{"template": templateName}, log.INFO)
+}
+
+// NewBasePageModel wraps around the model package's NewPage function, but injects the assets path and site domain from the render struct.
+// This is to negate the need for to have to provide these values for every new page created in a frontend service
+func (r *Render) NewBasePageModel() *model.Page {
+	return model.NewPage(r.PatternLibraryAssetsPath, r.SiteDomain)
 }
 
 func (r *Render) render(w io.Writer, status int, templateName string, pageModel interface{}) error {
