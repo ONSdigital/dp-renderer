@@ -17,9 +17,21 @@ type Render struct {
 	PatternLibraryAssetsPath, SiteDomain string
 }
 
+// New returns a render struct and accepts any rendering client that satisfies the Renderer interface
 func New(client client.Renderer, assetsPath, siteDomain string) *Render {
 	return &Render{
 		client:                   client,
+		hMutex:                   &sync.Mutex{},
+		jMutex:                   &sync.Mutex{},
+		PatternLibraryAssetsPath: assetsPath,
+		SiteDomain:               siteDomain,
+	}
+}
+
+// NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
+func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string) *Render {
+	return &Render{
+		client:                   client.NewUnrolledAdapter(assetFn, assetNameFn),
 		hMutex:                   &sync.Mutex{},
 		jMutex:                   &sync.Mutex{},
 		PatternLibraryAssetsPath: assetsPath,
