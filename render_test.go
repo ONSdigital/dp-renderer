@@ -2,7 +2,6 @@ package render_test
 
 import (
 	"errors"
-	"fmt"
 	"io"
 	"net/http/httptest"
 	"testing"
@@ -57,7 +56,6 @@ func newMockRenderingClient(templateNames []string) *mockRenderClient {
 func (m *mockRenderClient) BuildHTML(w io.Writer, status int, templateName string, pageModel interface{}) error {
 	for _, value := range m.TemplateNames {
 		if value == templateName {
-			fmt.Println(value)
 			m.ValidBuildHTMLMethodCalls++
 			return nil
 		}
