@@ -37,3 +37,6 @@ test:
 convey:
 	goconvey ./...
 
+.PHONY: lint
+lint:
+	exit
