@@ -12,7 +12,7 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"loop":                       Loop,
 	"subtract":                   Subtract,
 	"slug":                       Slug,
-	"legacyDataSetDownloadURI":   LegacyDataSetDownloadURI,
+	"legacyDatasetDownloadURI":   LegacyDatasetDownloadURI,
 	"markdown":                   Markdown,
 	"localise":                   Localise,
 	"domainSetLang":              DomainSetLang,

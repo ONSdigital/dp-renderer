@@ -1,12 +1,13 @@
 package helper
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 
 	"github.com/BurntSushi/toml"
 	"github.com/ONSdigital/go-ns/common"
-	"github.com/ONSdigital/log.go/v2/log"
+	"github.com/ONSdigital/log.go/log"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -33,7 +34,7 @@ func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, 
 			filePath := fmt.Sprintf("locales/%s.%s.toml", fileName, locale)
 			asset, err := assetFn(filePath)
 			if err != nil {
-				log.Error(nil, "failed to get locale file", err)
+				log.Event(context.Background(), "failed to get locale file", log.ERROR, log.Error(err))
 			}
 			bundle.ParseMessageFileBytes(asset, filePath)
 		}
@@ -55,7 +56,7 @@ func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
 func Localise(key string, language string, plural int, templateArguments ...string) string {
 	if key == "" {
 		err := fmt.Errorf("key " + key + " not found in locale file")
-		log.Error(nil, "no locale look up key provided", err)
+		log.Event(context.Background(), "no locale look up key provided", log.ERROR, log.Error(err))
 		return ""
 	}
 	if language == "" {
