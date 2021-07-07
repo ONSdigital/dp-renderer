@@ -9,6 +9,9 @@ A rendering library for Digital Publishing frontend microservices. `dp-renderer`
 Other than `dp-renderer` itself, you will need `go-bindata` in order to combine service-specific and `dp-renderer` assets:
 
 - `dp-renderer`: `go get github.com/ONSdigital/dp-renderer`
+
+> You can specify a version of `dp-renderer` by appending a commit ID or semantic version number to this command. E.g., `go get github.com/ONSdigital/dp-renderer@31d8704`
+
 - `go-bindata`: `go get github.com/kevinburke/go-bindata`
 
 ## Migrating from `dp-frontend-renderer` and `dp-frontend-models` to using `dp-renderer`
