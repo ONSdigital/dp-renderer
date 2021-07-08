@@ -1,12 +1,13 @@
 package helper
 
 import (
+	"context"
 	"fmt"
 	"regexp"
 	"strings"
 
 	"github.com/ONSdigital/go-ns/common"
-	"github.com/ONSdigital/log.go/v2/log"
+	"github.com/ONSdigital/log.go/log"
 )
 
 func DomainSetLang(domain string, uri string, language string) string {
@@ -41,7 +42,7 @@ func DomainSetLang(domain string, uri string, language string) string {
 	domainWithTranslation := ""
 	if !languageSupported {
 		err := fmt.Errorf("Language: " + language + " is not supported resolving to " + common.DefaultLang)
-		log.Error(nil, "language fail", err)
+		log.Event(context.Background(), "language fail", log.ERROR, log.Error(err))
 	}
 	if language == common.DefaultLang || !languageSupported {
 		domainWithTranslation = "https://www." + strippedURL

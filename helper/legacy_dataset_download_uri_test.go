@@ -9,6 +9,6 @@ import (
 
 func TestLegacyDatasetDownloadURI(t *testing.T) {
 	Convey("should generated expected legacy dataset download URI", t, func() {
-		So(helper.LegacyDataSetDownloadURI("/legacy/dataset/page", "test.csv"), ShouldEqual, "/file?uri=/legacy/dataset/page/test.csv")
+		So(helper.LegacyDatasetDownloadURI("/legacy/dataset/page", "test.csv"), ShouldEqual, "/file?uri=/legacy/dataset/page/test.csv")
 	})
 }

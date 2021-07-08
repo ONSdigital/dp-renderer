@@ -1,16 +1,17 @@
 package helper
 
 import (
+	"context"
 	"html/template"
 	"time"
 
-	"github.com/ONSdigital/log.go/v2/log"
+	"github.com/ONSdigital/log.go/log"
 )
 
 func DateFormat(s string) template.HTML {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		log.Error(nil, "failed to parse time", err)
+		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
 		return template.HTML(s)
 	}
 	localiseTime(&t)
@@ -20,7 +21,7 @@ func DateFormat(s string) template.HTML {
 func DateFormatYYYYMMDD(s string) template.HTML {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		log.Error(nil, "failed to parse time", err)
+		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
 		return template.HTML(s)
 	}
 	localiseTime(&t)
@@ -30,7 +31,7 @@ func DateFormatYYYYMMDD(s string) template.HTML {
 func localiseTime(t *time.Time) time.Time {
 	tz, err := time.LoadLocation("Europe/London")
 	if err != nil {
-		log.Error(nil, "failed to load timezone", err)
+		log.Event(context.Background(), "failed to load timezone", log.ERROR, log.Error(err))
 		return *t
 	}
 	return t.In(tz)
