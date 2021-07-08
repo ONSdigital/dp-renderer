@@ -6,7 +6,7 @@ A rendering library for Digital Publishing frontend microservices. `dp-renderer`
 
 ## Installation
 
-Other than `dp-renderer` itself, you will need `go-bindata` in order to combine service-specific and `dp-renderer` assets:
+Other than `dp-renderer` itself, you will need a utility that can combine service-specific and `dp-renderer` assets. We currently use `go-bindata` for this process.
 
 - `dp-renderer`: `go get github.com/ONSdigital/dp-renderer`
 
