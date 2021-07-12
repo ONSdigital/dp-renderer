@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/BurntSushi/toml"
-	"github.com/ONSdigital/go-ns/common"
+	"github.com/ONSdigital/dp-net/request"
 	"github.com/ONSdigital/log.go/log"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
@@ -29,7 +29,7 @@ func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, 
 
 	commonLocaliseNames := []string{"core", "service"}
 
-	for _, locale := range common.SupportedLanguages {
+	for _, locale := range request.SupportedLanguages {
 		for _, fileName := range commonLocaliseNames {
 			filePath := fmt.Sprintf("locales/%s.%s.toml", fileName, locale)
 			asset, err := assetFn(filePath)
@@ -46,7 +46,7 @@ func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, 
 // InitLocalizer is used to initialise the localizer
 func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
 	m := make(map[string]*i18n.Localizer)
-	for _, locale := range common.SupportedLanguages {
+	for _, locale := range request.SupportedLanguages {
 		m[locale] = i18n.NewLocalizer(bundle, locale)
 
 	}

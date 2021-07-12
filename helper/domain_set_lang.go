@@ -6,13 +6,13 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ONSdigital/go-ns/common"
+	"github.com/ONSdigital/dp-net/request"
 	"github.com/ONSdigital/log.go/log"
 )
 
 func DomainSetLang(domain string, uri string, language string) string {
 	languageSupported := false
-	for _, locale := range common.SupportedLanguages {
+	for _, locale := range request.SupportedLanguages {
 		if locale == language {
 			languageSupported = true
 		}
@@ -29,7 +29,7 @@ func DomainSetLang(domain string, uri string, language string) string {
 	strippedURL := strings.Replace(url, "https://", "", 1)
 	strippedURL = strings.Replace(strippedURL, "www.", "", 1)
 
-	for _, locale := range common.SupportedLanguages {
+	for _, locale := range request.SupportedLanguages {
 		possibleLocaleURLPrefix := strippedURL[0:len(locale)]
 
 		if possibleLocaleURLPrefix == locale {
@@ -41,10 +41,10 @@ func DomainSetLang(domain string, uri string, language string) string {
 
 	domainWithTranslation := ""
 	if !languageSupported {
-		err := fmt.Errorf("Language: " + language + " is not supported resolving to " + common.DefaultLang)
+		err := fmt.Errorf("Language: " + language + " is not supported resolving to " + request.DefaultLang)
 		log.Event(context.Background(), "language fail", log.ERROR, log.Error(err))
 	}
-	if language == common.DefaultLang || !languageSupported {
+	if language == request.DefaultLang || !languageSupported {
 		domainWithTranslation = "https://www." + strippedURL
 	} else {
 		domainWithTranslation = "https://" + language + "." + strippedURL
