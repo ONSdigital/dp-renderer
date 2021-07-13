@@ -16,7 +16,7 @@ func DatePeriodFormat(s string) string {
 		s = s[:dashIndex] + " - " + s[charIndexAfterDash:]
 	}
 
-	//2. Replace Q1 Q2 Q3 Q4 with their quarterly month representation e.g. Apr - Jun
+	// 2. Replace Q1 Q2 Q3 Q4 with their quarterly month representation e.g. Apr - Jun
 	Q1 := strings.Index(s, "Q1")
 	if Q1 > -1 {
 		Q1EndIndex := Q1 + 2

@@ -21,6 +21,6 @@ func Markdown(md string) template.HTML {
 		modifiedMarkdown.WriteString(fmt.Sprintf("%s\n", re.ReplaceAllString(line, "$1 $2")))
 	}
 
-	s := blackfriday.Run([]byte(fmt.Sprintf("%s", modifiedMarkdown.String())))
+	s := blackfriday.Run([]byte(modifiedMarkdown.String()))
 	return template.HTML(s)
 }

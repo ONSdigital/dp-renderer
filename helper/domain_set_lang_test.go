@@ -7,7 +7,7 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
-//TestDomainSetLang ensures the returned URL is set accurately
+// TestDomainSetLang ensures the returned URL is set accurately
 func TestDomainSetLang(t *testing.T) {
 	Convey("English domain requested", t, func() {
 		So(helper.DomainSetLang("www.ons.gov.uk", "/foo/bar/baz", "en"), ShouldEqual, "https://www.ons.gov.uk/foo/bar/baz")

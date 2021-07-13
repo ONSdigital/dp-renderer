@@ -8,24 +8,24 @@ import (
 	"github.com/ONSdigital/log.go/log"
 )
 
-func DateFormat(s string) template.HTML {
+func DateFormat(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
-		return template.HTML(s)
+		return template.HTMLEscapeString(s)
 	}
 	localiseTime(&t)
-	return template.HTML(t.Format("02 January 2006"))
+	return template.HTMLEscapeString(t.Format("02 January 2006"))
 }
 
-func DateFormatYYYYMMDD(s string) template.HTML {
+func DateFormatYYYYMMDD(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
-		return template.HTML(s)
+		return template.HTMLEscapeString(s)
 	}
 	localiseTime(&t)
-	return template.HTML(t.Format("2006/01/02"))
+	return template.HTMLEscapeString(t.Format("2006/01/02"))
 }
 
 func localiseTime(t *time.Time) time.Time {
