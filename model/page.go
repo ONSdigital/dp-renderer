@@ -1,6 +1,6 @@
 package model
 
-//Page contains data re-used for each page type a Data struct for data specific to the page type
+// Page contains data re-used for each page type a Data struct for data specific to the page type
 type Page struct {
 	Type                             string         `json:"type"`
 	DatasetId                        string         `json:"dataset_id"`
@@ -28,7 +28,7 @@ type FeatureFlags struct {
 	HideCookieBanner bool `json:"hide_cookie_banner"`
 }
 
-//NewPage instantiates the base Page type with configurable fields
+// NewPage instantiates the base Page type with configurable fields
 func NewPage(path, domain string) Page {
 	return Page{
 		PatternLibraryAssetsPath: path,

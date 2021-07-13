@@ -43,7 +43,7 @@ func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn
 func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName string) {
 	ctx := context.Background()
 	if err := r.render(w, 200, templateName, pageModel); err != nil {
-		r.error(w, 500, model.ErrorResponse{
+		err = r.error(w, 500, model.ErrorResponse{
 			Error: err.Error(),
 		})
 		log.Event(ctx, "failed to render template", log.ERROR, log.Error(err), log.Data{"template": templateName})

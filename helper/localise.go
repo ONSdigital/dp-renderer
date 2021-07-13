@@ -36,7 +36,10 @@ func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, 
 			if err != nil {
 				log.Event(context.Background(), "failed to get locale file", log.ERROR, log.Error(err))
 			}
-			bundle.ParseMessageFileBytes(asset, filePath)
+			_, err = bundle.ParseMessageFileBytes(asset, filePath)
+			if err != nil {
+				log.Event(context.Background(), "failed to parse message file", log.ERROR, log.Error(err))
+			}
 		}
 	}
 

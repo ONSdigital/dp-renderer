@@ -1,6 +1,6 @@
 package model
 
-//Metadata ...
+// Metadata ...
 type Metadata struct {
 	Title       string   `json:"title"`
 	Description string   `json:"description"`
