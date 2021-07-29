@@ -4,7 +4,7 @@ A rendering library for Digital Publishing frontend microservices. `dp-renderer`
 
 `dp-renderer` is intended to be used instead of calling `dp-frontend-renderer` to generate HTML, which consequently means more explicit domain encapsulation of our frontend apps and the removal of a single point of failure within the DP frontend architecture.
 
-Note: although the `dp-frontend-renderer` is be deprecated there is a transition period where updates will be needed in `dp-renderer` and the `dp-frontend-renderer`. See the README on the `dp-frontend-renderer` for the migration status.
+Note: although the `dp-frontend-renderer` is deprecated there is a transition period where updates will be needed in `dp-renderer` and the `dp-frontend-renderer`. See the README on the `dp-frontend-renderer` for the migration status.
 
 ## Installation
 
