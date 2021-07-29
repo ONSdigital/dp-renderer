@@ -12,7 +12,12 @@
     <meta name="theme-color" content="#58595B">
     <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
     {{ if .Metadata.ServiceName }}<meta name="ons:service" content="{{ .Metadata.ServiceName}}">{{ end }}
+    
+    {{ if .FeatureFlags.ONSDesignSystemVersion }}
+      <link rel="stylesheet" href="https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/css/main.css">
+    {{ end }}
     <link rel="stylesheet" href="{{.PatternLibraryAssetsPath}}/css/main.css">
+    
     {{ if .HasJSONLD -}}{{ template "partials/json-ld/base" . }}{{- end }}
 
     {{if eq .Metadata.Title "Feedback"}}
@@ -48,6 +53,11 @@
     {{ template "partials/footer" . }}
 
       {{/* TODO - update on live build to use two JS files, not a single one */}}
+
+    {{ if .FeatureFlags.ONSDesignSystemVersion }}
+    <script type="text/javascript" src="https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/scripts/main.js"></script>
+    {{ end }}
+
     <script type="text/javascript" src="{{.PatternLibraryAssetsPath}}/js/main.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
 </body>
