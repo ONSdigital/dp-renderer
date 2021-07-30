@@ -33,6 +33,8 @@ For `dp-renderer` to work correctly once the assets have been migrated over, we 
 Update the frontend service's `Makefile` with the following new commands so that `go-bindata` will generate this file:
 
 ```Makefile
+LOCAL_DP_RENDERER_IN_USE = $(shell grep -c "\"github.com/ONSdigital/dp-renderer\" =" go.mod)
+
 .PHONY: fetch-renderer-lib
 fetch-renderer-lib:
 ifeq ($(LOCAL_DP_RENDERER_IN_USE), 1)
