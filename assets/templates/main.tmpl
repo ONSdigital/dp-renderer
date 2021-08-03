@@ -49,6 +49,20 @@
       })(window, document, 'script', 'dataLayer', 'GTM-MBCBVQS');
     </script>
     <!-- End Google Tag Manager -->
+    <style type="text/css">
+      .radio__input:checked+.checkbox__label:before,
+      .radio__input:checked+.radio__label:before,
+      .radio__label:before,
+      .radio__label:before {
+        border: 0 !important;
+        background: inherit;
+        box-shadow: none;
+      }
+      .spacing > * + * {
+        margin-top: .1em;
+        padding: 0;
+      }
+    </style>
   </head>
   <body class="{{ .Type }}">
     <script>
@@ -80,7 +94,10 @@
       {{/* TODO - update on live build to use two JS files, not a single one */}}
 
       {{ if .FeatureFlags.ONSDesignSystemVersion }}
-        <script type="text/javascript" src="https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/scripts/main.js"></script>
+        <script>
+          var ONS_assets_base_URL = 'https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/';
+        </script>
+        <script src="https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/scripts/main.js"></script>
       {{ end }}
     </div>
   </div>
