@@ -7,7 +7,8 @@
       {{ else if .Error -}}
         {{if .Error.Title }}{{ .Error.Title }}
         {{- end }}
-      {{- end}} - {{ localise "OfficeForNationalStatistics" .Language 1 }}</title>
+      {{- end}} - {{ localise "OfficeForNationalStatistics" .Language 1 }}
+    </title>
     {{if eq .Metadata.Title "Home"}}<meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}">
     {{else}}<meta name="description" content="{{ .Metadata.Description}}">{{end}}
     <meta charset="utf-8"/>
@@ -79,15 +80,15 @@
 
         {{ template "partials/footer" . }}
 
-  {{ if .FeatureFlags.ONSDesignSystemVersion }}
+    {{ if .FeatureFlags.ONSDesignSystemVersion }}
+        </div>
       </div>
-    </div>
-    <script>
-      var ONS_assets_base_URL = 'https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/';
-    </script>
-    <script src="https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/scripts/main.js"></script>
-  {{end}}
-  <script type="text/javascript" src="{{.PatternLibraryAssetsPath}}/js/main.js"></script>
-  <script type="text/javascript" src="/js/app.js"></script>
-</body>
+      <script>
+        var ONS_assets_base_URL = 'https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/';
+      </script>
+      <script src="https://cdn.ons.gov.uk/sdc/design-system/{{.FeatureFlags.ONSDesignSystemVersion}}/scripts/main.js"></script>
+    {{end}}
+    <script defer src="{{.PatternLibraryAssetsPath}}/js/main.js"></script>
+    <script defer src="/js/app.js"></script>
+  </body>
 </html>
