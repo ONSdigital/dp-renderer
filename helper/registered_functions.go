@@ -20,4 +20,5 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"notLastItem":                NotLastItem,
 	"concatenateStrings":         ConcatenateStrings,
 	"truncateToMaximuCharacters": TruncateToMaximumCharacters,
+	"trimPrefixedPeriod":         TrimPrefixedPeriod,
 }
