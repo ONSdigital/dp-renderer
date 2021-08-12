@@ -29,9 +29,9 @@ func New(client client.Renderer, assetsPath, siteDomain string) *Render {
 }
 
 // NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
-func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string) *Render {
+func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string, isDevelopment bool) *Render {
 	return &Render{
-		client:                   client.NewUnrolledAdapter(assetFn, assetNameFn),
+		client:                   client.NewUnrolledAdapter(assetFn, assetNameFn, isDevelopment),
 		hMutex:                   &sync.Mutex{},
 		jMutex:                   &sync.Mutex{},
 		PatternLibraryAssetsPath: assetsPath,

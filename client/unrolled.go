@@ -15,14 +15,15 @@ type unrolledAdapter struct {
 }
 
 // NewUnrolledAdapter returns the unrolled render library via an adapter struct that satisfies the Renderer interface
-func NewUnrolledAdapter(assetFn func(name string) ([]byte, error), assetNameFn func() []string) Renderer {
+func NewUnrolledAdapter(assetFn func(name string) ([]byte, error), assetNameFn func() []string, isDevelopment bool) Renderer {
 	helper.InitialiseLocalisationsHelper(assetFn)
 	return &unrolledAdapter{
 		unrolled: unrolled.New(render.Options{
-			Asset:      assetFn,
-			AssetNames: assetNameFn,
-			Layout:     "main",
-			Funcs:      []template.FuncMap{helper.RegisteredFuncs},
+			Asset:         assetFn,
+			AssetNames:    assetNameFn,
+			Layout:        "main",
+			IsDevelopment: isDevelopment,
+			Funcs:         []template.FuncMap{helper.RegisteredFuncs},
 		}),
 	}
 }
