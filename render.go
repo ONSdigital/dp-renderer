@@ -3,6 +3,7 @@ package render
 import (
 	"context"
 	"io"
+	"strings"
 	"sync"
 
 	"github.com/ONSdigital/dp-renderer/client"
@@ -29,7 +30,11 @@ func New(client client.Renderer, assetsPath, siteDomain string) *Render {
 }
 
 // NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
-func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string, isDevelopment bool) *Render {
+func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string) *Render {
+	isDevelopment := false
+	if strings.Contains(siteDomain, "localhost") {
+		isDevelopment = true
+	}
 	return &Render{
 		client:                   client.NewUnrolledAdapter(assetFn, assetNameFn, isDevelopment),
 		hMutex:                   &sync.Mutex{},
