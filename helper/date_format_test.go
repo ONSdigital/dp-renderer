@@ -22,3 +22,16 @@ func TestDateFormatYYYYMMDD(t *testing.T) {
 		So(helper.DateFormatYYYYMMDD(""), ShouldEqual, "")
 	})
 }
+
+func TestDateTimeFormat(t *testing.T) {
+	Convey("Given a formatted datetime return a human readable datetime", t, func() {
+		want := "13 June 2017 08:30"
+		got := helper.DateTimeFormat("2017-06-13T08:30:00.000Z")
+		So(got, ShouldEqual, want)
+	})
+	Convey("Given a invalid datetime return said datetime", t, func() {
+		want := "2006-01-02Tkjklj+07:00"
+		got := helper.DateTimeFormat("2006-01-02Tkjklj+07:00")
+		So(got, ShouldEqual, want)
+	})
+}
