@@ -29,7 +29,11 @@ func New(client client.Renderer, assetsPath, siteDomain string) *Render {
 	}
 }
 
-// NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
+/* NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
+When the siteDomain argument contains "localhost", then the rendering client will be instantiated in "development" mode.
+This means that templates are recompiled on request.
+Any updates made to your templates can then be viewed upon browser refresh, rather than having to restart the app.
+*/
 func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string) *Render {
 	isDevelopment := false
 	if strings.Contains(siteDomain, "localhost") {
