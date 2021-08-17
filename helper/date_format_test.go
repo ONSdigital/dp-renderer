@@ -23,6 +23,14 @@ func TestDateFormatYYYYMMDD(t *testing.T) {
 	})
 }
 
+func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
+	Convey("Date format returns human readable string", t, func() {
+		So(helper.DateFormatYYYYMMDDNoSlash("2019-08-15T00:00:00.000Z"), ShouldEqual, "20190815")
+		So(helper.DateFormatYYYYMMDDNoSlash("2019-08-15"), ShouldEqual, "2019-08-15") // failed to parse, so returns arg value
+		So(helper.DateFormatYYYYMMDDNoSlash(""), ShouldEqual, "")
+	})
+}
+
 func TestDateTimeFormat(t *testing.T) {
 	Convey("Given a formatted datetime return a human readable datetime", t, func() {
 		want := "13 June 2017 08:30"
