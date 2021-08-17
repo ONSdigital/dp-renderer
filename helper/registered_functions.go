@@ -6,6 +6,7 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"humanSize":                  HumanSize,
 	"safeHTML":                   SafeHTML,
 	"dateFormat":                 DateFormat,
+	"dateTimeFormat":             DateTimeFormat,
 	"dateFormatYYYYMMDD":         DateFormatYYYYMMDD,
 	"datePeriodFormat":           DatePeriodFormat,
 	"last":                       Last,
