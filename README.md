@@ -53,6 +53,23 @@ rend.BuildPage(w, mappedPageData, "name-of-template-file-without-extension")
 
 If an error occurs during page build, either because of an incorrect template name or incorrect data mapping, `dp-renderer` will write an error via an `errorResponse` struct.
 
+### Using the ONS Design System
+
+`dp-renderer` supports use of the [ONS Design System](https://ons-design-system.netlify.app/) on a **per-page basis**. In order to use the ONS Design System, the page mapper function should set the version number to the `FeatureFlags.ONSDesignSystemVersion` variable in the core page model struct, like so:
+
+```go
+func CreateExamplePage(basePage coreModel.Page) model.ExamplePage {
+    p := model.ExamplePage{
+        Page: basePage
+    }
+
+    // Load in specific version of ONS design system JS and CSS
+    p.FeatureFlags.ONSDesignSystemVersion = "37.0.0"
+    
+    return p
+}
+```
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.
