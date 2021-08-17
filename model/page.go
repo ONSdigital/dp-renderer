@@ -24,8 +24,10 @@ type Page struct {
 	FeatureFlags                     FeatureFlags   `json:"feature_flags"`
 }
 
+// FeatureFlags contains toggles for certain features on the website
 type FeatureFlags struct {
-	HideCookieBanner bool `json:"hide_cookie_banner"`
+	HideCookieBanner       bool   `json:"hide_cookie_banner"`
+	ONSDesignSystemVersion string `json:"ons_design_system_version"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
