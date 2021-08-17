@@ -55,7 +55,7 @@ If an error occurs during page build, either because of an incorrect template na
 
 ### Using the ONS Design System
 
-`dp-renderer` supports use of the [ONS Design System](https://ons-design-system.netlify.app/) on a **per-page basis**. In order to use the ONS Design System, the page mapper function should set the version number to the `FeatureFlags.ONSDesignSystemVersion` variable in the core page model struct, like so:
+`dp-renderer` supports use of the [ONS Design System](https://ons-design-system.netlify.app/) on a **per-page basis**. In order to use the ONS Design System, the page mapper function in the calling application should set the version number to the `FeatureFlags.ONSDesignSystemVersion` variable in the core page model struct, like so:
 
 ```go
 func CreateExamplePage(basePage coreModel.Page) model.ExamplePage {
