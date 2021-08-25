@@ -16,10 +16,18 @@ func TestDateFormat(t *testing.T) {
 }
 
 func TestDateFormatYYYYMMDD(t *testing.T) {
-	Convey("Date format returns human readable string", t, func() {
+	Convey("Date format returns short date pattern without slashes", t, func() {
 		So(helper.DateFormatYYYYMMDD("2019-08-15T00:00:00.000Z"), ShouldEqual, "2019/08/15")
 		So(helper.DateFormatYYYYMMDD("2019-08-15"), ShouldEqual, "2019-08-15")
 		So(helper.DateFormatYYYYMMDD(""), ShouldEqual, "")
+	})
+}
+
+func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
+	Convey("Date format returns human readable string", t, func() {
+		So(helper.DateFormatYYYYMMDDNoSlash("2019-08-15T00:00:00.000Z"), ShouldEqual, "20190815")
+		So(helper.DateFormatYYYYMMDDNoSlash("2019-08-15"), ShouldEqual, "2019-08-15") // failed to parse, so returns arg value
+		So(helper.DateFormatYYYYMMDDNoSlash(""), ShouldEqual, "")
 	})
 }
 
