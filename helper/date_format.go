@@ -44,7 +44,7 @@ func DateFormatYYYYMMDDNoSlash(s string) template.HTML {
 		log.Event(nil, "failed to parse time", log.Error(err), log.ERROR)
 		return template.HTMLEscapeString(s)
 	}
-	localiseTime(&t)
+	t = localiseTime(&t)
 	return template.HTMLEscapeString(t.Format("20060102"))
 }
 
