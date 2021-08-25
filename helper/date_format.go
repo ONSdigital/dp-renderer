@@ -38,7 +38,7 @@ func DateFormatYYYYMMDD(s string) string {
 	return template.HTMLEscapeString(t.Format("2006/01/02"))
 }
 
-func DateFormatYYYYMMDDNoSlash(s string) template.HTML {
+func DateFormatYYYYMMDDNoSlash(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Event(nil, "failed to parse time", log.Error(err), log.ERROR)
