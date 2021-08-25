@@ -8,7 +8,7 @@ import (
 )
 
 func TestMultiply(t *testing.T) {
-	Convey("substract should return expected value", t, func() {
+	Convey("multiply should return expected value", t, func() {
 		So(helper.Multiply(100, 1), ShouldEqual, 100)
 	})
 }

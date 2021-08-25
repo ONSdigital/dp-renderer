@@ -42,10 +42,10 @@ func DateFormatYYYYMMDDNoSlash(s string) template.HTML {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Event(nil, "failed to parse time", log.Error(err), log.ERROR)
-		return template.HTML(s)
+		return template.HTMLEscapeString(s)
 	}
 	localiseTime(&t)
-	return template.HTML(t.Format("20060102"))
+	return template.HTMLEscapeString(t.Format("20060102"))
 }
 
 func localiseTime(t *time.Time) time.Time {
