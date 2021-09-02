@@ -5,13 +5,13 @@ import (
 	"html/template"
 	"time"
 
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 )
 
 func DateFormat(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
+		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
 	localiseTime(&t)
@@ -21,7 +21,7 @@ func DateFormat(s string) string {
 func DateTimeFormat(s string) template.HTML {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
+		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTML(s)
 	}
 	localiseTime(&t)
@@ -31,7 +31,7 @@ func DateTimeFormat(s string) template.HTML {
 func DateFormatYYYYMMDD(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		log.Event(context.Background(), "failed to parse time", log.ERROR, log.Error(err))
+		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
 	localiseTime(&t)
@@ -41,7 +41,7 @@ func DateFormatYYYYMMDD(s string) string {
 func DateFormatYYYYMMDDNoSlash(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
-		log.Event(nil, "failed to parse time", log.Error(err), log.ERROR)
+		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
 	t = localiseTime(&t)
@@ -51,7 +51,7 @@ func DateFormatYYYYMMDDNoSlash(s string) string {
 func localiseTime(t *time.Time) time.Time {
 	tz, err := time.LoadLocation("Europe/London")
 	if err != nil {
-		log.Event(context.Background(), "failed to load timezone", log.ERROR, log.Error(err))
+		log.Error(context.Background(), "failed to load timezone", err)
 		return *t
 	}
 	return t.In(tz)

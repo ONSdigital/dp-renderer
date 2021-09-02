@@ -7,7 +7,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"github.com/ONSdigital/dp-net/request"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
@@ -34,11 +34,11 @@ func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, 
 			filePath := fmt.Sprintf("locales/%s.%s.toml", fileName, locale)
 			asset, err := assetFn(filePath)
 			if err != nil {
-				log.Event(context.Background(), "failed to get locale file", log.ERROR, log.Error(err))
+				log.Error(context.Background(), "failed to get locale file", err)
 			}
 			_, err = bundle.ParseMessageFileBytes(asset, filePath)
 			if err != nil {
-				log.Event(context.Background(), "failed to parse message file", log.ERROR, log.Error(err))
+				log.Error(context.Background(), "failed to parse message file", err)
 			}
 		}
 	}
@@ -59,7 +59,7 @@ func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
 func Localise(key string, language string, plural int, templateArguments ...string) string {
 	if key == "" {
 		err := fmt.Errorf("key " + key + " not found in locale file")
-		log.Event(context.Background(), "no locale look up key provided", log.ERROR, log.Error(err))
+		log.Error(context.Background(), "no locale look up key provided", err)
 		return ""
 	}
 	if language == "" {

@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/ONSdigital/dp-net/request"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 )
 
 func DomainSetLang(domain string, uri string, language string) string {
@@ -42,7 +42,7 @@ func DomainSetLang(domain string, uri string, language string) string {
 	domainWithTranslation := ""
 	if !languageSupported {
 		err := fmt.Errorf("Language: " + language + " is not supported resolving to " + request.DefaultLang)
-		log.Event(context.Background(), "language fail", log.ERROR, log.Error(err))
+		log.Error(context.Background(), "language fail", err)
 	}
 	if language == request.DefaultLang || !languageSupported {
 		domainWithTranslation = "https://www." + strippedURL
