@@ -237,15 +237,10 @@
 		</div>
     {{end}}
     {{if .BetaBannerEnabled}}
-        <div class="banner">
-            <div class="wrapper banner--bottom-border">
-                <div class="col col--md-40 col--lg-44">
-                    <span class="banner__text-icon">{{ localise "Beta" .Language 1 }}</span>
-                    <div class="banner__body">
-                        <p>{{ localise "BetaFeedback" .Language 1 | safeHTML }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{ if .FeatureFlags.ONSDesignSystemVersion }}
+            {{ template "partials/banners/beta" . }}
+        {{ else }}
+            {{ template "partials/banners/cmd-beta" . }}
+        {{ end }}
     {{end}}
 </header>
