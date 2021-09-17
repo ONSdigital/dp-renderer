@@ -18,7 +18,7 @@ Other than `dp-renderer` itself, you will need a utility that can combine servic
 
 ## Migrating from `dp-frontend-renderer` and `dp-frontend-models` to using `dp-renderer`
 
-See the [migration](/migration.md) guide for step-by-step details.
+See the [migration](MIGRATION.md) guide for step-by-step details.
 
 ## Usage
 
