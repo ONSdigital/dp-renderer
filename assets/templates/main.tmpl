@@ -65,8 +65,8 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     {{ if .FeatureFlags.ONSDesignSystemVersion }}
-      <div class="page">
-        <div class="page__content">
+      <div class="ons-page">
+        <div class="ons-page__content">
     {{end}}
         {{ if (ne .FeatureFlags.HideCookieBanner true)}}
           {{ template "partials/banners/cookies" . }}
