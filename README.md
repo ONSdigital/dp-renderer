@@ -78,7 +78,7 @@ If you are running and developing within a docker container that includes refere
 e.g.
 
 ```go
-replace "github.com/ONSdigital/dp-renderer" => "/Users/{yourName}/{yourDirectory}/github.com/ONSdigital/dp-renderer"
+replace "github.com/ONSdigital/dp-renderer" => "/{yourPathToLocalGitDirectory}/dp-renderer"
 ```
 
 - Add the volume of your local instance to the service's `.yaml` file in dp-compose
@@ -101,7 +101,7 @@ services:
             - ./reflex
         volumes:
             - ../../dp-frontend-dataset-controller:/dp-frontend-dataset-controller
-            - /Users/{yourName}/{yourDirectory}/github.com/ONSdigital/dp-renderer:/Users/{yourName}/{yourDirectory}/github.com/ONSdigital/dp-renderer
+            - /{yourPathToLocalGitDirectory}/dp-renderer:/{yourPathToLocalGitDirectory}/dp-renderer
         ports:
             - 20200
         restart: unless-stopped
