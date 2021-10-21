@@ -70,6 +70,49 @@ func CreateExamplePage(basePage coreModel.Page) model.ExamplePage {
 }
 ```
 
+### Referencing a local instance of dp-renderer in a docker container
+
+If you are running and developing within a docker container that includes references to the dp-renderer, for example, the [cantabular import journey](https://github.com/ONSdigital/dp-compose/tree/main/cantabular-import). Follow these steps to use a local instance:
+
+- Update the `go.mod` file in the relevant service to use the `replace statement` to point to your local dp-renderer instance
+e.g.
+
+```go
+replace "github.com/ONSdigital/dp-renderer" => "/Users/{yourName}/{yourDirectory}/github.com/ONSdigital/dp-renderer"
+```
+
+- Add the volume of your local instance to the service's `.yaml` file in dp-compose
+e.g.
+
+To modify the [dp-frontend-dataset-controller](https://github.com/ONSdigital/dp-frontend-dataset-controller) to use a local dp-renderer instance in the cantabular import journey, modify `dp-frontend-dataset-controller.yml` volumes to include your local instance
+
+```yml
+version: '3.3'
+services:
+    dp-frontend-dataset-controller:
+        build:
+            context: ../../dp-frontend-dataset-controller
+            dockerfile: Dockerfile.local
+        command:
+            - reflex
+            - -d
+            - none
+            - -c
+            - ./reflex
+        volumes:
+            - ../../dp-frontend-dataset-controller:/dp-frontend-dataset-controller
+            - /Users/{yourName}/{yourDirectory}/github.com/ONSdigital/dp-renderer:/Users/{yourName}/{yourDirectory}/github.com/ONSdigital/dp-renderer
+        ports:
+            - 20200
+        restart: unless-stopped
+        environment:
+            BIND_ADDR:                ":20200"
+            DOWNLOAD_SERVICE_URL:     "http://dp-download-service:23600"
+            API_ROUTER_URL:           "http://dp-api-router:23200/v1"
+            DOWNLOADER_URL:           "http://dp-download-service:23400"
+            ENABLE_CENSUS_PAGES:      "true"
+```
+
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.
