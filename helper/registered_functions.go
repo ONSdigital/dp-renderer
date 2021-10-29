@@ -12,6 +12,7 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"datePeriodFormat":            DatePeriodFormat,
 	"last":                        Last,
 	"loop":                        Loop,
+	"add":                         Add,
 	"subtract":                    Subtract,
 	"multiply":                    Multiply,
 	"slug":                        Slug,
