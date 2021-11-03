@@ -10,7 +10,7 @@
       {{- end}} - {{ localise "OfficeForNationalStatistics" .Language 1 }}
     </title>
     {{if eq .Metadata.Title "Home"}}<meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}">
-    {{else}}<meta name="description" content="{{ .Metadata.Description}}">{{end}}
+    {{ else }}<meta name="description" content="{{ .Metadata.Description}}">{{ end }}
     <meta charset="utf-8"/>
     <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
     <meta name="format-detection" content="telephone=no">
@@ -22,16 +22,16 @@
       {{ if eq .SiteDomain "localhost" }}
         <link rel="stylesheet" href="http://localhost:9000/dist/css/main.css">
       {{ else }}
-        <link rel="stylesheet" href="http://cdn.ons.gov.uk/sixteens/{{.FeatureFlags.SixteensVersion}}/css/main.css">
+        <link rel="stylesheet" href="http://cdn.ons.gov.uk/sixteens/{{ .FeatureFlags.SixteensVersion }}/css/main.css">
       {{ end }}
     {{ else }}
-      <link rel="stylesheet" href="{{.PatternLibraryAssetsPath}}/css/main.css">
+      <link rel="stylesheet" href="{{ .PatternLibraryAssetsPath }}/css/main.css">
     {{ end }}
 
     {{ if .HasJSONLD -}}{{ template "partials/json-ld/base" . }}
     {{- end }}
 
-    {{if eq .Metadata.Title "Feedback"}}
+    {{ if eq .Metadata.Title "Feedback" }}
       <link rel="canonical" href={{ concatenateStrings "https://www." .SiteDomain "/feedback" }}>
     {{ end }}
 
@@ -72,7 +72,7 @@
     {{ if .FeatureFlags.ONSDesignSystemVersion }}
       <div class="page">
         <div class="ons-page__content">
-    {{end}}
+    {{ end }}
         {{ if (ne .FeatureFlags.HideCookieBanner true)}}
           {{ template "partials/banners/cookies" . }}
         {{ end }}
@@ -85,19 +85,19 @@
 
         {{ template "partials/footer" . }}
 
-    {{ if eq .FeatureFlags.SixteensVersion "" }}
+    {{ if not .FeatureFlags.SixteensVersion }}
         </div>
       </div>
       <script>
-        var ONS_assets_base_URL = '{{.PatternLibraryAssetsPath}}/js/main.js';
+        var ONS_assets_base_URL = '{{ .PatternLibraryAssetsPath }}/js/main.js';
       </script>
-      <script src="{{.PatternLibraryAssetsPath}}/js/main.js"></script>
-    {{else}}
+      <script src="{{ .PatternLibraryAssetsPath }}/js/main.js"></script>
+    {{ else }}
       {{ if eq .SiteDomain "localhost" }}
         <script defer src="http://localhost:9000/dist/js/main.js"></script>
         <script defer src="/js/app.js"></script>
       {{ else }}
-        <script defer src="http://cdn.ons.gov.uk/sixteens/{{.FeatureFlags.SixteensVersion}}/js/main.js"></script>
+        <script defer src="http://cdn.ons.gov.uk/sixteens/{{ .FeatureFlags.SixteensVersion }}/js/main.js"></script>
         <script defer src="/js/app.js"></script>
       {{ end }}
     {{ end }}

@@ -66,7 +66,7 @@ func CreateExamplePage(basePage coreModel.Page) model.ExamplePage {
     }
 
     // Loads in specific version of Sixteens based on commit ID, instead of dp-design-system
-    p.FeatureFlags.SixteensVersion = {commit_id}
+    p.FeatureFlags.SixteensVersion = "ba32e79"
     
     return p
 }

@@ -70,7 +70,7 @@
             </nav>
          </div>
          <div class="wrapper">
-            {{ if eq .FeatureFlags.SixteensVersion "" }}
+            {{ if not .FeatureFlags.SixteensVersion }}
                <hr class="ons-footer__hr">
             {{ end }}
             <div class="footer-license">
