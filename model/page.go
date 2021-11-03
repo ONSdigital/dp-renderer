@@ -28,6 +28,7 @@ type Page struct {
 type FeatureFlags struct {
 	HideCookieBanner       bool   `json:"hide_cookie_banner"`
 	ONSDesignSystemVersion string `json:"ons_design_system_version"`
+	SixteensVersion        string `json:"legacy_sixteens_version"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
