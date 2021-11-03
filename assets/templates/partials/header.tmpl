@@ -246,7 +246,7 @@
                     <button type="submit" class="search__button col--md-3 col--lg-3" id="nav-search-submit">
                         <span class="visuallyhidden">{{ localise "Search" .Language 1 }}</span>
                         <span class="icon icon-search--light">
-                            {{ if .FeatureFlags.ONSDesignSystemVersion }}
+                            {{ if eq .FeatureFlags.SixteensVersion "" }}
                                 {{ template "icons/search" . }}
                             {{ end }}
                         </span>
@@ -270,10 +270,10 @@
         </div>
     {{end}}
     {{if .BetaBannerEnabled}}
-        {{ if .FeatureFlags.ONSDesignSystemVersion }}
-            {{ template "partials/banners/beta" . }}
-        {{ else }}
+        {{ if .FeatureFlags.SixteensVersion }}
             {{ template "partials/banners/cmd-beta" . }}
+        {{ else }}
+            {{ template "partials/banners/beta" . }}
         {{ end }}
     {{end}}
 </header>
