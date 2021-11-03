@@ -70,10 +70,21 @@
             </nav>
          </div>
          <div class="wrapper">
+            {{ if .FeatureFlags.ONSDesignSystemVersion }}
+               <hr class="ons-footer__hr">
+            {{ end }}
             <div class="footer-license">
-               <img class="footer-license__img" alt="OGL" width="60" src="https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg">
+               {{ if .FeatureFlags.ONSDesignSystemVersion }}
+                  {{ template "icons/ogl" . }}
+               {{ else }}
+                  <img class="footer-license__img" alt="OGL" width="60" src="https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg">
+               {{ end }}
                <p class="footer-license__text margin-left-sm--0">
-                  {{ localise "OGLFull" .Language 1 | safeHTML }}
+                  {{ if .FeatureFlags.ONSDesignSystemVersion }}
+                     {{ localise "OGLFull" .Language 2 | safeHTML }}
+                  {{ else }}
+                     {{ localise "OGLFull" .Language 1 | safeHTML }}
+                  {{ end }}
                </p>
             </div>
          </div>
