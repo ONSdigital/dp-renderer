@@ -1,7 +1,7 @@
 {{ $bc :=  .Breadcrumb }}
 {{ if $bc }}
     {{ $length := len $bc }}
-    {{ if .FeatureFlags.ONSDesignSystemVersion }}
+    {{ if not .FeatureFlags.SixteensVersion }}
         <nav class="ons-breadcrumb print--hide" aria-label="Breadcrumbs">
             <ol class="ons-breadcrumb__items ons-u-fs-s">
                 {{ range $i, $b := $bc }}

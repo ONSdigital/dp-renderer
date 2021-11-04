@@ -53,9 +53,11 @@ rend.BuildPage(w, mappedPageData, "name-of-template-file-without-extension")
 
 If an error occurs during page build, either because of an incorrect template name or incorrect data mapping, `dp-renderer` will write an error via an `errorResponse` struct.
 
-### Using the ONS Design System
+### Using Sixteens for older pages
 
-`dp-renderer` supports use of the [ONS Design System](https://ons-design-system.netlify.app/) on a **per-page basis**. In order to use the ONS Design System, the page mapper function in the calling application should set the version number to the `FeatureFlags.ONSDesignSystemVersion` variable in the core page model struct, like so:
+As Sixteens is in the process of being deprecated, dp-renderer is designed to use [`dp-design-system`](https://github.com/ONSdigital/dp-design-system) by default.
+
+If a page requires Sixteens instead of dp-design-system, then you need to set the `FeatureFlag.SixteensVersion` to the relevant Sixteens commit ID. When this value is set, the main template will load Sixteens assets and styling instead of the design system's.
 
 ```go
 func CreateExamplePage(basePage coreModel.Page) model.ExamplePage {
@@ -63,8 +65,8 @@ func CreateExamplePage(basePage coreModel.Page) model.ExamplePage {
         Page: basePage
     }
 
-    // Load in specific version of ONS design system JS and CSS
-    p.FeatureFlags.ONSDesignSystemVersion = "37.0.0"
+    // Loads in specific version of Sixteens based on commit ID, instead of dp-design-system
+    p.FeatureFlags.SixteensVersion = "ba32e79"
     
     return p
 }
