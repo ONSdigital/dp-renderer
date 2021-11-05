@@ -14,7 +14,7 @@ func DateFormat(s string) string {
 		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
-	localiseTime(&t)
+	t = localiseTime(&t)
 	return template.HTMLEscapeString(t.Format("02 January 2006"))
 }
 
@@ -24,7 +24,7 @@ func DateTimeFormat(s string) template.HTML {
 		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTML(s)
 	}
-	localiseTime(&t)
+	t = localiseTime(&t)
 	return template.HTML(t.Format("02 January 2006 15:04"))
 }
 
@@ -34,7 +34,7 @@ func DateFormatYYYYMMDD(s string) string {
 		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
-	localiseTime(&t)
+	t = localiseTime(&t)
 	return template.HTMLEscapeString(t.Format("2006/01/02"))
 }
 

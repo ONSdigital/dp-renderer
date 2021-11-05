@@ -10,6 +10,8 @@ import (
 func TestDateFormat(t *testing.T) {
 	Convey("Date format returns human readable string", t, func() {
 		So(helper.DateFormat("2019-08-15T00:00:00.000Z"), ShouldEqual, "15 August 2019")
+		So(helper.DateFormat("2019-05-21T23:00:00.000Z"), ShouldEqual, "22 May 2019") // BST
+		So(helper.DateFormat("2019-12-21T23:00:00.000Z"), ShouldEqual, "21 December 2019")
 		So(helper.DateFormat("2019-08-15"), ShouldEqual, "2019-08-15")
 		So(helper.DateFormat(""), ShouldEqual, "")
 	})
@@ -18,6 +20,8 @@ func TestDateFormat(t *testing.T) {
 func TestDateFormatYYYYMMDD(t *testing.T) {
 	Convey("Date format returns short date pattern without slashes", t, func() {
 		So(helper.DateFormatYYYYMMDD("2019-08-15T00:00:00.000Z"), ShouldEqual, "2019/08/15")
+		So(helper.DateFormatYYYYMMDD("2019-05-21T23:00:00.000Z"), ShouldEqual, "2019/05/22") // BST
+		So(helper.DateFormatYYYYMMDD("2019-12-21T23:00:00.000Z"), ShouldEqual, "2019/12/21")
 		So(helper.DateFormatYYYYMMDD("2019-08-15"), ShouldEqual, "2019-08-15")
 		So(helper.DateFormatYYYYMMDD(""), ShouldEqual, "")
 	})
@@ -26,6 +30,8 @@ func TestDateFormatYYYYMMDD(t *testing.T) {
 func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
 	Convey("Date format returns human readable string", t, func() {
 		So(helper.DateFormatYYYYMMDDNoSlash("2019-08-15T00:00:00.000Z"), ShouldEqual, "20190815")
+		So(helper.DateFormatYYYYMMDDNoSlash("2019-05-21T23:00:00.000Z"), ShouldEqual, "20190522") // BST
+		So(helper.DateFormatYYYYMMDDNoSlash("2019-12-21T23:00:00.000Z"), ShouldEqual, "20191221")
 		So(helper.DateFormatYYYYMMDDNoSlash("2019-08-15"), ShouldEqual, "2019-08-15") // failed to parse, so returns arg value
 		So(helper.DateFormatYYYYMMDDNoSlash(""), ShouldEqual, "")
 	})
@@ -33,9 +39,16 @@ func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
 
 func TestDateTimeFormat(t *testing.T) {
 	Convey("Given a formatted datetime return a human readable datetime", t, func() {
-		want := "13 June 2017 08:30"
-		got := helper.DateTimeFormat("2017-06-13T08:30:00.000Z")
-		So(got, ShouldEqual, want)
+		Convey("When in British Summer Time", func() {
+			want := "13 June 2017 09:30"
+			got := helper.DateTimeFormat("2017-06-13T08:30:00.000Z")
+			So(got, ShouldEqual, want)
+		})
+		Convey("When not in British Summer Time (GMT)", func() {
+			want := "13 February 2019 19:21"
+			got := helper.DateTimeFormat("2019-02-13T19:21:22.134Z")
+			So(got, ShouldEqual, want)
+		})
 	})
 	Convey("Given a invalid datetime return said datetime", t, func() {
 		want := "2006-01-02Tkjklj+07:00"
