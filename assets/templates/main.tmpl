@@ -67,8 +67,8 @@
         style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    {{ if .FeatureFlags.ONSDesignSystemVersion }}
-      <div class="page">
+    {{ if not .FeatureFlags.SixteensVersion }}
+      <div class="ons-page">
         <div class="ons-page__content">
         {{ end }}
         {{ if (ne .FeatureFlags.HideCookieBanner true)}}
