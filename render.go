@@ -52,10 +52,12 @@ func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn
 func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName string) {
 	ctx := context.Background()
 	if err := r.render(w, 200, templateName, pageModel); err != nil {
-		err = r.error(w, 500, model.ErrorResponse{
-			Error: err.Error(),
-		})
 		log.Error(ctx, "failed to render template", err, log.Data{"template": templateName})
+		if modelErr := r.error(w, 500, model.ErrorResponse{
+			Error: err.Error(),
+		}); modelErr != nil {
+			log.Error(ctx, "failed to set error response", modelErr)
+		}
 		return
 	}
 	log.Info(ctx, "rendered template", log.Data{"template": templateName})
