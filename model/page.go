@@ -22,6 +22,7 @@ type Page struct {
 	CookiesPolicy                    CookiesPolicy  `json:"cookies_policy"`
 	HasJSONLD                        bool           `json:"has_jsonld"`
 	FeatureFlags                     FeatureFlags   `json:"feature_flags"`
+	Error                            Error          `json:"error"`
 }
 
 // FeatureFlags contains toggles for certain features on the website
