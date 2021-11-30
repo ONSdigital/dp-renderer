@@ -20,7 +20,7 @@ You should also store all assets and models within the service itself with the f
 .
 ├── assets                   # relevant templates & localisations from dp-frontend-renderer
 │   ├── templates          
-│   ├── localisations  
+│   ├── locales  
 |   |   ├──  service.en.toml
 |   └── └──  service.cy.toml
 └── model                    # relevant models from dp-frontend-models
