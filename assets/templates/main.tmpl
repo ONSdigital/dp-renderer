@@ -72,6 +72,9 @@
         {{ if (ne .FeatureFlags.HideCookieBanner true)}}
           {{ template "partials/banners/cookies" . }}
         {{ end }}
+        {{ if and ( .BetaBannerEnabled ) ( not .FeatureFlags.SixteensVersion ) }}
+          {{ template "partials/banners/beta" . }}
+        {{ end }}
         {{ template "partials/header" . }}
         <main id="main" role="main" tabindex="-1">
           {{yield}}
