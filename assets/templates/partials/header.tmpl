@@ -271,7 +271,7 @@
     {{end}}
     {{if .BetaBannerEnabled}}
         {{ if .FeatureFlags.SixteensVersion }}
-            {{ template "partials/banners/cmd-beta" . }}
+            {{ template "partials/banners/search-beta" . }}
         {{ else }}
             {{ template "partials/banners/beta" . }}
         {{ end }}
