@@ -269,11 +269,7 @@
             </div>
         </div>
     {{end}}
-    {{if .BetaBannerEnabled}}
-        {{ if .FeatureFlags.SixteensVersion }}
-            {{ template "partials/banners/cmd-beta" . }}
-        {{ else }}
-            {{ template "partials/banners/beta" . }}
-        {{ end }}
-    {{end}}
+    {{ if and .BetaBannerEnabled .FeatureFlags.SixteensVersion }}
+        {{ template "partials/banners/cmd-beta" . }}
+    {{ end }}
 </header>
