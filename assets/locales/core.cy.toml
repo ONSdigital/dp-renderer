@@ -233,7 +233,7 @@ one = "Beta"
 description = "General beta banner feedback"
 one = "This is a new service – your <a href=\"/feedback\">feedback</a> will help us improve it."
 
-[BetaCMDFeedback]
+[BetaSearchFeedback]
 description = "This is a new way of getting data - your <a href=\"/feedback\">feedback</a> will help us to improve it."
 one = "This is a new way of getting data - your <a href=\"/feedback\">feedback</a> will help us to improve it."
 
