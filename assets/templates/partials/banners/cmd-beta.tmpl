@@ -3,7 +3,7 @@
         <div class="col col--md-40 col--lg-44">
             <span class="banner__text-icon {{ if eq .Type "search" }} banner__text-icon--double-line {{ end }}">{{ localise "Beta" .Language 1 }}</span>
             <div class="banner__body">
-                <p>{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }} </p>
+                <p>{{ localise "BetaGeneralFeedback" .Language 1 | safeHTML }} </p>
                 {{ if eq .Type "search" }} 
                     <form action="/search" method="get">
                         <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
