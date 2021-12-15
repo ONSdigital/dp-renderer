@@ -30,8 +30,8 @@ dataLayer = [{
     {{if .ReleaseDate }}
         "releaseDate": {{dateFormatYYYYMMDD .ReleaseDate}}
     {{end}}
-    {{if .Count}}
-        "numberOfResults": {{.Count}}
+    {{if .Data.Response.Count}}
+        "numberOfResults": {{.Data.Response.Count}}
     {{end}}
 }];
 
