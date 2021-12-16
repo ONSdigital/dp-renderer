@@ -28,7 +28,10 @@ dataLayer = [{
         "contentTitle": htmlUnescape({{.Metadata.Title}}),
     {{end}}
     {{if .ReleaseDate }}
-        "releaseDate": {{dateFormatYYYYMMDD .ReleaseDate}}
+        "releaseDate": {{dateFormatYYYYMMDD .ReleaseDate}},
+    {{end}}
+    {{if .Data.Response.Count}}
+        "numberOfResults": {{.Data.Response.Count}},
     {{end}}
     {{ if eq .Type "search" }}
             "newSearch": true,
