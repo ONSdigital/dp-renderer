@@ -1,6 +1,5 @@
 <header>
     <a class="skiplink" href="#main" tabindex="0">{{ localise "SkipToContent" .Language 1 }}</a>
-    
     {{ if .EmergencyBanner.Title }}
         {{ template "partials/banners/emergency" .EmergencyBanner }}
     {{ end }}
@@ -244,7 +243,7 @@
             </ul>
         </nav>
     </div>
-    <!--{{if not .SearchDisabled}}
+    {{if not .SearchDisabled}}
         <div class="search nav-search--hidden print--hide" id="searchBar">
             <div class="wrapper" role="search">
                 <form class="col-wrap search__form" action="/search">
@@ -267,5 +266,5 @@
                 </form>
             </div>
         </div>
-    {{end}}-->
+    {{end}}
 </header>
