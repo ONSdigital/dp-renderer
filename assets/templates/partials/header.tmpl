@@ -1,5 +1,17 @@
 <header>
     <a class="skiplink" href="#main" tabindex="0">{{ localise "SkipToContent" .Language 1 }}</a>
+    {{ if .EmergencyBanner.Title }}
+        {{ template "partials/banners/emergency" .EmergencyBanner }}
+    {{ end }}
+    {{ if .ServiceMessage }}
+       {{ template "partials/banners/service-message" . }}
+    {{ end }}
+    {{ if and ( .BetaBannerEnabled ) ( not .FeatureFlags.SixteensVersion ) }}
+        {{ template "partials/banners/beta" . }}
+    {{ else }}
+        {{ template "partials/banners/cmd-beta" . }}
+    {{ end }}
+    
     <div id="pagePath" class="hide">{{.URI}}</div>
     <div class="wrapper">
         <div class="header col-wrap">
@@ -255,21 +267,4 @@
             </div>
         </div>
     {{end}}
-    {{if .ServiceMessage}}
-        <div class="banner">
-            <div class="wrapper banner--bottom-border">
-                <div class="col-wrap">
-                    <div class="col">
-                        <span class="banner__icon icon icon-info"></span>
-                        <div class="banner__body">
-                            {{.ServiceMessage}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {{end}}
-    {{ if and .BetaBannerEnabled .FeatureFlags.SixteensVersion }}
-        {{ template "partials/banners/cmd-beta" . }}
-    {{ end }}
 </header>

@@ -1,9 +1,12 @@
 package helper
 
-import "html/template"
+import (
+	"html/template"
+)
 
 var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"humanSize":                   HumanSize,
+	"stringArrayContains":         StringArrayContains,
 	"safeHTML":                    SafeHTML,
 	"dateFormat":                  DateFormat,
 	"dateTimeFormat":              DateTimeFormat,
