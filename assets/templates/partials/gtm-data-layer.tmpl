@@ -21,7 +21,6 @@ dataLayer = [{
     "analyticsOptOut": getUsageCookieValue(),
     "gtm.whitelist": ["google","hjtc","lcl"],
     "gtm.blacklist": ["customScripts","sp","adm","awct","k","d","j"],
-    "numberOfResults": {{.Count}},
     {{if .DatasetTitle }}
         "contentTitle": htmlUnescape({{.DatasetTitle}}),
         "filterTitle": htmlUnescape({{.Metadata.Title}}),
@@ -30,6 +29,9 @@ dataLayer = [{
     {{end}}
     {{if .ReleaseDate }}
         "releaseDate": {{dateFormatYYYYMMDD .ReleaseDate}},
+    {{end}}
+    {{if .Count}}
+        "numberOfResults": {{.Count}},
     {{end}}
     {{ if eq .Type "search" }}
             "newSearch": true,
