@@ -8,7 +8,7 @@
     {{ end }}
     {{ if and ( .BetaBannerEnabled ) ( not .FeatureFlags.SixteensVersion ) }}
         {{ template "partials/banners/beta" . }}
-    {{ else }}
+    {{ else if .BetaBannerEnabled }}
         {{ template "partials/banners/cmd-beta" . }}
     {{ end }}
     
