@@ -25,6 +25,7 @@ type Page struct {
 	FeatureFlags                     FeatureFlags    `json:"feature_flags"`
 	Error                            Error           `json:"error"`
 	EmergencyBanner                  EmergencyBanner `json:"emergency_banner"`
+	Collapsible                      Collapsible     `json:"collapsible"`
 }
 
 // FeatureFlags contains toggles for certain features on the website
