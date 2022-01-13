@@ -33,7 +33,7 @@ dataLayer = [{
     {{ if eq .Type "search" }}
             "newSearch": true,
             "numberOfResults": {{.Count}},
-            "searchPage": {{.Pagination.CurrentPage}},
+            "resultsPage": {{.Pagination.CurrentPage}},
     {{ end }}
 }];
 
