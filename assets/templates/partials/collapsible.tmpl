@@ -1,0 +1,29 @@
+<div id="collapsible" class="ons-collapsible ons-js-collapsible" data-btn-close="{{ localise "HideThis" .Language 1 }}">
+    <div class="ons-collapsible__heading ons-js-collapsible-heading">
+        <div class="ons-collapsible__controls">
+            <h3 class="ons-collapsible__title">{{ if .Collapsible.LocaliseKey }}{{ localise .Collapsible.LocaliseKey .Language .Collapsible.LocalisePluralInt }}{{ else }}{{ .Collapsible.Title }}{{ end }}&#63;</h3>
+            {{ template "icons/collapsible" . }}
+        </div>
+    </div>
+    <div id="collapsible-content" class="ons-collapsible__content ons-js-collapsible-content">
+        {{ $length := len .Collapsible.CollapsibleItems }}
+        {{ range .Collapsible.CollapsibleItems }}
+            {{ if .Subheading }}
+                <h4>{{ .Subheading }}</h4>
+            {{ end }}
+            {{ range .Content }}
+                <p class="ons-u-fs-r ons-u-mb-s ons-u-p-no">{{ . }}</p>
+            {{ end }}
+            {{ if ne $length 1 }}
+            <br>
+            {{ end }}
+        {{ end }}
+        <button
+            type="button"
+            class="ons-btn ons-js-collapsible-button ons-u-d-no ons-btn--secondary ons-btn--small"
+            aria-controls="collapsible">
+            <span class="ons-btn__inner ons-js-collapsible-button-inner">{{ localise "HideThis" .Language 1 }}</span>
+            <span class="ons-btn__context ons-u-vh">{{ .Collapsible.Title }} content</span>
+        </button>
+    </div>
+</div>

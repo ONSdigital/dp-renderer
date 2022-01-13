@@ -53,6 +53,10 @@ rend.BuildPage(w, mappedPageData, "name-of-template-file-without-extension")
 
 If an error occurs during page build, either because of an incorrect template name or incorrect data mapping, `dp-renderer` will write an error via an `errorResponse` struct.
 
+### Using design patterns or components in your service
+
+See [PATTERNS](PATTERNS.md) for details.
+
 ### Using Sixteens for older pages
 
 As Sixteens is in the process of being deprecated, dp-renderer is designed to use [`dp-design-system`](https://github.com/ONSdigital/dp-design-system) by default.

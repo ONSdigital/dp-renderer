@@ -373,3 +373,8 @@ one = "You’ve accepted all cookies. You can <a href=\"/cookies\">change your c
 [CookiesBannerHide]
 description = "Hide"
 one = "Hide"
+
+# Collapsible
+[HideThis]
+description = "Hide this"
+one = "Hide this"

@@ -13,6 +13,8 @@
                         {{ end }}
                         {{ if notLastItem $length $i }}
                             {{ template "icons/chevron-right" }}
+                        {{ else if eq $length 1 }}
+                            {{ template "icons/chevron-left" }}
                         {{ end }}
                     </li>
                 {{ end }}
