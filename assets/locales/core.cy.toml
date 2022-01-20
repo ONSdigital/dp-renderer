@@ -237,6 +237,10 @@ one = "This is a new service – your <a href=\"/feedback\">feedback</a> will he
 description = "This is a new way of getting data - your <a href=\"/feedback?service=cmd\">feedback</a> will help us to improve it."
 one = "This is a new way of getting data - your <a href=\"/feedback?service=cmd\">feedback</a> will help us to improve it."
 
+[BetaSearchFeedback]
+description = "This is a new search service – your <a href=\"/feedback\">feedback</a> will help us to improve it."
+one = "This is a new search service – your <a href=\"/feedback\">feedback</a> will help us to improve it."
+
 # Primarily used in footer template
 [FooterLinks]
 description = "Footer links"
