@@ -7,9 +7,9 @@
        {{ template "partials/banners/service-message" . }}
     {{ end }}
     {{ if and ( .BetaBannerEnabled ) ( not .FeatureFlags.SixteensVersion ) }}
-        {{ template "partials/banners/beta" . }}
-    {{ else if .BetaBannerEnabled }}
         {{ template "partials/banners/cmd-beta" . }}
+    {{ else if .BetaBannerEnabled }}
+        {{ template "partials/banners/beta" . }}
     {{ end }}
     
     <div id="pagePath" class="hide">{{.URI}}</div>

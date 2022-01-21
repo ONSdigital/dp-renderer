@@ -4,7 +4,7 @@
             <span class="banner__text-icon {{ if eq .Type "search" }} banner__text-icon--double-line {{ end }}">{{ localise "Beta" .Language 1 }}</span>
             <div class="banner__body">
                 <p>{{ if eq .Type "search" }}{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}{{ else }}{{ localise "BetaCMDFeedback" .Language 1 | safeHTML }}{{ end }}</p>
-                {{ if eq .Type "search" }} 
+                {{ if eq .Type "search" }}
                     <form action="/search" method="get">
                         <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
                         <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
