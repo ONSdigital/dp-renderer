@@ -1,17 +1,19 @@
-<div class="banner">
-    <div class="wrapper banner--half-padding banner--bottom-border">
-        <div class="col col--md-40 col--lg-44">
-            <span class="banner__text-icon {{ if eq .Type "search" }} banner__text-icon--double-line {{ end }}">{{ localise "Beta" .Language 1 }}</span>
-            <div class="banner__body">
-                <p>{{ if eq .Type "search" }}{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}{{ else }}{{ localise "BetaCMDFeedback" .Language 1 | safeHTML }}{{ end }}</p>
-                {{ if eq .Type "search" }}
-                    <form action="/search" method="get">
-                        <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
-                        <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
-                        <input type="submit" class="btn btn--link font-size--16 font-weight-700 underline-link" value="Return to the previous version" data-gtm-search-exit="true">
-                    </form>
-                {{ end }}
-            </div>
-        </div>
+<div class="ons-phase-banner">
+  <div class="ons-container">
+    <div class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap">
+      <div class="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">
+        <h3 class="ons-phase-banner__badge">{{ if eq .Type "search" }} banner__text-icon--double-line {{ end }}">{{ localise "Beta" .Language 1 }}</h3>
+      </div>
+      <div class="ons-grid__col ons-col-auto ons-u-flex-shrink">
+        <p class="ons-phase-banner__desc ons-u-fs-s ons-u-m-no">{{ if eq .Type "search" }}{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}{{ else }}{{ localise "BetaCMDFeedback" .Language 1 | safeHTML }}{{ end }}</p>
+            {{ if eq .Type "search" }}
+            <form action="/search" method="get">
+                <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
+                <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
+                <input type="submit" class="btn btn--link font-size--16 font-weight-700 underline-link" value="Return to the previous version" data-gtm-search-exit="true">
+                </form>
+            {{ end }}
+      </div>
     </div>
+  </div>
 </div>
