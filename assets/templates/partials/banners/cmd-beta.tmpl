@@ -11,7 +11,7 @@
             <form action="/search" method="get">
                 <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
                 <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
-                <input type="submit" role="link" class="btn btn--link font-size--14 font-weight-400 underline-link" value="Return to the previous version" data-gtm-search-exit="true">
+                <button type="submit" role="link" class="ons-btn ons-btn__btn--link baseline font-size--14 padding-left--half" name="Return to the previous version" data-gtm-search-exit="true">Return to the previous version.</button>
                 </form>
             {{ end }}
 
