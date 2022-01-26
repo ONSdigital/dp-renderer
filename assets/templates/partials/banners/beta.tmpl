@@ -1,3 +1,21 @@
+{{ if eq .Type "search" }}
+<div class="ons-phase-banner">
+  <div class="ons-container">
+    <div class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap">
+      <div class="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">
+        <h3 class="ons-phase-banner__badge">{{ localise "Beta" .Language 1 }}</h3>
+      </div>
+        <p class="ons-phase-banner__desc ons-u-fs-s ons-u-m-no default-line-height">{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}</p>
+            <form action="/search" method="get">
+                <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
+                <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
+                <button type="submit" role="link" class="ons-btn ons-btn__btn--link margin-left--half font-size--14 baseline" name="previous version" data-gtm-search-exit="true">You can still use the previous version</button>
+            </form>
+        <p class="ons-phase-banner__desc ons-u-fs-s ons-u-m-no default-line-height">.</p>
+    </div>
+  </div>
+</div>
+{{ else }}
 <div class="ons-phase-banner">
   <div class="ons-container">
     <div class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap">
@@ -10,3 +28,4 @@
     </div>
   </div>
 </div>
+{{ end }}
