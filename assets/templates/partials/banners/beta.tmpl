@@ -5,11 +5,11 @@
       <div class="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">
         <h3 class="ons-phase-banner__badge">{{ localise "Beta" .Language 1 }}</h3>
       </div>
-        <span class="ons-u-fs-s ons-u-m-no">{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}</span>
+        <span class="ons-u-fs-s ons-u-m-no default-line-height">{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}</span>
             <form action="/search" method="get">
                 <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
                 <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
-                <button type="submit" role="link" class="default-line-height decoration-line-thickness ons-btn ons-btn__btn--link margin-left--half font-size--14" name="previous version" data-gtm-search-exit="true">You can still use the previous version</button>
+                <button type="submit" role="link" class="ons-btn ons-btn__btn--link ons-btn__btn--search default-line-height ons-u-ml-s ons-u-fs-s" name="previous version" data-gtm-search-exit="true">{{ localise "BetaPreviousVersion" .Language 1 }}</button>
             </form>
         <span class="ons-u-fs-s ons-u-m-no">.</span>
     </div>
