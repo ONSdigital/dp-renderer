@@ -1,10 +1,10 @@
-{{ if eq .Type "search" }}
 <div class="ons-phase-banner">
   <div class="ons-container">
     <div class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap">
       <div class="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">
         <h3 class="ons-phase-banner__badge">{{ localise "Beta" .Language 1 }}</h3>
       </div>
+      {{ if eq .Type "search" }}
         <span class="ons-u-fs-s ons-u-m-no">{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}</span>
             <form action="/search" method="get">
                 <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
@@ -12,20 +12,11 @@
                 <button type="submit" role="link" class="ons-btn ons-btn__btn--link ons-btn__btn--search default-line-height" name="previous version" data-gtm-search-exit="true">{{ localise "BetaPreviousVersion" .Language 1 }}</button>
             </form>
         <span class="ons-u-fs-s ons-u-m-no">.</span>
+        {{ else }}
+        <span class="ons-grid__col ons-col-auto ons-u-flex-shrink"</span>
+            <p class="ons-phase-banner__desc ons-u-fs-s ons-u-m-no">{{ localise "BetaGeneralFeedback" .Language 1 | safeHTML }}</p>
+        {{ end }}
     </div>
   </div>
 </div>
-{{ else }}
-<div class="ons-phase-banner">
-  <div class="ons-container">
-    <div class="ons-grid ons-grid--flex ons-grid--gutterless ons-grid--vertical-center ons-grid--no-wrap">
-      <div class="ons-grid__col ons-col-auto ons-u-flex-no-grow ons-u-flex-no-shrink">
-        <h3 class="ons-phase-banner__badge">{{ localise "Beta" .Language 1}}</h3>
-      </div>
-      <div class="ons-grid__col ons-col-auto ons-u-flex-shrink">
-        <p class="ons-phase-banner__desc ons-u-fs-s ons-u-m-no">{{ localise "BetaGeneralFeedback" .Language 1 | safeHTML }}</p>
-      </div>
-    </div>
-  </div>
-</div>
-{{ end }}
+
