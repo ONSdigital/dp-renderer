@@ -225,6 +225,14 @@ other = "Methodoleg"
 description = "Search for a keyword(s) or time series ID"
 one = "Chwilio am allweddair neu ID cyfres amser"
 
+[Covid19BannerTitle]
+description = "Coronafeirws (COVID-19)"
+one = "Coronafeirws (COVID-19)"
+
+[Covid19BannerBody]
+description = "Get the latest data and analysis on coronavirus (COVID-19) in the UK."
+one = "Y data a’r dadansoddiad diweddaraf ar y coronafeirws."
+
 [Beta]
 description = "Beta"
 one = "Beta"
