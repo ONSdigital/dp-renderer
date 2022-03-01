@@ -8,6 +8,8 @@ import (
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
+var tz *time.Location
+
 func DateFormat(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
@@ -48,10 +50,16 @@ func DateFormatYYYYMMDDNoSlash(s string) string {
 	return template.HTMLEscapeString(t.Format("20060102"))
 }
 
-func localiseTime(t *time.Time) time.Time {
-	tz, err := time.LoadLocation("Europe/London")
-	if err != nil {
+func init() {
+	var err error
+	if tz, err = time.LoadLocation("Europe/London"); err != nil {
 		log.Error(context.Background(), "failed to load timezone", err)
+		tz = nil
+	}
+}
+
+func localiseTime(t *time.Time) time.Time {
+	if tz == nil {
 		return *t
 	}
 	return t.In(tz)
