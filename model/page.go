@@ -35,6 +35,7 @@ type FeatureFlags struct {
 	ONSDesignSystemVersion string `json:"ons_design_system_version"`
 	SixteensVersion        string `json:"legacy_sixteens_version"`
 	EnableCensusTile       bool    `json:"enable_census_tile"`
+	EnableCensusBanner     bool   `json:"enable_census_banner"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
