@@ -14,6 +14,11 @@ func TestDatePeriodFormat(t *testing.T) {
 		got := helper.DatePeriodFormat("2010 JUN-SEP")
 		So(got, ShouldEqual, want)
 	})
+	Convey("Given a time-series monthly string spanning two different years", t, func() {
+		want := "Dec 2010 - Jan 2011"
+		got := helper.DatePeriodFormat("2010 DEC-JAN")
+		So(got, ShouldEqual, want)
+	})
 	Convey("Given a time-series yearly string", t, func() {
 		want := "2019"
 		got := helper.DatePeriodFormat("2019")
