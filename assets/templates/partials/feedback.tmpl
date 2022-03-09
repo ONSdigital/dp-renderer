@@ -1,16 +1,16 @@
 <div class="wrapper link-adjust">
     <div class="improve-this-page" data-module="improve-this-page">
         <div class="improve-this-page__prompt clearfix" id="feedback-form-header" role="status" aria-live="polite" tabindex="-1">
-            <h3 class="improve-this-page__is-useful-question margin-right--1">Is this page useful?</h3>
-            <a id="feedback-form-yes" class="improve-this-page__page-is-useful-button" href="/feedback/thanks" aria-label="Yes I found this page useful">
-                Yes
+            <h3 class="improve-this-page__is-useful-question margin-right--1">{{ localise "Helpful" .Language 1 }}</h3>
+            <a id="feedback-form-yes" class="improve-this-page__page-is-useful-button" href="/feedback/thanks" aria-label="{{ localise "YesAria" .Language 1 }}">
+                {{ localise "Yes" .Language 1 }}
             </a>
             <span>|</span>
-            <a id="feedback-form-no" class="js-toggle" href="/feedback?service=cmd" aria-label="No I didn't find this page useful">
-                No
+            <a id="feedback-form-no" class="js-toggle" href="/feedback?service=cmd" aria-label="{{ localise "NoAria" .Language 1 }}">
+                {{ localise "No" .Language 1 }}
             </a>
             <a id="feedback-form-anything-wrong" class="js-toggle improve-this-page__anything-wrong" href="/feedback?service=cmd">
-                Can't find what you're looking for?
+                {{ localise "CantFind" .Language 1 }}
             </a>
         </div>
         <div id="feedback-form" class="improve-this-page__form js-hidden font-size--18">  
@@ -19,26 +19,26 @@
                 <input type="hidden" name="url" id="feedback-form-url" value="">
                 <div class="form-group">
                     <label class="form-label-bold" id="description-field-label" for="description-field">
-                        How should we improve this page?
+                        {{ localise "ImproveThisPage" .Language 1 }}
                     </label>
                     <textarea id="description-field" class="form-control" name="description" rows="5"></textarea>
                 </div>
                 <div class="form-group">
-                    <p class="font-size--24 font-weight-700 margin-bottom--0">Do you want a reply?</p>
-                    <p class="font-size--18 margin-top--0">If you'd like us to get back to you, please add your name and email address below.</p>
+                    <p class="font-size--24 font-weight-700 margin-bottom--0">{{ localise "WantAReply" .Language 1 }}</p>
+                    <p class="font-size--18 margin-top--0">{{ localise "WantAReplyBlurb" .Language 1 }}</p>
 
-                    <label class="form-label-bold" for="name-field">Name (optional)</label>
+                    <label class="form-label-bold" for="name-field">{{ localise "NameOpt" .Language 1 }}</label>
                     <input id="name-field" class="form-control" type="text" name="name">
                 </div>
                 <div class="form-group">
-                    <label class="form-label-bold" id="email-field-label" for="email-field">Email (optional)</label>
+                    <label class="form-label-bold" id="email-field-label" for="email-field">{{ localise "EmailOpt" .Language 1 }}</label>
                     <input id="email-field" class="form-control" type="text" name="email">
                 </div>
                 <div>
                     <input id="feedback-form-submit" class="btn btn--primary font-weight-700 margin-bottom--2" type="submit" value="Send feedback">
                 </div>
                 <div>
-                    <a href="javascript:void(0)" id="feedback-form-close" class="improve-this-page__close js-toggle btn btn--secondary font-weight-700">I don't want to provide feedback</a>
+                    <a href="javascript:void(0)" id="feedback-form-close" class="improve-this-page__close js-toggle btn btn--secondary font-weight-700">{{ localise "CancelFeedback" .Language 1 }}</a>
                 </div>
             </form>
         </div>
