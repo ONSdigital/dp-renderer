@@ -388,3 +388,63 @@ one = "Hide"
 [HideThis]
 description = "Hide this"
 one = "Hide this"
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# FEEDBACK BAR
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[Helpful]
+description = "Is this page useful?"
+one = "Is this page useful?"
+
+[Yes]
+description = "Yes"
+one = "Yes"
+
+[YesAria]
+description = "Yes I found this page useful"
+one = "Yes I found this page useful"
+
+[No]
+description = "No"
+one = "No"
+
+[NoAria]
+description = "No I found this page useful"
+one = "No I found this page useful"
+
+[CantFind]
+description = "Can't find what you're looking for?"
+one = "Can't find what you're looking for?"
+
+[ImproveThisPage]
+description = "How should we improve this page?"
+one = "How should we improve this page?"
+
+[WantAReply]
+description = "Do you want a reply?"
+one = "Do you want a reply?"
+
+[WantAReplyBlurb]
+description = "If you'd like us to get back to you, please add your name and email address below."
+one = "If you'd like us to get back to you, please add your name and email address below."
+
+[NameOpt]
+description = "Name (optional)"
+one = "Name (optional)"
+
+[EmailOpt]
+description = "Email (optional)"
+one = "Email (optional)"
+
+[SendFeedback]
+description = "Send feedback"
+one = "Send feedback"
+
+[CancelFeedback]
+description = "I don't want to provide feedback"
+one = "I don't want to provide feedback"
+
+[FeedbackSuccess]
+description = "Thank you. Your feedback will help us as we continue to improve the service."
+one = "Thank you. Your feedback will help us as we continue to improve the service."
