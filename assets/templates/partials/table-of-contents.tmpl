@@ -1,46 +1,4 @@
-{{/*
-  Template parameter mapped to dot:
-    TableOfContents
-
-  type TableOfContents struct {
-    AriaLabel    string
-    Title        string
-    Sections     map[string]ContentSection
-    DisplayOrder []string
-  }
-
-  type ContentSection struct {
-    Current bool
-    Title   string
-  }
-
-  The keys of the Sections map must match the entries in DisplayOrder,
-  and these keys are used as the fragment IDs in the anchor tags.
-
-  Omitting a section's key from the DisplayOrder will prevent that
-  section from being listed in the table of contents.
-
-  Example:
-
-    toc = TableOfContents{
-      AriaLabel: "Table of contents",
-      Title: "Contents",
-      Sections: map[string]ContentSection{
-        "trees": {
-          Current: false,
-          Title: "All about trees",
-        },
-        "flowers": {
-          Current: true,
-          Title: "All about flowers",
-        },
-      },
-      DisplayOrder: []string{
-        "flowers",
-        "trees",
-      }
-    }
-*/}}
+{{/* See PATTERNS.md for usage instructions */}}
 
 <aside class="ons-toc-container" role="complementary">
   <nav class="ons-toc" aria-label="{{ .AriaLabel }}">
