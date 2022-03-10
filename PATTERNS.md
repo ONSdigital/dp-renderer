@@ -38,9 +38,7 @@ e.g.
 
 To instatiate the [table-of-contents](https://ons-design-system.netlify.app/components/table-of-contents/) UI component in your service:
 
-- In the `mapper.go` file in your service, populate the relevant fields
-
-Example:
+- In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.TableOfContents = TableOfContents{
@@ -68,3 +66,20 @@ and these keys are used as the fragment IDs in the anchor tags.
 
 Omitting a section's key from the DisplayOrder will prevent that
 section from being listed in the table of contents.
+
+- In the template file within your service, reference the
+`table-of-contents.tmpl` file, where `.` is the Page model:
+
+```tmpl
+<div>Some html...</div>
+{{ template "partials/table-of-contents" . }}
+<div>Some more html</div>
+```
+
+### Localisation
+
+Entries in `assets/locales/core.<lang>.toml` can be referenced by their
+keys to enable localisation:
+
+- `AriaLabel` may be overridden by `AriaLabelLocaliseKey`
+- `Title` may be overridden by `TitleLocaliseKey`
