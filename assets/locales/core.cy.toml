@@ -272,7 +272,8 @@ one = "Briwsion a phreifatrwydd"
 
 [Cookies]
 description = "Cwcis"
-one = "Cwcis"
+one = "Cwci"
+other = "Cwcis"
 
 [Privacy]
 description = "Preifatrwydd"
@@ -323,12 +324,14 @@ description = "LinkedIn"
 one = "LinkedIn"
 
 [Consultations]
-description = "Ymgyngoriadau"
-one = "Ymgyngoriadau"
+description = "Ymgynghoriadau"
+one = "Ymgynghoriad"
+other = "Ymgynghoriadau"
 
 [DiscussionForums]
 description = "Fforymau trafod"
-one = "Fforymau trafod"
+one = "Fforwm trafod"
+other = "Fforymau trafod"
 
 [EmailAlerts]
 description = "Email alerts"
