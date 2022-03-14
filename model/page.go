@@ -27,6 +27,8 @@ type Page struct {
 	EmergencyBanner                  EmergencyBanner `json:"emergency_banner"`
 	Collapsible                      Collapsible     `json:"collapsible"`
 	Pagination                       Pagination      `json:"pagination"`
+	EnableCensusTile                 bool            `json:"enable_census_tile"`
+	EnableCensusBanner               bool            `json:"enable_census_banner"`
 }
 
 // FeatureFlags contains toggles for certain features on the website
@@ -34,8 +36,6 @@ type FeatureFlags struct {
 	HideCookieBanner       bool   `json:"hide_cookie_banner"`
 	ONSDesignSystemVersion string `json:"ons_design_system_version"`
 	SixteensVersion        string `json:"legacy_sixteens_version"`
-	EnableCensusTile       bool    `json:"enable_census_tile"`
-	EnableCensusBanner     bool   `json:"enable_census_banner"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
