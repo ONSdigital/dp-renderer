@@ -271,13 +271,13 @@ description = "Cookies and privacy"
 one = "Briwsion a phreifatrwydd"
 
 [Cookies]
-description = "Cookies"
-one = "Cookie"
-other = "Cookies"
+description = "Cwcis"
+one = "Cwci"
+other = "Cwcis"
 
 [Privacy]
-description = "Privacy"
-one = "Privacy"
+description = "Preifatrwydd"
+one = "Preifatrwydd"
 
 [TermsConditions]
 description = "Terms and conditions"
@@ -300,8 +300,8 @@ description = "Contact us"
 one = "Cysylltu â ni"
 
 [News]
-description = "News"
-one = "News"
+description = "Newyddion"
+one = "Newyddion"
 
 [FreedomInformation]
 description = "Freedom of Information"
@@ -324,14 +324,14 @@ description = "LinkedIn"
 one = "LinkedIn"
 
 [Consultations]
-description = "Consultations"
-one = "Consultation"
-other = "Consultations"
+description = "Ymgynghoriadau"
+one = "Ymgynghoriad"
+other = "Ymgynghoriadau"
 
 [DiscussionForums]
-description = "Discussion forums"
-one = "Discussion forum"
-other = "Discussion forums"
+description = "Fforymau trafod"
+one = "Fforwm trafod"
+other = "Fforymau trafod"
 
 [EmailAlerts]
 description = "Email alerts"
