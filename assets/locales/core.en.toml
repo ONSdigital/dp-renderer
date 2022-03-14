@@ -388,3 +388,14 @@ one = "Hide"
 [HideThis]
 description = "Hide this"
 one = "Hide this"
+
+# Table of Contents
+[TableOfContents]
+description = "Table of contents"
+one = "Table of contents"
+other = "Table of contents"
+
+[Contents]
+description = "Contents"
+one = "Contents"
+other = "Contents"
