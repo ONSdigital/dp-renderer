@@ -411,7 +411,7 @@ one = "No"
 
 [NoAria]
 description = "No I didn't find this page useful"
-one = No I didn't find this page useful"
+one = "No I didn't find this page useful"
 
 [CantFind]
 description = "Can't find what you're looking for?"
