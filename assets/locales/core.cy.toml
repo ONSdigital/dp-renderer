@@ -394,3 +394,63 @@ one = "Hide"
 [HideThis]
 description = "Hide this"
 one = "Hide this"
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# FEEDBACK BAR
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[Helpful]
+description = "Is this page useful?"
+one = "A yw'r dudalen hon yn ddefnyddiol?"
+
+[Yes]
+description = "Yes"
+one = "Ydy"
+
+[YesAria]
+description = "Yes I found this page useful"
+one = "Ydy, mae’r dudalen hon yn ddefnyddiol"
+
+[No]
+description = "No"
+one = "Nac ydy"
+
+[NoAria]
+description = "No I didn't find this page useful"
+one = "Nac ydy, nid yw’r dudalen hon yn ddefnyddiol"
+
+[CantFind]
+description = "Can't find what you're looking for?"
+one = "Methu â dod o hyd i'r hyn rydych yn chwilio amdano?"
+
+[ImproveThisPage]
+description = "How should we improve this page?"
+one = "Sut y dylem wella'r dudalen hon?"
+
+[WantAReply]
+description = "Do you want a reply?"
+one = "A hoffech gael ateb?"
+
+[WantAReplyBlurb]
+description = "If you'd like us to get back to you, please add your name and email address below."
+one = "Os hoffech i ni gysylltu â chi, ychwanegwch eich enw a'ch cyfeiriad e-bost isod."
+
+[NameOpt]
+description = "Name (optional)"
+one = "Enw (dewisol)"
+
+[EmailOpt]
+description = "Email (optional)"
+one = "E-bost (dewisol)"
+
+[SendFeedback]
+description = "Send feedback"
+one = "Anfon adborth"
+
+[CancelFeedback]
+description = "I don't want to provide feedback"
+one = "Nid wyf am roi adborth"
+
+[FeedbackSuccess]
+description = "Thank you. Your feedback will help us as we continue to improve the service."
+one = "Diolch. Bydd eich adborth yn ein helpu wrth i ni barhau i wella'r gwasanaeth."
