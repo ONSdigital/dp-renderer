@@ -448,3 +448,15 @@ one = "I don't want to provide feedback"
 [FeedbackSuccess]
 description = "Thank you. Your feedback will help us as we continue to improve the service."
 one = "Thank you. Your feedback will help us as we continue to improve the service."
+
+
+# Table of Contents
+[TableOfContents]
+description = "Table of contents"
+one = "Table of contents"
+other = "Table of contents"
+
+[Contents]
+description = "Contents"
+one = "Contents"
+other = "Contents"
