@@ -409,7 +409,7 @@ one = "Ydy"
 
 [YesAria]
 description = "Yes I found this page useful"
-one = "Yes I found this page useful"
+one = "Ydy, mae’r dudalen hon yn ddefnyddiol"
 
 [No]
 description = "No"
@@ -417,7 +417,7 @@ one = "Nac ydy"
 
 [NoAria]
 description = "No I didn't find this page useful"
-one = "No I didn't find this page useful"
+one = "Nac ydy, nid yw’r dudalen hon yn ddefnyddiol"
 
 [CantFind]
 description = "Can't find what you're looking for?"
