@@ -460,3 +460,44 @@ other = "Table of contents"
 description = "Contents"
 one = "Contents"
 other = "Contents"
+
+# Pagination
+[Pagination]
+description = "Pagination"
+one = "Pagination"
+
+[PaginationPage]
+description = "Page"
+one = "Page"
+
+[PaginationOf]
+description = "of"
+one = "of"
+
+[PaginationGoPrevious]
+description = "Go to the previous page"
+one = "Go to the previous page"
+
+[PaginationGoFirst]
+description = "Go to the first page"
+one = "Go to the first page"
+
+[PaginationCurrentPage]
+description = "Current page"
+one = "Current page"
+
+[PaginationGoLast]
+description = "Go to the last page"
+one = "Go to the last page"
+
+[PaginationGoNext]
+description = "Go to the next page"
+one = "Go to the next page"
+
+[PaginationPrevious]
+description = "Previous"
+one = "Previous"
+
+[PaginationNext]
+description = "Next"
+one = "Next"
