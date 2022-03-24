@@ -7,6 +7,7 @@ type Page struct {
 	DatasetId                        string          `json:"dataset_id"`
 	DatasetTitle                     string          `json:"dataset_title"`
 	URI                              string          `json:"uri"`
+	RawQuery                         string          `json:"raw_query"`
 	Taxonomy                         []TaxonomyNode  `json:"taxonomy"`
 	Breadcrumb                       []TaxonomyNode  `json:"breadcrumb"`
 	IsInFilterBreadcrumb             bool            `json:"is_in_filter_breadcrumb"`
@@ -35,7 +36,7 @@ type FeatureFlags struct {
 	HideCookieBanner       bool   `json:"hide_cookie_banner"`
 	ONSDesignSystemVersion string `json:"ons_design_system_version"`
 	SixteensVersion        string `json:"legacy_sixteens_version"`
-	EnableCensusTile       bool    `json:"enable_census_tile"`
+	EnableCensusTile       bool   `json:"enable_census_tile"`
 	EnableCensusBanner     bool   `json:"enable_census_banner"`
 }
 
