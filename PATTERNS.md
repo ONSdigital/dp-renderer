@@ -156,14 +156,15 @@ setting `PagesToDisplay = { 1, 2, 3, 4 }` closes the gap between
 1 2 3 4 ... 10
 ```
 
-Similarly, setting `PagesToDisplay = { 7, 8, 9 10 }` closes the
+Similarly, setting `PagesToDisplay = { 7, 8, 9, 10 }` closes the
 gap between 9 and 10 (a bookend):
 
 1 ... 7 8 9 10
 
 When the window defined by `PagesToDisplay` does not overlap with
 the bookends defined in `FirstAndLastPages`, the page options are
-rendered as:
+rendered with ellipsis between both bookends. For example, setting
+`PagesToDisplay = { 4, 5, 6 }` renders as:
 
 ```
 1 ... 4 5 6 ... 10
