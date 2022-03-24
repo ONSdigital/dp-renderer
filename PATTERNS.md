@@ -148,18 +148,21 @@ They are always visible.
 pages. When this window overlaps a bookend, there will be no
 ellipsis (...) shown between the window and the bookend.
 
+The size of this window is up to you. In the examples that follow
+it is set to three.
+
 For example, with 1 and 10 as bookends defined in `FirstAndLastPages`,
-setting `PagesToDisplay = { 1, 2, 3, 4 }` closes the gap between
+setting `PagesToDisplay = { 1, 2, 3 }` closes the gap between
 1 (a bookend) and 2:
 
 ```
-1 2 3 4 ... 10
+1 2 3 ... 10
 ```
 
-Similarly, setting `PagesToDisplay = { 7, 8, 9, 10 }` closes the
+Similarly, setting `PagesToDisplay = { 8, 9, 10 }` closes the
 gap between 9 and 10 (a bookend):
 
-1 ... 7 8 9 10
+1 ... 8 9 10
 
 When the window defined by `PagesToDisplay` does not overlap with
 the bookends defined in `FirstAndLastPages`, the page options are
