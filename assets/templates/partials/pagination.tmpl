@@ -3,14 +3,12 @@
 {{ $pageCurrentofTotal := $pagination.PhrasePageNOfTotal $pagination.CurrentPage $language }}
 {{ $previousURL := $pagination.PickPreviousURL }}
 {{ $nextURL := $pagination.PickNextURL }}
-
 {{ if ne $pagination.TotalPages 0 }}
   <nav
     class="ons-pagination"
     arial-label="{{ $pagination.PhrasePaginationProgress $pageCurrentofTotal $language }}"
   >
     <div class="ons-pagination__position ons-u-mb-xs">{{ $pageCurrentofTotal }}</div>
-
     <ul class="ons-pagination__items">
       {{ if gt $pagination.CurrentPage 1 }}
         <li class="ons-pagination__item ons-pagination__item--previous">
@@ -24,7 +22,6 @@
           </a>
         </li>
       {{ end }}
-
       {{ if $pagination.ShowLinkToFirst }}
         <li class="ons-pagination__item">
           <a
@@ -35,7 +32,6 @@
         </li>
         <li class="ons-pagination__item ons-pagination__item--gap">&hellip;</li>
       {{ end }}
-
       {{ range $pagination.PagesToDisplay }}
         {{ if eq .PageNumber $pagination.CurrentPage }}
           <li class="ons-pagination__item ons-pagination__item--current">
@@ -60,7 +56,6 @@
           </li>
         {{ end }}
       {{ end }}
-
       {{ if $pagination.ShowLinkToLast }}
         <li class="ons-pagination__item ons-pagination__item--gap">&hellip;</li>
         <li class="ons-pagination__item">
@@ -73,7 +68,6 @@
           </a>
         </li>
       {{ end }}
-
       {{ if lt $pagination.CurrentPage $pagination.TotalPages }}
         <li class="ons-pagination__item ons-pagination__item--next">
           <a
