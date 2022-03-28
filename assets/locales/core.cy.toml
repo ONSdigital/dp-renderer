@@ -454,3 +454,16 @@ one = "Nid wyf am roi adborth"
 [FeedbackSuccess]
 description = "Thank you. Your feedback will help us as we continue to improve the service."
 one = "Diolch. Bydd eich adborth yn ein helpu wrth i ni barhau i wella'r gwasanaeth."
+
+# InputDate
+[InputDateDay]
+description = "Day"
+one = "Diwrnod"
+
+[InputDateMonth]
+description = "Month"
+one = "Mis"
+
+[InputDateYear]
+description = "Year"
+one = "Blwyddyn"

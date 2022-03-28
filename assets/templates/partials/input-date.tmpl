@@ -1,0 +1,73 @@
+<fieldset id="{{ .Id }}" class="ons-fieldset">
+  <legend class="ons-fieldset__legend">
+    {{- .Title -}}
+    <div class="ons-fieldset__description">
+      {{- .Description -}}
+    </div>
+  </legend>
+  <div class="ons-field-group">
+    <div class="ons-field">
+      <label
+        class="ons-label"
+        for="{{ .Id }}-day"
+      >
+        {{- localise "InputDateDay" .Language 1 -}}
+      </label>
+      <input
+        type="text"
+        id="{{ .Id }}-day"
+        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+        name="{{ .InputNameDay }}"
+        min="1"
+        max="31"
+        maxlength="2"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        autocomplete="bday-day"
+        value="{{ .InputValueDay }}"
+      >
+    </div>
+    <div class="ons-field">
+      <label
+        class="ons-label"
+        for="{{ .Id }}-month"
+      >
+        {{- localise "InputDateMonth" .Language 1 -}}
+      </label>
+      <input
+        type="text"
+        id="{{ .Id }}-month"
+        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+        name="{{ .InputNameMonth }}"
+        min="1"
+        max="12"
+        maxlength="2"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        autocomplete="bday-month"
+        value="{{ .InputValueMonth }}"
+      >
+    </div>
+    <div class="ons-field">
+      <label
+        class="ons-label"
+        for="{{ .Id }}-year"
+      >
+        {{- localise "InputDateYear" .Language 1 -}}
+      </label>
+      <input
+        type="text"
+        id="{{ .Id }}-year"
+        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4"
+        name="{{ .InputNameYear }}"
+        min="1000"
+        max="3000"
+        maxlength="4"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        autocomplete="bday-year"
+        value="{{ .InputValueYear }}"
+      >
+    </div>
+  </div>
+</fieldset>
