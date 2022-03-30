@@ -162,7 +162,9 @@ setting `PagesToDisplay = { 1, 2, 3 }` closes the gap between
 Similarly, setting `PagesToDisplay = { 8, 9, 10 }` closes the
 gap between 9 and 10 (a bookend):
 
+```
 1 ... 8 9 10
+```
 
 When the window defined by `PagesToDisplay` does not overlap with
 the bookends defined in `FirstAndLastPages`, the page options are
@@ -186,3 +188,38 @@ rendered with ellipsis between both bookends. For example, setting
 
 All translations live in `assets/locales/core.<language>.toml` and
 are prefixed with `Pagination`.
+
+## InputDate
+
+To instatiate the [Dates](https://ons-design-system.netlify.app/patterns/dates/) UI pattern in your service:
+
+- In the `mapper.go` file in your service, populate the relevant fields:
+
+```go
+page.PublicationDate = InputDate{
+  Language:        page.Language,
+  Id:              "publication-date",
+  InputNameDay:    "publication-day",
+  InputNameMonth:  "publication-month",
+  InputNameYear:   "publication-year",
+  InputValueDay:   "5",
+  InputValueMonth: "6",
+  InputValueYear:  "1950",
+  Title:           "Publication date",
+  Description:     "For example: 2006 or 19/07/2010",
+}
+```
+
+- In the template file within your service, reference the
+`input-date.tmpl` file:
+
+```tmpl
+<div>Some html...</div>
+{{ template "partials/input-date" .PublicationDate }}
+<div>Some more html</div>
+```
+
+### Localisation
+
+All translations live in `assets/locales/core.<language>.toml` and
+are prefixed with `InputDate`.
