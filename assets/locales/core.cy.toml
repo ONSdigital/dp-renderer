@@ -467,3 +467,44 @@ one = "Mis"
 [InputDateYear]
 description = "Year"
 one = "Blwyddyn"
+
+# Pagination
+[Pagination]
+description = "Pagination"
+one = "(cy) Pagination"
+
+[PaginationPage]
+description = "Page"
+one = "(cy) Page"
+
+[PaginationOf]
+description = "of"
+one = "(cy) of"
+
+[PaginationGoPrevious]
+description = "Go to the previous page"
+one = "(cy) Go to the previous page"
+
+[PaginationGoFirst]
+description = "Go to the first page"
+one = "(cy) Go to the first page"
+
+[PaginationCurrentPage]
+description = "Current page"
+one = "(cy) Current page"
+
+[PaginationGoLast]
+description = "Go to the last page"
+one = "(cy) Go to the last page"
+
+[PaginationGoNext]
+description = "Go to the next page"
+one = "(cy) Go to the next page"
+
+[PaginationPrevious]
+description = "Previous"
+one = "(cy) Previous"
+
+[PaginationNext]
+description = "Next"
+one = "(cy) Next"
