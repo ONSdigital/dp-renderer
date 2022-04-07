@@ -35,7 +35,12 @@
                     <input id="email-field" class="form-control" type="text" name="email">
                 </div>
                 <div>
-                    <input id="feedback-form-submit" class="btn btn--primary font-weight-700 margin-bottom--2" type="submit" value="Send feedback">
+                    <input
+                        id="feedback-form-submit"
+                        class="btn btn--primary font-weight-700 margin-bottom--2"
+                        type="submit"
+                        value="{{ localise "SendFeedback" .Language 1 }}"
+                    >
                 </div>
                 <div>
                     <a href="javascript:void(0)" id="feedback-form-close" class="improve-this-page__close js-toggle btn btn--secondary font-weight-700">
