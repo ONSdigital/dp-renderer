@@ -119,6 +119,24 @@ services:
             ENABLE_CENSUS_PAGES:      "true"
 ```
 
+### Using the `scripts` partial to load scripts specific to a route 
+If a frontend web app requires extra custom scripts to be loaded specific to a route
+then you can use github.com/unrolled/render `partial` nested templates. 
+
+For example, you could have a peer dependency npm package like `mapbox-gl` & dynamically
+load that only for pages displaying a map. Because we have defined a `{{ partial "scripts" }}` in 
+the `main.tmpl` file in this repo, we can use this partial in each frontend that declares a `{{ define "scripts-<TEMPLATE_NAME>" }}`
+
+For example, in Area Profiles frontend web app `/areas` endpoint renders a `area-summary.tmpl` template file.
+Therefore, we must use the partial name follwed by the the frontends tempalte name: `"scripts-area-summary"`
+```
+{{ define "scripts-area-summary" }}
+    <script src="/assets/dist/mapboxGL.bundle.js?v={{ .Version }}"></script>
+    <script src="/assets/dist/areaLanding.bundle.js?v={{ .Version }}"></script>
+{{ end }}
+```
+
+Read more about the Unrolled's `partial` function [here](https://github.com/unrolled/render#layouts) 
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) for details.
