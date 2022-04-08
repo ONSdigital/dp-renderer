@@ -7,33 +7,37 @@
       aria-live="polite"
       tabindex="-1"
     >
-      <h3 class="improve-this-page__is-useful-question margin-right--1">
-        {{- localise "Helpful" .Language 1 -}}
-      </h3>
-      <a
-        id="feedback-form-yes"
-        class="improve-this-page__page-is-useful-button"
-        href="/feedback/thanks"
-        aria-label="{{ localise "YesAria" .Language 1 }}"
-      >
-        {{- localise "Yes" .Language 1 -}}
-      </a>
-      <span>|</span>
-      <a
-        id="feedback-form-no"
-        class="js-toggle"
-        href="/feedback?service=cmd"
-        aria-label="{{ localise "NoAria" .Language 1 }}"
-      >
-        {{- localise "No" .Language 1 -}}
-      </a>
-      <a
-        id="feedback-form-anything-wrong"
-        class="js-toggle improve-this-page__anything-wrong"
-        href="/feedback?service=cmd"
-      >
-        {{- localise "CantFind" .Language 1 -}}
-      </a>
+      <div class="improve-this-page__prompt_left">
+        <h3 class="improve-this-page__is-useful-question margin-right--1">
+          {{- localise "Helpful" .Language 1 -}}
+        </h3>
+        <a
+          id="feedback-form-yes"
+          class="improve-this-page__page-is-useful-button"
+          href="/feedback/thanks"
+          aria-label="{{ localise "YesAria" .Language 1 }}"
+        >
+          {{- localise "Yes" .Language 1 -}}
+        </a>
+        <span>|</span>
+        <a
+          id="feedback-form-no"
+          class="js-toggle"
+          href="/feedback?service=cmd"
+          aria-label="{{ localise "NoAria" .Language 1 }}"
+        >
+          {{- localise "No" .Language 1 -}}
+        </a>
+      </div>
+      <div class="improve-this-page__prompt_right">
+        <a
+          id="feedback-form-anything-wrong"
+          class="js-toggle improve-this-page__anything-wrong"
+          href="/feedback?service=cmd"
+        >
+          {{- localise "CantFind" .Language 1 -}}
+        </a>
+      </div>
     </div>
     <div id="feedback-form" class="improve-this-page__form js-hidden font-size--18">
       <form id="feedback-form-container">
