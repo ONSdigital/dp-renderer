@@ -471,40 +471,40 @@ one = "Blwyddyn"
 # Pagination
 [Pagination]
 description = "Pagination"
-one = "(cy) Pagination"
+one = "Tudaleniad"
 
 [PaginationPage]
 description = "Page"
-one = "(cy) Page"
+one = "Tudalen"
 
 [PaginationOf]
 description = "of"
-one = "(cy) of"
+one = "o"
 
 [PaginationGoPrevious]
 description = "Go to the previous page"
-one = "(cy) Go to the previous page"
+one = "Mynd i'r dudalen flaenorol"
 
 [PaginationGoFirst]
 description = "Go to the first page"
-one = "(cy) Go to the first page"
+one = "Mynd i'r dudalen gyntaf"
 
 [PaginationCurrentPage]
 description = "Current page"
-one = "(cy) Current page"
+one = "Tudalen bresennol"
 
 [PaginationGoLast]
 description = "Go to the last page"
-one = "(cy) Go to the last page"
+one = "Mynd i'r dudalen olaf"
 
 [PaginationGoNext]
 description = "Go to the next page"
-one = "(cy) Go to the next page"
+one = "Mynd i'r dudalen nesaf"
 
 [PaginationPrevious]
 description = "Previous"
-one = "(cy) Previous"
+one = "Blaenorol"
 
 [PaginationNext]
 description = "Next"
-one = "(cy) Next"
+one = "Nesaf"
