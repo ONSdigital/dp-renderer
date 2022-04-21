@@ -26,7 +26,13 @@
             aria-current="true"
           {{ end }}
         >
-          <a href="#{{ $id }}" class="ons-list__link">{{ $section.Title }}</a>
+          <a href="#{{ $id }}" class="ons-list__link">
+            {{ if $section.Title.LocaleKey }}
+              {{ localise $section.Title.LocaleKey $.Language $section.Title.Plural }}
+            {{ else }}
+              {{ $section.Title.Text }}
+            {{ end }}
+          </a>
         </li>
       {{ end }}
     </ol>
