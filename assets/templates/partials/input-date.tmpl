@@ -1,8 +1,16 @@
 <fieldset id="{{ .Id }}" class="ons-fieldset">
   <legend class="ons-fieldset__legend">
-    {{- .Title -}}
+    {{ if .Title.LocaleKey }}
+      {{- localise .Title.LocaleKey .Language .Title.Plural -}}
+    {{ else }}
+      {{- .Title.Text -}}
+    {{ end }}
     <div class="ons-fieldset__description">
-      {{- .Description -}}
+      {{ if .Description.LocaleKey }}
+        {{- localise .Description.LocaleKey .Language .Description.Plural -}}
+      {{ else }}
+        {{- .Description.Text -}}
+      {{ end }}
     </div>
   </legend>
   <div class="ons-field-group">

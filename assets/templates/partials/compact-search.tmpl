@@ -3,10 +3,10 @@
     class="ons-label ons-u-pb-xs ons-u-fw-n"
     for="{{ .ElementId }}"
   >
-    {{ if .LabelLocaliseKey }}
-      {{ localise .LabelLocaliseKey .Language 1 }}:
+    {{ if .Label.LocaleKey }}
+      {{ localise .Label.LocaleKey .Language .Label.Plural }}:
     {{ else }}
-      {{ .Label }}:
+      {{ .Label.Text }}:
     {{ end }}
   </label>
   <div class="ons-compact-search">

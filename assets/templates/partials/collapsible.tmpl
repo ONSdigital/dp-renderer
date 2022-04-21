@@ -1,7 +1,7 @@
 <div id="collapsible" class="ons-collapsible ons-js-collapsible" data-btn-close="{{ localise "HideThis" .Language 1 }}">
     <div class="ons-collapsible__heading ons-js-collapsible-heading">
         <div class="ons-collapsible__controls">
-            <h3 class="ons-collapsible__title">{{ if .Collapsible.LocaliseKey }}{{ localise .Collapsible.LocaliseKey .Language .Collapsible.LocalisePluralInt }}{{ else }}{{ .Collapsible.Title }}{{ end }}</h3>
+            <h3 class="ons-collapsible__title">{{ if .Collapsible.Title.LocaleKey }}{{ localise .Collapsible.Title.LocaleKey .Language .Collapsible.Title.Plural }}{{ else }}{{ .Collapsible.Title.Text }}{{ end }}</h3>
             {{ template "icons/collapsible" . }}
         </div>
     </div>
@@ -23,7 +23,7 @@
             class="ons-btn ons-js-collapsible-button ons-u-d-no ons-btn--secondary ons-btn--small"
             aria-controls="collapsible">
             <span class="ons-btn__inner ons-js-collapsible-button-inner">{{ localise "HideThis" .Language 1 }}</span>
-            <span class="ons-btn__context ons-u-vh">{{ .Collapsible.Title }} content</span>
+            <span class="ons-btn__context ons-u-vh">{{ .Collapsible.Title.Text }} content</span>
         </button>
     </div>
 </div>

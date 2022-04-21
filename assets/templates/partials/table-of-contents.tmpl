@@ -3,31 +3,32 @@
 <aside class="ons-toc-container" role="complementary">
   <nav
     class="ons-toc"
-    {{ if .TableOfContents.AriaLabelLocaliseKey }}
-      aria-label="{{ localise .TableOfContents.AriaLabelLocaliseKey .Language 1 }}"
+    {{ if .TableOfContents.AriaLabel.LocaleKey }}
+      aria-label="{{ localise .TableOfContents.AriaLabel.LocaleKey .Language .TableOfContents.AriaLabel.Plural }}"
     {{ else }}
-      aria-label="{{ .TableOfContents.AriaLabel }}"
+      aria-label="{{ .TableOfContents.AriaLabel.Text }}"
     {{ end }}
   >
     <h2 class="ons-toc__title ons-u-fs-r--b ons-u-mb-s">
-      {{ if .TableOfContents.TitleLocaliseKey }}
-        {{ localise .TableOfContents.TitleLocaliseKey .Language 1 }}
+      {{ if .TableOfContents.Title.LocaleKey }}
+        {{ localise .TableOfContents.Title.LocaleKey .Language .TableOfContents.Title.Plural }}
       {{ else }}
-        {{ .TableOfContents.Title }}
+        {{ .TableOfContents.Title.Text }}
       {{ end }}
     </h2>
     <ol class="ons-list ons-u-mb-m ons-list--dashed">
       {{ $sections := .TableOfContents.Sections }}
       {{ range $id := .TableOfContents.DisplayOrder }}
         {{ $section := index $sections $id }}
-        <li
-          class="ons-list__item"
-          {{ if $section.Current }}
-            aria-current="true"
-          {{ end }}
-        >
-          <a href="#{{ $id }}" class="ons-list__link">{{ $section.Title }}</a>
-        </li>
+       <li class="ons-list__item" {{ if $section.Current }} aria-current="true" {{ end }}>
+          <a href="#{{ $id }}" class="ons-list__link">
+            {{ if $section.Title.LocaleKey }}
+              {{ localise $section.Title.LocaleKey $.Language $section.Title.Plural }}
+            {{ else }}
+              {{ $section.Title }}
+            {{ end }}
+          </a>
+        <li>
       {{ end }}
     </ol>
   </nav>

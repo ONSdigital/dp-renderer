@@ -6,10 +6,8 @@ The 'LocaliseKey' has to correspond to the localisation key found in the toml fi
 LocalisePluralInt refers to the plural int used in the toml file.
 */
 type Collapsible struct {
-	Title             string            `json:"title"`
-	LocaliseKey       string            `json:"localise_key"`
-	LocalisePluralInt int               `json:"localise_plural_int"`
-	CollapsibleItems  []CollapsibleItem `json:"collapsible_item"`
+	Title            Localisation      `json:"title"`
+	CollapsibleItems []CollapsibleItem `json:"collapsible_item"`
 }
 
 // CollapsibleItem is an individual representation of the data required in a collapsible item
