@@ -1,5 +1,6 @@
 package model
 
+// CompactSearch data
 type CompactSearch struct {
 	ElementId  string       `json:"element_id"`
 	InputName  string       `json:"input_name"`

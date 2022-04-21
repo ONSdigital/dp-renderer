@@ -1,5 +1,6 @@
 package model
 
+// InputDate data
 type InputDate struct {
 	Language        string       `json:"language"`
 	Id              string       `json:"id"`
