@@ -3,11 +3,7 @@
     class="ons-label ons-u-pb-xs ons-u-fw-n"
     for="{{ .ElementId }}"
   >
-    {{ if .Label.LocaleKey }}
-      {{ localise .Label.LocaleKey .Language .Label.Plural }}:
-    {{ else }}
-      {{ .Label.Text }}:
-    {{ end }}
+    {{- .Label.Localise .Language -}}
   </label>
   <div class="ons-compact-search">
     <input
