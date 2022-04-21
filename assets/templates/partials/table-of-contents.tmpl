@@ -20,15 +20,20 @@
       {{ $sections := .TableOfContents.Sections }}
       {{ range $id := .TableOfContents.DisplayOrder }}
         {{ $section := index $sections $id }}
-       <li class="ons-list__item" {{ if $section.Current }} aria-current="true" {{ end }}>
+        <li
+          class="ons-list__item"
+          {{ if $section.Current }}
+            aria-current="true"
+          {{ end }}
+        >
           <a href="#{{ $id }}" class="ons-list__link">
             {{ if $section.Title.LocaleKey }}
               {{ localise $section.Title.LocaleKey $.Language $section.Title.Plural }}
             {{ else }}
-              {{ $section.Title }}
+              {{ $section.Title.Text }}
             {{ end }}
           </a>
-        <li>
+        </li>
       {{ end }}
     </ol>
   </nav>
