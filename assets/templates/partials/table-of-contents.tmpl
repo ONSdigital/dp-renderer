@@ -3,18 +3,10 @@
 <aside class="ons-toc-container" role="complementary">
   <nav
     class="ons-toc"
-    {{ if .TableOfContents.AriaLabel.LocaleKey }}
-      aria-label="{{ localise .TableOfContents.AriaLabel.LocaleKey .Language .TableOfContents.AriaLabel.Plural }}"
-    {{ else }}
-      aria-label="{{ .TableOfContents.AriaLabel.Text }}"
-    {{ end }}
+    aria-label="{{ .TableOfContents.AriaLabel.Localise .Language }}"
   >
     <h2 class="ons-toc__title ons-u-fs-r--b ons-u-mb-s">
-      {{ if .TableOfContents.Title.LocaleKey }}
-        {{ localise .TableOfContents.Title.LocaleKey .Language .TableOfContents.Title.Plural }}
-      {{ else }}
-        {{ .TableOfContents.Title.Text }}
-      {{ end }}
+      {{- .TableOfContents.Title.Localise .Language -}}
     </h2>
     <ol class="ons-list ons-u-mb-m ons-list--dashed">
       {{ $sections := .TableOfContents.Sections }}
@@ -27,11 +19,7 @@
           {{ end }}
         >
           <a href="#{{ $id }}" class="ons-list__link">
-            {{ if $section.Title.LocaleKey }}
-              {{ localise $section.Title.LocaleKey $.Language $section.Title.Plural }}
-            {{ else }}
-              {{ $section.Title.Text }}
-            {{ end }}
+            {{- $section.Title.Localise $.Language -}}
           </a>
         </li>
       {{ end }}
