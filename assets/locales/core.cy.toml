@@ -455,6 +455,17 @@ one = "Nid wyf am roi adborth"
 description = "Thank you. Your feedback will help us as we continue to improve the service."
 one = "Diolch. Bydd eich adborth yn ein helpu wrth i ni barhau i wella'r gwasanaeth."
 
+# Table of Contents
+[TableOfContents]
+description = "Table of contents"
+one = "Tabl cynnwys"
+other = "Tabl cynnwys"
+
+[Contents]
+description = "Contents"
+one = "Cynnwys"
+other = "Cynnwys"
+
 # InputDate
 [InputDateDay]
 description = "Day"
