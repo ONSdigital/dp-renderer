@@ -1,12 +1,12 @@
 {{ $pagination := .Pagination }}
 {{ $language := .Language }}
-{{ $pageCurrentofTotal := $pagination.PhrasePageNOfTotal $pagination.CurrentPage $language }}
-{{ $previousURL := $pagination.PickPreviousURL }}
-{{ $nextURL := $pagination.PickNextURL }}
+{{ $pageCurrentofTotal := $pagination.FuncPhrasePageNOfTotal $pagination.CurrentPage $language }}
+{{ $previousURL := $pagination.FuncPickPreviousURL }}
+{{ $nextURL := $pagination.FuncPickNextURL }}
 {{ if ne $pagination.TotalPages 0 }}
   <nav
     class="ons-pagination"
-    arial-label="{{ $pagination.PhrasePaginationProgress $pageCurrentofTotal $language }}"
+    arial-label="{{ $pagination.FuncPhrasePaginationProgress $pageCurrentofTotal $language }}"
   >
     <div class="ons-pagination__position ons-u-mb-xs">{{ $pageCurrentofTotal }}</div>
     <ul class="ons-pagination__items">
@@ -16,18 +16,18 @@
             href="{{ $previousURL }}"
             class="ons-pagination__link"
             rel="prev"
-            aria-label="{{ $pagination.PhraseGoToPreviousPage $language }}"
+            aria-label="{{ $pagination.FuncPhraseGoToPreviousPage $language }}"
           >
             {{- localise "PaginationPrevious" $language 1 -}}
           </a>
         </li>
       {{ end }}
-      {{ if $pagination.ShowLinkToFirst }}
+      {{ if $pagination.FuncShowLinkToFirst }}
         <li class="ons-pagination__item">
           <a
             href="{{(index $pagination.FirstAndLastPages 0).URL}}"
             class="ons-pagination__link"
-            aria-label="{{ $pagination.PhraseGoToFirstPage $language }}"
+            aria-label="{{ $pagination.FuncPhraseGoToFirstPage $language }}"
           >1</a>
         </li>
         <li class="ons-pagination__item ons-pagination__item--gap">&hellip;</li>
@@ -39,7 +39,7 @@
               href="{{ .URL}}"
               class="ons-pagination__link"
               aria-current="true"
-              aria-label="{{ $pagination.PhraseCurrentPage $pageCurrentofTotal $language }}"
+              aria-label="{{ $pagination.FuncPhraseCurrentPage $pageCurrentofTotal $language }}"
             >
               {{- .PageNumber -}}
             </a>
@@ -49,20 +49,20 @@
             <a
               href="{{ .URL}}"
               class="ons-pagination__link"
-              aria-label="{{ $pagination.PhrasePageNOfTotal .PageNumber $language }}"
+              aria-label="{{ $pagination.FuncPhrasePageNOfTotal .PageNumber $language }}"
             >
               {{-  .PageNumber -}}
             </a>
           </li>
         {{ end }}
       {{ end }}
-      {{ if $pagination.ShowLinkToLast }}
+      {{ if $pagination.FuncShowLinkToLast }}
         <li class="ons-pagination__item ons-pagination__item--gap">&hellip;</li>
         <li class="ons-pagination__item">
           <a
             href="{{(index $pagination.FirstAndLastPages 1).URL}}"
             class="ons-pagination__link"
-            aria-label="{{ $pagination.PhraseGoToLastPage $language }}"
+            aria-label="{{ $pagination.FuncPhraseGoToLastPage $language }}"
           >
             {{- $pagination.TotalPages -}}
           </a>
@@ -74,7 +74,7 @@
             href="{{ $nextURL }}"
             class="ons-pagination__link"
             rel="next"
-            aria-label="{{ $pagination.PhraseGoToNextPage $language }}"
+            aria-label="{{ $pagination.FuncPhraseGoToNextPage $language }}"
           >
             {{- localise "PaginationNext" $language 1 -}}
           </a>

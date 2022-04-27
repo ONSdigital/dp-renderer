@@ -23,20 +23,20 @@ type PageToDisplay struct {
 }
 
 // Produces a string of the form "Page 1 of 10"
-func (pagination Pagination) PhrasePageNOfTotal(n int, language string) string {
+func (pagination Pagination) FuncPhrasePageNOfTotal(n int, language string) string {
 	phrasePage := helper.Localise("PaginationPage", language, 1)
 	phraseOf := helper.Localise("PaginationOf", language, 1)
 	return fmt.Sprintf("%s %d %s %d", phrasePage, n, phraseOf, pagination.TotalPages)
 }
 
 // Produces a string of the form "Pagination (Page 1 of 10)"
-func (pagination Pagination) PhrasePaginationProgress(progress, language string) string {
+func (pagination Pagination) FuncPhrasePaginationProgress(progress, language string) string {
 	phrasePagination := helper.Localise("Pagination", language, 1)
 	return fmt.Sprintf("%s (%s)", phrasePagination, progress)
 }
 
 // Produces a string of the form "Go to the previous page (Page 4)"
-func (pagination Pagination) PhraseGoToPreviousPage(language string) string {
+func (pagination Pagination) FuncPhraseGoToPreviousPage(language string) string {
 	phrasePage := helper.Localise("PaginationPage", language, 1)
 	phraseGoPrevious := helper.Localise("PaginationGoPrevious", language, 1)
 	pageNumber := pagination.CurrentPage - 1
@@ -44,7 +44,7 @@ func (pagination Pagination) PhraseGoToPreviousPage(language string) string {
 }
 
 // Produces a string of the form "Go to the next page (Page 6)"
-func (pagination Pagination) PhraseGoToNextPage(language string) string {
+func (pagination Pagination) FuncPhraseGoToNextPage(language string) string {
 	phrasePage := helper.Localise("PaginationPage", language, 1)
 	phraseGoNext := helper.Localise("PaginationGoNext", language, 1)
 	pageNumber := pagination.CurrentPage + 1
@@ -52,26 +52,26 @@ func (pagination Pagination) PhraseGoToNextPage(language string) string {
 }
 
 // Produces a string of the form "Go to the first page (Page 1)"
-func (pagination Pagination) PhraseGoToFirstPage(language string) string {
+func (pagination Pagination) FuncPhraseGoToFirstPage(language string) string {
 	phrasePage := helper.Localise("PaginationPage", language, 1)
 	phraseGoFirst := helper.Localise("PaginationGoFirst", language, 1)
 	return fmt.Sprintf("%s (%s 1)", phraseGoFirst, phrasePage)
 }
 
 // Produces a string of the form "Current page (Page 5 of 10)"
-func (pagination Pagination) PhraseCurrentPage(progress, language string) string {
+func (pagination Pagination) FuncPhraseCurrentPage(progress, language string) string {
 	phrasePagination := helper.Localise("PaginationCurrentPage", language, 1)
 	return fmt.Sprintf("%s (%s)", phrasePagination, progress)
 }
 
 // Produces a string of the form "Go to the last page (Page 10)"
-func (pagination Pagination) PhraseGoToLastPage(language string) string {
+func (pagination Pagination) FuncPhraseGoToLastPage(language string) string {
 	phrasePage := helper.Localise("PaginationPage", language, 1)
 	phraseGoLast := helper.Localise("PaginationGoLast", language, 1)
 	return fmt.Sprintf("%s (%s %d)", phraseGoLast, phrasePage, pagination.TotalPages)
 }
 
-func (pagination Pagination) PickPreviousURL() string {
+func (pagination Pagination) FuncPickPreviousURL() string {
 	for _, pageToDisplay := range pagination.PagesToDisplay {
 		if pageToDisplay.PageNumber == pagination.CurrentPage-1 {
 			return pageToDisplay.URL
@@ -81,7 +81,7 @@ func (pagination Pagination) PickPreviousURL() string {
 	return "#"
 }
 
-func (pagination Pagination) PickNextURL() string {
+func (pagination Pagination) FuncPickNextURL() string {
 	for _, pageToDisplay := range pagination.PagesToDisplay {
 		if pageToDisplay.PageNumber == pagination.CurrentPage+1 {
 			return pageToDisplay.URL
@@ -91,11 +91,11 @@ func (pagination Pagination) PickNextURL() string {
 	return "#"
 }
 
-func (pagination Pagination) ShowLinkToFirst() bool {
+func (pagination Pagination) FuncShowLinkToFirst() bool {
 	return pagination.PagesToDisplay[0].PageNumber > 1
 }
 
-func (pagination Pagination) ShowLinkToLast() bool {
+func (pagination Pagination) FuncShowLinkToLast() bool {
 	lastPage := len(pagination.PagesToDisplay) - 1
 	return pagination.PagesToDisplay[lastPage].PageNumber != pagination.TotalPages
 }
