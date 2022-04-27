@@ -26,7 +26,7 @@ func TestLocalise(t *testing.T) {
 			Text:      "Home",
 		}
 
-		result := localisation.Localise("cy")
+		result := localisation.FuncLocalise("cy")
 
 		So(result, ShouldEqual, "Hafan")
 	})
@@ -36,7 +36,7 @@ func TestLocalise(t *testing.T) {
 			Text: "Home",
 		}
 
-		result := localisation.Localise("cy")
+		result := localisation.FuncLocalise("cy")
 
 		So(result, ShouldEqual, "Home")
 	})

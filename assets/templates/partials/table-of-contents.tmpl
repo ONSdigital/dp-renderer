@@ -3,10 +3,10 @@
 <aside class="ons-toc-container" role="complementary">
   <nav
     class="ons-toc"
-    aria-label="{{ .TableOfContents.AriaLabel.Localise .Language }}"
+    aria-label="{{ .TableOfContents.AriaLabel.FuncLocalise .Language }}"
   >
     <h2 class="ons-toc__title ons-u-fs-r--b ons-u-mb-s">
-      {{- .TableOfContents.Title.Localise .Language -}}
+      {{- .TableOfContents.Title.FuncLocalise .Language -}}
     </h2>
     <ol class="ons-list ons-u-mb-m ons-list--dashed">
       {{ $sections := .TableOfContents.Sections }}
@@ -19,7 +19,7 @@
           {{ end }}
         >
           <a href="#{{ $id }}" class="ons-list__link">
-            {{- $section.Title.Localise $.Language -}}
+            {{- $section.Title.FuncLocalise $.Language -}}
           </a>
         </li>
       {{ end }}

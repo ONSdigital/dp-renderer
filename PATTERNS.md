@@ -1,5 +1,41 @@
 # Using patterns or components in your service
 
+Patterns and Components from the ONS Design System are made available in the
+`dp-renderer` as Go Templates and their associated data models.
+
+Templates are also often referred to as 'partials' as they live in
+`assets/templates/partials`.
+
+Data models, or simply 'models', live in `model` and by convention carry the
+same name as the template they drive.
+
+Models may implement methods. These are used within the component template,
+rather than by the application importing the template. When used within a
+component template they keep the template concise and encourage re-use of logic.
+The Go Template syntax makes it difficult to distinguish a property reference
+from a method call, so within the `dp-renderer` the convention of prefixing
+methods intended for use within templates with `Func` has been adopted for
+clarity.
+
+For example, this is a (ficticious) method call:
+
+```
+{{ .Component.FuncIsSubmitVisible }}
+```
+
+and this is a property reference:
+
+```
+{{ .Component.IsSubmitVisible }}
+```
+
+Without the naming convention these would be indistinguishable, unless a
+function takes parameters which makes it a little more obvious:
+
+```
+{{ .Component.FuncIsSubmitVisible .State .Language }}
+```
+
 ## Collapsible
 
 To instatiate the [collapsible](https://ons-design-system.netlify.app/components/collapsible/) UI component in your service:

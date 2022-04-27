@@ -64,7 +64,7 @@ page.Button = model.Button{
 
 ## Template usage
 
-The `Localisation` model has a `Localise` method that takes care of
+The `Localisation` model has a `FuncLocalise` method that takes care of
 choice between rendering the `LocaleKey` or `Text` for you.
 
 Continuing the `Button` example, this component's template might
@@ -72,6 +72,6 @@ look like this:
 
 ```
 <button type="button">
-  {{- .Button.Label.Localise .Language -}}
+  {{- .Button.Label.FuncLocalise .Language -}}
 </button>
 ```

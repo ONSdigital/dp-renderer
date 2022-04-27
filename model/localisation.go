@@ -16,7 +16,7 @@ type Localisation struct {
 }
 
 // Localise by preference when a LocaleKey is provided, defaulting to Text otherwise.
-func (localisation Localisation) Localise(language string) string {
+func (localisation Localisation) FuncLocalise(language string) string {
 	var result string
 
 	if localisation.LocaleKey != "" {
