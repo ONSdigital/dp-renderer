@@ -50,6 +50,16 @@ func DateFormatYYYYMMDDNoSlash(s string) string {
 	return template.HTMLEscapeString(t.Format("20060102"))
 }
 
+func DateTimeOnsDatePatternFormat(s string) string {
+	t, err := time.Parse(time.RFC3339, s)
+	if err != nil {
+		log.Error(context.Background(), "failed to parse time", err)
+		return template.HTMLEscapeString(s)
+	}
+	t = localiseTime(&t)
+	return template.HTMLEscapeString(t.Format("2 January 2006 3:04pm"))
+}
+
 func init() {
 	var err error
 	if tz, err = time.LoadLocation("Europe/London"); err != nil {

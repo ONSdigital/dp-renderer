@@ -37,6 +37,17 @@ func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
 	})
 }
 
+func TestDateTimeOnsDatePatternFormat(t *testing.T) {
+	Convey("Date format returns human readable string", t, func() {
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-03T00:00:00.000Z"), ShouldEqual, "3 August 2019 1:00am")  // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-15T00:00:00.000Z"), ShouldEqual, "15 August 2019 1:00am") // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-05-21T23:00:00.000Z"), ShouldEqual, "22 May 2019 12:00am")   // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-12-21T23:00:00.000Z"), ShouldEqual, "21 December 2019 11:00pm")
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-15"), ShouldEqual, "2019-08-15") // failed to parse, so returns arg value
+		So(helper.DateTimeOnsDatePatternFormat(""), ShouldEqual, "")
+	})
+}
+
 func TestDateTimeFormat(t *testing.T) {
 	Convey("Given a formatted datetime return a human readable datetime", t, func() {
 		Convey("When in British Summer Time", func() {
