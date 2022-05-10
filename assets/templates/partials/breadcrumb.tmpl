@@ -11,11 +11,7 @@
                         {{ else }}
                             {{ $b.Title }}
                         {{ end }}
-                        {{ if notLastItem $length $i }}
-                            {{ template "icons/chevron-right" }}
-                        {{ else if eq $length 1 }}
-                            {{ template "icons/chevron-left" }}
-                        {{ end }}
+                        {{ template "icons/chevron-right" }}
                     </li>
                 {{ end }}
             </ol>
