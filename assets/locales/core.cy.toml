@@ -519,3 +519,9 @@ one = "Blaenorol"
 [PaginationNext]
 description = "Next"
 one = "Nesaf"
+
+# Back to
+[BackToContents]
+description = "Back to contents"
+one = "Back to content"
+other = "Back to contents"

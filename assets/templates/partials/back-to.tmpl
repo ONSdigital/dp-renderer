@@ -1,0 +1,9 @@
+{{/* See PATTERNS.md for usage instructions */}}
+<div class="ons-back-to">
+    <a href="#{{- .BackTo.AnchorFragment -}}" class="ons-back-to__link">
+        <span class="ons-back-to__icon">
+            {{- template "icons/arrow-up" . -}}
+        </span>
+        {{- .BackTo.Text.FuncLocalise .Language -}}
+    </a>
+</div>
