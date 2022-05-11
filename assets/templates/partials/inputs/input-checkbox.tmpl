@@ -1,0 +1,13 @@
+<input
+  type="checkbox"
+  id="{{ .Id }}"
+  class="ons-checkbox__input ons-js-checkbox"
+  name="{{ .Name }}"
+  value="true"
+  {{ if .Checked }}
+    checked
+  {{ end }}
+>
+{{ if .IsLabel }}
+  {{ template "partials/label" }}
+{{ end }}
