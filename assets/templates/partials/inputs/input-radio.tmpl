@@ -7,7 +7,7 @@
   {{ if .Checked }}
     checked
   {{ end }}
->
-{{ if .IsLabel }}
-  {{ template "partials/label" }}
+>  
+{{ if .LocaleKey }}
+  {{ template "partials/label" .}}
 {{ end }}

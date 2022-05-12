@@ -1,0 +1,10 @@
+<label
+  class="ons-radio__label"
+  for="{{.Id}}"
+  id="{{.Id}}-label"
+>
+  {{- localise .LocaleKey .Language 1 -}}
+  {{ if .Count }}
+    ({{ .Count }})
+  {{ end }}
+</label>

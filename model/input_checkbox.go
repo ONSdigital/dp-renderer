@@ -8,12 +8,13 @@ Checked is flag that shows up it the value it true
 Title states the purpose of the InputCheckbox.
 */
 type InputCheckBox struct {
-	Language  string       `json:"language"`
-	Id        string       `json:"id"`
-	Name      string       `json:"name"`
-	Checked   bool         `json:"checked"`
-	IsLabel   bool         `json:"isLabel"`
-	Count     string       `json:"count"`
-	Title     Localisation `json:"title"`
-	LocaleKey Localisation `json:"localeKey"`
+	Language    string       `json:"language"`
+	Id          string       `json:"id"`
+	Name        string       `json:"name"`
+	Checked     bool         `json:"checked"`
+	IsLabel     bool         `json:"isLabel"`
+	Count       string       `json:"count"`
+	Title       Localisation `json:"title"`
+	LocaleKey   Localisation `json:"localeKey"`
+	Description Localisation `json:"description"`
 }
