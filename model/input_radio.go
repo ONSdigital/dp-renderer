@@ -13,7 +13,6 @@ type InputRadioBox struct {
 	Name        string       `json:"name"`
 	Value       string       `json:"value"`
 	Checked     bool         `json:"checked"`
-	IsLabel     bool         `json:"isLabel"`
 	Count       string       `json:"count"`
 	Title       Localisation `json:"title"`
 	LocaleKey   Localisation `json:"localeKey"`

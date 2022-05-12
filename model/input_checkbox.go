@@ -12,7 +12,6 @@ type InputCheckBox struct {
 	Id          string       `json:"id"`
 	Name        string       `json:"name"`
 	Checked     bool         `json:"checked"`
-	IsLabel     bool         `json:"isLabel"`
 	Count       string       `json:"count"`
 	Title       Localisation `json:"title"`
 	LocaleKey   Localisation `json:"localeKey"`
