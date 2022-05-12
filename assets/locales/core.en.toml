@@ -514,3 +514,9 @@ one = "Month"
 [InputDateYear]
 description = "Year"
 one = "Year"
+
+# Back to
+[BackToContents]
+description = "Back to contents"
+one = "Back to content"
+other = "Back to contents"

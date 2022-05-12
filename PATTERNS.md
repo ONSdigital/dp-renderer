@@ -45,9 +45,11 @@ e.g.
 
 ```go
 p.Collapsible = coreModel.Collapsible{
-  // You can either use a localisation key or populate the `Title` string
-  LocaliseKey:       "VariablesExplanation",
-  LocalisePluralInt: 4,
+  // You can either use a localisation key or populate the `Text` string
+  Title: coreModel.Localisation{
+    LocaleKey: "VariablesExplanation",
+    Plural:    4,
+  },
   CollapsibleItems: []coreModel.CollapsibleItem{
    {
     Subheading: "This is a subheading",
@@ -259,3 +261,28 @@ page.PublicationDate = InputDate{
 
 All translations live in `assets/locales/core.<language>.toml` and
 are prefixed with `InputDate`.
+
+## BackTo
+
+To instatiate the 'back to' UI component in your service:
+
+- In the `mapper.go` file in your service, populate the relevant fields:
+
+```go
+p.BackTo = coreModel.BackTo{
+  Text: coreModel.Localisation{
+    LocaleKey: "BackToContents",
+    Plural:    4,
+  },
+  AnchorFragment: "toc",
+}
+```
+
+- In the template file within your service, reference the
+`back-to.tmpl` file:
+
+```tmpl
+<div>Some html...</div>
+{{ template "partials/back-to" . }}
+<div>Some more html</div>
+```
