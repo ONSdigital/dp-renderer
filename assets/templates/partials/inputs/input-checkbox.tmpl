@@ -8,15 +8,14 @@
     checked
   {{ end }}
 >
-{{ if .LocaleKey }}
+
   <label
     class="ons-checkbox__label"
     for="{{.Id}}"
     id="{{.Id}}-label"
-    >
+  >
     {{- localise .LocaleKey .Language 1 -}}
     {{ if .Count }}
       ({{ .Count }})
     {{ end }}
   </label>
-{{ end }}
