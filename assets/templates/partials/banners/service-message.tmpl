@@ -1,3 +1,17 @@
+{{ if eq .Type "search" }}
+<div class="banner">
+    <div class="wrapper banner--half-padding banner--bottom-border">
+    <div class="ons-panel ons-panel--bare">
+        <span class="ons-panel__icon ons-u-fs-r">
+            <span class="banner__icon icon icon-info"></span>
+        </span>
+    <div class="ons-panel__body">
+        {{ .ServiceMessage }}
+    </div>
+</div>
+    </div>
+</div>
+{{ else }}
 <div class="banner">
     <div class="wrapper banner--half-padding banner--bottom-border">
         <div class="col-wrap">
@@ -10,3 +24,5 @@
         </div>
     </div>
 </div>
+{{ end }}
+
