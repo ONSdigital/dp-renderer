@@ -5,7 +5,7 @@
                 <h2 class="emergency-banner__heading">{{ .Title }}</h2>
                 <p class="emergency-banner__description">{{ .Description }}</p>
                 {{ if and .URI .LinkText }}
-                    <a href="{{ .URI }}" class="emergency-banner__link" tabindex="0">{{ .LinkText }}</a>
+                    <a href="{{ .URI }}" class="emergency-banner__link">{{ .LinkText }}</a>
                 {{ end }}
             </div>
         </div>

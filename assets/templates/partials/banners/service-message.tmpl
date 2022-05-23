@@ -1,14 +1,14 @@
 {{ if eq .Type "search" }}
 <div class="banner">
     <div class="wrapper banner--half-padding banner--bottom-border">
-    <div class="ons-panel ons-panel--bare">
-        <span class="ons-panel__icon ons-u-fs-r">
-            <span class="banner__icon icon icon-info"></span>
-        </span>
-    <div class="ons-panel__body padding-left--triple-half">
-        {{ .ServiceMessage }}
-    </div>
-</div>
+        <div class="ons-panel ons-panel--bare">
+            <span class="ons-panel__icon ons-u-fs-r">
+                <span class="banner__icon icon icon-info"></span>
+            </span>
+            <div class="ons-panel__body padding-left--triple-half">
+                {{ .ServiceMessage }}
+            </div>
+        </div>
     </div>
 </div>
 {{ else }}
