@@ -3,6 +3,8 @@ package helper
 import (
 	"context"
 	"html/template"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/ONSdigital/log.go/v2/log"
@@ -50,14 +52,47 @@ func DateFormatYYYYMMDDNoSlash(s string) string {
 	return template.HTMLEscapeString(t.Format("20060102"))
 }
 
-func DateTimeOnsDatePatternFormat(s string) string {
+func DateTimeOnsDatePatternFormat(s, lang string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
 	t = localiseTime(&t)
-	return template.HTMLEscapeString(t.Format("2 January 2006 3:04pm"))
+	formattedTimestamp := t.Format("2 January 2006 3:04pm")
+
+	months := []string{
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	}
+
+	twelveHours := []string{
+		"am",
+		"pm",
+	}
+
+	localeReplace := func(phrase, lang, keyRoot string, keySuffixes []string) string {
+		re, _ := regexp.Compile(strings.Join(keySuffixes, "|"))
+		replacer := func(match []byte) []byte {
+			return []byte(Localise(keyRoot+string(match), lang, 1))
+		}
+		return string(re.ReplaceAllFunc([]byte(phrase), replacer))
+	}
+
+	formattedTimestamp = localeReplace(formattedTimestamp, lang, "TimestampMonth", months)
+	formattedTimestamp = localeReplace(formattedTimestamp, lang, "TimestampTwelveHour", twelveHours)
+
+	return template.HTMLEscapeString(formattedTimestamp)
 }
 
 func init() {

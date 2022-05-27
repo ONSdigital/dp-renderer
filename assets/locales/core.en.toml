@@ -593,3 +593,60 @@ one = "See correction"
 [ScheduledUpdate]
 description = "Scheduled update"
 one = "Scheduled update/revision"
+
+# Timestamps
+[TimestampTwelveHouram]
+description = "am"
+one = "am"
+
+[TimestampTwelveHourpm]
+description = "pm"
+one = "pm"
+
+[TimestampMonthJanuary]
+description = "January"
+one = "January"
+
+[TimestampMonthFebruary]
+description = "February"
+one = "February"
+
+[TimestampMonthMarch]
+description = "March"
+one = "March"
+
+[TimestampMonthApril]
+description = "April"
+one = "April"
+
+[TimestampMonthMay]
+description = "May"
+one = "May"
+
+[TimestampMonthJune]
+description = "June"
+one = "June"
+
+[TimestampMonthJuly]
+description = "July"
+one = "July"
+
+[TimestampMonthAugust]
+description = "August"
+one = "August"
+
+[TimestampMonthSeptember]
+description = "September"
+one = "September"
+
+[TimestampMonthOctober]
+description = "October"
+one = "October"
+
+[TimestampMonthNovember]
+description = "November"
+one = "November"
+
+[TimestampMonthDecember]
+description = "December"
+one = "December"

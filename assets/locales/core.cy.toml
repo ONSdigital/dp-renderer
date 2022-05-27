@@ -598,3 +598,60 @@ one = "See correction"
 [ScheduledUpdate]
 description = "Scheduled update"
 one = "Scheduled update/revision"
+
+# Timestamps
+[TimestampTwelveHouram]
+description = "am"
+one = "am"
+
+[TimestampTwelveHourpm]
+description = "pm"
+one = "pm"
+
+[TimestampMonthJanuary]
+description = "January"
+one = "Ionawr"
+
+[TimestampMonthFebruary]
+description = "February"
+one = "Chwefror"
+
+[TimestampMonthMarch]
+description = "March"
+one = "Mawrth"
+
+[TimestampMonthApril]
+description = "April"
+one = "Ebrill"
+
+[TimestampMonthMay]
+description = "May"
+one = "Mai"
+
+[TimestampMonthJune]
+description = "June"
+one = "Mehefin"
+
+[TimestampMonthJuly]
+description = "July"
+one = "Gorffennaf"
+
+[TimestampMonthAugust]
+description = "August"
+one = "Awst"
+
+[TimestampMonthSeptember]
+description = "September"
+one = "Medi"
+
+[TimestampMonthOctober]
+description = "October"
+one = "Hydref"
+
+[TimestampMonthNovember]
+description = "November"
+one = "Tachwedd"
+
+[TimestampMonthDecember]
+description = "December"
+one = "Rhagfyr"
