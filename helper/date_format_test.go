@@ -1,6 +1,7 @@
 package helper_test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/ONSdigital/dp-renderer/helper"
@@ -37,14 +38,61 @@ func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
 	})
 }
 
+var cyLocale = []string{
+	"[TimestampMonthMay]",
+	"one = \"Mai\"",
+	"[TimestampMonthAugust]",
+	"one = \"Awst\"",
+	"[TimestampMonthDecember]",
+	"one = \"Rhagfyr\"",
+	"[TimestampTwelveHouram]",
+	"one = \"am\"",
+	"[TimestampTwelveHourpm]",
+	"one = \"pm\"",
+}
+
+var enLocale = []string{
+	"[TimestampMonthMay]",
+	"one = \"May\"",
+	"[TimestampMonthAugust]",
+	"one = \"August\"",
+	"[TimestampMonthDecember]",
+	"one = \"December\"",
+	"[TimestampTwelveHouram]",
+	"one = \"am\"",
+	"[TimestampTwelveHourpm]",
+	"one = \"pm\"",
+}
+
+func mockTimestampAssetFunction(name string) ([]byte, error) {
+	if strings.Contains(name, ".cy.toml") {
+		return []byte(strings.Join(cyLocale, "\n")), nil
+	}
+	return []byte(strings.Join(enLocale, "\n")), nil
+}
+
 func TestDateTimeOnsDatePatternFormat(t *testing.T) {
+	helper.InitialiseLocalisationsHelper(mockTimestampAssetFunction)
+
 	Convey("Date format returns human readable string", t, func() {
-		So(helper.DateTimeOnsDatePatternFormat("2019-08-03T00:00:00.000Z"), ShouldEqual, "3 August 2019 1:00am")  // BST
-		So(helper.DateTimeOnsDatePatternFormat("2019-08-15T00:00:00.000Z"), ShouldEqual, "15 August 2019 1:00am") // BST
-		So(helper.DateTimeOnsDatePatternFormat("2019-05-21T23:00:00.000Z"), ShouldEqual, "22 May 2019 12:00am")   // BST
-		So(helper.DateTimeOnsDatePatternFormat("2019-12-21T23:00:00.000Z"), ShouldEqual, "21 December 2019 11:00pm")
-		So(helper.DateTimeOnsDatePatternFormat("2019-08-15"), ShouldEqual, "2019-08-15") // failed to parse, so returns arg value
-		So(helper.DateTimeOnsDatePatternFormat(""), ShouldEqual, "")
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-03T00:00:00.000Z", ""), ShouldEqual, "3 August 2019 1:00am")  // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-15T00:00:00.000Z", ""), ShouldEqual, "15 August 2019 1:00am") // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-05-21T23:00:00.000Z", ""), ShouldEqual, "22 May 2019 12:00am")   // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-12-21T23:00:00.000Z", ""), ShouldEqual, "21 December 2019 11:00pm")
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-15", ""), ShouldEqual, "2019-08-15") // failed to parse, so returns arg value
+		So(helper.DateTimeOnsDatePatternFormat("", ""), ShouldEqual, "")
+	})
+
+	Convey("Date is localised", t, func() {
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-03T00:00:00.000Z", "en"), ShouldEqual, "3 August 2019 1:00am")  // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-15T00:00:00.000Z", "en"), ShouldEqual, "15 August 2019 1:00am") // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-05-21T23:00:00.000Z", "en"), ShouldEqual, "22 May 2019 12:00am")   // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-12-21T23:00:00.000Z", "en"), ShouldEqual, "21 December 2019 11:00pm")
+
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-03T00:00:00.000Z", "cy"), ShouldEqual, "3 Awst 2019 1:00am")  // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-08-15T00:00:00.000Z", "cy"), ShouldEqual, "15 Awst 2019 1:00am") // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-05-21T23:00:00.000Z", "cy"), ShouldEqual, "22 Mai 2019 12:00am") // BST
+		So(helper.DateTimeOnsDatePatternFormat("2019-12-21T23:00:00.000Z", "cy"), ShouldEqual, "21 Rhagfyr 2019 11:00pm")
 	})
 }
 
