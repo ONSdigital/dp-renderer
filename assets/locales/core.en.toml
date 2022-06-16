@@ -229,6 +229,10 @@ one = "Coronavirus (COVID-19)"
 description = "Get the latest data and analysis on coronavirus (COVID-19) in the UK."
 one = "Get the latest data and analysis on coronavirus (COVID-19) in the UK."
 
+[Back]
+description = "Back"
+one = "Back"
+
 [Beta]
 description = "Beta"
 one = "Beta"
