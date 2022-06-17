@@ -10,7 +10,7 @@
       - {{ localise "OfficeForNationalStatistics" .Language 1 }}
     </title>
     
-    {{if eq .Metadata.Title "Home" }}
+    {{ if eq .Metadata.Title "Home" }}
       <meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}"> 
     {{ else }}
       <meta name="description" content="{{ .Metadata.Description }}">
