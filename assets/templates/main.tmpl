@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{if .Language }}{{ .Language }}{{ else }}en{{ end }}" xml:lang="{{ if .Language }}{{ .Language }}{{ else }}en{{ end }}">
+<html lang="{{ if .Language }}{{ .Language }}{{ else }}en{{ end }}" xml:lang="{{ if .Language }}{{ .Language }}{{ else }}en{{ end }}">
   <head>
     <title>
       {{ if .Error.Title }}
@@ -10,10 +10,10 @@
       - {{ localise "OfficeForNationalStatistics" .Language 1 }}
     </title>
     
-    {{if eq .Metadata.Title "Home"}}
+    {{if eq .Metadata.Title "Home" }}
       <meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}"> 
     {{ else }}
-      <meta name="description" content="{{ .Metadata.Description}}">
+      <meta name="description" content="{{ .Metadata.Description }}">
     {{ end }}
 
     <meta charset="utf-8"/>
@@ -23,7 +23,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
     
     {{ if .Metadata.ServiceName }}
-      <meta name="ons:service" content="{{ .Metadata.ServiceName}}">
+      <meta name="ons:service" content="{{ .Metadata.ServiceName }}">
     {{ end }}
     
     {{ if .FeatureFlags.SixteensVersion }}
@@ -40,7 +40,7 @@
       {{ template "partials/json-ld/base" . }}
     {{- end }}
 
-    {{ if eq .Type "search"}}
+    {{ if eq .Type "search" }}
 
       {{/* if search a/b testing is at 100% then noindex tag else canonical tag */}}
       {{ if .SearchNoIndexEnabled }}
@@ -96,12 +96,12 @@
       <div class="ons-page">
         <div class="ons-page__content">
         {{ end }}
-        {{ if (ne .FeatureFlags.HideCookieBanner true)}}
+        {{ if (ne .FeatureFlags.HideCookieBanner true) }}
           {{ template "partials/banners/cookies" . }}
         {{ end }}
         {{ template "partials/header" . }}
         <main id="main" role="main" tabindex="-1">
-          {{yield}}
+          {{ yield }}
         </main>
         {{ template "partials/footer" . }}
         {{ if not .FeatureFlags.SixteensVersion }}
