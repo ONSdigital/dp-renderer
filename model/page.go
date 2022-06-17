@@ -29,6 +29,7 @@ type Page struct {
 	Pagination                       Pagination      `json:"pagination"`
 	TableOfContents                  TableOfContents `json:"table_of_contents"`
 	BackTo                           BackTo          `json:"back_to"`
+	SearchNoIndexEnabled			 bool			 `json:"search_no_index_enabled"`
 }
 
 // FeatureFlags contains toggles for certain features on the website
