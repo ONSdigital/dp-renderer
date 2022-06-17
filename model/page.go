@@ -29,16 +29,17 @@ type Page struct {
 	Pagination                       Pagination      `json:"pagination"`
 	TableOfContents                  TableOfContents `json:"table_of_contents"`
 	BackTo                           BackTo          `json:"back_to"`
+	SearchNoIndexEnabled             bool            `json:"search_no_index_enabled"`
 }
 
 // FeatureFlags contains toggles for certain features on the website
 type FeatureFlags struct {
-	HideCookieBanner         bool   `json:"hide_cookie_banner"`
-	ONSDesignSystemVersion   string `json:"ons_design_system_version"`
-	SixteensVersion          string `json:"legacy_sixteens_version"`
-	EnableCensusTile         bool   `json:"enable_census_tile"`
-	EnableCensusBanner       bool   `json:"enable_census_banner"`
-	EnableCensusResults      bool   `json:"enable_census_results"`
+	HideCookieBanner       bool   `json:"hide_cookie_banner"`
+	ONSDesignSystemVersion string `json:"ons_design_system_version"`
+	SixteensVersion        string `json:"legacy_sixteens_version"`
+	EnableCensusTile       bool   `json:"enable_census_tile"`
+	EnableCensusBanner     bool   `json:"enable_census_banner"`
+	EnableCensusResults    bool   `json:"enable_census_results"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
