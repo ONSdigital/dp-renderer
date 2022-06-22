@@ -22,6 +22,16 @@ func DateFormat(s string) string {
 	return template.HTMLEscapeString(t.Format("02 January 2006"))
 }
 
+func TimeFormat(s string) string {
+	t, err := time.Parse(time.RFC3339, s)
+	if err != nil {
+		log.Error(context.Background(), "failed to parse time", err)
+		return template.HTMLEscapeString(s)
+	}
+	t = localiseTime(&t)
+	return template.HTMLEscapeString(t.Format("3:04pm"))
+}
+
 func DateTimeFormat(s string) template.HTML {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {

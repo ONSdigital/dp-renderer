@@ -9,6 +9,7 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"stringArrayContains":          StringArrayContains,
 	"safeHTML":                     SafeHTML,
 	"dateFormat":                   DateFormat,
+	"timeFormat":                   TimeFormat,
 	"dateTimeFormat":               DateTimeFormat,
 	"dateFormatYYYYMMDD":           DateFormatYYYYMMDD,
 	"dateFormatYYYYMMDDNoSlashes":  DateFormatYYYYMMDDNoSlash,
