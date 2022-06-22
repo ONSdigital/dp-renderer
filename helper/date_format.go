@@ -22,6 +22,7 @@ func DateFormat(s string) string {
 	return template.HTMLEscapeString(t.Format("02 January 2006"))
 }
 
+// TimeFormat extracts the BST time value for 12hr clock from ISO8601 formatted timestamp
 func TimeFormat(s string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
