@@ -18,6 +18,14 @@ func TestDateFormat(t *testing.T) {
 	})
 }
 
+func TestTimeFormat(t *testing.T) {
+	Convey("Time format returns time when passed date-time", t, func() {
+		So(helper.TimeFormat("2022-05-31T08:30:00.000Z"), ShouldEqual, "9:30am")
+		So(helper.TimeFormat("2019-05-21T23:00:00.000Z"), ShouldEqual, "12:00am") // BST
+		So(helper.TimeFormat(""), ShouldEqual, "")
+	})
+}
+
 func TestDateFormatYYYYMMDD(t *testing.T) {
 	Convey("Date format returns short date pattern without slashes", t, func() {
 		So(helper.DateFormatYYYYMMDD("2019-08-15T00:00:00.000Z"), ShouldEqual, "2019/08/15")
