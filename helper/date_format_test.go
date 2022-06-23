@@ -22,8 +22,11 @@ func TestTimeFormat(t *testing.T) {
 	Convey("Time format returns time when passed date-time", t, func() {
 		So(helper.TimeFormat("2022-05-31T08:30:00.000Z", false), ShouldEqual, "09:30am") // BST
 		So(helper.TimeFormat("2019-05-21T23:00:00.000Z", false), ShouldEqual, "12:00am") // BST
-		So(helper.TimeFormat("2019-05-21T23:00:00.000Z", true), ShouldEqual, "00:00")
-		So(helper.TimeFormat("2019-05-21T13:40:00.000Z", true), ShouldEqual, "14:40")
+		So(helper.TimeFormat("2019-05-21T23:00:00.000Z", true), ShouldEqual, "00:00")    // BST
+		So(helper.TimeFormat("2019-05-21T13:40:00.000Z", true), ShouldEqual, "14:40")    // BST
+		So(helper.TimeFormat("2022-02-17T18:30:00.000Z", false), ShouldEqual, "06:30pm") // GMT
+		So(helper.TimeFormat("2020-12-17T03:00:00.000Z", false), ShouldEqual, "03:00am") // GMT
+		So(helper.TimeFormat("2022-11-17T22:00:00.000Z", true), ShouldEqual, "22:00")    // GMT
 		So(helper.TimeFormat("", true), ShouldEqual, "")
 	})
 }

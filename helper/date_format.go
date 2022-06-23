@@ -23,14 +23,14 @@ func DateFormat(s string) string {
 }
 
 // TimeFormat extracts the BST time value for 12hr clock from ISO8601 formatted timestamps
-func TimeFormat(s string, isGMT bool) string {
+func TimeFormat(s string, is24HRs bool) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
 	t = localiseTime(&t)
-	if !isGMT {
+	if !is24HRs {
 		return template.HTMLEscapeString(t.Format("03:04pm"))
 	}
 	return template.HTMLEscapeString(t.Format("15:04"))
