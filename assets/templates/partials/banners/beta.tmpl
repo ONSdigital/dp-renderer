@@ -7,11 +7,6 @@
       {{ if eq .Type "search" }}
         <div class="ons-col-auto ons-grid--flex ons-grid--no-wrap@l ons-grid--vertical-center">
             <span class="default-line-height ons-u-fs-s ons-u-m-no">{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}</span>
-                <form action="/search" method="get">
-                    <input type="hidden" id="q" name="q" value="{{ .Data.Query }}">
-                    <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
-                    <button type="submit" role="link" class="default-line-height ons-btn ons-btn__btn--link ons-btn__btn--search flush--sm" name="previous-version" data-gtm-search-exit="true">{{ localise "BetaPreviousVersion" .Language 1 }}</button>
-                </form>
             <span class="default-line-height ons-u-fs-s ons-u-m-no">.</span>
         </div>
       {{ else }}
