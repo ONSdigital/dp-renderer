@@ -5,6 +5,7 @@ import (
 	"net/url"
 )
 
+// Enumerates known social types that allow sharing a resource via a link URL
 type SocialType int
 
 const (
@@ -15,12 +16,14 @@ const (
 	SocialTwitter
 )
 
+// Represents an instance of a link URL for a specific shared resource
 type ShareLink struct {
 	Type               SocialType
 	Url                string
 	RequiresJavaScript bool
 }
 
+// Stringer interface
 func (s SocialType) String() string {
 	var result string
 	switch s {
@@ -74,6 +77,7 @@ func twitterLink(title, target string) ShareLink {
 	}
 }
 
+// Creates a ShareLink from the supplied resource title and target URL
 func (s SocialType) CreateLink(title, target string) ShareLink {
 	var result ShareLink
 	escTitle := url.QueryEscape(title)
