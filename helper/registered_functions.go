@@ -32,4 +32,5 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"truncateToMaximuCharacters":   TruncateToMaximumCharacters,
 	"trimPrefixedPeriod":           TrimPrefixedPeriod,
 	"intToString":                  IntToString,
+	"lower":                        Lower,
 }

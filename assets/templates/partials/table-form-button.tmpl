@@ -1,0 +1,24 @@
+{{ if .Url }}
+  <a
+    href="{{ .Url }}"
+    role="button"
+    class="ons-btn ons-btn--link ons-js-submit-btn{{ if .Classes }} {{ .Classes }}{{ end }}"
+    {{ if .Id }}id="{{ .Id }}"{{ end }}
+  >
+    <span class="ons-btn__inner">
+      <span class="ons-btn__text">{{ .Text }}</span>
+    </span>
+  </a>
+{{ else }}
+  <button
+    type="submit"
+    class="ons-btn{{ if .Classes }} {{ .Classes }}{{ end }}"
+    {{ if .Id }}id="{{ .Id }}"{{ end }}
+    {{ if .Value }}value="{{ .Value | safeHTML }}"{{ end }}
+    {{ if .Name }}name="{{ .Name }}"{{ end }}
+  >
+    <span class="ons-btn__inner">
+      <span class="ons-btn__text">{{ .Text }}</span>
+    </span>
+  </button>
+{{ end }}
