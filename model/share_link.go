@@ -42,7 +42,10 @@ func (s SocialType) String() string {
 }
 
 func emailLink(title, target string) ShareLink {
-	url := fmt.Sprintf("mailto:?subject=%s&body=%s%%0A%s", title, title, target)
+	escTitle := url.PathEscape(title)
+	escTarget := url.PathEscape(target)
+	escLineBreak := "%0D%0A"
+	url := fmt.Sprintf("mailto:?subject=%s&body=%s%s%s", escTitle, escTitle, escLineBreak, escTarget)
 	return ShareLink{
 		Type:               SocialEmail,
 		Url:                url,
@@ -51,7 +54,8 @@ func emailLink(title, target string) ShareLink {
 }
 
 func facebookLink(target string) ShareLink {
-	url := fmt.Sprintf("https://www.facebook.com/sharer.php?u=%s", target)
+	escTarget := url.QueryEscape(target)
+	url := fmt.Sprintf("https://www.facebook.com/sharer.php?u=%s", escTarget)
 	return ShareLink{
 		Type:               SocialFacebook,
 		Url:                url,
@@ -60,7 +64,8 @@ func facebookLink(target string) ShareLink {
 }
 
 func linkedinLink(target string) ShareLink {
-	url := fmt.Sprintf("https://www.linkedin.com/sharing/share-offsite/?url=%s", target)
+	escTarget := url.QueryEscape(target)
+	url := fmt.Sprintf("https://www.linkedin.com/sharing/share-offsite/?url=%s", escTarget)
 	return ShareLink{
 		Type:               SocialLinkedin,
 		Url:                url,
@@ -69,7 +74,9 @@ func linkedinLink(target string) ShareLink {
 }
 
 func twitterLink(title, target string) ShareLink {
-	url := fmt.Sprintf("https://twitter.com/intent/tweet?text=%s&url=%s", title, target)
+	escTitle := url.QueryEscape(title)
+	escTarget := url.QueryEscape(target)
+	url := fmt.Sprintf("https://twitter.com/intent/tweet?text=%s&url=%s", escTitle, escTarget)
 	return ShareLink{
 		Type:               SocialTwitter,
 		Url:                url,
@@ -80,18 +87,16 @@ func twitterLink(title, target string) ShareLink {
 // Creates a ShareLink from the supplied resource title and target URL
 func (s SocialType) CreateLink(title, target string) ShareLink {
 	var result ShareLink
-	escTitle := url.QueryEscape(title)
-	escTarget := url.QueryEscape(target)
 
 	switch s {
 	case SocialEmail:
-		result = emailLink(escTitle, escTarget)
+		result = emailLink(title, target)
 	case SocialFacebook:
-		result = facebookLink(escTarget)
+		result = facebookLink(target)
 	case SocialLinkedin:
-		result = linkedinLink(escTarget)
+		result = linkedinLink(target)
 	case SocialTwitter:
-		result = twitterLink(escTitle, escTarget)
+		result = twitterLink(title, target)
 	}
 
 	return result
