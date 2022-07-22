@@ -37,7 +37,7 @@ type Page struct {
 type NavigationItem struct {
 	Uri      string           `json:"uri"`
 	Label    string           `json:"label"`
-	SubItems []NavigationItem `json:"sub_item"`
+	SubItems []NavigationItem `json:"sub_items"`
 }
 
 // FeatureFlags contains toggles for certain features on the website
