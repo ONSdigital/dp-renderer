@@ -12,6 +12,7 @@ type ContentSection struct {
 
 // TableOfContents contains the contents of the page
 type TableOfContents struct {
+	Id           string                    `json:"id"`
 	AriaLabel    Localisation              `json:"aria_label"`
 	Title        Localisation              `json:"title"`
 	Sections     map[string]ContentSection `json:"sections"`
