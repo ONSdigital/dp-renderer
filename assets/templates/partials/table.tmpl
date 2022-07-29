@@ -1,0 +1,97 @@
+{{ if .FuncContainsVariant "scrollable" }}
+<div class="ons-table-scrollable ons-table-scrollable--on">
+  <div
+    class="ons-table-scrollable__content"
+    tabindex="0"
+    role="region"
+    {{ if and .Caption .AriaLabel }}
+      aria-label="{{ .Caption }}. {{ if .AriaLabel }}{{ .AriaLabel }}{{ else }}{{ localise "TableScrollableDefaultAriaLabel" .Language 1 }}{{ end }}"
+    {{ end }}
+  >
+{{ end }}
+    <table
+      {{ if .Id }}id="{{ .Id }}"{{ end }}
+      class="ons-table{{ if .TableClasses }} {{ .TableClasses }}{{ end }}{{ range .Variants }} ons-table--{{ . }}{{ end }}"
+      {{ if and .SortBy (.FuncContainsVariant "sortable") }}
+        data-aria-sort="{{ .SortBy }}"
+        data-aria-asc="{{ .AriaAsc }}"
+        data-aria-desc="{{ .AriaDesc }}"
+      {{ end }}
+    >
+      {{ if .Caption }}
+        <caption class="ons-table__caption{{ if .HideCaption }} ons-u-vh{{ end }}">
+          {{- .Caption -}}
+        </caption>
+      {{ end }}
+      <thead class="ons-table__head">
+        <tr class="ons-table__row">
+          {{ range $th := .TableHeaders }}
+            <th
+              scope="col"
+              class="ons-table__header{{ if $th.ThClasses }} {{ $th.ThClasses }}{{ end }}{{ if $th.Numeric }} ons-table__header--numeric{{ end }}"
+              {{ if $.FuncContainsVariant "sortable" }}
+                aria-sort="{{ if $th.AriaSort }}{{ $th.AriaSort }}{{ else }}none{{ end }}"
+              {{ end }}
+            >
+              <span {{ if $.FuncContainsVariant "sortable" }}class="ons-u-vh"{{ end }}>
+                {{- $th.Value -}}
+              </span>
+              {{ if $.FuncContainsVariant "sortable" }}
+                {{ template "icons/sort-sprite" $th.Value }}
+              {{ end }}
+            </th>
+          {{ end }}
+        </tr>
+      </thead>
+      <tbody class="ons-table__body">
+        {{ range $tr := .TableRows }}
+          <tr
+            class="ons-table__row{{ if $tr.Highlight }} ons-table__row--highlight{{ end }}"
+            {{ if $tr.Name }}name="{{ $tr.Name }}"{{ end }}
+            {{ if $tr.Id }}id="{{ $tr.Id }}"{{ end }}
+          >
+            {{ range $td := $tr.TableData }}
+              <td
+                class="ons-table__cell{{ if $td.TdClasses }} {{ $td.TdClasses }}{{ end }}{{ if $td.Numeric }} ons-table__cell--numeric{{ end }}"
+                {{ if $td.Id }}id="{{ $td.Id }}"{{ end }}
+                {{ if $td.Name }}name="{{ $td.Name }}"{{ end }}
+                {{ if $td.Data }}data-th="{{ $td.Data }}"{{ end }}
+                {{ if $td.DataSort }}data-sort-value="{{ $td.DataSort }}"{{ end }}
+              >
+                {{ if $td.Form }}
+                  <form
+                    action="{{ $td.Form.Action }}"
+                    method="{{ if $td.Form.Method }}{{ $td.Form.Method }}{{ else }}POST{{ end }}"
+                  >
+                    {{ template "partials/table-form-button" $td.Form.Button }}
+                    {{ range $hiddenField := $td.Form.HiddenFormFields }}
+                      <input
+                        type="hidden"
+                        {{ if $hiddenField.Name }}name="{{ $hiddenField.Name }}"{{ end }}
+                        {{ if $hiddenField.Value }}value="{{ $hiddenField.Value }}"{{ end }}
+                      />
+                    {{ end }}
+                  </form>
+                {{ end }}
+                {{ if $td.Value }}
+                  {{ $td.Value | safeHTML }}
+                {{ end }}
+              </td>
+            {{ end }}
+          </tr>
+        {{ end }}
+      </tbody>
+      {{ if .TableFooters }}
+        <tfoot class="ons-table__foot">
+          <tr class="ons-table__row">
+            {{ range $tfoot := .TableFooters }}
+              <td class="ons-table__cell ons-u-fs-s">{{ $tfoot.Value }}</td>
+            {{ end }}
+          </tr>
+        </tfoot>
+      {{ end }}
+    </table>
+{{ if .FuncContainsVariant "scrollable" }}
+  </div>
+</div>
+{{ end }}

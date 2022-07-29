@@ -654,3 +654,8 @@ one = "November"
 [TimestampMonthDecember]
 description = "December"
 one = "December"
+
+# Table
+[TableScrollableDefaultAriaLabel]
+description = "Scrollable table"
+one = "Scrollable table"

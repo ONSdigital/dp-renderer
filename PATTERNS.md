@@ -289,3 +289,791 @@ p.BackTo = coreModel.BackTo{
 {{ template "partials/back-to" . }}
 <div>Some more html</div>
 ```
+
+## Table
+
+To instatiate the [Table](https://ons-design-system.netlify.app/components/table/) UI component in your service needs an entry in the mapper and a template. However as there are many variations of this component this will be expanded on in the next section.
+
+- Basic `mapper.go` example:
+
+```go
+p.ExampleTable = coreModel.Table{
+  Caption: "Example caption",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "Column A",
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A",
+        },
+      },
+    },
+  },
+}
+```
+
+- In the template file within your service, reference the `partials/table.tmpl` file:
+
+```tmpl
+{{ template "partials/table" .ExampleTable }}
+```
+
+### Variations
+
+The Table component supports many variations. These are optional, and can be
+combined:
+
+- "compact"
+- "responsive"
+- "scrollable"
+- "sortable"
+- "row-hover"
+
+All variations are configured through the mapper.
+
+#### Table with footer
+
+```go
+p.ExampleTable = return coreModel.Table{
+  Caption: "A basic table with a footer",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "Column A",
+    },
+    {
+      Value: "Column B",
+    },
+    {
+      Value: "Column C",
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A1",
+        },
+        {
+          Value: "Cell B1",
+        },
+        {
+          Value: "Cell C1",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A2",
+        },
+        {
+          Value: "Cell B2",
+        },
+        {
+          Value: "Cell C2",
+        },
+      },
+    },
+  },
+  TableFooters: []coreModel.TableFooter{
+    {
+      Value: "Column summary A",
+    },
+    {
+      Value: "Column summary B",
+    },
+    {
+      Value: "Column summary C",
+    },
+  },
+}
+```
+
+#### Compact table
+
+```go
+p.ExampleTable = coreModel.Table{
+  Variants: []string{"compact", "row-hover"},
+  Caption:  "A compacted table with a large number of columns",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "Column A",
+    },
+    {
+      Value: "Column B",
+    },
+    {
+      Value: "Column C",
+    },
+    {
+      Value: "Column D",
+    },
+    {
+      Value: "Column E",
+    },
+    {
+      Value: "Column F",
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A1",
+        },
+        {
+          Value: "Cell B1",
+        },
+        {
+          Value: "Cell C1",
+        },
+        {
+          Value: "Cell D1",
+        },
+        {
+          Value: "Cell E1",
+        },
+        {
+          Value: "Cell F1",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A2",
+        },
+        {
+          Value: "Cell B2",
+        },
+        {
+          Value: "Cell C2",
+        },
+        {
+          Value: "Cell D2",
+        },
+        {
+          Value: "Cell E1",
+        },
+        {
+          Value: "Cell F1",
+        },
+      },
+    },
+  },
+}
+```
+
+#### Numeric table
+
+```go
+p.ExampleTable = coreModel.Table{
+  Caption: "A basic table with numeric values",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "Country",
+    },
+    {
+      Value:   "Population mid-2020",
+      Numeric: true,
+    },
+    {
+      Value:   "% change 2019 to 2020",
+      Numeric: true,
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "England",
+        },
+        {
+          Value:   "67,081,000",
+          Numeric: true,
+        },
+        {
+          Value:   "0.43",
+          Numeric: true,
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Northern Ireland",
+        },
+        {
+          Value:   "1,896,000",
+          Numeric: true,
+        },
+        {
+          Value:   "0.10",
+          Numeric: true,
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Scotland",
+        },
+        {
+          Value:   "5,466,000",
+          Numeric: true,
+        },
+        {
+          Value:   "0.05",
+          Numeric: true,
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Wales",
+        },
+        {
+          Value:   "3,170,000",
+          Numeric: true,
+        },
+        {
+          Value:   "0.53",
+          Numeric: true,
+        },
+      },
+    },
+  },
+}
+```
+
+#### Responsive table
+
+```go
+p.ExampleTable = coreModel.Table{
+  Variants: []string{"responsive"},
+  Caption:  "Responsive table with stacked rows for small viewports",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "Country",
+    },
+    {
+      Value: "Highest mountain",
+    },
+    {
+      Value:   "Height in metres",
+      Numeric: true,
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Scotland",
+          Data:  "Country",
+        },
+        {
+          Value: "Ben Nevis",
+          Data:  "Highest mountain",
+        },
+        {
+          Value:   "1,345",
+          Data:    "Height",
+          Numeric: true,
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Wales",
+          Data:  "Country",
+        },
+        {
+          Value: "Snowdon",
+          Data:  "Highest mountain",
+        },
+        {
+          Value:   "1,085",
+          Data:    "Height",
+          Numeric: true,
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "England",
+          Data:  "Country",
+        },
+        {
+          Value: "Scafell Pike",
+          Data:  "Highest mountain",
+        },
+        {
+          Value:   "978",
+          Data:    "Height",
+          Numeric: true,
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Northern Ireland",
+          Data:  "Country",
+        },
+        {
+          Value: "Slieve Donard",
+          Data:  "Highest mountain",
+        },
+        {
+          Value:   "850",
+          Data:    "Height",
+          Numeric: true,
+        },
+      },
+    },
+  },
+}
+```
+
+#### Scrollable table
+
+```go
+p.ExampleTable = coreModel.Table{
+  Variants:  []string{"scrollable"},
+  Caption:   "Scrollable table",
+  AriaLabel: "There are 7 columns in this table. Some of the table may be off screen. Scroll or drag horizontally to bring into view.",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "ID",
+    },
+    {
+      Value: "Title",
+    },
+    {
+      Value: "Abbreviation",
+    },
+    {
+      Value: "Legal basis",
+    },
+    {
+      Value: "Frequency",
+    },
+    {
+      Value: "Date",
+    },
+    {
+      Value: "Status",
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "023",
+        },
+        {
+          Value: "Monthly Business Survey - Retail Sales Index",
+        },
+        {
+          Value: "RSI",
+        },
+        {
+          Value: "Statistics of Trade Act 1947",
+        },
+        {
+          Value: "Monthly",
+        },
+        {
+          Value: "20 Jan 2018",
+        },
+        {
+          Value: "<span class='ons-status ons-status--success'>Ready</span>",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "112",
+        },
+        {
+          Value: "Annual Inward Foreign Direct Investment Survey",
+        },
+        {
+          Value: "AIFDI",
+        },
+        {
+          Value: "Statistics of Trade Act 1947",
+        },
+        {
+          Value: "Annually",
+        },
+        {
+          Value: "26 Feb 2018",
+        },
+        {
+          Value: "<span class='ons-status ons-status--dead'>Not ready</span>",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "332",
+        },
+        {
+          Value: "Business Register and Employment Survey",
+        },
+        {
+          Value: "BRES",
+        },
+        {
+          Value: "Statistics of Trade Act 1947",
+        },
+        {
+          Value: "Annually",
+        },
+        {
+          Value: "23 Jan 2013",
+        },
+        {
+          Value: "<span class='ons-status ons-status--info'>In progress</span>",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "654",
+        },
+        {
+          Value: "Quartely Survey of Building Materials Sand and Gravel",
+        },
+        {
+          Value: "QBMS",
+        },
+        {
+          Value: "Statistics of Trade Act 1947 - BEIS",
+        },
+        {
+          Value: "Quartely",
+        },
+        {
+          Value: "24 Jan 2015",
+        },
+        {
+          Value: "<span class='ons-status ons-status--error'>Issue</span>",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "765",
+        },
+        {
+          Value: "Monthly Survey of Building Materials Concrete Building Blocks",
+        },
+        {
+          Value: "MSBB",
+        },
+        {
+          Value: "Voluntary",
+        },
+        {
+          Value: "Monthly",
+        },
+        {
+          Value: "25 Jan 2014",
+        },
+        {
+          Value: "<span class='ons-status ons-status--success'>Ready</span>",
+        },
+      },
+    },
+  },
+}
+```
+
+#### Sortable table
+
+```go
+p.ExampleTable = coreModel.Table{
+  Variants: []string{"sortable"},
+  Caption:  "Javascript enhanced sortable table",
+  SortBy:   "Sort by",
+  AriaAsc:  "ascending",
+  AriaDesc: "descending",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "ID",
+    },
+    {
+      Value: "Title",
+    },
+    {
+      Value: "Abbreviation",
+    },
+    {
+      Value: "Legal basis",
+    },
+    {
+      Value: "Frequency",
+    },
+    {
+      Value: "Date",
+    },
+    {
+      Value: "Status",
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "023",
+        },
+        {
+          Value: "Monthly Business Survey - Retail Sales Index",
+        },
+        {
+          Value: "RSI",
+        },
+        {
+          Value: "Statistics of Trade Act 1947",
+        },
+        {
+          Value:    "Monthly",
+          DataSort: "1",
+        },
+        {
+          Value:    "20 Jan 2018",
+          DataSort: "2018-01-20",
+        },
+        {
+          Value:    "<span class='ons-status ons-status--success'>Ready</span>",
+          DataSort: "0",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "112",
+        },
+        {
+          Value: "Annual Inward Foreign Direct Investment Survey",
+        },
+        {
+          Value: "AIFDI",
+        },
+        {
+          Value: "Statistics of Trade Act 1947",
+        },
+        {
+          Value:    "Annually",
+          DataSort: "12",
+        },
+        {
+          Value:    "26 Feb 2018",
+          DataSort: "2018-02-26",
+        },
+        {
+          Value:    "<span class='ons-status ons-status--dead'>Not ready</span>",
+          DataSort: "1",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "332",
+        },
+        {
+          Value: "Business Register and Employment Survey",
+        },
+        {
+          Value: "BRES",
+        },
+        {
+          Value: "Statistics of Trade Act 1947",
+        },
+        {
+          Value:    "Annually",
+          DataSort: "12",
+        },
+        {
+          Value:    "23 Jan 2013",
+          DataSort: "2013-01-23",
+        },
+        {
+          Value:    "<span class='ons-status ons-status--info'>In progress</span>",
+          DataSort: "2",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "654",
+        },
+        {
+          Value: "Quartely Survey of Building Materials Sand and Gravel",
+        },
+        {
+          Value: "QBMS",
+        },
+        {
+          Value: "Statistics of Trade Act 1947 - BEIS",
+        },
+        {
+          Value:    "Quartely",
+          DataSort: "3",
+        },
+        {
+          Value:    "24 Jan 2015",
+          DataSort: "2015-01-24",
+        },
+        {
+          Value:    "<span class='ons-status ons-status--error'>Issue</span>",
+          DataSort: "3",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "765",
+        },
+        {
+          Value: "Monthly Survey of Building Materials Concrete Building Blocks",
+        },
+        {
+          Value: "MSBB",
+        },
+        {
+          Value: "Voluntary",
+        },
+        {
+          Value:    "Monthly",
+          DataSort: "1",
+        },
+        {
+          Value:    "25 Jan 2014",
+          DataSort: "2014-01-25",
+        },
+        {
+          Value:    "<span class='ons-status ons-status--success'>Ready</span>",
+          DataSort: "0",
+        },
+      },
+    },
+  },
+}
+```
+
+### Forms
+
+Forms can be embedded in any data cell.
+
+```go
+linkForm := coreModel.TableForm{
+  Method: "POST",
+  Action: "#",
+  Button: coreModel.TableFormButton{
+    Text:  "Link",
+    Id:    "form-link",
+    Name:  "form-link-name",
+    Value: "form-link-value",
+    Url:   "https://example.com/foo",
+  },
+  HiddenFormFields: []coreModel.TableFormHiddenField{
+    {
+      Name:  "hidden-name-1",
+      Value: "hidden-value-1",
+    },
+    {
+      Name:  "hidden-name-2",
+      Value: "hidden-value-2",
+    },
+  },
+}
+
+buttonForm := coreModel.TableForm{
+  Method: "POST",
+  Action: "#",
+  Button: coreModel.TableFormButton{
+    Text:  "Button",
+    Id:    "form-button-id",
+    Name:  "form-button-name",
+    Value: "form-button-value",
+  },
+  HiddenFormFields: []coreModel.TableFormHiddenField{
+    {
+      Name:  "hidden-name-1",
+      Value: "hidden-value-1",
+    },
+    {
+      Name:  "hidden-name-2",
+      Value: "hidden-value-2",
+    },
+  },
+}
+
+p.ExampleTable = coreModel.Table{
+  Caption: "A basic table with a caption",
+  Id:      "basic-table",
+  TableHeaders: []coreModel.TableHeader{
+    {
+      Value: "Column A",
+    },
+    {
+      Value: "Column B",
+    },
+    {
+      Value: "Column C",
+    },
+  },
+  TableRows: []coreModel.TableRow{
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A1",
+          Name:  "cell-name",
+        },
+        {
+          Value: "Cell B1",
+        },
+        {
+          Value: "Cell C1",
+        },
+      },
+    },
+    {
+      TableData: []coreModel.TableData{
+        {
+          Value: "Cell A2",
+        },
+        {
+          Form: &linkForm,
+        },
+        {
+          Form: &buttonForm,
+        },
+      },
+    },
+  },
+}
+```
+
+### Localisation
+
+All translations live in `assets/locales/core.<language>.toml` and
+are prefixed with `Table`.

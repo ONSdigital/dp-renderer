@@ -659,3 +659,8 @@ one = "Tachwedd"
 [TimestampMonthDecember]
 description = "December"
 one = "Rhagfyr"
+
+# Table
+[TableScrollableDefaultAriaLabel]
+description = "Scrollable table"
+one = "Scrollable table"
