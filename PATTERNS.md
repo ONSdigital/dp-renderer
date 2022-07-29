@@ -80,6 +80,7 @@ To instatiate the [table-of-contents](https://ons-design-system.netlify.app/comp
 
 ```go
 page.TableOfContents = TableOfContents{
+  Id: "toc",
   AriaLabel: "Table of contents",
   Title: "Contents",
   Sections: map[string]ContentSection{
@@ -98,6 +99,8 @@ page.TableOfContents = TableOfContents{
   }
 }
 ```
+
+The `Id` is optional.
 
 The keys of the Sections map must match the entries in DisplayOrder,
 and these keys are used as the fragment IDs in the anchor tags.
