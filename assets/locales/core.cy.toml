@@ -527,8 +527,8 @@ one = "Nesaf"
 # Back to
 [BackToContents]
 description = "Back to contents"
-one = "Back to content"
-other = "Back to contents"
+one = "Yn ôl i'r cynnwys"
+other = "Yn ôl at y cynnwys"
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Current dataset page
