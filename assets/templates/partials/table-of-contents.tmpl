@@ -1,6 +1,10 @@
 {{/* See PATTERNS.md for usage instructions */}}
 
-<aside class="ons-toc-container" role="complementary">
+<aside
+  {{ if .TableOfContents.Id }}id="{{ .TableOfContents.Id }}"{{ end }}
+  class="ons-toc-container"
+  role="complementary"
+>
   <nav
     class="ons-toc"
     aria-label="{{ .TableOfContents.AriaLabel.FuncLocalise .Language }}"

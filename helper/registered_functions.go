@@ -8,6 +8,8 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"humanSize":                    HumanSize,
 	"stringArrayContains":          StringArrayContains,
 	"safeHTML":                     SafeHTML,
+	"timeFormat24h":                TimeFormat24h,
+	"timeFormat12h":                TimeFormat12h,
 	"dateFormat":                   DateFormat,
 	"dateTimeFormat":               DateTimeFormat,
 	"dateFormatYYYYMMDD":           DateFormatYYYYMMDD,
@@ -30,4 +32,5 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"truncateToMaximuCharacters":   TruncateToMaximumCharacters,
 	"trimPrefixedPeriod":           TrimPrefixedPeriod,
 	"intToString":                  IntToString,
+	"lower":                        Lower,
 }

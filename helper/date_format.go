@@ -12,44 +12,40 @@ import (
 
 var tz *time.Location
 
-func DateFormat(s string) string {
+func dateWithFormat(s string, format string) string {
 	t, err := time.Parse(time.RFC3339, s)
 	if err != nil {
 		log.Error(context.Background(), "failed to parse time", err)
 		return template.HTMLEscapeString(s)
 	}
 	t = localiseTime(&t)
-	return template.HTMLEscapeString(t.Format("02 January 2006"))
+	return template.HTMLEscapeString(t.Format(format))
 }
 
-func DateTimeFormat(s string) template.HTML {
-	t, err := time.Parse(time.RFC3339, s)
-	if err != nil {
-		log.Error(context.Background(), "failed to parse time", err)
-		return template.HTML(s)
-	}
-	t = localiseTime(&t)
-	return template.HTML(t.Format("02 January 2006 15:04"))
+func DateFormat(s string) string {
+	return dateWithFormat(s, "02 January 2006")
+}
+
+// TimeFormat24h extracts time value for 24hr clock from ISO8601 formatted timestamps
+func TimeFormat24h(s string) string {
+	return dateWithFormat(s, "15:04")
+}
+
+// TimeForma12h extracts time value for 12hr clock from ISO8601 formatted timestamps
+func TimeFormat12h(s string) string {
+	return dateWithFormat(s, "03:04pm")
+}
+
+func DateTimeFormat(s string) string {
+	return dateWithFormat(s, "02 January 2006 15:04")
 }
 
 func DateFormatYYYYMMDD(s string) string {
-	t, err := time.Parse(time.RFC3339, s)
-	if err != nil {
-		log.Error(context.Background(), "failed to parse time", err)
-		return template.HTMLEscapeString(s)
-	}
-	t = localiseTime(&t)
-	return template.HTMLEscapeString(t.Format("2006/01/02"))
+	return dateWithFormat(s, "2006/01/02")
 }
 
 func DateFormatYYYYMMDDNoSlash(s string) string {
-	t, err := time.Parse(time.RFC3339, s)
-	if err != nil {
-		log.Error(context.Background(), "failed to parse time", err)
-		return template.HTMLEscapeString(s)
-	}
-	t = localiseTime(&t)
-	return template.HTMLEscapeString(t.Format("20060102"))
+	return dateWithFormat(s, "20060102")
 }
 
 func DateTimeOnsDatePatternFormat(s, lang string) string {

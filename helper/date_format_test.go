@@ -18,6 +18,26 @@ func TestDateFormat(t *testing.T) {
 	})
 }
 
+func TestTimeFormat24h(t *testing.T) {
+	Convey("Time format returns time in 24h when passed date-time", t, func() {
+		So(helper.TimeFormat24h("2019-05-21T23:00:00.000Z"), ShouldEqual, "00:00") // BST
+		So(helper.TimeFormat24h("2019-05-21T13:40:00.000Z"), ShouldEqual, "14:40") // BST
+		So(helper.TimeFormat24h("2022-11-17T22:00:00.000Z"), ShouldEqual, "22:00") // GMT
+		So(helper.TimeFormat24h("2023-01-17T02:00:00.000Z"), ShouldEqual, "02:00") // GMT
+		So(helper.TimeFormat24h(""), ShouldEqual, "")
+	})
+}
+
+func TestTimeFormathh(t *testing.T) {
+	Convey("Time format returns time 12h when passed date-time", t, func() {
+		So(helper.TimeFormat12h("2022-05-31T08:30:00.000Z"), ShouldEqual, "09:30am") // BST
+		So(helper.TimeFormat12h("2019-05-21T23:00:00.000Z"), ShouldEqual, "12:00am") // BST
+		So(helper.TimeFormat12h("2022-02-17T18:30:00.000Z"), ShouldEqual, "06:30pm") // GMT
+		So(helper.TimeFormat12h("2020-12-17T03:00:00.000Z"), ShouldEqual, "03:00am") // GMT
+		So(helper.TimeFormat12h(""), ShouldEqual, "")
+	})
+}
+
 func TestDateFormatYYYYMMDD(t *testing.T) {
 	Convey("Date format returns short date pattern without slashes", t, func() {
 		So(helper.DateFormatYYYYMMDD("2019-08-15T00:00:00.000Z"), ShouldEqual, "2019/08/15")
