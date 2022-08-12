@@ -2,6 +2,7 @@ package render
 
 import (
 	"context"
+	"html/template"
 	"io"
 	"strings"
 	"sync"
@@ -34,6 +35,20 @@ When the siteDomain argument contains "localhost", then the rendering client wil
 This means that templates are recompiled on request.
 Any updates made to your templates can then be viewed upon browser refresh, rather than having to restart the app.
 */
+func NewWithDefaultClientWithPartials(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string) *Render {
+	isDevelopment := false
+	if strings.Contains(siteDomain, "localhost") {
+		isDevelopment = true
+	}
+	return &Render{
+		client:                   client.NewUnrolledAdapterWithPartials(assetFn, assetNameFn, isDevelopment),
+		hMutex:                   &sync.Mutex{},
+		jMutex:                   &sync.Mutex{},
+		PatternLibraryAssetsPath: assetsPath,
+		SiteDomain:               siteDomain,
+	}
+}
+
 func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn func() []string, assetsPath, siteDomain string) *Render {
 	isDevelopment := false
 	if strings.Contains(siteDomain, "localhost") {
@@ -50,8 +65,12 @@ func NewWithDefaultClient(assetFn func(name string) ([]byte, error), assetNameFn
 
 // BuildPage resolves the rendering of a specific page with a given model and template name
 func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName string) {
+	r.BuildPageWithOptions(w, pageModel, templateName, nil)
+}
+
+func (r *Render) BuildPageWithOptions(w io.Writer, pageModel interface{}, templateName string, funcMap template.FuncMap) {
 	ctx := context.Background()
-	if err := r.render(w, 200, templateName, pageModel); err != nil {
+	if err := r.render(w, 200, templateName, pageModel, funcMap); err != nil {
 		log.Error(ctx, "failed to render template", err, log.Data{"template": templateName})
 		if modelErr := r.error(w, 500, model.ErrorResponse{
 			Error: err.Error(),
@@ -69,10 +88,10 @@ func (r *Render) NewBasePageModel() model.Page {
 	return model.NewPage(r.PatternLibraryAssetsPath, r.SiteDomain)
 }
 
-func (r *Render) render(w io.Writer, status int, templateName string, pageModel interface{}) error {
+func (r *Render) render(w io.Writer, status int, templateName string, pageModel interface{}, funcMap template.FuncMap) error {
 	r.hMutex.Lock()
 	defer r.hMutex.Unlock()
-	return r.client.BuildHTML(w, status, templateName, pageModel)
+	return r.client.BuildHTML(w, status, templateName, pageModel, funcMap)
 }
 
 func (r *Render) error(w io.Writer, status int, errorModel model.ErrorResponse) error {
