@@ -1,0 +1,10 @@
+<div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+    <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">{{.Title}}</h3>
+    
+    <div class="scrollable-container">
+            <div id="chart-{{.Filename}}" data-filename="{{.Filename}}" data-uri="{{.URI}}" class="markdown-chart">
+                <img src="http://localhost:8080/chartimage?uri={{.URI}}&hideSource=true" />
+            </div>
+    </div>
+    
+</div>
