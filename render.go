@@ -54,8 +54,7 @@ func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName stri
 	r.BuildPageWithOptions(w, pageModel, templateName, nil)
 }
 
-// TODO change godoc
-// BuildPageWithOptions resolves the rendering of a specific page with a given model and template name
+// BuildPageWithOptions resolves the rendering of a specific page with a given model and template name, using a custom func map
 func (r *Render) BuildPageWithOptions(w io.Writer, pageModel interface{}, templateName string, overrideFuncMap template.FuncMap) {
 	ctx := context.Background()
 	if err := r.render(w, 200, templateName, pageModel, overrideFuncMap); err != nil {
