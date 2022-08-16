@@ -6,6 +6,8 @@ import (
 	"strings"
 	"sync"
 
+	render "github.com/ONSdigital/dp-renderer"
+	"github.com/ONSdigital/dp-renderer/client"
 	"github.com/ONSdigital/dp-renderer/helper"
 )
 
@@ -18,13 +20,9 @@ type contentResolver struct {
 }
 
 type Helper struct {
-	asset                    func(name string) ([]byte, error)
-	assetNames               func() []string
-	development              bool
-	patternLibraryAssetsPath string
-	siteDomain               string
-	contentResolvers         []contentResolver
-	getContent               GetContent
+	contentResolvers []contentResolver
+	getContent       GetContent
+	render           *render.Render
 }
 
 func NewHelper(asset func(name string) ([]byte, error), assetNames func() []string, patternLibraryAssetsPath string, siteDomain string, getContent GetContent) *Helper {
@@ -33,12 +31,8 @@ func NewHelper(asset func(name string) ([]byte, error), assetNames func() []stri
 		isDevelopment = true
 	}
 	helper := &Helper{
-		asset:                    asset,
-		assetNames:               assetNames,
-		development:              isDevelopment,
-		patternLibraryAssetsPath: patternLibraryAssetsPath,
-		siteDomain:               siteDomain,
-		getContent:               getContent,
+		getContent: getContent,
+		render:     render.New(client.NewUnrolledAdapterWithLayout(asset, assetNames, isDevelopment, ""), patternLibraryAssetsPath, siteDomain),
 	}
 
 	chartResolver := contentResolver{
@@ -58,9 +52,12 @@ func NewHelper(asset func(name string) ([]byte, error), assetNames func() []stri
 
 func (h *Helper) GetFuncMap() template.FuncMap {
 	res := make(template.FuncMap)
-
+	//Copy registered funcs
+	for k, v := range helper.RegisteredFuncs {
+		res[k] = v
+	}
+	// Override markdown
 	res["markdown"] = h.markdown
-
 	return res
 }
 
@@ -83,17 +80,17 @@ func (h *Helper) replaceCustomTags(text string) string {
 		for _, match := range matches {
 			sem <- 1
 			wg.Add(1)
-			go func(match []string) {
+			go func(rc RenderContent, match []string) {
 				defer func() {
 					<-sem
 					wg.Done()
 				}()
 
-				partial, _ := item.RenderContent(match)
+				partial, _ := rc(match)
 				// TODO check err
 
 				text = strings.Replace(text, match[0], partial, 1)
-			}(match)
+			}(item.RenderContent, match)
 		}
 	}
 
