@@ -1,0 +1,22 @@
+<div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+    <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">{{.Title}}</h3>
+    <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">{{.Subtitle}}</h4>
+
+    <div class="scrollable-container">
+        <div id="chart-{{.Filename}}" data-filename="{{.Filename}}" data-uri="{{.URI}}" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="http://localhost:8080/chartimage?uri={{.URI}}&hideSource=true" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+    </div>
+    
+    {{ if .Source }}
+    <h4 class="flush--third--bottom font-size--h6 clear-left">Source: {{.Source}}</h4>
+    {{ end }}
+    <div id="notes-{{.Filename}}" class="notes-holder-js">
+        {{ if .Notes }}
+        <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+        {{.Notes|markdown}}
+        {{ end }}
+    </div>
+</div>

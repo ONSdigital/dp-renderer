@@ -1,0 +1,7 @@
+{{/* Not having line breaks before and after the div markups breaks tables displaying on the page */}}
+<div class="markdown-table-container print--avoid-break">
+    <h3 class="font-size--18 margin-top--1">{{.Title}}</h3>
+
+    <h4 class="print--hide font-size--h6 margin-top--1 padding-top--0"><span role="text">Download this table <span class="visuallyhidden">{{.Title}}</span></span></h4>
+    <a href="http://localhost:8080/file?uri={{.URI}}.xls" title="Download as xls" class="btn btn--primary print--hide" data-gtm-title="{{.Title}}" data-gtm-type="download-table-xls" aria-label="Download table {{.Title}} as xls ({{.URI}}.xls)">.xls ({{.URI}}.xls)"</a>
+</div>
