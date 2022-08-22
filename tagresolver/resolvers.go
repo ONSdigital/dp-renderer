@@ -11,18 +11,25 @@ func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 	return h.getContentAndApplyTemplate(contentPath, "partials/ons-chart")
 }
 
-func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
-	// figureTag := match[0]   // figure tag
-	contentPath := match[1] // figure path
-
-	return h.getContentAndApplyTemplate(contentPath, "partials/ons-table")
-}
-
 func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
 	return h.getContentAndApplyTemplate(contentPath, "partials/ons-equation")
+}
+
+func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
+	// figureTag := match[0]   // figure tag
+	contentPath := match[1] // figure path
+
+	return h.getContentAndApplyTemplate(contentPath, "partials/ons-image")
+}
+
+func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
+	// figureTag := match[0]   // figure tag
+	contentPath := match[1] // figure path
+
+	return h.getContentAndApplyTemplate(contentPath, "partials/ons-table")
 }
 
 func (h *TagResolverHelper) getContentAndApplyTemplate(path string, template string) (string, error) {
