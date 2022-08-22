@@ -47,7 +47,16 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		RenderContent: helper.ONSTableResolver,
 	}
 
-	helper.contentResolvers = []contentResolver{chartResolver, tableResolver}
+	equationResolver := contentResolver{
+		Regexp:        *regexp.MustCompile("<ons-equation\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
+		RenderContent: helper.ONSEquationResolver,
+	}
+
+	helper.contentResolvers = []contentResolver{
+		chartResolver,
+		tableResolver,
+		equationResolver,
+	}
 
 	return helper
 }

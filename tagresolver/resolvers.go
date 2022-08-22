@@ -18,6 +18,13 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 	return h.getContentAndApplyTemplate(contentPath, "partials/ons-table")
 }
 
+func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) {
+	// figureTag := match[0]   // figure tag
+	contentPath := match[1] // figure path
+
+	return h.getContentAndApplyTemplate(contentPath, "partials/ons-equation")
+}
+
 func (h *TagResolverHelper) getContentAndApplyTemplate(path string, template string) (string, error) {
 	model, err := h.getContent(path)
 	if err != nil {
