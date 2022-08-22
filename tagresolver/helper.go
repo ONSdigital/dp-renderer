@@ -38,7 +38,7 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 	}
 
 	chartResolver := contentResolver{
-		Regexp:        *regexp.MustCompile("<ons-chart path=\"(.*)\" />"),
+		Regexp:        *regexp.MustCompile("<ons-chart\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
 		RenderContent: helper.ONSChartResolver,
 	}
 
