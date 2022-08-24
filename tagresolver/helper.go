@@ -79,6 +79,11 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		RenderContent: helper.ONSTable2Resolver,
 	}
 
+	warningResolver := contentResolver{
+		Regexp:        *regexp.MustCompile(`(?s)<ons-warning-box>(.*?)</ons-warning-box>`),
+		RenderContent: helper.ONSWarningResolver,
+	}
+
 	helper.contentResolvers = []contentResolver{
 		boxResolver,
 		chartResolver,
@@ -87,6 +92,7 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		quoteResolver,
 		tableResolver,
 		tablev2Resolver,
+		warningResolver,
 	}
 
 	return helper

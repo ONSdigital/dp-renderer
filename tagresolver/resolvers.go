@@ -106,6 +106,13 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 	return h.applyTemplate(model, "partials/ons-quote"), nil
 }
 
+func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {
+	// figureTag := match[0]   // figure tag
+	content := match[1] // tag content
+
+	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-warning"), nil
+}
+
 func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) string {
 	buf := new(bytes.Buffer)
 	h.render.BuildPage(buf, figure, template)
