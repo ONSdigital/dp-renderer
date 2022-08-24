@@ -7,6 +7,14 @@ import (
 	"github.com/ONSdigital/dp-renderer/model"
 )
 
+func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
+	// figureTag := match[0]   // figure tag
+	// align := match[1]   // align attribute
+	content := match[2] // tag content
+
+	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-box"), nil
+}
+
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
@@ -57,6 +65,17 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 	return h.applyTemplate(figure, "partials/ons-image"), nil
 }
 
+func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
+	model := model.Figure{}
+	// figureTag := match[0]   // figure tag
+	model.Content = match[1] // content attribute
+	if len(match) > 2 {
+		model.Attribution = match[2] // attr attribute
+	}
+
+	return h.applyTemplate(model, "partials/ons-quote"), nil
+}
+
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
@@ -85,25 +104,6 @@ func (h *TagResolverHelper) ONSTable2Resolver(match []string) (string, error) {
 	figure.Content = table
 
 	return h.applyTemplate(figure, "partials/ons-tablev2"), nil
-}
-
-func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
-	// figureTag := match[0]   // figure tag
-	// align := match[1]   // align attribute
-	content := match[2] // tag content
-
-	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-box"), nil
-}
-
-func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
-	model := model.Figure{}
-	// figureTag := match[0]   // figure tag
-	model.Content = match[1] // content attribute
-	if len(match) > 2 {
-		model.Attribution = match[2] // attr attribute
-	}
-
-	return h.applyTemplate(model, "partials/ons-quote"), nil
 }
 
 func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {
