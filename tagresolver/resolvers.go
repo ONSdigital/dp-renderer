@@ -95,6 +95,17 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-box"), nil
 }
 
+func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
+	model := model.Figure{}
+	// figureTag := match[0]   // figure tag
+	model.Content = match[1] // content attribute
+	if len(match) > 2 {
+		model.Attribution = match[2] // attr attribute
+	}
+
+	return h.applyTemplate(model, "partials/ons-quote"), nil
+}
+
 func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) string {
 	buf := new(bytes.Buffer)
 	h.render.BuildPage(buf, figure, template)

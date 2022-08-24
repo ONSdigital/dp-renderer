@@ -44,6 +44,11 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		render:         render.New(client.NewUnrolledAdapterWithLayout(asset, assetNames, isDevelopment, ""), patternLibraryAssetsPath, siteDomain),
 	}
 
+	boxResolver := contentResolver{
+		Regexp:        *regexp.MustCompile(`(?s)<ons-box align="([a-zA-Z]*)">(.*?)</ons-box>`),
+		RenderContent: helper.ONSBoxResolver,
+	}
+
 	chartResolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-chart\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
 		RenderContent: helper.ONSChartResolver,
@@ -59,6 +64,11 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		RenderContent: helper.ONSImageResolver,
 	}
 
+	quoteResolver := contentResolver{
+		Regexp:        *regexp.MustCompile("<ons-quote\\scontent=\"(.*?)\"\\s?(?:\\s+attr=\"(.*?)\")?\\s*/>"),
+		RenderContent: helper.ONSQuoteResolver,
+	}
+
 	tableResolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-table\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
 		RenderContent: helper.ONSTableResolver,
@@ -69,18 +79,14 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		RenderContent: helper.ONSTable2Resolver,
 	}
 
-	boxResolver := contentResolver{
-		Regexp:        *regexp.MustCompile(`(?s)<ons-box align="([a-zA-Z]*)">(.*?)</ons-box>`),
-		RenderContent: helper.ONSBoxResolver,
-	}
-
 	helper.contentResolvers = []contentResolver{
+		boxResolver,
 		chartResolver,
 		equationResolver,
 		imageResolver,
+		quoteResolver,
 		tableResolver,
 		tablev2Resolver,
-		boxResolver,
 	}
 
 	return helper

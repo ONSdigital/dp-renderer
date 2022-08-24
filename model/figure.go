@@ -18,6 +18,7 @@ type Figure struct {
 	AspectRatio   string        `json:"aspectRatio,omitempty"`
 	Files         []SidecarFile `json:"files,omitempty"`
 	Content       string
+	Attribution   string
 	// TODO: files, categories, series, headers, data
 }
 
