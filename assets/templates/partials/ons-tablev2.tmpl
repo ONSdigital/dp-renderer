@@ -1,0 +1,8 @@
+{{/* Not having line breaks before and after the div markups breaks tables displaying on the page */}}
+<div class="markdown-table-container print--avoid-break">
+    <div class="scrollable-container" tabindex="0">
+        <div class="markdown-table-wrap">
+            {{.Content | safeHTML }}
+        </div>
+    </div>
+</div>

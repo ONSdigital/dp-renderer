@@ -10,11 +10,18 @@ import (
 	render "github.com/ONSdigital/dp-renderer"
 	"github.com/ONSdigital/dp-renderer/client"
 	"github.com/ONSdigital/dp-renderer/helper"
+	"github.com/ONSdigital/dp-renderer/model"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
 type RenderContent func(match []string) (string, error)
-type GetContent func(path string) (interface{}, error)
+
+type ResourceReader struct {
+	GetFigure       func(path string) (model.Figure, error)
+	GetResourceBody func(path string) ([]byte, error)
+	GetTable        func(html []byte) (string, error)
+	GetFileSize     func(path string) (int, error)
+}
 
 type contentResolver struct {
 	Regexp        regexp.Regexp
@@ -23,18 +30,18 @@ type contentResolver struct {
 
 type TagResolverHelper struct {
 	contentResolvers []contentResolver
-	getContent       GetContent
+	resourceReader   ResourceReader
 	render           *render.Render
 }
 
-func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames func() []string, patternLibraryAssetsPath string, siteDomain string, getContent GetContent) *TagResolverHelper {
+func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames func() []string, patternLibraryAssetsPath string, siteDomain string, resourceReader ResourceReader) *TagResolverHelper {
 	isDevelopment := false
 	if strings.Contains(siteDomain, "localhost") {
 		isDevelopment = true
 	}
 	helper := &TagResolverHelper{
-		getContent: getContent,
-		render:     render.New(client.NewUnrolledAdapterWithLayout(asset, assetNames, isDevelopment, ""), patternLibraryAssetsPath, siteDomain),
+		resourceReader: resourceReader,
+		render:         render.New(client.NewUnrolledAdapterWithLayout(asset, assetNames, isDevelopment, ""), patternLibraryAssetsPath, siteDomain),
 	}
 
 	chartResolver := contentResolver{
@@ -57,11 +64,23 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 		RenderContent: helper.ONSTableResolver,
 	}
 
+	tablev2Resolver := contentResolver{
+		Regexp:        *regexp.MustCompile("<ons-table-v2\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
+		RenderContent: helper.ONSTable2Resolver,
+	}
+
+	boxResolver := contentResolver{
+		Regexp:        *regexp.MustCompile(`(?s)<ons-box align="([a-zA-Z]*)">(.*?)</ons-box>`),
+		RenderContent: helper.ONSBoxResolver,
+	}
+
 	helper.contentResolvers = []contentResolver{
 		chartResolver,
 		equationResolver,
 		imageResolver,
 		tableResolver,
+		tablev2Resolver,
+		boxResolver,
 	}
 
 	return helper
