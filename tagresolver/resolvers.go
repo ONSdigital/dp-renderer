@@ -117,6 +117,18 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	for i, sidecarFile := range figure.Files {
+		if sidecarFile.Type == "html" {
+			resource, err := h.resourceReader.GetResourceBody(uri + ".html")
+			if err != nil {
+				return "", err
+			}
+			figure.Files[i].Content = string(resource)
+		}
+	}
+
+	fmt.Printf("ONSTableResolver() figure %#v", figure)
 	return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
 }
 
