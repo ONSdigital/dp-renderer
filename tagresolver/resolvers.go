@@ -12,14 +12,14 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 	// align := match[1]   // align attribute
 	content := match[2] // tag content
 
-	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-box"), nil
+	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-tags/ons-box"), nil
 }
 
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	return h.getContentAndApplyTemplate(h.resourceReader.GetFigure, contentPath, "partials/ons-chart")
+	return h.getContentAndApplyTemplate(h.resourceReader.GetFigure, contentPath, "partials/ons-tags/ons-chart")
 }
 
 func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) {
@@ -41,7 +41,7 @@ func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) 
 		}
 	}
 
-	return h.applyTemplate(figure, "partials/ons-equation"), nil
+	return h.applyTemplate(figure, "partials/ons-tags/ons-equation"), nil
 }
 
 func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
@@ -62,7 +62,7 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 		figure.Files[i].FileSize = strconv.Itoa(size)
 	}
 
-	return h.applyTemplate(figure, "partials/ons-image"), nil
+	return h.applyTemplate(figure, "partials/ons-tags/ons-image"), nil
 }
 
 func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
@@ -73,17 +73,17 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 		model.Attribution = match[2] // attr attribute
 	}
 
-	return h.applyTemplate(model, "partials/ons-quote"), nil
+	return h.applyTemplate(model, "partials/ons-tags/ons-quote"), nil
 }
 
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	return h.getContentAndApplyTemplate(h.resourceReader.GetFigure, contentPath, "partials/ons-table")
+	return h.getContentAndApplyTemplate(h.resourceReader.GetFigure, contentPath, "partials/ons-tags/ons-table")
 }
 
-func (h *TagResolverHelper) ONSTable2Resolver(match []string) (string, error) {
+func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
@@ -103,14 +103,14 @@ func (h *TagResolverHelper) ONSTable2Resolver(match []string) (string, error) {
 	}
 	figure.Content = table
 
-	return h.applyTemplate(figure, "partials/ons-tablev2"), nil
+	return h.applyTemplate(figure, "partials/ons-tags/ons-table-v2"), nil
 }
 
 func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	content := match[1] // tag content
 
-	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-warning"), nil
+	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-tags/ons-warning"), nil
 }
 
 func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) string {

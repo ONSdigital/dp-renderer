@@ -76,7 +76,7 @@ func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames fu
 
 	tablev2Resolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-table-v2\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
-		RenderContent: helper.ONSTable2Resolver,
+		RenderContent: helper.ONSTableV2Resolver,
 	}
 
 	warningResolver := contentResolver{
