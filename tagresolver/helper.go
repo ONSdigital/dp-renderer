@@ -22,18 +22,26 @@ type contentResolver struct {
 
 type TagResolverHelper struct {
 	contentResolvers []contentResolver
-	resourceReader   ResourceReader
+	resourceReader   resourceReader
 	render           *render.Render
 }
 
-func NewTagResolverHelper(asset func(name string) ([]byte, error), assetNames func() []string, patternLibraryAssetsPath string, siteDomain string, resourceReader ResourceReader) *TagResolverHelper {
+type TagResolverRenderConfig struct {
+	Asset                    func(name string) ([]byte, error)
+	AssetNames               func() []string
+	PatternLibraryAssetsPath string
+	SiteDomain               string
+}
+
+func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderConfig) *TagResolverHelper {
 	isDevelopment := false
-	if strings.Contains(siteDomain, "localhost") {
+	if strings.Contains(cfg.SiteDomain, "localhost") {
 		isDevelopment = true
 	}
+	resourceReader := resourceReader{reader: rr, uri: uri}
 	helper := &TagResolverHelper{
 		resourceReader: resourceReader,
-		render:         render.New(client.NewUnrolledAdapterWithLayout(asset, assetNames, isDevelopment, ""), patternLibraryAssetsPath, siteDomain),
+		render:         render.New(client.NewUnrolledAdapterWithLayout(cfg.Asset, cfg.AssetNames, isDevelopment, ""), cfg.PatternLibraryAssetsPath, cfg.SiteDomain),
 	}
 
 	boxResolver := contentResolver{

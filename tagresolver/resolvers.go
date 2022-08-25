@@ -2,7 +2,6 @@ package tagresolver
 
 import (
 	"bytes"
-	"errors"
 	"fmt"
 	"math"
 	"strconv"
@@ -20,14 +19,10 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 }
 
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
-	if h.resourceReader.GetFigure == nil {
-		return "", errors.New("Invalid resource reader for chart resolver")
-	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	uri := h.resourceReader.getPathUri(contentPath)
-	figure, err := h.resourceReader.GetFigure(uri)
+	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
 	}
@@ -35,21 +30,17 @@ func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 }
 
 func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) {
-	if h.resourceReader.GetResourceBody == nil {
-		return "", errors.New("Invalid resource reader for equation resolver")
-	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	uri := h.resourceReader.getPathUri(contentPath)
-	figure, err := h.resourceReader.GetFigure(uri)
+	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
 	}
 
 	for i, sidecarFile := range figure.Files {
 		if sidecarFile.Type == "generated-svg" {
-			resource, err := h.resourceReader.GetResourceBody(uri + "." + sidecarFile.FileType)
+			resource, err := h.resourceReader.GetResourceBody(sidecarFile.Filename)
 			if err != nil {
 				return "", err
 			}
@@ -61,19 +52,15 @@ func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) 
 }
 
 func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
-	if h.resourceReader.GetFigure == nil || h.resourceReader.GetFileSize == nil {
-		return "", errors.New("Invalid resource reader for image resolver")
-	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	uri := h.resourceReader.getPathUri(contentPath)
-	figure, err := h.resourceReader.GetFigure(uri)
+	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
 	}
 	for i, sidecarFile := range figure.Files {
-		size, err := h.resourceReader.GetFileSize(uri + "." + sidecarFile.FileType)
+		size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
 		if err != nil {
 			return "", err
 		}
@@ -106,21 +93,17 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 }
 
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
-	if h.resourceReader.GetFigure == nil {
-		return "", errors.New("Invalid resource reader for table resolver")
-	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	uri := h.resourceReader.getPathUri(contentPath)
-	figure, err := h.resourceReader.GetFigure(uri)
+	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
 	}
 
 	for i, sidecarFile := range figure.Files {
 		if sidecarFile.Type == "html" {
-			resource, err := h.resourceReader.GetResourceBody(uri + ".html")
+			resource, err := h.resourceReader.GetResourceBody(sidecarFile.Filename)
 			if err != nil {
 				return "", err
 			}
@@ -133,16 +116,10 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 }
 
 func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
-	if h.resourceReader.GetResourceBody == nil ||
-		h.resourceReader.GetTable == nil ||
-		h.resourceReader.GetFigure == nil {
-		return "", errors.New("Invalid resource reader for table v2 resolver")
-	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	uri := h.resourceReader.getPathUri(contentPath)
-	html, err := h.resourceReader.GetResourceBody(uri + ".json")
+	html, err := h.resourceReader.GetResourceBody(contentPath + ".json")
 	if err != nil {
 		return "", err
 	}
@@ -152,7 +129,7 @@ func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 		return "", err
 	}
 
-	figure, err := h.resourceReader.GetFigure(uri)
+	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
 	}
