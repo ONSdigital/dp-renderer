@@ -1,1 +1,7 @@
-<figure class="ons-figure">{{(index .Files 0).Content | safeHTML}}</figure>
+<figure class="ons-figure">
+  {{ range $file := .Files }}
+    {{ if eq $file.Type "generated-svg" }}
+      {{ $file.Content | safeHTML }}
+    {{ end }}
+  {{ end }}
+</figure>

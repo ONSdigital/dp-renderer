@@ -117,7 +117,6 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
 
-	fmt.Printf("ONSTableResolver() figure %#v", figure)
 	return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
 }
 
