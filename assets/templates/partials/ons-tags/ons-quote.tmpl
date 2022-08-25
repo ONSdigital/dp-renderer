@@ -1,6 +1,8 @@
 <figure class="quote">
   <blockquote class="quote--body">
-      <p>{{ .Content }}</p>
+    <p>{{ .Content }}</p>
   </blockquote>
-  {{ if .Attribution }}<figcaption class="quote--source">{{ .Attribution }} </figcaption>{{end}}
+  {{ if .Attribution }}
+    <figcaption class="quote--source">{{ .Attribution }}</figcaption>
+  {{ end }}
 </figure>

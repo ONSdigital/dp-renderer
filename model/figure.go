@@ -19,6 +19,7 @@ type Figure struct {
 	Files         []SidecarFile `json:"files,omitempty"`
 	Content       string
 	Attribution   string
+	Align         string
 	// TODO: files, categories, series, headers, data
 }
 
