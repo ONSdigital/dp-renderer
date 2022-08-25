@@ -2,6 +2,9 @@ package tagresolver
 
 import (
 	"bytes"
+	"errors"
+	"fmt"
+	"math"
 	"strconv"
 
 	"github.com/ONSdigital/dp-renderer/model"
@@ -17,24 +20,36 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 }
 
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
+	if h.resourceReader.GetFigure == nil {
+		return "", errors.New("Invalid resource reader for chart resolver")
+	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	return h.getContentAndApplyTemplate(h.resourceReader.GetFigure, contentPath, "partials/ons-tags/ons-chart")
+	uri := h.resourceReader.getPathUri(contentPath)
+	figure, err := h.resourceReader.GetFigure(uri)
+	if err != nil {
+		return "", err
+	}
+	return h.applyTemplate(figure, "partials/ons-tags/ons-chart"), nil
 }
 
 func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) {
+	if h.resourceReader.GetResourceBody == nil {
+		return "", errors.New("Invalid resource reader for equation resolver")
+	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	figure, err := h.resourceReader.GetFigure(contentPath)
+	uri := h.resourceReader.getPathUri(contentPath)
+	figure, err := h.resourceReader.GetFigure(uri)
 	if err != nil {
 		return "", err
 	}
 
 	for i, sidecarFile := range figure.Files {
 		if sidecarFile.Type == "generated-svg" {
-			resource, err := h.resourceReader.GetResourceBody(contentPath + "." + sidecarFile.FileType)
+			resource, err := h.resourceReader.GetResourceBody(uri + "." + sidecarFile.FileType)
 			if err != nil {
 				return "", err
 			}
@@ -46,24 +61,37 @@ func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) 
 }
 
 func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
+	if h.resourceReader.GetFigure == nil || h.resourceReader.GetFileSize == nil {
+		return "", errors.New("Invalid resource reader for image resolver")
+	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	figure, err := h.resourceReader.GetFigure(contentPath)
+	uri := h.resourceReader.getPathUri(contentPath)
+	figure, err := h.resourceReader.GetFigure(uri)
 	if err != nil {
 		return "", err
 	}
 	for i, sidecarFile := range figure.Files {
-		size, err := h.resourceReader.GetFileSize(contentPath + "." + sidecarFile.FileType)
+		size, err := h.resourceReader.GetFileSize(uri + "." + sidecarFile.FileType)
 		if err != nil {
 			return "", err
 		}
-		// TODO convert size to human readable byte count.
-		// See https://github.com/ONSdigital/babbage/blob/c77bf4936a4c8872c674e974a3e9c08d1ad89cf4/src/main/java/com/github/onsdigital/babbage/template/handlebars/helpers/resolve/DataHelpers.java#L276-L282
-		figure.Files[i].FileSize = strconv.Itoa(size)
+		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
 
 	return h.applyTemplate(figure, "partials/ons-tags/ons-image"), nil
+}
+
+func humanReadableByteCount(b int) string {
+	var unit float64 = 1000
+	bytes := float64(b)
+	if bytes < unit {
+		return strconv.Itoa(b) + " B"
+	}
+	exp := (int)(math.Log(bytes) / math.Log(unit))
+	pre := string("kMGTPE"[exp-1])
+	return fmt.Sprintf("%.1f %sB", bytes/math.Pow(unit, float64(exp)), pre)
 }
 
 func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
@@ -78,17 +106,31 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 }
 
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
+	if h.resourceReader.GetFigure == nil {
+		return "", errors.New("Invalid resource reader for table resolver")
+	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	return h.getContentAndApplyTemplate(h.resourceReader.GetFigure, contentPath, "partials/ons-tags/ons-table")
+	uri := h.resourceReader.getPathUri(contentPath)
+	figure, err := h.resourceReader.GetFigure(uri)
+	if err != nil {
+		return "", err
+	}
+	return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
 }
 
 func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
+	if h.resourceReader.GetResourceBody == nil ||
+		h.resourceReader.GetTable == nil ||
+		h.resourceReader.GetFigure == nil {
+		return "", errors.New("Invalid resource reader for table v2 resolver")
+	}
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	html, err := h.resourceReader.GetResourceBody(contentPath + ".json")
+	uri := h.resourceReader.getPathUri(contentPath)
+	html, err := h.resourceReader.GetResourceBody(uri + ".json")
 	if err != nil {
 		return "", err
 	}
@@ -98,7 +140,7 @@ func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 		return "", err
 	}
 
-	figure, err := h.resourceReader.GetFigure(contentPath)
+	figure, err := h.resourceReader.GetFigure(uri)
 	if err != nil {
 		return "", err
 	}
@@ -118,15 +160,4 @@ func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) s
 	buf := new(bytes.Buffer)
 	h.render.BuildPage(buf, figure, template)
 	return buf.String()
-}
-
-func (h *TagResolverHelper) getContentAndApplyTemplate(getContent func(string) (model.Figure, error), path string, template string) (string, error) {
-	model, err := getContent(path)
-	if err != nil {
-		return "", err
-	}
-
-	buf := new(bytes.Buffer)
-	h.render.BuildPage(buf, model, template)
-	return buf.String(), nil
 }

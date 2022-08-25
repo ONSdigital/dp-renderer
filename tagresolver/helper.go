@@ -10,22 +10,14 @@ import (
 	render "github.com/ONSdigital/dp-renderer"
 	"github.com/ONSdigital/dp-renderer/client"
 	"github.com/ONSdigital/dp-renderer/helper"
-	"github.com/ONSdigital/dp-renderer/model"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
-type RenderContent func(match []string) (string, error)
-
-type ResourceReader struct {
-	GetFigure       func(path string) (model.Figure, error)
-	GetResourceBody func(path string) ([]byte, error)
-	GetTable        func(html []byte) (string, error)
-	GetFileSize     func(path string) (int, error)
-}
+type renderContent func(match []string) (string, error)
 
 type contentResolver struct {
 	Regexp        regexp.Regexp
-	RenderContent RenderContent
+	RenderContent renderContent
 }
 
 type TagResolverHelper struct {
@@ -128,7 +120,7 @@ func (h *TagResolverHelper) replaceCustomTags(text string) string {
 		for _, match := range matches {
 			sem <- 1
 			wg.Add(1)
-			go func(rc RenderContent, match []string) {
+			go func(rc renderContent, match []string) {
 				defer func() {
 					<-sem
 					wg.Done()
