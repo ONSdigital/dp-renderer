@@ -1,13 +1,53 @@
 {{/* Used by dp-renderer/tagresolver */}}
+{{/* WARNING: Indenting the top level <div> or <img> will trigger the markdown parser into rendering this as a <code> block */}}
+{{ if gt (len .Files) 0 }}
 <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
-    <h4 class="flush--third--vertical">{{.Title}}</h4>
-    {{ range .Files }}
-    <img src="http://dp.aws.onsdigital.uk/resource?uri={{$.URI}}.{{.FileType}}" alt="{{$.AltText}}">
-    <a class="btn btn--primary print--hide" title="Download as {{.FileType}}"
-                   data-gtm-title="{{$.Title}}" data-gtm-type="download-{{.FileType}}"
-                   href="http://dp.aws.onsdigital.uk/file?uri={{$.URI}}.{{.FileType}}"
-                   aria-label="Download {{$.Title}} as {{.FileType}} ({{.FileSize}})">
-                   .{{.FileType}} ({{.FileSize}})
-    </a>
+  {{/* TODO sub(sup(.Title)) */}}
+  <h4 class="flush--third--vertical">{{ .Title }}</h4>
+
+  {{/* TODO sub(sup(.Title)) */}}
+  {{ if .Subtitle }}
+    <h5 class="flush--third--bottom">{{ .Subtitle }}</h5>
+  {{ end }}
+
+  {{ range .Files }}
+    <img
+      src="http://dp.aws.onsdigital.uk/resource?uri={{ $.URI }}.{{ .FileType }}"
+      alt="{{ $.AltText }}"
+    >
+  {{ end }}
+
+  {{ if .Source }}
+    <h6 class="flush--third--bottom">Source: {{ .Source }}</h6>
+  {{ end }}
+
+  {{ if .Notes }}
+    <h6 class="flush--third--bottom">Notes:</h6>
+    {{ markdown .Notes }}
+  {{ end }}
+
+  <h6 class="print--hide">
+    <span role="text">Download this image <span class="visuallyhidden">{{ .Title }}</span></span>
+  </h6>
+  {{ range .Files }}
+    {{ $ariaLabel := printf "Download %s" $.Title }}
+    {{ if eq .Type "uploaded-image" }}
+      {{ $ariaLabel = printf "%s as %s (%s)" $ariaLabel .FileType .FileSize }}
+    {{ else if eq .Type "uploaded-data"}}
+      {{ $ariaLabel = printf "%s (%s)" $ariaLabel .FileSize }}
     {{ end }}
+    <a
+      class="btn btn--primary print--hide"
+      title="Download as {{ .FileType }}"
+      data-gtm-title="{{ $.Title }}" {{/* TODO sub(sup($.Title)) */}}
+      data-gtm-type="download-{{ .FileType }}"
+      href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.{{ .FileType }}"
+      aria-label="{{ $ariaLabel }}"
+    >
+      .{{ .FileType }} ({{ .FileSize }})
+    </a>
+  {{ end }}
 </div>
+{{ else }}
+<img src="/resource?uri={{ .Uri }}">
+{{ end }}
