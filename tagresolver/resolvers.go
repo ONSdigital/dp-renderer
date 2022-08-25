@@ -109,6 +109,12 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 			}
 			figure.Files[i].Content = string(resource)
 		}
+
+		size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
+		if err != nil {
+			return "", err
+		}
+		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
 
 	fmt.Printf("ONSTableResolver() figure %#v", figure)
