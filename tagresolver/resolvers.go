@@ -26,6 +26,8 @@ func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	figure.DownloadFormats = []string{"csv", "xls"}
+	fmt.Printf("ONSChartResolver figure %#v\n\n", figure)
 	return h.applyTemplate(figure, "partials/ons-tags/ons-chart"), nil
 }
 
