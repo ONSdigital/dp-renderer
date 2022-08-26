@@ -124,12 +124,12 @@ func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
 
-	html, err := h.resourceReader.GetResourceBody(contentPath + ".json")
+	figureJSON, err := h.resourceReader.GetResourceBody(contentPath + ".json")
 	if err != nil {
 		return "", err
 	}
 
-	table, err := h.resourceReader.GetTable(html)
+	tableHTML, err := h.resourceReader.GetTable(figureJSON)
 	if err != nil {
 		return "", err
 	}
@@ -138,7 +138,7 @@ func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	figure.Content = table
+	figure.Content = tableHTML
 
 	return h.applyTemplate(figure, "partials/ons-tags/ons-table-v2"), nil
 }
