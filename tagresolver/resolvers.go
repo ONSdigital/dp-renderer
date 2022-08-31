@@ -15,7 +15,7 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 	model.Align = match[1]   // align attribute
 	model.Content = match[2] // tag content
 
-	return h.applyTemplate(model, "partials/sixteens-ons-tags/ons-box"), nil
+	return h.applyTemplate(model, "partials/ons-tags/ons-box"), nil
 }
 
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
