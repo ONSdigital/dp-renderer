@@ -1,0 +1,8 @@
+{{/* Used by dp-renderer/tagresolver */}}
+<figure class="ons-figure">
+  {{ range $file := .Files }}
+    {{ if eq $file.Type "generated-svg" }}
+      {{ $file.Content | safeHTML }}
+    {{ end }}
+  {{ end }}
+</figure>

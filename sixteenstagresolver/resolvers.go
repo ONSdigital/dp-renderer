@@ -1,4 +1,4 @@
-package tagresolver
+package sixteenstagresolver
 
 import (
 	"bytes"
@@ -50,7 +50,7 @@ func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) 
 		}
 	}
 
-	return h.applyTemplate(figure, "partials/ons-tags/ons-equation"), nil
+	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-equation"), nil
 }
 
 func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
