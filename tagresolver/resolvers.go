@@ -90,7 +90,7 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 		model.Attribution = match[2] // attr attribute
 	}
 
-	return h.applyTemplate(model, "partials/sixteens-ons-tags/ons-quote"), nil
+	return h.applyTemplate(model, "partials/ons-tags/ons-quote"), nil
 }
 
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {

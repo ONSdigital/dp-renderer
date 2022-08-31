@@ -1,0 +1,8 @@
+{{/* Used by dp-renderer/tagresolver */}}
+<blockquote class="ons-quote">
+  {{ template "icons/quote" }}
+  <span class="ons-quote__text ons-u-fs-l">{{ .Content }}</span>
+  {{- if .Attribution -}}
+    <span class="ons-quote__ref">&mdash; {{ .Attribution }}</span>
+  {{- end -}}
+</blockquote>
