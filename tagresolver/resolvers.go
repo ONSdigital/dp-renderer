@@ -15,7 +15,7 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 	model.Align = match[1]   // align attribute
 	model.Content = match[2] // tag content
 
-	return h.applyTemplate(model, "partials/ons-tags/ons-box"), nil
+	return h.applyTemplate(model, "partials/sixteens-ons-tags/ons-box"), nil
 }
 
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
@@ -28,7 +28,7 @@ func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 	}
 	figure.DownloadFormats = []string{"csv", "xls"}
 	fmt.Printf("ONSChartResolver figure %#v\n\n", figure)
-	return h.applyTemplate(figure, "partials/ons-tags/ons-chart"), nil
+	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-chart"), nil
 }
 
 func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) {
@@ -50,7 +50,7 @@ func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) 
 		}
 	}
 
-	return h.applyTemplate(figure, "partials/ons-tags/ons-equation"), nil
+	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-equation"), nil
 }
 
 func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
@@ -69,7 +69,7 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
 
-	return h.applyTemplate(figure, "partials/ons-tags/ons-image"), nil
+	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-image"), nil
 }
 
 func humanReadableByteCount(b int) string {
@@ -91,7 +91,7 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 		model.Attribution = match[2] // attr attribute
 	}
 
-	return h.applyTemplate(model, "partials/ons-tags/ons-quote"), nil
+	return h.applyTemplate(model, "partials/sixteens-ons-tags/ons-quote"), nil
 }
 
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
@@ -119,7 +119,7 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
 
-	return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
+	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-table"), nil
 }
 
 func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
@@ -142,14 +142,14 @@ func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 	}
 	figure.Content = tableHTML
 
-	return h.applyTemplate(figure, "partials/ons-tags/ons-table-v2"), nil
+	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-table-v2"), nil
 }
 
 func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	content := match[1] // tag content
 
-	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-tags/ons-warning"), nil
+	return h.applyTemplate(model.Figure{Content: content}, "partials/sixteens-ons-tags/ons-warning"), nil
 }
 
 func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) string {
