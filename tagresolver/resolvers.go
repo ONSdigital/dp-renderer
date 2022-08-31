@@ -148,7 +148,7 @@ func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	content := match[1] // tag content
 
-	return h.applyTemplate(model.Figure{Content: content}, "partials/sixteens-ons-tags/ons-warning"), nil
+	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-tags/ons-warning"), nil
 }
 
 func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) string {
