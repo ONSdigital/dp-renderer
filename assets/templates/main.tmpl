@@ -3,6 +3,7 @@
   <head>
     <title>
       {{ if .Error.Title }}
+        {{ localise "Error" .Language 1 }}:
         {{ .Error.Title }}
       {{ else if .Metadata.Title }}
         {{ .Metadata.Title }}
