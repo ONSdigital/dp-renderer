@@ -68,8 +68,7 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 		}
 		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
-
-	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-image"), nil
+	return h.applyTemplate(figure, "partials/ons-tags/ons-image"), nil
 }
 
 func humanReadableByteCount(b int) string {
