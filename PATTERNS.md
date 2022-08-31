@@ -36,11 +36,21 @@ function takes parameters which makes it a little more obvious:
 {{ .Component.FuncIsSubmitVisible .State .Language }}
 ```
 
+## Contents
+
+* [Collapsible](#collapsible)
+* [Table of Contents](#table-of-contents)
+* [Pagination](#pagination)
+* [Input date](#inputdate)
+* [Back to](#backto)
+* [Table](#table)
+* [Correct errors](#correct-errors)
+
 ## Collapsible
 
 To instatiate the [collapsible](https://ons-design-system.netlify.app/components/collapsible/) UI component in your service:
 
-- In the `mapper.go` file in your service, populate the relevant fields
+* In the `mapper.go` file in your service, populate the relevant fields
 e.g.
 
 ```go
@@ -63,7 +73,7 @@ p.Collapsible = coreModel.Collapsible{
  }
 ```
 
-- In the template file within your service, reference the `collapsible.tmpl` file
+* In the template file within your service, reference the `collapsible.tmpl` file
 e.g.
 
 ```tmpl
@@ -72,11 +82,11 @@ e.g.
 <div>Some more html</div>
 ```
 
-## Table Of Contents
+## Table of Contents
 
 To instatiate the [table-of-contents](https://ons-design-system.netlify.app/components/table-of-contents/) UI component in your service:
 
-- In the `mapper.go` file in your service, populate the relevant fields:
+* In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.TableOfContents = TableOfContents{
@@ -108,7 +118,7 @@ and these keys are used as the fragment IDs in the anchor tags.
 Omitting a section's key from the DisplayOrder will prevent that
 section from being listed in the table of contents.
 
-- In the template file within your service, reference the
+* In the template file within your service, reference the
 `table-of-contents.tmpl` file, where `.` is the Page model:
 
 ```tmpl
@@ -122,14 +132,14 @@ section from being listed in the table of contents.
 Entries in `assets/locales/core.<lang>.toml` can be referenced by their
 keys to enable localisation:
 
-- `AriaLabel` may be overridden by `AriaLabelLocaliseKey`
-- `Title` may be overridden by `TitleLocaliseKey`
+* `AriaLabel` may be overridden by `AriaLabelLocaliseKey`
+* `Title` may be overridden by `TitleLocaliseKey`
 
 ## Pagination
 
 To instatiate the [pagination](https://ons-design-system.netlify.app/components/pagination/) UI component in your service:
 
-- In the `mapper.go` file in your service, populate the relevant fields:
+* In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.Pagination = Pagination{
@@ -216,7 +226,7 @@ rendered with ellipsis between both bookends. For example, setting
 1 ... 4 5 6 ... 10
 ```
 
-- In the template file within your service, reference the
+* In the template file within your service, reference the
 `pagination.tmpl` file, where `.` is the Page model:
 
 ```tmpl
@@ -234,7 +244,7 @@ are prefixed with `Pagination`.
 
 To instatiate the [Dates](https://ons-design-system.netlify.app/patterns/dates/) UI pattern in your service:
 
-- In the `mapper.go` file in your service, populate the relevant fields:
+* In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.PublicationDate = InputDate{
@@ -251,7 +261,7 @@ page.PublicationDate = InputDate{
 }
 ```
 
-- In the template file within your service, reference the
+* In the template file within your service, reference the
 `input-date.tmpl` file:
 
 ```tmpl
@@ -269,7 +279,7 @@ are prefixed with `InputDate`.
 
 To instatiate the 'back to' UI component in your service:
 
-- In the `mapper.go` file in your service, populate the relevant fields:
+* In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 p.BackTo = coreModel.BackTo{
@@ -281,7 +291,7 @@ p.BackTo = coreModel.BackTo{
 }
 ```
 
-- In the template file within your service, reference the
+* In the template file within your service, reference the
 `back-to.tmpl` file:
 
 ```tmpl
@@ -294,7 +304,7 @@ p.BackTo = coreModel.BackTo{
 
 To instatiate the [Table](https://ons-design-system.netlify.app/components/table/) UI component in your service needs an entry in the mapper and a template. However as there are many variations of this component this will be expanded on in the next section.
 
-- Basic `mapper.go` example:
+* Basic `mapper.go` example:
 
 ```go
 p.ExampleTable = coreModel.Table{
@@ -316,7 +326,7 @@ p.ExampleTable = coreModel.Table{
 }
 ```
 
-- In the template file within your service, reference the `partials/table.tmpl` file:
+* In the template file within your service, reference the `partials/table.tmpl` file:
 
 ```tmpl
 {{ template "partials/table" .ExampleTable }}
@@ -327,11 +337,11 @@ p.ExampleTable = coreModel.Table{
 The Table component supports many variations. These are optional, and can be
 combined:
 
-- "compact"
-- "responsive"
-- "scrollable"
-- "sortable"
-- "row-hover"
+* "compact"
+* "responsive"
+* "scrollable"
+* "sortable"
+* "row-hover"
 
 All variations are configured through the mapper.
 
@@ -1077,3 +1087,87 @@ p.ExampleTable = coreModel.Table{
 
 All translations live in `assets/locales/core.<language>.toml` and
 are prefixed with `Table`.
+
+## Correct errors
+
+To instatiate the [correct errors](https://ons-design-system.netlify.app/patterns/correct-errors/) UI component in your service:
+
+* In the `mapper.go` file in your service, populate the relevant fields
+e.g.
+
+```go
+p.Page.Error = coreModel.Error{
+   Title: p.Metadata.Title,
+   ErrorItems: []coreModel.ErrorItem{
+    {
+      // You can either use a localisation key or populate the `Text` string
+      Description: coreModel.Localisation{
+        LocaleKey: "CoverageSelectDefault",
+        Plural:    1,
+      },
+      // URL can be an in-page link or a different page
+      URL: "#coverage-error",
+    },
+   },
+   Language: lang,
+  }
+```
+
+* If there is more than one error to correct, add further `ErrorItem` types. By doing so, the view will automatically toggle to an ordered numbered list
+e.g.
+
+```go
+p.Page.Error = coreModel.Error{
+   Title: p.Metadata.Title,
+   ErrorItems: []coreModel.ErrorItem{
+    {
+      // You can either use a localisation key or populate the `Text` string
+      Description: coreModel.Localisation{
+        LocaleKey: "CoverageSelectDefault",
+        Plural:    1,
+      },
+      // URL can be an in-page link or a different page
+      URL: "#coverage-error",
+    },
+    {
+      Description: coreModel.Localisation{
+        Text: "A different error",
+      },
+      // URL can be an in-page link or a different page
+      URL: "#another-error",
+    },
+   },
+   Language: lang,
+  }
+```
+
+* In the template file within your service, reference the `error-summary.tmpl` file below the breadcrumbs, before the `<h1>` and pass in the `error` struct
+e.g.
+
+```tmpl
+{{ template "partials/breadcrumb" . }}
+{{ if .Page.Error.Title }}
+    {{ template "partials/error-summary" .Page.Error }}
+{{ end}}
+<h1>The header</h1>
+```
+
+* You will need to manually add the [error panel](https://ons-design-system.netlify.app/components/panel/#error-details) yourself but it will resemble something like the example. This is due to the panel adding two additional containing `<div>` elements and different input fields have different variants on implementing the error.
+e.g.
+
+```tmpl
+{{ if .Page.Error.Title }}
+<div class="ons-panel ons-panel--error ons-panel--no-title" id="coverage-error">
+  <span class="ons-u-vh">
+      {{ localise "Error" .Language 1 }}:
+  </span>
+  <div class="ons-panel__body">
+      <p class="ons-panel__error">
+          <strong>Enter a value</strong>
+      </p>
+{{ end }}
+...Input field...
+{{ if .Page.Error.Title }}
+  </div>
+</div>
+{{ end }}
