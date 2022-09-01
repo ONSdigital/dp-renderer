@@ -21,13 +21,11 @@ func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
-
 	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
 	}
 	figure.DownloadFormats = []string{"csv", "xls"}
-	fmt.Printf("ONSChartResolver figure %#v\n\n", figure)
 	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-chart"), nil
 }
 
@@ -96,7 +94,6 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 	// figureTag := match[0]   // figure tag
 	contentPath := match[1] // figure path
-
 	figure, err := h.resourceReader.GetFigure(contentPath)
 	if err != nil {
 		return "", err
@@ -118,7 +115,7 @@ func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
 		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
 
-	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-table"), nil
+	return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
 }
 
 func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {

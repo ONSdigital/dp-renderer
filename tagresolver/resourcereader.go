@@ -20,7 +20,11 @@ type resourceReader struct {
 }
 
 func (r *resourceReader) getPathUri(path string) string {
-	if !strings.HasPrefix(path, r.uri) {
+	uriInPath := func(path, uri string) bool {
+		return strings.HasPrefix(path, r.uri) || strings.HasPrefix(path, "/"+r.uri)
+	}
+
+	if !uriInPath(path, r.uri) {
 		return r.uri + "/" + path
 	}
 	return path

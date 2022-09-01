@@ -1,0 +1,35 @@
+{{/* Used by dp-renderer/tagresolver */}}
+<div class="ons-tag">
+  <h3 class="ons-u-fs-r--b ons-u-pt-m">{{ .Title }}</h3>
+  <div class="ons-table-scrollable">
+    <div class="ons-table-scrollable__content">
+      {{ range $file := .Files }}
+        {{ if eq $file.Type "html" }}
+          {{ $file.Content | safeHTML }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+  <div class="ons-tag--download-media">
+    <h4 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">
+      <span role="text">Download this table <span class="ons-u-vh">{{ .Title }}</span></span>
+    </h4>
+    {{/* TODO data-gtm-title needs sub(sup(.Title)) */}}
+    {{ range $file := .Files }}
+      {{ if eq $file.Type "download-xls" }}
+        <a
+          href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.xls"
+          title="Download as xls"
+          class="ons-btn"
+          data-gtm-title="{{ $.Title }}"
+          data-gtm-type="download-table-xls"
+          aria-label="Download table {{ $.Title }} as xls ({{ $file.FileSize }})"
+        >
+          <span class="ons-btn__inner">
+            <span class="ons-btn__text">.xls ({{ $file.FileSize }})</span>
+          </span>
+        </a>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
