@@ -86,7 +86,7 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 
 	helper.contentResolvers = []contentResolver{
 		boxResolver,
-		chartResolver,
+		// chartResolver,
 		equationResolver,
 		imageResolver,
 		quoteResolver,
