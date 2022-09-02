@@ -49,10 +49,10 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 		RenderContent: helper.ONSBoxResolver,
 	}
 
-	chartResolver := contentResolver{
-		Regexp:        *regexp.MustCompile("<ons-chart\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
-		RenderContent: helper.ONSChartResolver,
-	}
+	// chartResolver := contentResolver{
+	// 	Regexp:        *regexp.MustCompile("<ons-chart\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
+	// 	RenderContent: helper.ONSChartResolver,
+	// }
 
 	equationResolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-equation\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
