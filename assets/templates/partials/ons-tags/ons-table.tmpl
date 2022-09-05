@@ -19,14 +19,13 @@
     <h4 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">
       <span role="text">Download this table <span class="ons-u-vh">{{ .Title }}</span></span>
     </h4>
-    {{/* TODO data-gtm-title needs sub(sup(.Title)) */}}
     {{ range $file := .Files }}
       {{ if eq $file.Type "download-xls" }}
         <a
           href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.xls"
           title="Download as xls"
           class="ons-btn"
-          data-gtm-title="{{ $.Title }}"
+          data-gtm-title="{{ subscript (superscript $.Title) }}"
           data-gtm-type="download-table-xls"
           aria-label="Download table {{ $.Title }} as xls ({{ $file.FileSize }})"
         >

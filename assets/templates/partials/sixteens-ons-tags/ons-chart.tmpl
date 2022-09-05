@@ -5,10 +5,9 @@
 {{ end }}
 <div class="{{ $containerType }} panel--bottom-mar print--avoid-break">
 {{- if eq .ChartType "small-multiples" -}}
-  {{/* TODO sub(sup()) title and subtitle */}}
-  <h3 class="flush--third--vertical font-size--18 margin-top--0 padding-top--0 margin-top--0 margin-bottom--1">{{ .Title }}</h3>
+  <h3 class="flush--third--vertical font-size--18 margin-top--0 padding-top--0 margin-top--0 margin-bottom--1">{{ subscript (superscript .Title) }}</h3>
   {{ if .Subtitle }}
-    <h4 class="flush--third--bottom font-size--16 margin-top--0 padding-top--0">{{ .Subtitle }}</h4>
+    <h4 class="flush--third--bottom font-size--16 margin-top--0 padding-top--0">{{ subscript (superscript .Subtitle) }}</h4>
   {{ end }}
   <div class="sm-multiple-holder">
   {{ range $index, $series := .Series }}
@@ -28,10 +27,9 @@
   {{ end }}
   </div>
 {{ else }}
-  {{/* TODO sub(sup()) title and subtitle */}}
-  <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">{{ .Title }}</h3>
+  <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">{{ subscript (superscript .Title) }}</h3>
   {{ if .Subtitle }}
-    <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">{{ .Subtitle }}</h4>
+    <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">{{ subscript (superscript .Subtitle) }}</h4>
   {{ end }}
 
   <div class="scrollable-container">
@@ -60,8 +58,8 @@
     class="btn btn--primary print--hide js-chart-image-src"
     data-filename="{{ .Filename }}"
     href="http://dp.aws.onsdigital.uk/chartimage?uri={{ .URI }}"
-    download="{{ .Title }}" {{/** TODO sub(sup()) */}}
-    data-gtm-title="{{ .Title }}" {{/** TODO sub(sup()) */}}
+    download="{{ subscript (superscript .Title) }}"
+    data-gtm-title="{{ subscript (superscript .Title) }}"
     data-gtm-type="download-chart-image"
     aria-label="Download {{ .Title }} as an image"
   >
@@ -80,7 +78,7 @@
   {{- range $format := .DownloadFormats -}}
   <a class="btn btn--primary print--hide" title="Download as {{ $format }}"
     href="http://dp.aws.onsdigital.uk/generator?uri={{ $.URI }}&format={{ $format }}"
-    data-gtm-title="{{ $.Title }}" {{/* TODO sub(sup()) */}}
+    data-gtm-title="{{ subscript (superscript $.Title) }}"
     data-gtm-type="download-chart-{{ $format }}"
     data-gtm-download-file="timeseries-generated-file"
     data-gtm-download-type="{{ $format }}"

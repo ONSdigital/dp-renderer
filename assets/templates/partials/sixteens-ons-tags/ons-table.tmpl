@@ -14,14 +14,13 @@
   <h4 class="print--hide font-size--h6 margin-top--1 padding-top--0">
     <span role="text">Download this table <span class="visuallyhidden">{{ .Title }}</span></span>
   </h4>
-  {{/* TODO data-gtm-title needs sub(sup(.Title)) */}}
   {{ range $file := .Files }}
     {{ if eq $file.Type "download-xls" }}
       <a
         href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.xls"
         title="Download as xls"
         class="btn btn--primary print--hide"
-        data-gtm-title="{{ $.Title }}"
+        data-gtm-title="{{ subscript (superscript $.Title) }}"
         data-gtm-type="download-table-xls"
         aria-label="Download table {{ $.Title }} as xls ({{ $file.FileSize }})"
       >

@@ -10,12 +10,11 @@
   <h4 class="print--hide font-size--h6 padding-top--0">
     <span role="text">Download this table <span class="visuallyhidden">{{ .Title }}</span></span>
   </h4>
-  {{/* TODO data-gtm-title sub(sup(.Title)) in both anchors */}}
   <a
     href="http://dp.aws.onsdigital.uk/download/table?format=xlsx&uri={{ .URI }}.json"
     title="Download as xls"
     class="btn btn--primary print--hide"
-    data-gtm-title="{{ .Title }}"
+    data-gtm-title="{{ subscript (superscript .Title) }}"
     data-gtm-type="download-table-xlsx"
     aria-label="Download {{ .Title }} as xls"
   >
@@ -25,7 +24,7 @@
     href="http://dp.aws.onsdigital.uk/download/table?format=csv&uri={{ .URI }}.json"
     title="Download as csv"
     class="btn btn--primary print--hide"
-    data-gtm-title="{{ .Title }}"
+    data-gtm-title="{{ subscript (superscript .Title) }}"
     data-gtm-type="download-table-csv"
     aria-label="Download {{ .Title }} as csv"
   >

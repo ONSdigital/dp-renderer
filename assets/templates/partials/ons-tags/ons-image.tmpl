@@ -2,12 +2,10 @@
 {{/* WARNING: Indenting the top level <div> or <img> will trigger the markdown parser into rendering this as a <code> block */}}
 {{ if gt (len .Files) 0 }}
 <div class="ons-tag">
-  {{/* TODO sub(sup(.Title)) */}}
-  <h4>{{ .Title }}</h4>
+  <h4>{{ subscript (superscript .Title) }}</h4>
 
-  {{/* TODO sub(sup(.Title)) */}}
   {{ if .Subtitle }}
-    <h5 class="ons-u-fs-s">{{ .Subtitle }}</h5>
+    <h5 class="ons-u-fs-s">{{ subscript (superscript .Subtitle) }}</h5>
   {{ end }}
 
   {{ range .Files }}
@@ -40,7 +38,7 @@
       <a
         class="ons-btn"
         title="Download as {{ .FileType }}"
-        data-gtm-title="{{ $.Title }}" {{/* TODO sub(sup($.Title)) */}}
+        data-gtm-title="{{ subscript (superscript $.Title) }}"
         data-gtm-type="download-{{ .FileType }}"
         href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.{{ .FileType }}"
         aria-label="{{ $ariaLabel }}"

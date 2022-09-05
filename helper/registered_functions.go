@@ -33,4 +33,6 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"trimPrefixedPeriod":           TrimPrefixedPeriod,
 	"intToString":                  IntToString,
 	"lower":                        Lower,
+	"subscript":                    Subscript,
+	"superscript":                  Superscript,
 }
