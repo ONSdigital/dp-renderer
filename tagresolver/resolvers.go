@@ -138,7 +138,7 @@ func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
 	}
 	figure.Content = tableHTML
 
-	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-table-v2"), nil
+	return h.applyTemplate(figure, "partials/ons-tags/ons-table-v2"), nil
 }
 
 func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {

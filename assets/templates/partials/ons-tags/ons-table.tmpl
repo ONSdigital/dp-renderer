@@ -2,7 +2,12 @@
 <div class="ons-tag">
   <h3 class="ons-u-fs-r--b ons-u-pt-m">{{ .Title }}</h3>
   <div class="ons-table-scrollable">
-    <div class="ons-table-scrollable__content">
+    <div
+      class="ons-table-scrollable__content"
+      tabindex="0"
+      role="region"
+      aria-label="Scrollable table. Some of the table may be off screen. Scroll or drag horizontally to bring into view."
+    >
       {{ range $file := .Files }}
         {{ if eq $file.Type "html" }}
           {{ $file.Content | safeHTML }}
