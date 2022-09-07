@@ -1,5 +1,5 @@
 {{/* Used by dp-renderer/tagresolver */}}
-<figure class="ons-figure">
+<figure class="ons-figure ons-u-scroll-h">
   {{ range $file := .Files }}
     {{ if eq $file.Type "generated-svg" }}
       {{ $file.Content | safeHTML }}
