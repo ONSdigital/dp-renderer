@@ -2,11 +2,13 @@ package tagresolver
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"math"
 	"strconv"
 
 	"github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/log.go/v2/log"
 )
 
 func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
@@ -62,7 +64,18 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 	for i, sidecarFile := range figure.Files {
 		size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
 		if err != nil {
-			return "", err
+			log.Warn(context.Background(), "Image resolver couldn't find file size for image file using filename",
+				log.Data{"file": h.resourceReader.getPathUri(sidecarFile.Filename), "path": contentPath})
+
+			// If the file can't be found, try locating it by concatenating the file type to the path
+			// This is a fallback for a legacy issue, mimicking what Babbage used to do
+			filename := contentPath + "." + sidecarFile.FileType
+			size, err = h.resourceReader.GetFileSize(filename)
+			if err != nil {
+				size = 0
+				log.Error(context.Background(), "Image resolver couldn't find file size for image file using filetype",
+					err, log.Data{"file": h.resourceReader.getPathUri(filename), "path": contentPath})
+			}
 		}
 		figure.Files[i].FileSize = humanReadableByteCount(size)
 	}
@@ -70,6 +83,9 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 }
 
 func humanReadableByteCount(b int) string {
+	if b <= 0 {
+		return ""
+	}
 	var unit float64 = 1000
 	bytes := float64(b)
 	if bytes < unit {
