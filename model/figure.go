@@ -22,6 +22,9 @@ type Figure struct {
 	Attribution     string
 	Align           string
 	DownloadFormats []string
+	FullWidth       bool
+	Id              string
+	Iframe          string
 	// TODO: files, categories, series, headers, data
 }
 

@@ -659,3 +659,8 @@ one = "December"
 [TableScrollableDefaultAriaLabel]
 description = "Scrollable table"
 one = "Scrollable table"
+
+# ONS custom tags
+[OnsTagInteractiveChart]
+description = "Interactive chart"
+one = "Interactive chart"

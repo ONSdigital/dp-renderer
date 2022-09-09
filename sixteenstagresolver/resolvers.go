@@ -6,9 +6,12 @@ import (
 	"fmt"
 	"math"
 	"strconv"
+	"strings"
 
+	"github.com/ONSdigital/dp-renderer/helper"
 	"github.com/ONSdigital/dp-renderer/model"
 	"github.com/ONSdigital/log.go/v2/log"
+	uuid "github.com/satori/go.uuid"
 )
 
 func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
@@ -83,6 +86,40 @@ func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
 	}
 
 	return h.applyTemplate(figure, "partials/sixteens-ons-tags/ons-image"), nil
+}
+
+func (h *TagResolverHelper) ONSInteractiveResolver(match []string) (string, error) {
+	hasHypertextProtocol := func(s string) bool {
+		return strings.HasPrefix(s, "http") || strings.HasPrefix(s, "https")
+	}
+
+	buildIframe := func(uri string) string {
+		src := uri
+		if !hasHypertextProtocol(uri) {
+			src = "http://localhost" + uri
+		}
+		return fmt.Sprintf("<iframe width=\"100%%\" src=\"%s\"></iframe>", src)
+	}
+
+	model := model.Figure{}
+	// figureTag := match[0]   // figure tag
+	model.URI = match[1] // url
+	model.Iframe = buildIframe(model.URI)
+
+	if len(match) > 2 {
+		model.FullWidth = match[2] == "true" // full-width
+	}
+	if len(match) > 3 {
+		model.Title = match[3] // title
+	}
+
+	if model.Title == "" {
+		// TODO Pass the language flag through from the Page model
+		model.Title = helper.Localise("OnsTagInteractiveChart", "en", 1)
+	}
+
+	model.Id = uuid.NewV4().String()[:10]
+	return h.applyTemplate(model, "partials/sixteens-ons-tags/ons-interactive"), nil
 }
 
 func humanReadableByteCount(b int) string {

@@ -664,3 +664,8 @@ one = "Rhagfyr"
 [TableScrollableDefaultAriaLabel]
 description = "Scrollable table"
 one = "Tabl y gellir sgrolio drwyddo"
+
+# ONS custom tags
+[OnsTagInteractiveChart]
+description = "Interactive chart"
+one = "Siart rhyngweithiol"

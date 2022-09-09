@@ -1,0 +1,39 @@
+<div class="js--show">
+  <div
+    class="pym-interactive{{ if .FullWidth }} pym-interactive--full-width margin-left--0{{ end }}"
+    id="{{ .Id }}"
+    data-url="{{ .URI }}"
+    data-title="{{ .Title }}"
+  >
+  </div>
+  <details class="details">
+    <summary
+      class="details__summary"
+      role="button"
+      aria-label="{{ .Title }} embed code"
+    >
+      Embed code
+    </summary>
+    <div class="details__body">
+      <label class="embed-code__label" for="embed-{{ .Id }}">Embed this interactive</label>
+      <input
+        class="embed-code__code width-md--31"
+        value="{{ .Iframe }}"
+        id="embed-{{ .Id }}"
+        name="embed-{{ .Id }}"
+        readonly
+      />
+      <span class="embed-code__success-container">
+        <button
+          id=""
+          data-id="{{ .Id }}"
+          type="button"
+          class="btn btn--primary embed-code__button js-embed-code-copy"
+        >
+          Copy
+        </button>
+        <span role="status"></span>
+      </span>
+    </div>
+  </details>
+</div>

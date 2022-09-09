@@ -64,6 +64,11 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 		RenderContent: helper.ONSImageResolver,
 	}
 
+	interactiveResolver := contentResolver{
+		Regexp:        *regexp.MustCompile("<ons-interactive\\surl=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"\\s?(?:\\s?full-width=\"([a-zA-Z]*)\")?\\s?(?:\\s?title=\"(.*?)\")?/>"),
+		RenderContent: helper.ONSInteractiveResolver,
+	}
+
 	quoteResolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-quote\\scontent=\"(.*?)\"\\s?(?:\\s+attr=\"(.*?)\")?\\s*/>"),
 		RenderContent: helper.ONSQuoteResolver,
@@ -89,6 +94,7 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 		// chartResolver,
 		equationResolver,
 		imageResolver,
+		interactiveResolver,
 		quoteResolver,
 		tableResolver,
 		tablev2Resolver,

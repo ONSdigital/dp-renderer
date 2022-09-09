@@ -10,6 +10,7 @@ require (
 	github.com/gosimple/slug v1.9.0
 	github.com/nicksnyder/go-i18n/v2 v2.1.2
 	github.com/russross/blackfriday/v2 v2.1.0
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/smartystreets/goconvey v1.7.2
 	github.com/unrolled/render v1.4.0
 	golang.org/x/text v0.3.7
