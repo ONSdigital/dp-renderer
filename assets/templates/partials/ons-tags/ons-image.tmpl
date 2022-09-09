@@ -9,10 +9,12 @@
   {{ end }}
 
   {{ range .Files }}
-    <img
-      src="http://dp.aws.onsdigital.uk/resource?uri={{ $.URI }}.{{ .FileType }}"
-      alt="{{ $.AltText }}"
-    >
+    {{ if eq .Type "uploaded-image" }}
+      <img
+        src="http://dp.aws.onsdigital.uk/resource?uri={{ $.URI }}.{{ .FileType }}"
+        alt="{{ $.AltText }}"
+      >
+    {{ end }}
   {{ end }}
 
   {{ if .Source }}
