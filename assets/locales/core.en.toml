@@ -664,3 +664,27 @@ one = "Scrollable table"
 [OnsTagInteractiveChart]
 description = "Interactive chart"
 one = "Interactive chart"
+
+[OnsTagEmbedCode]
+description = "Embed code"
+one = "Embed code"
+
+[OnsTagEmbedThisInteractive]
+description = "Embed this interactive"
+one = "Embed this interactive"
+
+[OnsTagCopyEmbedCodeButtonText]
+description = "Copy link"
+one = "Copy link"
+
+[OnsTagCopyEmbedCodeButtonAssistiveText]
+description = "to clipboard"
+one = "to clipboard"
+
+[OnsTagCopyEmbedCodeSuccessMessage]
+description = "Copied"
+one = "Copied"
+
+[OnsTagCopyEmbedCodeFailureMessage]
+description = "Copying failed"
+one = "Copying failed"

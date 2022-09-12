@@ -1,0 +1,41 @@
+<div class="ons-tag ons-u-d-no">
+  <div
+    class="ons-tag__pym-interactive{{ if .FullWidth }} ons-tag__pym-interactive--full-width{{ end }}"
+    id="{{ .Id }}"
+    data-url="{{ .URI }}"
+    data-title="{{ .Title }}"
+  >
+  </div>
+  <details class="ons-collapsible ons-js-collapsible">
+    <summary class="ons-collapsible__heading ons-js-collapsible-heading">
+      <h2 class="ons-collapsible__title">{{ .LabelEmbedCode }}</h2>
+      <span class="ons-collapsible__icon">{{ template "icons/collapsible" }}</span>
+    </summary>
+    <div class="ons-collapsible__content ons-js-collapsible-content">
+      <div class="ons-field">
+        <label class="ons-label" for="embed-{{ .Id }}">{{ .LabelEmbedInteractive }}</label>
+        <div class="ons-tag__embed_code">
+          <input
+            type="text"
+            id="embed-{{ .Id }}"
+            class="ons-input ons-input--text ons-input-type__input"
+            readonly
+            value="{{ .Iframe }}"
+          />
+          <button type="button" class="ons-btn ons-btn--secondary ons-btn--small ons-u-d-no ons-u-ml-xs">
+            <span
+              class="ons-btn__inner"
+              data-copy-link-success="{{ .LabelCopyCodeSuccess }}"
+              data-copy-link-failure="{{ .LabelCopyCodeFailure }}"
+            >
+              {{- .LabelCopyCodeButtonText -}}
+            </span>
+            <span class="ons-u-vh">
+              {{- .LabelCopyCodeButtonAssistiveText -}}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </details>
+ </div>

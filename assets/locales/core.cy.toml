@@ -669,3 +669,27 @@ one = "Tabl y gellir sgrolio drwyddo"
 [OnsTagInteractiveChart]
 description = "Interactive chart"
 one = "Siart rhyngweithiol"
+
+[OnsTagEmbedCode]
+description = "Embed code"
+one = "Embed code (cy)"
+
+[OnsTagEmbedThisInteractive]
+description = "Embed this interactive"
+one = "Embed this interactive (cy)"
+
+[OnsTagCopyEmbedCodeButtonText]
+description = "Copy link"
+one = "Copy link (cy)"
+
+[OnsTagCopyEmbedCodeButtonAssistiveText]
+description = "to clipboard"
+one = "to clipboard (cy)"
+
+[OnsTagCopyEmbedCodeSuccessMessage]
+description = "Copied"
+one = "Copied (cy)"
+
+[OnsTagCopyEmbedCodeFailureMessage]
+description = "Copying failed"
+one = "Copying failed (cy)"
