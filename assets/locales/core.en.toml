@@ -688,3 +688,44 @@ one = "Copied"
 [OnsTagCopyEmbedCodeFailureMessage]
 description = "Copying failed"
 one = "Copying failed"
+
+[OnsTagImportantInformation]
+description = "Important information"
+one = "Important information"
+
+[OnsTagSource]
+description = "Source"
+one = "Source"
+
+[OnsTagNote]
+description = "Note"
+one = "Note"
+other = "Notes"
+
+[OnsTagDownloadThisImage]
+description = "Download this image"
+one = "Download this image"
+
+[OnsTagDownload]
+description = "Download"
+one = "Download"
+
+[OnsTagMidsentenceAs]
+description = "as"
+one = "as"
+
+[OnsTagWarning]
+description = "Warning"
+one = "Warning"
+
+[OnsTagScrollableTableAriaLabel]
+description = "Scrollable table. Some of the table may be off screen. Scroll or drag horizontally to bring into view."
+one = "Scrollable table. Some of the table may be off screen. Scroll or drag horizontally to bring into view."
+
+[OnsTagDownloadThisTable]
+description = "Download this table"
+one = "Download this table"
+
+[OnsTagDownloadTable]
+description = "Download table"
+one = "Download table"

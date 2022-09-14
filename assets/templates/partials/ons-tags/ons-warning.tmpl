@@ -1,7 +1,7 @@
 {{/* Used by dp-renderer/tagresolver */}}
 <div class="ons-panel ons-panel--warn ons-panel--no-title">
   <span class="ons-panel__icon" aria-hidden="true">!</span>
-  <span class="ons-panel__assistive-text ons-u-vh">Warning: </span>
+  <span class="ons-panel__assistive-text ons-u-vh">{{ localise "OnsTagWarning" .Language 1 }}: </span>
   <div class="ons-panel__body">
     {{ markdown .Content }}
   </div>

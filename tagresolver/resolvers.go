@@ -12,13 +12,16 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
-func (h *TagResolverHelper) ONSBoxResolver(match []string) (string, error) {
-	model := model.Figure{}
-	// figureTag := match[0]   // figure tag
-	model.Align = match[1]   // align attribute
-	model.Content = match[2] // tag content
+func (h *TagResolverHelper) ONSBoxResolver(language string) func([]string) (string, error) {
+	return func(match []string) (string, error) {
+		model := model.Figure{}
+		model.Language = language
 
-	return h.applyTemplate(model, "partials/ons-tags/ons-box"), nil
+		// figureTag := match[0]   // figure tag
+		model.Align = match[1]   // align attribute
+		model.Content = match[2] // tag content
+		return h.applyTemplate(model, "partials/ons-tags/ons-box"), nil
+	}
 }
 
 func (h *TagResolverHelper) ONSChartResolver(match []string) (string, error) {
@@ -54,33 +57,38 @@ func (h *TagResolverHelper) ONSEquationResolver(match []string) (string, error) 
 	return h.applyTemplate(figure, "partials/ons-tags/ons-equation"), nil
 }
 
-func (h *TagResolverHelper) ONSImageResolver(match []string) (string, error) {
-	// figureTag := match[0]   // figure tag
-	contentPath := match[1] // figure path
+func (h *TagResolverHelper) ONSImageResolver(language string) func([]string) (string, error) {
+	return func(match []string) (string, error) {
+		// figureTag := match[0]   // figure tag
+		contentPath := match[1] // figure path
 
-	figure, err := h.resourceReader.GetFigure(contentPath)
-	if err != nil {
-		return "", err
-	}
-	for i, sidecarFile := range figure.Files {
-		size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
+		figure, err := h.resourceReader.GetFigure(contentPath)
 		if err != nil {
-			log.Warn(context.Background(), "Image resolver couldn't find file size for image file using filename",
-				log.Data{"file": h.resourceReader.getPathUri(sidecarFile.Filename), "path": contentPath})
-
-			// If the file can't be found, try locating it by concatenating the file type to the path
-			// This is a fallback for a legacy issue, mimicking what Babbage used to do
-			filename := contentPath + "." + sidecarFile.FileType
-			size, err = h.resourceReader.GetFileSize(filename)
-			if err != nil {
-				size = 0
-				log.Error(context.Background(), "Image resolver couldn't find file size for image file using filetype",
-					err, log.Data{"file": h.resourceReader.getPathUri(filename), "path": contentPath})
-			}
+			return "", err
 		}
-		figure.Files[i].FileSize = humanReadableByteCount(size)
+
+		figure.Language = language
+
+		for i, sidecarFile := range figure.Files {
+			size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
+			if err != nil {
+				log.Warn(context.Background(), "Image resolver couldn't find file size for image file using filename",
+					log.Data{"file": h.resourceReader.getPathUri(sidecarFile.Filename), "path": contentPath})
+
+				// If the file can't be found, try locating it by concatenating the file type to the path
+				// This is a fallback for a legacy issue, mimicking what Babbage used to do
+				filename := contentPath + "." + sidecarFile.FileType
+				size, err = h.resourceReader.GetFileSize(filename)
+				if err != nil {
+					size = 0
+					log.Error(context.Background(), "Image resolver couldn't find file size for image file using filetype",
+						err, log.Data{"file": h.resourceReader.getPathUri(filename), "path": contentPath})
+				}
+			}
+			figure.Files[i].FileSize = humanReadableByteCount(size)
+		}
+		return h.applyTemplate(figure, "partials/ons-tags/ons-image"), nil
 	}
-	return h.applyTemplate(figure, "partials/ons-tags/ons-image"), nil
 }
 
 func (h *TagResolverHelper) ONSInteractiveResolver(language string) func([]string) (string, error) {
@@ -98,6 +106,8 @@ func (h *TagResolverHelper) ONSInteractiveResolver(language string) func([]strin
 		}
 
 		model := model.Figure{}
+		model.Language = language
+
 		// figureTag := match[0]   // figure tag
 		model.URI = match[1] // url
 		model.Iframe = buildIframe(model.URI)
@@ -113,12 +123,6 @@ func (h *TagResolverHelper) ONSInteractiveResolver(language string) func([]strin
 			model.Title = helper.Localise("OnsTagInteractiveChart", language, 1)
 		}
 
-		model.LabelEmbedCode = helper.Localise("OnsTagEmbedCode", language, 1)
-		model.LabelEmbedInteractive = helper.Localise("OnsTagEmbedThisInteractive", language, 1)
-		model.LabelCopyCodeSuccess = helper.Localise("OnsTagCopyEmbedCodeSuccessMessage", language, 1)
-		model.LabelCopyCodeFailure = helper.Localise("OnsTagCopyEmbedCodeFailureMessage", language, 1)
-		model.LabelCopyCodeButtonText = helper.Localise("OnsTagCopyEmbedCodeButtonText", language, 1)
-		model.LabelCopyCodeButtonAssistiveText = helper.Localise("OnsTagCopyEmbedCodeButtonAssistiveText", language, 1)
 		model.Id = uuid.NewV4().String()[:10]
 		return h.applyTemplate(model, "partials/ons-tags/ons-interactive"), nil
 	}
@@ -135,61 +139,73 @@ func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
 	return h.applyTemplate(model, "partials/ons-tags/ons-quote"), nil
 }
 
-func (h *TagResolverHelper) ONSTableResolver(match []string) (string, error) {
-	// figureTag := match[0]   // figure tag
-	contentPath := match[1] // figure path
-	figure, err := h.resourceReader.GetFigure(contentPath)
-	if err != nil {
-		return "", err
-	}
-
-	for i, sidecarFile := range figure.Files {
-		if sidecarFile.Type == "html" {
-			resource, err := h.resourceReader.GetResourceBody(sidecarFile.Filename)
-			if err != nil {
-				return "", err
-			}
-			figure.Files[i].Content = string(resource)
-		}
-
-		size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
+func (h *TagResolverHelper) ONSTableResolver(language string) func([]string) (string, error) {
+	return func(match []string) (string, error) {
+		// figureTag := match[0]   // figure tag
+		contentPath := match[1] // figure path
+		figure, err := h.resourceReader.GetFigure(contentPath)
 		if err != nil {
 			return "", err
 		}
-		figure.Files[i].FileSize = humanReadableByteCount(size)
-	}
 
-	return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
+		figure.Language = language
+
+		for i, sidecarFile := range figure.Files {
+			if sidecarFile.Type == "html" {
+				resource, err := h.resourceReader.GetResourceBody(sidecarFile.Filename)
+				if err != nil {
+					return "", err
+				}
+				figure.Files[i].Content = string(resource)
+			}
+
+			size, err := h.resourceReader.GetFileSize(sidecarFile.Filename)
+			if err != nil {
+				return "", err
+			}
+			figure.Files[i].FileSize = humanReadableByteCount(size)
+		}
+
+		return h.applyTemplate(figure, "partials/ons-tags/ons-table"), nil
+	}
 }
 
-func (h *TagResolverHelper) ONSTableV2Resolver(match []string) (string, error) {
-	// figureTag := match[0]   // figure tag
-	contentPath := match[1] // figure path
+func (h *TagResolverHelper) ONSTableV2Resolver(language string) func([]string) (string, error) {
+	return func(match []string) (string, error) {
+		// figureTag := match[0]   // figure tag
+		contentPath := match[1] // figure path
 
-	figureJSON, err := h.resourceReader.GetResourceBody(contentPath + ".json")
-	if err != nil {
-		return "", err
+		figureJSON, err := h.resourceReader.GetResourceBody(contentPath + ".json")
+		if err != nil {
+			return "", err
+		}
+
+		tableHTML, err := h.resourceReader.GetTable(figureJSON)
+		if err != nil {
+			return "", err
+		}
+
+		figure, err := h.resourceReader.GetFigure(contentPath)
+		if err != nil {
+			return "", err
+		}
+		figure.Language = language
+		figure.Content = tableHTML
+
+		return h.applyTemplate(figure, "partials/ons-tags/ons-table-v2"), nil
 	}
-
-	tableHTML, err := h.resourceReader.GetTable(figureJSON)
-	if err != nil {
-		return "", err
-	}
-
-	figure, err := h.resourceReader.GetFigure(contentPath)
-	if err != nil {
-		return "", err
-	}
-	figure.Content = tableHTML
-
-	return h.applyTemplate(figure, "partials/ons-tags/ons-table-v2"), nil
 }
 
-func (h *TagResolverHelper) ONSWarningResolver(match []string) (string, error) {
-	// figureTag := match[0]   // figure tag
-	content := match[1] // tag content
+func (h *TagResolverHelper) ONSWarningResolver(language string) func([]string) (string, error) {
+	return func(match []string) (string, error) {
+		model := model.Figure{}
+		model.Language = language
 
-	return h.applyTemplate(model.Figure{Content: content}, "partials/ons-tags/ons-warning"), nil
+		// figureTag := match[0]   // figure tag
+		model.Content = match[1] // tag content
+
+		return h.applyTemplate(model, "partials/ons-tags/ons-warning"), nil
+	}
 }
 
 func (h *TagResolverHelper) applyTemplate(figure interface{}, template string) string {

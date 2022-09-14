@@ -47,7 +47,7 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 
 	boxResolver := contentResolver{
 		Regexp:        *regexp.MustCompile(`(?s)<ons-box align="([a-zA-Z]*)">(.*?)</ons-box>`),
-		RenderContent: helper.ONSBoxResolver,
+		RenderContent: helper.ONSBoxResolver(cfg.Language),
 	}
 
 	// chartResolver := contentResolver{
@@ -62,7 +62,7 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 
 	imageResolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-image\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
-		RenderContent: helper.ONSImageResolver,
+		RenderContent: helper.ONSImageResolver(cfg.Language),
 	}
 
 	interactiveResolver := contentResolver{
@@ -77,17 +77,17 @@ func NewTagResolverHelper(uri string, rr ResourceReader, cfg TagResolverRenderCo
 
 	tableResolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-table\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
-		RenderContent: helper.ONSTableResolver,
+		RenderContent: helper.ONSTableResolver(cfg.Language),
 	}
 
 	tablev2Resolver := contentResolver{
 		Regexp:        *regexp.MustCompile("<ons-table-v2\\spath=\"([-A-Za-z0-9+&@#/%?=~_|!:,.;()*$]+)\"?\\s?/>"),
-		RenderContent: helper.ONSTableV2Resolver,
+		RenderContent: helper.ONSTableV2Resolver(cfg.Language),
 	}
 
 	warningResolver := contentResolver{
 		Regexp:        *regexp.MustCompile(`(?s)<ons-warning-box>(.*?)</ons-warning-box>`),
-		RenderContent: helper.ONSWarningResolver,
+		RenderContent: helper.ONSWarningResolver(cfg.Language),
 	}
 
 	helper.contentResolvers = []contentResolver{

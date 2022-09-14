@@ -18,28 +18,30 @@
   {{ end }}
 
   {{ if .Source }}
-    <h6 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">Source: {{ .Source }}</h6>
+    <h6 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">
+      {{- localise "OnsTagSource" .Language 1 }}: {{ .Source -}}
+    </h6>
   {{ end }}
 
   {{ if .Notes }}
-    <h6 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">Notes:</h6>
+    <h6 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">{{ localise "OnsTagNote" .Language 4 }}:</h6>
     <div class="ons-u-fs-s">{{ markdown .Notes }}</div>
   {{ end }}
 
   <div class="ons-tag__download-media">
     <h6 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">
-      <span role="text">Download this image <span class="ons-u-vh">{{ .Title }}</span></span>
+      <span role="text">{{ localise "OnsTagDownloadThisImage" .Language 1 | safeHTML }} <span class="ons-u-vh">{{ .Title }}</span></span>
     </h6>
     {{- range .Files -}}
-      {{- $ariaLabel := printf "Download %s" $.Title -}}
+      {{- $ariaLabel := printf "%s %s" (localise "OnsTagDownload" $.Language 1) $.Title -}}
       {{- if eq .Type "uploaded-image" -}}
-        {{- $ariaLabel = printf "%s as %s (%s)" $ariaLabel .FileType .FileSize -}}
+        {{- $ariaLabel = printf "%s %s %s (%s)" $ariaLabel (localise "OnsTagMidsentenceAs" $.Language 1) .FileType .FileSize -}}
       {{- else if eq .Type "uploaded-data" -}}
         {{- $ariaLabel = printf "%s (%s)" $ariaLabel .FileSize -}}
       {{- end -}}
       <a
         class="ons-btn"
-        title="Download as {{ .FileType }}"
+        title="{{ printf "%s %s %s" (localise "OnsTagDownload" $.Language 1) (localise "OnsTagMidsentenceAs" $.Language 1) .FileType }}"
         data-gtm-title="{{ subscript (superscript $.Title) }}"
         data-gtm-type="download-{{ .FileType }}"
         href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.{{ .FileType }}"

@@ -6,7 +6,7 @@
       class="ons-tag__scrollable-table-content"
       tabindex="0"
       role="region"
-      aria-label="Scrollable table. Some of the table may be off screen. Scroll or drag horizontally to bring into view."
+      aria-label="{{ localise "OnsTagScrollableTableAriaLabel" .Language 1 | safeHTML }}"
     >
       {{ range $file := .Files }}
         {{ if eq $file.Type "html" }}
@@ -17,17 +17,17 @@
   </div>
   <div class="ons-tag__download-media">
     <h4 class="ons-u-fs-s--b ons-u-mt-s ons-u-mb-xs">
-      <span role="text">Download this table <span class="ons-u-vh">{{ .Title }}</span></span>
+      <span role="text">{{ localise "OnsTagDownloadThisTable" .Language 1 | safeHTML }} <span class="ons-u-vh">{{ .Title }}</span></span>
     </h4>
     {{ range $file := .Files }}
       {{ if eq $file.Type "download-xls" }}
         <a
           href="http://dp.aws.onsdigital.uk/file?uri={{ $.URI }}.xls"
-          title="Download as xls"
+          title="{{ localise "OnsTagDownload" $.Language 1 }} {{ localise "OnsTagMidsentenceAs" $.Language 1 }} xls"
           class="ons-btn"
           data-gtm-title="{{ subscript (superscript $.Title) }}"
           data-gtm-type="download-table-xls"
-          aria-label="Download table {{ $.Title }} as xls ({{ $file.FileSize }})"
+          aria-label="{{ localise "OnsTagDownloadTable" $.Language 1 }} {{ $.Title }} {{ localise "OnsTagMidsentenceAs" $.Language 1 }} xls ({{ $file.FileSize }})"
         >
           <span class="ons-btn__inner">
             <span class="ons-btn__text">.xls ({{ $file.FileSize }})</span>

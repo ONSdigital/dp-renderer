@@ -693,3 +693,44 @@ one = "Copied (cy)"
 [OnsTagCopyEmbedCodeFailureMessage]
 description = "Copying failed"
 one = "Copying failed (cy)"
+
+[OnsTagImportantInformation]
+description = "Important information"
+one = "Important information (cy)"
+
+[OnsTagSource]
+description = "Source"
+one = "Ffynhonnell"
+
+[OnsTagNote]
+description = "Note"
+one = "Note (cy)"
+other = "Nodiadau"
+
+[OnsTagDownloadThisImage]
+description = "Download this image"
+one = "Lawrlwytho&apos;r ddelwedd hon"
+
+[OnsTagDownload]
+description = "Download"
+one = "Lawrlwytho"
+
+[OnsTagMidsentenceAs]
+description = "as"
+one = "fel"
+
+[OnsTagWarning]
+description = "Warning"
+one = "Warning (cy)"
+
+[OnsTagScrollableTableAriaLabel]
+description = "Scrollable table. Some of the table may be off screen. Scroll or drag horizontally to bring into view."
+one = "Tabl y gellir sgrolio drwyddo. Mae&apos;n bosibl y bydd rhywfaint o&apos;r tabl oddi ar y sgrin. Sgroliwch neu llusgwch i&apos;r ochr er mwyn ei weld."
+
+[OnsTagDownloadThisTable]
+description = "Download this table"
+one = "Lawrlwytho&apos;r tabl hwn"
+
+[OnsTagDownloadTable]
+description = "Download table"
+one = "Lawrlwytho tabl"
