@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"math"
-	"strconv"
 	"strings"
 
 	"github.com/ONSdigital/dp-renderer/helper"
@@ -124,20 +122,6 @@ func (h *TagResolverHelper) ONSInteractiveResolver(language string) func([]strin
 		model.Id = uuid.NewV4().String()[:10]
 		return h.applyTemplate(model, "partials/ons-tags/ons-interactive"), nil
 	}
-}
-
-func humanReadableByteCount(b int) string {
-	if b <= 0 {
-		return ""
-	}
-	var unit float64 = 1000
-	bytes := float64(b)
-	if bytes < unit {
-		return strconv.Itoa(b) + " B"
-	}
-	exp := (int)(math.Log(bytes) / math.Log(unit))
-	pre := string("kMGTPE"[exp-1])
-	return fmt.Sprintf("%.1f %sB", bytes/math.Pow(unit, float64(exp)), pre)
 }
 
 func (h *TagResolverHelper) ONSQuoteResolver(match []string) (string, error) {
