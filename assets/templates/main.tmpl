@@ -3,6 +3,7 @@
   <head>
     <title>
       {{ if .Error.Title }}
+        {{ localise "Error" .Language 1 }}:
         {{ .Error.Title }}
       {{ else if .Metadata.Title }}
         {{ .Metadata.Title }}
@@ -35,7 +36,7 @@
     {{ else }}
       <link rel="stylesheet" href="{{ .PatternLibraryAssetsPath }}/css/main.css">
     {{ end }}
-    
+
     {{ if .HasJSONLD -}}
       {{ template "partials/json-ld/base" . }}
     {{- end }}
@@ -56,6 +57,8 @@
     {{ end }}
 
     {{ template "partials/gtm-data-layer" . }}
+    
+    {{ partial "styles" }}
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {

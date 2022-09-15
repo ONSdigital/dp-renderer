@@ -31,9 +31,15 @@ dataLayer = [{
         "releaseDate": {{dateFormatYYYYMMDD .ReleaseDate}},
     {{end}}
     {{ if eq .Type "search" }}
-            "newSearch": true,
-            "numberOfResults": {{.Count}},
-            "resultsPage": {{.Pagination.CurrentPage}},
+        "newSearch": true,
+        "numberOfResults": {{.Count}},
+        "resultsPage": {{.Pagination.CurrentPage}},
+    {{ end }}
+    {{ if .Type }}
+        "contentType": {{ .Type }},
+    {{ end }}
+    {{ if .DatasetId }}
+        "datasetID": {{ .DatasetId }},
     {{ end }}
 }];
 
