@@ -31,6 +31,17 @@ type Page struct {
 	BackTo                           BackTo           `json:"back_to"`
 	SearchNoIndexEnabled             bool             `json:"search_no_index_enabled"`
 	NavigationContent                []NavigationItem `json:"navigation_content"`
+	ReleasePageData                  ReleasePage      `json:"release_page"`
+}
+
+// ReleasePage contains all information needed to render gmt dataLayer for release-page
+type ReleasePage struct {
+	ReleaseStatus     string `json:"release-status"`
+	ReleaseDate       string `json:"release-date"`
+	ReleaseTime       string `json:"release-time"`
+	ReleaseDateStatus string `json:"release-date-status"`
+	ContactName       string `json:"contact-name"`
+	NextReleaseDate   string `json:"next-release-date"`
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus

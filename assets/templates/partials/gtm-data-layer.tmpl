@@ -35,6 +35,14 @@ dataLayer = [{
         "numberOfResults": {{.Count}},
         "resultsPage": {{.Pagination.CurrentPage}},
     {{ end }}
+    {{ if eq .Type "ReleasePage" }}
+        "release-status": {{.ReleasePageData.ReleaseStatus}},
+        "release-date": {{.ReleasePageData.ReleaseDate}},
+        "release-time": {{.ReleasePageData.ReleaseTime}},
+        "release-date-status": {{.ReleasePageData.ReleaseDateStatus}},
+        "contact-name": {{.ReleasePageData.ContactName}},
+        "next-release-date": {{.ReleasePageData.NextReleaseDate}},
+    {{ end }}
     {{ if .Type }}
         "contentType": {{ .Type }},
     {{ end }}
