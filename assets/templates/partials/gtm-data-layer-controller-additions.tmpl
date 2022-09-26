@@ -1,0 +1,7 @@
+{{ if ne (len .DataLayerAdditions) 0 }}
+  <script>
+    {{ range $javascript := .DataLayerAdditions }}
+      {{ $javascript }}
+    {{ end }}
+  </script>
+{{ end }}

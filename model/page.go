@@ -1,5 +1,7 @@
 package model
 
+import "html/template"
+
 // Page contains data re-used for each page type a Data struct for data specific to the page type
 type Page struct {
 	Count                            int              `json:"count"`
@@ -31,6 +33,7 @@ type Page struct {
 	BackTo                           BackTo           `json:"back_to"`
 	SearchNoIndexEnabled             bool             `json:"search_no_index_enabled"`
 	NavigationContent                []NavigationItem `json:"navigation_content"`
+	DataLayerAdditions               []template.JS    `json:"data_layer_additions"`
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus
