@@ -10,9 +10,9 @@
       {{- end }}
       - {{ localise "OfficeForNationalStatistics" .Language 1 }}
     </title>
-    
+
     {{ if eq .Metadata.Title "Home" }}
-      <meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}"> 
+      <meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}">
     {{ else }}
       <meta name="description" content="{{ .Metadata.Description }}">
     {{ end }}
@@ -22,11 +22,11 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#58595B">
     <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
-    
+
     {{ if .Metadata.ServiceName }}
       <meta name="ons:service" content="{{ .Metadata.ServiceName }}">
     {{ end }}
-    
+
     {{ if .FeatureFlags.SixteensVersion }}
       {{ if eq .SiteDomain "localhost" }}
         <link rel="stylesheet" href="http://localhost:9000/dist/css/main.css">
@@ -57,7 +57,12 @@
     {{ end }}
 
     {{ template "partials/gtm-data-layer" . }}
-    
+    {{/*
+      PreGTMJavaScript is intended to make additional data available to GTM
+      `Container Loaded` events by adding data to the `dataLayer` before
+      GTM runs and loads containers a.k.a. tags.
+    */}}
+    {{ template "partials/pre-gtm-javascript" . }}
     {{ partial "styles" }}
     <!-- Google Tag Manager -->
     <script>
@@ -76,7 +81,7 @@
     </script>
     <!-- End Google Tag Manager -->
   </head>
-  
+
   <body class="page-type--{{ .Type }}">
     <script>
       document.body.className = (
@@ -84,7 +89,7 @@
         ? document.body.className + ' js js-enabled'
         : 'js js-enabled');
     </script>
-    
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
@@ -94,7 +99,7 @@
         style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
     {{ if not .FeatureFlags.SixteensVersion }}
       <div class="ons-page">
         <div class="ons-page__content">
@@ -121,7 +126,7 @@
         <script defer src="/js/app.js"></script>
       {{ end }}
     {{ end }}
-    
+
     {{ partial "scripts" }}
   </body>
 </html>
