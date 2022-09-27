@@ -57,7 +57,12 @@
     {{ end }}
 
     {{ template "partials/gtm-data-layer" . }}
-    {{ template "partials/gtm-data-layer-controller-additions" . }}
+    {{/*
+      PreGTMJavaScript is intended to make additional data available to GTM
+      `Container Loaded` events by adding data to the `dataLayer` before
+      GTM runs and loads containers a.k.a. tags.
+    */}}
+    {{ template "partials/pre-gtm-javascript" . }}
     {{ partial "styles" }}
     <!-- Google Tag Manager -->
     <script>

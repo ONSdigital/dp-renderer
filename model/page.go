@@ -33,7 +33,7 @@ type Page struct {
 	BackTo                           BackTo           `json:"back_to"`
 	SearchNoIndexEnabled             bool             `json:"search_no_index_enabled"`
 	NavigationContent                []NavigationItem `json:"navigation_content"`
-	DataLayerAdditions               []template.JS    `json:"data_layer_additions"`
+	PreGTMJavaScript                 []template.JS    `json:"pre_gtm_javascript"`
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus
