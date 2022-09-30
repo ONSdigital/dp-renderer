@@ -1,3 +1,4 @@
+{{/* See PATTERNS.md for usage instructions */}}
 <details id="collapsible" class="ons-collapsible ons-js-collapsible">
     <summary class="ons-collapsible__heading ons-js-collapsible-heading">
         <h3 class="ons-collapsible__title">
@@ -6,16 +7,15 @@
         {{ template "icons/collapsible" }}
     </summary>
     <div id="collapsible-content" class="ons-collapsible__content ons-js-collapsible-content">
-        {{ $length := len .Collapsible.CollapsibleItems }}
         {{ range .Collapsible.CollapsibleItems }}
             {{ if .Subheading }}
                 <h4>{{- .Subheading -}}</h4>
             {{ end }}
+            {{ if .SafeHTML }}
+                {{- .SafeHTML.FuncLocalise $.Language | safeHTML -}}
+            {{ end }}
             {{ range .Content }}
                 <p>{{- . -}}</p>
-            {{ end }}
-            {{ if ne $length 1 }}
-                <br>
             {{ end }}
         {{ end }}
     </div>
