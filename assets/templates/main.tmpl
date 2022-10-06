@@ -17,12 +17,14 @@
       <meta name="description" content="{{ .Metadata.Description }}">
     {{ end }}
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#58595B">
     <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
-
+     {{ if .SearchNoIndexEnabled }}
+      <meta name="robots" content="noindex">
+    {{ end }}
     {{ if .Metadata.ServiceName }}
       <meta name="ons:service" content="{{ .Metadata.ServiceName }}">
     {{ end }}
@@ -40,17 +42,6 @@
     {{ if .HasJSONLD -}}
       {{ template "partials/json-ld/base" . }}
     {{- end }}
-
-    {{ if eq .Type "search" }}
-
-      {{/* if search a/b testing is at 100% then noindex tag else canonical tag */}}
-      {{ if .SearchNoIndexEnabled }}
-        <meta name="robots" content="noindex">
-      {{ else }}
-        <link rel="canonical" href={{ concatenateStrings "https://www." .SiteDomain "/search?q=" .Data.Query }}>
-      {{ end }}
-
-    {{ end }}
 
     {{ if eq .Metadata.Title "Feedback" }}
       <link rel="canonical" href={{ concatenateStrings "https://www." .SiteDomain "/feedback" }}>
