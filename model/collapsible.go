@@ -12,6 +12,7 @@ type Collapsible struct {
 
 // CollapsibleItem is an individual representation of the data required in a collapsible item
 type CollapsibleItem struct {
-	Subheading string   `json:"subheading"`
-	Content    []string `json:"content"`
+	Subheading string       `json:"subheading"`
+	Content    []string     `json:"content"`
+	SafeHTML   Localisation `json:"safe_html"`
 }

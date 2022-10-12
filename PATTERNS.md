@@ -60,6 +60,7 @@ p.Collapsible = coreModel.Collapsible{
     LocaleKey: "VariablesExplanation",
     Plural:    4,
   },
+  // You can use `content` or `safeHTML` to inject content into the section
   CollapsibleItems: []coreModel.CollapsibleItem{
    {
     Subheading: "This is a subheading",
@@ -68,6 +69,13 @@ p.Collapsible = coreModel.Collapsible{
    {
     Subheading: "This is another subheading",
     Content:    []string{"another string", "and another"},
+   },
+   {
+    Subheading: "A third subheading",
+    SafeHTML: coreModel.Localisation{
+      LocaleKey: "LocaleKey",
+      Plural:    1,
+    },
    },
   },
  }
