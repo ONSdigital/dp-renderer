@@ -8,6 +8,14 @@
         <div class="ons-col-auto ons-grid--flex ons-grid--no-wrap@l ons-grid--vertical-center">
             <span class="default-line-height ons-u-fs-s ons-u-m-no">{{ localise "BetaSearchFeedback" .Language 1 | safeHTML }}</span>
         </div>
+      {{ else if eq .Type "releaseCalendar" }}
+        <div class="ons-col-auto ons-grid--flex ons-grid--no-wrap@l ons-grid--vertical-center">
+            <span class="ons-u-fs-s ons-u-m-no">{{ localise "BetaGeneralFeedback" .Language 1 | safeHTML }}</span>
+            <form action="{{ .URI }}" method="get">
+              <input type="hidden" id="exit-new-search" name="exit-new-search" value="true">
+              <button type="submit" role="link" class="default-line-height ons-btn ons-btn__btn--link ons-btn__btn--search flush--sm" name="previous-version" data-gtm-search-exit="true">{{ localise "BetaPreviousVersionReleaseCalendar" .Language 1 }}</button>
+            </form>
+        </div>
       {{ else }}
         <div class="ons-col-auto ons-grid--flex ons-grid--no-wrap@l ons-grid--vertical-center">
             <span class="ons-u-fs-s ons-u-m-no">{{ localise "BetaGeneralFeedback" .Language 1 | safeHTML }}</span>
