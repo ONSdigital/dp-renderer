@@ -262,6 +262,10 @@ one = "This is a new way of getting data - your <a href=\"/feedback?service=cmd\
 description = "You can still use the previous version"
 one = "You can still use the previous version"
 
+[BetaPreviousVersionReleaseCalendar]
+description = "Return to the previous version."
+one = "Return to the previous version."
+
 [BetaSearchFeedback]
 description = "This is a new search results page. <a href=\"/feedback\">Provide feedback to improve it</a>."
 one = "This is a new search results page. <a href=\"/feedback\">Provide feedback to improve it</a>."
