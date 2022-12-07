@@ -6,14 +6,14 @@
     autofocus="autofocus"
     class="ons-panel ons-panel--error ons-u-mt-m">
     <div class="ons-panel__header">
-        <span id="error-summary-title" data-qa="error-header" class="ons-panel__title ons-u-fs-r--b">
+        <h2 id="error-summary-title" data-qa="error-header" class="ons-panel__title ons-u-fs-r--b">
             {{ if gt $length 1 }}
                 {{ $strLength := intToString $length }}
                 {{- localise "PageProblemCount" .Language $length $strLength -}}
             {{ else }}
                 {{- localise "PageProblem" .Language 1 -}}
             {{ end }}
-        </span>
+        </h2>
     </div>
     <div class="ons-panel__body ons-u-fs-r">
         {{ if gt $length 1 }}
