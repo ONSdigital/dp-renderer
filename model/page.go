@@ -45,11 +45,12 @@ type NavigationItem struct {
 
 // FeatureFlags contains toggles for certain features on the website
 type FeatureFlags struct {
+	EnableCensusBanner     bool   `json:"enable_census_banner"`
+	EnableCensusTile       bool   `json:"enable_census_tile"`
+	EnableGetDataCard      bool   `json:"enable_get_data_card"`
 	HideCookieBanner       bool   `json:"hide_cookie_banner"`
 	ONSDesignSystemVersion string `json:"ons_design_system_version"`
 	SixteensVersion        string `json:"legacy_sixteens_version"`
-	EnableCensusTile       bool   `json:"enable_census_tile"`
-	EnableCensusBanner     bool   `json:"enable_census_banner"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
