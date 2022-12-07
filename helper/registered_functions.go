@@ -34,4 +34,5 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"intToString":                  IntToString,
 	"lower":                        Lower,
 	"thousandsSeparator":           ThousandsSeparator,
+	"join":                         Join,
 }

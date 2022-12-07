@@ -14,6 +14,7 @@ type Page struct {
 	IsInFilterBreadcrumb             bool             `json:"is_in_filter_breadcrumb"`
 	ServiceMessage                   string           `json:"service_message"`
 	Metadata                         Metadata         `json:"metadata"`
+	FilterFlex                       FilterFlex       `json:"filter_flex"`
 	SearchDisabled                   bool             `json:"search_disabled"`
 	SiteDomain                       string           `json:"-"`
 	PatternLibraryAssetsPath         string           `json:"-"`

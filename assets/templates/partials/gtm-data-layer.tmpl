@@ -41,6 +41,19 @@ dataLayer = [{
     {{ if .DatasetId }}
         "datasetID": {{ .DatasetId }},
     {{ end }}
+    {{ if .FilterFlex.Dimensions }}
+        "dimensions": {{ join "," .FilterFlex.Dimensions }},
+    {{ end}}
+    {{ if .FilterFlex.AreaType }}
+        "areaType": {{ .FilterFlex.AreaType }},
+    {{ end}}
+    {{ if .FilterFlex.CoverageAreaType }}
+        "coverageAreaType": {{ .FilterFlex.CoverageAreaType }},
+    {{ end}}
+    {{ if .FilterFlex.Coverage }}
+        "coverage": {{ join "," .FilterFlex.Coverage }},
+        "coverageCount": {{ len .FilterFlex.Coverage }},
+    {{ end}}
 }];
 
 </script>
