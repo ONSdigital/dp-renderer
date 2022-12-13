@@ -47,13 +47,13 @@ dataLayer = [{
     {{ if .FilterFlex.AreaType }}
         "areaType": {{ .FilterFlex.AreaType }},
     {{ end}}
-    {{ if .FilterFlex.CoverageAreaType }}
-        "coverageAreaType": {{ .FilterFlex.CoverageAreaType }},
-    {{ end}}
     {{ if .FilterFlex.Coverage }}
-        "coverage": {{ join "," .FilterFlex.Coverage }},
+        "coverageAreaType": {{ .FilterFlex.CoverageAreaType }},
         "coverageCount": {{ len .FilterFlex.Coverage }},
-    {{ end}}
+        {{ if lt (len .FilterFlex.Coverage) 5 }}
+            "coverage": {{ join "," .FilterFlex.Coverage }},
+        {{ end }}
+    {{ end }}
 }];
 
 </script>
