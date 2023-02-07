@@ -86,7 +86,7 @@ e.g.
 
 ```tmpl
 <div>Some html...</div>
-{{ template "partials/collapsible" . }}
+{{ template "partials/collapsible" .Collapsible }}
 <div>Some more html</div>
 ```
 

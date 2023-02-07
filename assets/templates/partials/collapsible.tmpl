@@ -2,12 +2,12 @@
 <details id="collapsible" class="ons-collapsible ons-js-collapsible">
     <summary class="ons-collapsible__heading ons-js-collapsible-heading">
         <h3 class="ons-collapsible__title">
-            {{- .Collapsible.Title.FuncLocalise .Language -}}
+            {{- .Title.FuncLocalise .Language -}}
         </h3>
         {{ template "icons/collapsible" }}
     </summary>
     <div id="collapsible-content" class="ons-collapsible__content ons-js-collapsible-content">
-        {{ range .Collapsible.CollapsibleItems }}
+        {{ range .CollapsibleItems }}
             {{ if .Subheading }}
                 <h4>{{- .Subheading -}}</h4>
             {{ end }}
