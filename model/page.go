@@ -15,6 +15,8 @@ type Page struct {
 	ServiceMessage                   string           `json:"service_message"`
 	Metadata                         Metadata         `json:"metadata"`
 	SearchDisabled                   bool             `json:"search_disabled"`
+	SearchBarFormAction              string           `json:"search_bar_form_action"`
+	SearchBarLocaliseKey             string           `json:"search_bar_localise_key"`
 	SiteDomain                       string           `json:"-"`
 	PatternLibraryAssetsPath         string           `json:"-"`
 	Language                         string           `json:"language"`
