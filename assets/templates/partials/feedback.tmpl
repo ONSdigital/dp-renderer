@@ -1,3 +1,4 @@
+
 <div class="wrapper link-adjust">
   <div class="improve-this-page" data-module="improve-this-page">
   {{/* Using "assertive" instead of "polite" due to a known and open issue with NVDA on Chrome, issue #8873
@@ -26,7 +27,7 @@
         <a
           id="feedback-form-no"
           class="js-toggle"
-          href="/feedback?service=cmd"
+          href="/feedback"
           aria-label="{{ localise "NoAria" .Language 1 }}"
         >
           {{- localise "No" .Language 1 -}}
@@ -36,7 +37,7 @@
         <a
           id="feedback-form-anything-wrong"
           class="js-toggle improve-this-page__anything-wrong"
-          href="/feedback?service=cmd"
+          href="/feedback"
         >
           {{- localise "CantFind" .Language 1 -}}
         </a>
@@ -44,6 +45,14 @@
     </div>
     <div id="feedback-form" class="improve-this-page__form js-hidden font-size--18">
       <form id="feedback-form-container">
+        {{ if and .Data.EnableFeedbackAPI .Data.FeedbackAPIURL}} 
+        <input type="hidden" name="feedback-form-type" value="footer">
+        <input type="hidden" name="url" id="feedback-api-enabled" value="true">
+        <input type="hidden" name="url" id="feedback-api-url" value="{{.Data.FeedbackAPIURL}}">
+        {{ else }}
+        <input type="hidden" name="url" id="feedback-api-enabled" value="false">
+        <input type="hidden" name="url" id="feedback-api-url" value="">
+        {{ end }}
         <input type="hidden" name="feedback-form-type" value="footer">
         <input type="hidden" name="url" id="feedback-form-url" value="">
         <div class="form-group">
