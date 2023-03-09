@@ -45,10 +45,10 @@
     </div>
     <div id="feedback-form" class="improve-this-page__form js-hidden font-size--18">
       <form id="feedback-form-container">
-        {{ if and .Data.EnableFeedbackAPI .Data.FeedbackAPIURL}} 
+        {{ if and .FeatureFlags.EnableFeedbackAPI .FeatureFlags.FeedbackAPIURL}} 
         <input type="hidden" name="feedback-form-type" value="footer">
         <input type="hidden" name="url" id="feedback-api-enabled" value="true">
-        <input type="hidden" name="url" id="feedback-api-url" value="{{.Data.FeedbackAPIURL}}">
+        <input type="hidden" name="url" id="feedback-api-url" value="{{.FeatureFlags.FeedbackAPIURL}}">
         {{ else }}
         <input type="hidden" name="url" id="feedback-api-enabled" value="false">
         <input type="hidden" name="url" id="feedback-api-url" value="">
