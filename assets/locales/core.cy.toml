@@ -336,6 +336,10 @@ one = "Cysylltu â ni"
 description = "Twitter"
 one = "Twitter"
 
+[Instagram]
+description = "Instagram"
+one = "Instagram"
+
 [Facebook]
 description = "Facebook"
 one = "Facebook"

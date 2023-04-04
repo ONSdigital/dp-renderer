@@ -332,6 +332,10 @@ one = "Connect with us"
 description = "Twitter"
 one = "Twitter"
 
+[Instagram]
+description = "Instagram"
+one = "Instagram"
+
 [Facebook]
 description = "Facebook"
 one = "Facebook"
