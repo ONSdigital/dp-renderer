@@ -1,6 +1,6 @@
 {{/* Use model.RadioFieldset for model binding */}}
-{{ if .HasValidationErr }}
-{{ template "fragments/field-error-top" .ErrorItem }}
+{{ if .ValidationErr.HasValidationErr }}
+{{ template "fragments/field-error-top" .ValidationErr.ErrorItem }}
 {{ end }}
 <fieldset class="ons-fieldset">
     <legend class="ons-fieldset__legend">
@@ -21,6 +21,6 @@
         {{ end }}
     </div>
 </fieldset>
-{{ if .HasValidationErr }}
+{{ if .ValidationErr.HasValidationErr }}
 {{ template "fragments/field-error-bottom" }}
 {{ end }}
