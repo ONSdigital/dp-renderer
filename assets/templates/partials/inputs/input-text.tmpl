@@ -1,0 +1,16 @@
+{{/* Use model.Input for model binding */}}
+<label
+    class="ons-label"
+    for="{{- .ID -}}"
+    id="{{- .ID -}}-label"
+>{{- .Label.FuncLocalise .Language -}}</label>
+<input
+    class="ons-input ons-input--text ons-input-type__input"
+    type="text"
+    id="{{- .ID -}}"
+    value="{{- .Value -}}"
+    name="{{- .Name -}}"
+    {{ if .IsDisabled }}
+    disabled
+    {{ end }}
+>

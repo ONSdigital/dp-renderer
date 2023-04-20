@@ -1,0 +1,20 @@
+{{/* Use model.Input for model binding */}}
+<label
+    class="ons-label ons-label--with-description"
+    aria-describedby="{{- .ID -}}-hint"
+    for="description-field"
+    id="{{- .ID -}}-label"
+>{{- .Label.FuncLocalise .Language -}}</label>
+<span
+    id="{{- .ID -}}-hint"
+    class="ons-label__description ons-input--with-description"
+>{{- .Description.FuncLocalise .Language -}}</span>
+<textarea
+    id="{{- .ID -}}"
+    class="ons-input ons-input--textarea"
+    name="{{- .Name -}}"
+    rows="8"
+    {{ if .IsDisabled }}
+    disabled
+    {{ end }}
+>{{- .Value -}}</textarea>
