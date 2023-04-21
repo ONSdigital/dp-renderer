@@ -1,24 +1,17 @@
 package model
 
 /*
-Input represents the common attributes for html input elements.
+Input represents the common attributes and elements for html input.
 Some properties are not rendered if they are invalid attributes for the type.
-Description is human readable additional content to support the label.
-ID is the unique element ID.
-IsChecked is a boolean representing whether the element is checked.
-IsDisabled is a boolean representing whether the element is disabled.
-Label is the human readable label.
-Language should be passed in from the Page model.
-Name is the name attribute used for model binding.
-Value is the value sent to the server.
 */
 type Input struct {
-	Description Localisation `json:"description"`
-	ID          string       `json:"id"`
-	IsChecked   bool         `json:"is_checked"`
-	IsDisabled  bool         `json:"is_disabled"`
-	Label       Localisation `json:"label"`
-	Language    string       `json:"language"`
-	Name        string       `json:"name"`
-	Value       string       `json:"value"`
+	Autocomplete string       `json:"autocomplete"` // Renders the autocomplete browser functionality for the input
+	Description  Localisation `json:"description"`  // Human readable additional content to support the label
+	ID           string       `json:"id"`           // Unique element ID
+	IsChecked    bool         `json:"is_checked"`   // Boolean representing whether the element is checked
+	IsDisabled   bool         `json:"is_disabled"`  // Boolean representing whether the element is disabled
+	Label        Localisation `json:"label"`        // Human readable label
+	Language     string       `json:"language"`     // Passed from the Page model
+	Name         string       `json:"name"`         // Name attribute used for model binding
+	Value        string       `json:"value"`        // Value sent to the server
 }

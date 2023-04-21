@@ -17,4 +17,7 @@
     {{ if .IsDisabled }}
     disabled
     {{ end }}
+    {{ if .Autocomplete }}
+    autocomplete="{{- .Autocomplete -}}"
+    {{ end }}
 >{{- .Value -}}</textarea>
