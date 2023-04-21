@@ -49,7 +49,7 @@ function takes parameters which makes it a little more obvious:
 
 ## Collapsible
 
-To instatiate the [collapsible](https://ons-design-system.netlify.app/components/collapsible/) UI component in your service:
+To instantiate the [collapsible](https://service-manual.ons.gov.uk/design-system/components/accordion) (renamed to accordion) UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields
   e.g.
@@ -93,7 +93,7 @@ p.Collapsible = coreModel.Collapsible{
 
 ## Table of Contents
 
-To instatiate the [table-of-contents](https://ons-design-system.netlify.app/components/table-of-contents/) UI component in your service:
+To instantiate the [table-of-contents](https://service-manual.ons.gov.uk/design-system/components/table-of-contents) UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields:
 
@@ -146,7 +146,7 @@ keys to enable localisation:
 
 ## Pagination
 
-To instatiate the [pagination](https://ons-design-system.netlify.app/components/pagination/) UI component in your service:
+To instantiate the [pagination](https://service-manual.ons.gov.uk/design-system/components/pagination) UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields:
 
@@ -251,7 +251,7 @@ are prefixed with `Pagination`.
 
 ## InputDate
 
-To instatiate the [Dates](https://ons-design-system.netlify.app/patterns/dates/) UI pattern in your service:
+To instantiate the [Dates](https://service-manual.ons.gov.uk/design-system/patterns/dates) UI pattern in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields:
 
@@ -286,7 +286,7 @@ are prefixed with `InputDate`.
 
 ## BackTo
 
-To instatiate the 'back to' UI component in your service:
+To instantiate the 'back to' UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields:
 
@@ -311,7 +311,7 @@ p.BackTo = coreModel.BackTo{
 
 ## Table
 
-To instatiate the [Table](https://ons-design-system.netlify.app/components/table/) UI component in your service needs an entry in the mapper and a template. However as there are many variations of this component this will be expanded on in the next section.
+To instantiate the [Table](https://service-manual.ons.gov.uk/design-system/components/table) UI component in your service needs an entry in the mapper and a template. However as there are many variations of this component this will be expanded on in the next section.
 
 - Basic `mapper.go` example:
 
@@ -1099,7 +1099,7 @@ are prefixed with `Table`.
 
 ## Correct errors
 
-To instatiate the [correct errors](https://ons-design-system.netlify.app/patterns/correct-errors/) UI component in your service:
+To instantiate the [correct errors](https://service-manual.ons.gov.uk/design-system/patterns/correct-errors) UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields
   e.g.
@@ -1161,7 +1161,7 @@ p.Page.Error = coreModel.Error{
 <h1>The header</h1>
 ```
 
-- You will need to manually add the [error panel](https://ons-design-system.netlify.app/components/panel/#error-details) yourself but it will resemble something like the example. This is due to the panel adding two additional containing `<div>` elements and different input fields have different variants on implementing the error. Alternatively, if your fields are not complex then use one of the [fields](#fields) patterns which provide the necessary error panel surrounding the input field.
+- You will need to manually add the [error panel](https://service-manual.ons.gov.uk/design-system/components/panel/#error-details) yourself but it will resemble something like the example. This is due to the panel adding two additional containing `<div>` elements and different input fields have different variants on implementing the error. Alternatively, if your fields are not complex then use one of the [fields](#fields) patterns which provide the necessary error panel surrounding the input field.
   e.g.
 
 ```tmpl
