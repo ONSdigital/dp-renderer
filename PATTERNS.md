@@ -38,20 +38,21 @@ function takes parameters which makes it a little more obvious:
 
 ## Contents
 
-* [Collapsible](#collapsible)
-* [Table of Contents](#table-of-contents)
-* [Pagination](#pagination)
-* [Input date](#inputdate)
-* [Back to](#backto)
-* [Table](#table)
-* [Correct errors](#correct-errors)
+- [Collapsible](#collapsible)
+- [Table of Contents](#table-of-contents)
+- [Pagination](#pagination)
+- [Input date](#inputdate)
+- [Back to](#backto)
+- [Table](#table)
+- [Correct errors](#correct-errors)
+- [Fields](#fields)
 
 ## Collapsible
 
 To instatiate the [collapsible](https://ons-design-system.netlify.app/components/collapsible/) UI component in your service:
 
-* In the `mapper.go` file in your service, populate the relevant fields
-e.g.
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
 
 ```go
 p.Collapsible = coreModel.Collapsible{
@@ -81,8 +82,8 @@ p.Collapsible = coreModel.Collapsible{
  }
 ```
 
-* In the template file within your service, reference the `collapsible.tmpl` file
-e.g.
+- In the template file within your service, reference the `collapsible.tmpl` file
+  e.g.
 
 ```tmpl
 <div>Some html...</div>
@@ -94,7 +95,7 @@ e.g.
 
 To instatiate the [table-of-contents](https://ons-design-system.netlify.app/components/table-of-contents/) UI component in your service:
 
-* In the `mapper.go` file in your service, populate the relevant fields:
+- In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.TableOfContents = TableOfContents{
@@ -126,8 +127,8 @@ and these keys are used as the fragment IDs in the anchor tags.
 Omitting a section's key from the DisplayOrder will prevent that
 section from being listed in the table of contents.
 
-* In the template file within your service, reference the
-`table-of-contents.tmpl` file, where `.` is the Page model:
+- In the template file within your service, reference the
+  `table-of-contents.tmpl` file, where `.` is the Page model:
 
 ```tmpl
 <div>Some html...</div>
@@ -140,14 +141,14 @@ section from being listed in the table of contents.
 Entries in `assets/locales/core.<lang>.toml` can be referenced by their
 keys to enable localisation:
 
-* `AriaLabel` may be overridden by `AriaLabelLocaliseKey`
-* `Title` may be overridden by `TitleLocaliseKey`
+- `AriaLabel` may be overridden by `AriaLabelLocaliseKey`
+- `Title` may be overridden by `TitleLocaliseKey`
 
 ## Pagination
 
 To instatiate the [pagination](https://ons-design-system.netlify.app/components/pagination/) UI component in your service:
 
-* In the `mapper.go` file in your service, populate the relevant fields:
+- In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.Pagination = Pagination{
@@ -234,8 +235,8 @@ rendered with ellipsis between both bookends. For example, setting
 1 ... 4 5 6 ... 10
 ```
 
-* In the template file within your service, reference the
-`pagination.tmpl` file, where `.` is the Page model:
+- In the template file within your service, reference the
+  `pagination.tmpl` file, where `.` is the Page model:
 
 ```tmpl
 <div>Some html...</div>
@@ -252,7 +253,7 @@ are prefixed with `Pagination`.
 
 To instatiate the [Dates](https://ons-design-system.netlify.app/patterns/dates/) UI pattern in your service:
 
-* In the `mapper.go` file in your service, populate the relevant fields:
+- In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 page.PublicationDate = InputDate{
@@ -269,8 +270,8 @@ page.PublicationDate = InputDate{
 }
 ```
 
-* In the template file within your service, reference the
-`input-date.tmpl` file:
+- In the template file within your service, reference the
+  `input-date.tmpl` file:
 
 ```tmpl
 <div>Some html...</div>
@@ -287,7 +288,7 @@ are prefixed with `InputDate`.
 
 To instatiate the 'back to' UI component in your service:
 
-* In the `mapper.go` file in your service, populate the relevant fields:
+- In the `mapper.go` file in your service, populate the relevant fields:
 
 ```go
 p.BackTo = coreModel.BackTo{
@@ -299,8 +300,8 @@ p.BackTo = coreModel.BackTo{
 }
 ```
 
-* In the template file within your service, reference the
-`back-to.tmpl` file:
+- In the template file within your service, reference the
+  `back-to.tmpl` file:
 
 ```tmpl
 <div>Some html...</div>
@@ -312,7 +313,7 @@ p.BackTo = coreModel.BackTo{
 
 To instatiate the [Table](https://ons-design-system.netlify.app/components/table/) UI component in your service needs an entry in the mapper and a template. However as there are many variations of this component this will be expanded on in the next section.
 
-* Basic `mapper.go` example:
+- Basic `mapper.go` example:
 
 ```go
 p.ExampleTable = coreModel.Table{
@@ -334,7 +335,7 @@ p.ExampleTable = coreModel.Table{
 }
 ```
 
-* In the template file within your service, reference the `partials/table.tmpl` file:
+- In the template file within your service, reference the `partials/table.tmpl` file:
 
 ```tmpl
 {{ template "partials/table" .ExampleTable }}
@@ -345,11 +346,11 @@ p.ExampleTable = coreModel.Table{
 The Table component supports many variations. These are optional, and can be
 combined:
 
-* "compact"
-* "responsive"
-* "scrollable"
-* "sortable"
-* "row-hover"
+- "compact"
+- "responsive"
+- "scrollable"
+- "sortable"
+- "row-hover"
 
 All variations are configured through the mapper.
 
@@ -1100,8 +1101,8 @@ are prefixed with `Table`.
 
 To instatiate the [correct errors](https://ons-design-system.netlify.app/patterns/correct-errors/) UI component in your service:
 
-* In the `mapper.go` file in your service, populate the relevant fields
-e.g.
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
 
 ```go
 p.Page.Error = coreModel.Error{
@@ -1121,8 +1122,8 @@ p.Page.Error = coreModel.Error{
   }
 ```
 
-* If there is more than one error to correct, add further `ErrorItem` types. By doing so, the view will automatically toggle to an ordered numbered list
-e.g.
+- If there is more than one error to correct, add further `ErrorItem` types. By doing so, the view will automatically toggle to an ordered numbered list
+  e.g.
 
 ```go
 p.Page.Error = coreModel.Error{
@@ -1149,8 +1150,8 @@ p.Page.Error = coreModel.Error{
   }
 ```
 
-* In the template file within your service, reference the `error-summary.tmpl` file below the breadcrumbs, before the `<h1>` and pass in the `error` struct
-e.g.
+- In the template file within your service, reference the `error-summary.tmpl` file below the breadcrumbs, before the `<h1>` and pass in the `error` struct
+  e.g.
 
 ```tmpl
 {{ template "partials/breadcrumb" . }}
@@ -1160,8 +1161,8 @@ e.g.
 <h1>The header</h1>
 ```
 
-* You will need to manually add the [error panel](https://ons-design-system.netlify.app/components/panel/#error-details) yourself but it will resemble something like the example. This is due to the panel adding two additional containing `<div>` elements and different input fields have different variants on implementing the error.
-e.g.
+- You will need to manually add the [error panel](https://ons-design-system.netlify.app/components/panel/#error-details) yourself but it will resemble something like the example. This is due to the panel adding two additional containing `<div>` elements and different input fields have different variants on implementing the error. Alternatively, if your fields are not complex then use one of the [fields](#fields) patterns which provide the necessary error panel surrounding the input field.
+  e.g.
 
 ```tmpl
 {{ if .Page.Error.Title }}
@@ -1179,3 +1180,422 @@ e.g.
   </div>
 </div>
 {{ end }}
+```
+
+## Fields
+
+The field components provides a consistent way of adding a simple valid html input element with corresponding field validation by populating relevant properties on the model.
+
+Fields available:
+
+- [text](#text-input)
+- [textarea](#textarea)
+- [radios fieldset](#radios-fieldset)
+
+The inputs contained within the fields share a common model `input.go`, this allows [attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) to be set in a consistent way. However, there are circumstances where the attributes are not permitted and subsequently not rendered. Use the table below as a guide:
+
+| Attribute                                                                                 | Checkbox | Radio | Text | Textarea |
+| ----------------------------------------------------------------------------------------- | -------- | ----- | ---- | -------- |
+| [Autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | No       | No    | Yes  | Yes      |
+| ID (mandatory)                                                                            | Yes      | Yes   | Yes  | Yes      |
+| Checked                                                                                   | Yes      | Yes   | No   | No       |
+| Disabled                                                                                  | Yes      | Yes   | Yes  | Yes      |
+| Name (mandatory)                                                                          | Yes      | Yes   | Yes  | Yes      |
+| Value                                                                                     | Yes      | Yes   | Yes  | Yes      |
+
+### Text input
+
+To instatiate the [text input](https://service-manual.ons.gov.uk/design-system/components/input) UI component in your service:
+
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
+
+```go
+p.TextInput = core.TextField{
+   Input: core.Input{
+    ID:    "text-field",
+    Name:  "text",
+    Value: "", // Only required to rebind to the model after validation
+    Label: core.Localisation{
+     LocaleKey: "LocaleKey",
+     Plural:    1,
+    },
+   },
+  },
+```
+
+- The above snippet will render the following html:
+
+```html
+<div class="ons-field">
+  <label class="ons-label" for="name-field" id="name-field-label">
+    Locale lookup label
+  </label>
+  <input
+    class="ons-input ons-input--text ons-input-type__input"
+    type="text"
+    id="text-field"
+    value=""
+    name="text"
+  />
+</div>
+```
+
+#### Text input validation
+
+If the field fails form validation, users need to be given the opportunity to [correct the error](https://service-manual.ons.gov.uk/design-system/patterns/correct-errors). The following mapped fields will render the field with a validation error:
+
+```go
+p.AnotherInput = core.TextField{
+  Input: core.Input{
+  ID:    "another-field",
+  Name:  "another",
+  Label: core.Localisation{
+    Text: "Label text",
+  },
+  Value: "user entered value",
+  },
+  ValidationErr: core.ValidationErr{ // Use in conjunction with the 'correct errors' pattern
+  HasValidationErr: true,
+  ErrorItem: core.ErrorItem{
+    Description: core.Localisation{
+    LocaleKey: "LocaleKey",
+    Plural:    1,
+    },
+    ID: "another-field-error", // Linked from the 'correct errors' pattern
+    },
+  },
+}
+```
+
+- The above snippet will render the following html
+
+```html
+<div
+  class="ons-panel ons-panel--error ons-panel--no-title"
+  id="another-field-error"
+>
+  <span class="ons-u-vh">Error: </span>
+  <div class="ons-panel__body">
+    <p class="ons-panel__error">
+      <strong>A locale lookup meaningful message</strong>
+    </p>
+    <div class="ons-field">
+      <label class="ons-label" for="another-field" id="another-field-label">
+        Label text
+      </label>
+      <input
+        class="ons-input ons-input--text ons-input-type__input"
+        type="text"
+        id="another-field"
+        value="user entered value"
+        name="another"
+      />
+    </div>
+  </div>
+</div>
+```
+
+### Textarea
+
+To instatiate the [textarea input](https://service-manual.ons.gov.uk/design-system/components/textarea) UI component in your service:
+
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
+
+```go
+p.TextareaField = core.TextareaField{
+  Input: core.Input{
+   Description: core.Localisation{
+    LocaleKey: "DescriptionLocaleKey", // Can be text instead of a locale
+    Plural:    1,
+   },
+   ID: "textarea-field",
+   Label: core.Localisation{
+    LocaleKey: "LabelLocaleKey", // Can be text instead of a locale
+    Plural:    1,
+   },
+   Language: lang, // required for the localisation
+   Name:     "textarea",
+  },
+ }
+```
+
+- The above snippet will render the following html
+
+```html
+<div class="ons-field">
+  <label
+    class="ons-label ons-label--with-description"
+    aria-describedby="textarea-field-hint"
+    for="textarea-field"
+    id="textarea-field-label"
+  >
+    The label text
+  </label>
+  <span
+    id="textarea-field-hint"
+    class="ons-label__description ons-input--with-description"
+  >
+    Meaningful hint text
+  </span>
+  <textarea
+    id="textarea-field"
+    class="ons-input ons-input--textarea"
+    name="textarea"
+    rows="8"
+  >
+  </textarea>
+</div>
+```
+
+#### Textarea validation
+
+If the field fails form validation, users need to be given the opportunity to [correct the error](https://service-manual.ons.gov.uk/design-system/patterns/correct-errors). The following mapped fields will render the field with a validation error:
+
+```go
+p.TextareaField = core.TextareaField{
+  Input: core.Input{
+   // As above (omitted for brevity)
+   Value: " ", // user entered whitespace
+  },
+  ValidationErr: core.ValidationErr{
+   HasValidationErr: true,
+   ErrorItem: core.ErrorItem{
+    Description: core.Localisation{
+     LocaleKey: "TextareaErrorLocale",
+     Plural:    1,
+    },
+    ID: "textarea-error",
+   },
+  },
+ }
+```
+
+- The above snippet will render the following html:
+
+```html
+<div class="ons-panel ons-panel--error ons-panel--no-title" id="textarea-error">
+  <span class="ons-u-vh">Error: </span>
+  <div class="ons-panel__body">
+    <p class="ons-panel__error">
+      <strong>Enter some text</strong>
+    </p>
+    <div class="ons-field">
+      <label
+        class="ons-label ons-label--with-description"
+        aria-describedby="textarea-field-hint"
+        for="textarea-field"
+        id="textarea-field-label"
+      >
+        The label text
+      </label>
+      <span
+        id="textarea-field-hint"
+        class="ons-label__description ons-input--with-description"
+      >
+        Meaningful hint text
+      </span>
+      <textarea
+        id="textarea-field"
+        class="ons-input ons-input--textarea"
+        name="textarea"
+        rows="8"
+      >
+      </textarea>
+    </div>
+  </div>
+</div>
+```
+
+### Radios fieldset
+
+To instatiate a [radios fieldset](https://service-manual.ons.gov.uk/design-system/components/radios) without a border that allows a conditionally revealed text input UI component in your service:
+
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
+
+```go
+p.Radios = core.RadioFieldset{
+  Legend: core.Localisation{
+   LocaleKey: "LegendLocaleKey", // Can be text instead of a locale
+   Plural:    1,
+  },
+  Radios: []core.Radio{
+   {
+    Input: core.Input{
+     ID:        "radio-one",
+     IsChecked: true, // Can be false or omitted (= false)
+     Label: core.Localisation{
+      LocaleKey: "LabelOneLocaleKey", // Can be text instead of a locale
+      Plural:    1,
+     },
+     Name:  "radios",
+     Value: "radio one value",
+    },
+   },
+   {
+    Input: core.Input{
+     ID:        "radio-two",
+     Label: core.Localisation{
+      Text: "Label two text"
+     },
+     Name:  "radios",
+     Value: "radio two value",
+    },
+    OtherInput: core.Input{
+     ID:    "other-input",
+     Name:  "other",
+     Label: core.Localisation{
+      Text: "other input label",
+     },
+    },
+   },
+  },
+ }
+```
+
+- The above snippet will render the following html
+
+```html
+<fieldset class="ons-fieldset">
+  <legend class="ons-fieldset__legend">A locale legend</legend>
+  <div class="ons-radios__items">
+    <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
+      <div class="ons-radio ons-radio--no-border">
+        <input
+          type="radio"
+          id="radio-one"
+          name="radios"
+          class="ons-radio__input ons-js-radio"
+          value="radio one value"
+          checked
+        />
+        <label class="ons-radio__label" for="radio-one" id="radio-one-label">
+          Radio one locale label
+        </label>
+      </div>
+    </div>
+    <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
+      <div class="ons-radio ons-radio--no-border">
+        <input
+          type="radio"
+          id="radio-two"
+          name="radios"
+          class="ons-radio__input ons-js-radio"
+          value="radio two value"
+        />
+        <label class="ons-radio__label" for="radio-two" id="radio-two-label">
+          Label two text
+        </label>
+        <div class="ons-radio__other">
+          <label class="ons-label" for="other-input" id="other-input-label">
+            Other input label
+          </label>
+          <input
+            class="ons-input ons-input--text ons-input-type__input"
+            type="text"
+            id="other-input"
+            value=""
+            name="other"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>
+```
+
+#### Radio fieldset validation
+
+If the field fails form validation, users need to be given the opportunity to [correct the error](https://service-manual.ons.gov.uk/design-system/patterns/correct-errors). The following mapped fields will render the field with a validation error:
+
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
+
+```go
+p.Radios = core.RadioFieldset{
+  Legend: core.Localisation{
+   // As above (omitted for brevity)
+  },
+  Radios: []core.Radio{
+   // As above (omitted for brevity)
+  },
+  ValidationErr: core.ValidationErr{
+   HasValidationErr: true,
+   ErrorItem: core.ErrorItem{
+    Description: core.Localisation{
+     Text: "Radio error text",
+    },
+    ID: "radio-error",
+   },
+  },
+ }
+```
+
+- The above snippet will render the following html
+
+```html
+<div class="ons-panel ons-panel--error ons-panel--no-title" id="radio-error">
+  <span class="ons-u-vh">Error: </span>
+  <div class="ons-panel__body">
+    <p class="ons-panel__error">
+      <strong>Radio error text</strong>
+    </p>
+    <fieldset class="ons-fieldset">
+      <legend class="ons-fieldset__legend">A locale legend</legend>
+      <div class="ons-radios__items">
+        <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
+          <div class="ons-radio ons-radio--no-border">
+            <input
+              type="radio"
+              id="radio-one"
+              name="radios"
+              class="ons-radio__input ons-js-radio"
+              value="radio one value"
+              checked
+            />
+            <label
+              class="ons-radio__label"
+              for="radio-one"
+              id="radio-one-label"
+            >
+              Radio one locale label
+            </label>
+          </div>
+        </div>
+        <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
+          <div class="ons-radio ons-radio--no-border">
+            <input
+              type="radio"
+              id="radio-two"
+              name="radios"
+              class="ons-radio__input ons-js-radio"
+              value="radio two value"
+            />
+            <label
+              class="ons-radio__label"
+              for="radio-two"
+              id="radio-two-label"
+            >
+              Label two text
+            </label>
+            <div class="ons-radio__other">
+              <label class="ons-label" for="other-input" id="other-input-label">
+                Other input label
+              </label>
+              <input
+                class="ons-input ons-input--text ons-input-type__input"
+                type="text"
+                id="other-input"
+                value=""
+                name="other"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+```
