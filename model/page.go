@@ -53,6 +53,7 @@ type FeatureFlags struct {
 	SixteensVersion        string `json:"legacy_sixteens_version"`
 	EnableFeedbackAPI      bool   `json:"enable_feedback_api"`
 	FeedbackAPIURL         string `json:"feedback_api_url"` // technically not a feature flag, but used exclusivly with one
+	IsPublishing           bool   `json:"is_publishing"`
 }
 
 // NewPage instantiates the base Page type with configurable fields
