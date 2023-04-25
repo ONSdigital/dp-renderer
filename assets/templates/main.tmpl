@@ -91,6 +91,10 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    {{ if .FeatureFlags.IsPublishing }}
+      {{ template "partials/publishing-preview" . }}
+    {{ end }}
+
     {{ if not .FeatureFlags.SixteensVersion }}
       <div class="ons-page">
         <div class="ons-page__content">
