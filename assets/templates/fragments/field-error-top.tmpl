@@ -1,0 +1,15 @@
+{{/*
+    Use model.ValidationErr for model binding 
+    Use with fragments/field-error-bottom
+*/}}
+<div
+    class="ons-panel ons-panel--error ons-panel--no-title"
+    id="{{- .ID -}}"
+>
+    <span class="ons-u-vh">
+        {{- localise "Error" .Language 1 -}}:
+    </span>
+    <div class="ons-panel__body">
+        <p class="ons-panel__error">
+            <strong>{{- .Description.FuncLocalise .Language -}}</strong>
+        </p>

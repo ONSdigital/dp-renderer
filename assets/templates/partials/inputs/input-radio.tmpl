@@ -1,21 +1,21 @@
+{{/* Use model.Input for model binding */}}
 <input
   type="radio"
-  id="{{ .Id }}"
-  name="{{ .Name }}"
+  id="{{- .ID -}}"
+  name="{{- .Name -}}"
   class="ons-radio__input ons-js-radio"
-  value="{{ .Value }}"
-  {{ if .Checked }}
-    checked
+  value="{{- .Value -}}"
+  {{ if .IsChecked }}
+  checked
   {{ end }}
->  
-
-  <label
-    class="ons-radio__label"
-    for="{{.Id}}"
-    id="{{.Id}}-label"
-  >
-    {{- localise .LocaleKey .Language 1 -}}
-    {{ if .Count }}
-      ({{ .Count }})
-    {{ end }}
-  </label>
+  {{ if .IsDisabled }}
+  disabled
+  {{ end }}
+>
+<label
+  class="ons-radio__label"
+  for="{{- .ID -}}"
+  id="{{- .ID -}}-label"
+>
+  {{- .Label.FuncLocalise .Language -}}
+</label>

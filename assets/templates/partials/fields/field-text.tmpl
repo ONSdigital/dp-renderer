@@ -1,0 +1,10 @@
+{{/* Use model.TextField for model binding */}}
+{{ if .ValidationErr.HasValidationErr }}
+{{ template "fragments/field-error-top" .ValidationErr.ErrorItem }}
+{{ end }}
+<div class="ons-field">
+    {{ template "partials/inputs/input-text" .Input }}
+</div>
+{{ if .ValidationErr.HasValidationErr }}
+{{ template "fragments/field-error-bottom" }}
+{{ end }}

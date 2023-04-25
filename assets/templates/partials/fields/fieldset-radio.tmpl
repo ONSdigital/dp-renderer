@@ -1,0 +1,26 @@
+{{/* Use model.RadioFieldset for model binding */}}
+{{ if .ValidationErr.HasValidationErr }}
+{{ template "fragments/field-error-top" .ValidationErr.ErrorItem }}
+{{ end }}
+<fieldset class="ons-fieldset">
+    <legend class="ons-fieldset__legend">
+        {{- .Legend.FuncLocalise .Language -}}
+    </legend>
+    <div class="ons-radios__items">
+        {{ range .Radios }}
+        <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
+            <div class="ons-radio ons-radio--no-border">
+                {{ template "partials/inputs/input-radio" .Input }}
+                {{ if .OtherInput.Name }}
+                <div class="ons-radio__other">
+                    {{ template "partials/inputs/input-text" .OtherInput }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</fieldset>
+{{ if .ValidationErr.HasValidationErr }}
+{{ template "fragments/field-error-bottom" }}
+{{ end }}

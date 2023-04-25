@@ -2,26 +2,18 @@ package model
 
 // N.B. This model is shared between 'error.tmpl' and 'partials/error-summary.tmpl'
 
-/* Error contains data to display a client page error
-Title is the error title and populates the <title> element
-Description is free text
-ErrorItems is an array of page errors
-Language is the user defined language
-*/
+// Error contains data to display a client page error
 type Error struct {
-	Title       string      `json:"title"`
-	Description string      `json:"description"`
-	ErrorItems  []ErrorItem `json:"error_items"`
-	Language    string      `json:"language"`
+	Title       string      `json:"title"`       // The error title and populates the <title> element
+	Description string      `json:"description"` // Free text to describe the error
+	ErrorItems  []ErrorItem `json:"error_items"` // Array of error item
+	Language    string      `json:"language"`    // User defined language
 }
 
-/* ErrorItem represents an error item.
-The description can be either a 'Localisation.Text' or a 'Localisation.LocaleKey'.
-The 'LocaleKey' has to correspond to the localisation key found in the toml files within assets/locales, otherwise the page will error.
-Plural refers to the plural int used in the toml file.
-URL is the href to the error
-*/
+// ErrorItem represents an error item.
 type ErrorItem struct {
-	Description Localisation `json:"description"`
-	URL         string       `json:"url"`
+	Description Localisation `json:"description"` // Can be either a 'Localisation.Text' or a 'Localisation.LocaleKey'
+	Language    string       `json:"language"`    // User defined language
+	ID          string       `json:"id"`          // HTML id attribute used within a field validation error
+	URL         string       `json:"url"`         // The href to the error
 }

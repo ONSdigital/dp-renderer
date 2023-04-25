@@ -1,0 +1,29 @@
+{{/* Use model.Input for model binding */}}
+{{ $description := .Description.FuncLocalise .Language }}
+<label
+    class="ons-label{{ if $description }} ons-label--with-description{{end}}"
+    {{ if $description }}
+    aria-describedby="{{- .ID -}}-hint"
+    {{ end }}
+    for="{{- .ID -}}"
+    id="{{- .ID -}}-label"
+>{{- .Label.FuncLocalise .Language -}}</label>
+{{ if $description }}
+<span
+    id="{{- .ID -}}-hint"
+    class="ons-label__description ons-input--with-description"
+>{{- $description -}}</span>
+{{ end }}
+<input
+    class="ons-input ons-input--text ons-input-type__input"
+    type="text"
+    id="{{- .ID -}}"
+    value="{{- .Value -}}"
+    name="{{- .Name -}}"
+    {{ if .IsDisabled }}
+    disabled
+    {{ end }}
+    {{ if .Autocomplete }}
+    autocomplete="{{- .Autocomplete -}}"
+    {{ end }}
+>
