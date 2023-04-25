@@ -1224,6 +1224,15 @@ p.TextInput = core.TextField{
   },
 ```
 
+- In the template file within your service, reference the `field-text.tmpl` file
+e.g.
+
+```tmpl
+<div>Some html</div>
+{{ template "partials/fields/field-text" .TextInput }}
+<div>Some more html</div>
+```
+
 - The above snippet will render the following html:
 
 ```html
@@ -1319,6 +1328,15 @@ p.TextareaField = core.TextareaField{
    Name:     "textarea",
   },
  }
+```
+
+- In the template file within your service, reference the `field-textarea.tmpl` file
+e.g.
+
+```tmpl
+<div>Some html</div>
+{{ template "partials/fields/field-textarea" .TextareaField }}
+<div>Some more html</div>
 ```
 
 - The above snippet will render the following html
@@ -1453,6 +1471,15 @@ p.Radios = core.RadioFieldset{
    },
   },
  }
+```
+
+- In the template file within your service, reference the `fieldset-radio.tmpl` file
+e.g.
+
+```tmpl
+<div>Some html</div>
+{{ template "partials/fields/fieldset-radio" .Radios }}
+<div>Some more html</div>
 ```
 
 - The above snippet will render the following html
