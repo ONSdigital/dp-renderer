@@ -1205,7 +1205,7 @@ The inputs contained within the fields share a common model `input.go`, this all
 
 ### Text input
 
-To instatiate the [text input](https://service-manual.ons.gov.uk/design-system/components/input) UI component in your service:
+To instantiate the [text input](https://service-manual.ons.gov.uk/design-system/components/input) UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields
   e.g.
@@ -1298,7 +1298,7 @@ p.AnotherInput = core.TextField{
 
 ### Textarea
 
-To instatiate the [textarea input](https://service-manual.ons.gov.uk/design-system/components/textarea) UI component in your service:
+To instantiate the [textarea input](https://service-manual.ons.gov.uk/design-system/components/textarea) UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields
   e.g.
@@ -1410,7 +1410,7 @@ p.TextareaField = core.TextareaField{
 
 ### Radios fieldset
 
-To instatiate a [radios fieldset](https://service-manual.ons.gov.uk/design-system/components/radios) without a border that allows a conditionally revealed text input UI component in your service:
+To instantiate a [radios fieldset](https://service-manual.ons.gov.uk/design-system/components/radios) without a border that allows a conditionally revealed text input UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields
   e.g.
