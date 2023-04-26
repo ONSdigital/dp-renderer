@@ -2,6 +2,10 @@ module github.com/ONSdigital/dp-renderer/v2
 
 go 1.19
 
+retract (
+	v2.0.0 // published version does not include v2
+)
+
 require (
 	github.com/BurntSushi/toml v1.2.1
 	github.com/ONSdigital/dp-net/v2 v2.9.1
