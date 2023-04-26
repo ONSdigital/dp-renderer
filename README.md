@@ -12,7 +12,7 @@ Other than `dp-renderer` itself, you will need a utility that can combine servic
 
 - `dp-renderer`: `go get github.com/ONSdigital/dp-renderer/v2`
 
-> You can specify a version of `dp-renderer` by appending a commit ID or semantic version number to this command. E.g., `go get github.com/ONSdigital/dp-renderer/v2@31d8704`
+> You can specify a version of `dp-renderer` by appending a commit ID or semantic version number to this command. E.g., `go get github.com/ONSdigital/dp-renderer/v2@d27f174`
 
 - `go-bindata`: `go get github.com/kevinburke/go-bindata`
 
