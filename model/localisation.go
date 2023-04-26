@@ -1,10 +1,11 @@
 package model
 
 import (
-	"github.com/ONSdigital/dp-renderer/helper"
+	"github.com/ONSdigital/dp-renderer/v2/helper"
 )
 
-/* Localisation offers text or a localised substitute.
+/*
+Localisation offers text or a localised substitute.
 Text is displayed as-is.
 LocaleKey is a key into the toml files found in assets/locales.
 Plural chooses the singular or plural form of the phrase selected by LocaleKey.

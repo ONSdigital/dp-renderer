@@ -3,7 +3,7 @@ package client
 import (
 	"io"
 
-	"github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 type Renderer interface {

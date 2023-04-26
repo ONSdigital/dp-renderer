@@ -6,8 +6,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ONSdigital/dp-renderer/client"
-	"github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/dp-renderer/v2/client"
+	"github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
@@ -29,7 +29,8 @@ func New(client client.Renderer, assetsPath, siteDomain string) *Render {
 	}
 }
 
-/* NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
+/*
+NewWithDefaultClient returns a render struct with a default rendering client provided (default: unrolled/render)
 When the siteDomain argument contains "localhost", then the rendering client will be instantiated in "development" mode.
 This means that templates are recompiled on request.
 Any updates made to your templates can then be viewed upon browser refresh, rather than having to restart the app.

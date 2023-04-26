@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ONSdigital/dp-renderer/helper"
+	"github.com/ONSdigital/dp-renderer/v2/helper"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

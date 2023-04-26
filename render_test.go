@@ -6,8 +6,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	render "github.com/ONSdigital/dp-renderer"
-	"github.com/ONSdigital/dp-renderer/model"
+	render "github.com/ONSdigital/dp-renderer/v2"
+	"github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

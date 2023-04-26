@@ -3,7 +3,7 @@ package model
 import (
 	"fmt"
 
-	"github.com/ONSdigital/dp-renderer/helper"
+	"github.com/ONSdigital/dp-renderer/v2/helper"
 )
 
 // Pagination represents all information regarding pagination of search results
