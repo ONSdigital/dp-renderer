@@ -1,4 +1,4 @@
-module github.com/ONSdigital/dp-renderer
+module github.com/ONSdigital/dp-renderer/v2
 
 go 1.19
 

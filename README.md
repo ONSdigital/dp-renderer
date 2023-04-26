@@ -10,9 +10,9 @@ Note: although the `dp-frontend-renderer` is deprecated there is a transition pe
 
 Other than `dp-renderer` itself, you will need a utility that can combine service-specific and `dp-renderer` assets. We currently use `go-bindata` for this process.
 
-- `dp-renderer`: `go get github.com/ONSdigital/dp-renderer`
+- `dp-renderer`: `go get github.com/ONSdigital/dp-renderer/v2`
 
-> You can specify a version of `dp-renderer` by appending a commit ID or semantic version number to this command. E.g., `go get github.com/ONSdigital/dp-renderer@31d8704`
+> You can specify a version of `dp-renderer` by appending a commit ID or semantic version number to this command. E.g., `go get github.com/ONSdigital/dp-renderer/v2@31d8704`
 
 - `go-bindata`: `go get github.com/kevinburke/go-bindata`
 
@@ -84,7 +84,7 @@ If you are running and developing within a docker container that includes refere
 e.g.
 
 ```go
-replace "github.com/ONSdigital/dp-renderer" => "/{yourPathToLocalGitDirectory}/dp-renderer"
+replace "github.com/ONSdigital/dp-renderer/v2" => "/{yourPathToLocalGitDirectory}/dp-renderer"
 ```
 
 - Add the volume of your local instance to the service's `.yaml` file in dp-compose

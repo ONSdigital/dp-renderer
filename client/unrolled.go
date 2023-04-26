@@ -4,8 +4,8 @@ import (
 	"html/template"
 	"io"
 
-	"github.com/ONSdigital/dp-renderer/helper"
-	"github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/dp-renderer/v2/helper"
+	"github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/unrolled/render"
 	unrolled "github.com/unrolled/render"
 )
