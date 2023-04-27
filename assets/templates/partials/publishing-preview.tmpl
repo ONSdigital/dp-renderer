@@ -1,4 +1,4 @@
-{{!-- Sends a message out of window - for Florance preview use, so that she can see when the preview window is loading (rather than looking for the iframe onload event which is only fired after all JS has loaded) --}}
+{{/* Sends a message out of window - for Florance preview use, so that she can see when the preview window is loading (rather than looking for the iframe onload event which is only fired after all JS has loaded) */}}
 <script>
     window.onunload = function(){
         top.postMessage('load', '*');
