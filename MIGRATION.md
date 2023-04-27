@@ -33,15 +33,15 @@ For `dp-renderer` to work correctly once the assets have been migrated over, we 
 Update the frontend service's `Makefile` with the following new commands so that `go-bindata` will generate this file:
 
 ```Makefile
-LOCAL_DP_RENDERER_IN_USE = $(shell grep -c "\"github.com/ONSdigital/dp-renderer\" =" go.mod)
+LOCAL_DP_RENDERER_IN_USE = $(shell grep -c "\"github.com/ONSdigital/dp-renderer/v2\" =" go.mod)
 
 .PHONY: fetch-dp-renderer
 fetch-renderer-lib:
 ifeq ($(LOCAL_DP_RENDERER_IN_USE), 1)
- $(eval CORE_ASSETS_PATH = $(shell grep -w "\"github.com/ONSdigital/dp-renderer\" =>" go.mod | awk -F '=> ' '{print $$2}' | tr -d '"'))
+ $(eval CORE_ASSETS_PATH = $(shell grep -w "\"github.com/ONSdigital/dp-renderer/v2\" =>" go.mod | awk -F '=> ' '{print $$2}' | tr -d '"'))
 else
- $(eval APP_RENDERER_VERSION=$(shell grep "github.com/ONSdigital/dp-renderer" go.mod | cut -d ' ' -f2 ))
- $(eval CORE_ASSETS_PATH = $(shell go get github.com/ONSdigital/dp-renderer@$(APP_RENDERER_VERSION) && go list -f '{{.Dir}}' -m github.com/ONSdigital/dp-renderer))
+ $(eval APP_RENDERER_VERSION=$(shell grep "github.com/ONSdigital/dp-renderer/v2" go.mod | cut -d ' ' -f2 ))
+ $(eval CORE_ASSETS_PATH = $(shell go get github.com/ONSdigital/dp-renderer/v2@$(APP_RENDERER_VERSION) && go list -f '{{.Dir}}' -m github.com/ONSdigital/dp-renderer/v2))
 endif
 
 
@@ -182,10 +182,10 @@ import (
 
   "github.com/ONSdigital/dp-cookies/cookies"
 
-  coreModel "github.com/ONSdigital/dp-renderer/model"
+  core "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
-func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isUpdated bool, lang string) model.CookiesPreference {
+func CreateCookieSettingPage(basePage core.Page, policy cookies.Policy, isUpdated bool, lang string) model.CookiesPreference {
   page := model.CookiesPreference{
     Page: basePage,
   }
