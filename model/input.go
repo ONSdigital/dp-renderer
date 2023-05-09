@@ -9,7 +9,7 @@ const (
 	Url
 )
 
-// FuncGetPanelType returns the input type as a string
+// FuncGetInputType returns the input type as a string
 func (i Input) FuncGetInputType() (inputType string) {
 	switch i.Type {
 	case Text:
