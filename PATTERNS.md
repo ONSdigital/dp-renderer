@@ -1201,7 +1201,19 @@ The inputs contained within the fields share a common model `input.go`, this all
 | Checked                                                                                   | Yes      | Yes   | No   | No       |
 | Disabled                                                                                  | Yes      | Yes   | Yes  | Yes      |
 | Name (mandatory)                                                                          | Yes      | Yes   | Yes  | Yes      |
+| [Type](#input-type)                                                                       | No       | No    | Yes  | No       |
 | Value                                                                                     | Yes      | Yes   | Yes  | Yes      |
+
+### Input type
+
+Customisation of the `<type>` attribute is only available on the [text](#text-input) field and template (`inputs/input-text.tmpl`).
+
+Types available:
+
+- [Text (default)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text)
+- [Email](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email)
+- [Tel](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel)
+- [Url](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url)
 
 ### Text input
 
@@ -1215,6 +1227,7 @@ p.TextInput = core.TextField{
    Input: core.Input{
     ID:    "text-field",
     Name:  "text",
+    Type:   core.Text, // can be omitted as 'text' is the default
     Value: "", // Only required to rebind to the model after validation
     Label: core.Localisation{
      LocaleKey: "LocaleKey",
@@ -1225,7 +1238,7 @@ p.TextInput = core.TextField{
 ```
 
 - In the template file within your service, reference the `field-text.tmpl` file
-e.g.
+  e.g.
 
 ```tmpl
 <div>Some html</div>
@@ -1331,7 +1344,7 @@ p.TextareaField = core.TextareaField{
 ```
 
 - In the template file within your service, reference the `field-textarea.tmpl` file
-e.g.
+  e.g.
 
 ```tmpl
 <div>Some html</div>
@@ -1474,7 +1487,7 @@ p.Radios = core.RadioFieldset{
 ```
 
 - In the template file within your service, reference the `fieldset-radio.tmpl` file
-e.g.
+  e.g.
 
 ```tmpl
 <div>Some html</div>
