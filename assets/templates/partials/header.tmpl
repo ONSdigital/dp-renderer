@@ -313,11 +313,11 @@
                         value="">
                     <button type="submit" class="search__button col--md-3 col--lg-3" id="nav-search-submit">
                         <span class="visuallyhidden">{{ localise "Search" .Language 1 }}</span>
-                        <span class="icon icon-search--light">
-                            {{ if not .FeatureFlags.SixteensVersion }}
-                                {{ template "icons/search" . }}
-                            {{ end }}
-                        </span>
+                        {{ if .FeatureFlags.SixteensVersion }}
+                            <span class="icon icon-search--light"> </span>
+                        {{ else }}
+                            <span>{{ template "icons/search" . }}</span>
+                        {{ end }}
                     </button>
                 </form>
             </div>
