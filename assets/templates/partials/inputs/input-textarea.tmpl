@@ -5,7 +5,7 @@
     {{ if $description }}
     aria-describedby="{{- .ID -}}-hint"
     {{ end }}
-    for="description-field"
+    for="{{- .ID -}}"
     id="{{- .ID -}}-label"
 >{{- .Label.FuncLocalise .Language -}}</label>
 {{ if $description }}
