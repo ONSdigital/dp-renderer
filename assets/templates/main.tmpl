@@ -114,13 +114,13 @@
       <script type="module" src="{{ .PatternLibraryAssetsPath }}/js/main.js"></script>
       <script nomodule src="{{ .PatternLibraryAssetsPath }}/js/main.es5.js"></script>
     {{ else }}
+      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       {{ if eq .SiteDomain "localhost" }}
         <script defer src="http://localhost:9000/dist/js/main.js"></script>
-        <script defer src="/js/app.js"></script>
       {{ else }}
         <script defer src="https://cdn.ons.gov.uk/sixteens/{{ .FeatureFlags.SixteensVersion }}/js/main.js"></script>
-        <script defer src="/js/app.js"></script>
       {{ end }}
+      <script defer src="/js/app.js"></script>
     {{ end }}
 
     {{ partial "scripts" }}
