@@ -1,6 +1,7 @@
 package helper_test
 
 import (
+	"html/template"
 	"testing"
 
 	"github.com/ONSdigital/dp-renderer/v2/helper"
@@ -26,7 +27,7 @@ var testMarkdown = []string{
 }
 
 // the new line at the end of each test case is needed
-var testHTMLForMarkdown = []string{
+var testHTMLForMarkdown = []template.HTML{
 	"<ul>\n<li><p>First bullet point</p></li>\n\n<li><p>Second bullet point</p>\n\n<p>Second line of second bullet point</p></li>\n</ul>\n",
 	"<ol>\n<li><p>First bullet point</p></li>\n\n<li><p>Second bullet point</p></li>\n</ol>\n",
 	"<h2>Heading2</h2>\n",

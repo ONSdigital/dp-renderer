@@ -1,0 +1,5 @@
+go 1.20
+
+use .
+
+replace golang.org/x/net => golang.org/x/net v0.14.0
