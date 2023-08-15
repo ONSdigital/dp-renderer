@@ -10,7 +10,7 @@ require (
 	github.com/ONSdigital/log.go/v2 v2.4.1
 	github.com/c2h5oh/datasize v0.0.0-20220606134207-859f65c6625b
 	github.com/gosimple/slug v1.13.1
-	github.com/nicksnyder/go-i18n/v2 v2.2.0
+	github.com/nicksnyder/go-i18n/v2 v2.2.1
 	github.com/russross/blackfriday/v2 v2.1.0
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/unrolled/render v1.6.0
