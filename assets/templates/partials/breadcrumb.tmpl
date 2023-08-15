@@ -25,7 +25,11 @@
     </nav>
 </div>
 {{ else }}
-<div class="background--gallery">
+<div
+    {{ if not .RemoveGalleryBackground }}
+    class="background--gallery"
+    {{ end }}
+>
     <div class="wrapper">
         <nav
             aria-label="breadcrumb"

@@ -34,6 +34,7 @@ type Page struct {
 	SearchNoIndexEnabled             bool             `json:"search_no_index_enabled"`
 	NavigationContent                []NavigationItem `json:"navigation_content"`
 	PreGTMJavaScript                 []template.JS    `json:"pre_gtm_javascript"`
+	RemoveGalleryBackground          bool             `json:"remove_gallery_background"`
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus
