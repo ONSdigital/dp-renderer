@@ -1,6 +1,8 @@
 package model
 
-import "html/template"
+import (
+	"html/template"
+)
 
 // Page contains data re-used for each page type a Data struct for data specific to the page type
 type Page struct {
@@ -35,6 +37,7 @@ type Page struct {
 	NavigationContent                []NavigationItem `json:"navigation_content"`
 	PreGTMJavaScript                 []template.JS    `json:"pre_gtm_javascript"`
 	RemoveGalleryBackground          bool             `json:"remove_gallery_background"`
+	Feedback                         Feedback         `json:"feedback"`
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus
