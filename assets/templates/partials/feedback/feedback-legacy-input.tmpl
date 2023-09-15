@@ -1,0 +1,67 @@
+<div class="form-group">
+    <label
+        class="form-label-bold"
+        id="description-field-label"
+        for="description-field"
+    >
+        {{- localise "ImproveThisPage" .Language 1 -}}
+    </label>
+    <textarea
+        id="description-field"
+        class="form-control"
+        name="description"
+        rows="5"
+    ></textarea>
+</div>
+<div class="form-group">
+    <p class="font-size--24 font-weight-700 margin-bottom--0">
+        {{- localise "WantAReply" .Language 1 -}}
+    </p>
+    <p class="font-size--18 margin-top--0">
+        {{- localise "WantAReplyBlurb" .Language 1 -}}
+    </p>
+    <label
+        class="form-label-bold"
+        for="name-field"
+    >
+        {{- localise "NameOpt" .Language 1 -}}
+    </label>
+    <input
+        id="name-field"
+        class="form-control"
+        type="text"
+        name="name"
+    >
+</div>
+<div class="form-group">
+    <label
+        class="form-label-bold"
+        id="email-field-label"
+        for="email-field"
+    >
+        {{- localise "EmailOpt" .Language 1 -}}
+    </label>
+    <input
+        id="email-field"
+        class="form-control"
+        type="text"
+        name="email"
+    >
+</div>
+<div>
+    <input
+        id="feedback-form-submit"
+        class="btn btn--primary font-weight-700 margin-bottom--2"
+        type="submit"
+        value="{{ localise "SendFeedback" .Language 1 }}"
+    >
+</div>
+<div>
+    <a
+        href="javascript:void(0)"
+        id="feedback-form-close"
+        class="improve-this-page__close js-toggle btn btn--secondary font-weight-700"
+    >
+        {{- localise "CancelFeedback" .Language 1 -}}
+    </a>
+</div>

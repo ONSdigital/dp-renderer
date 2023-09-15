@@ -1,0 +1,96 @@
+<div class="wrapper">
+  <div
+    class="improve-this-page"
+    data-module="improve-this-page"
+  >
+    {{/* Using "assertive" instead of "polite" due to a known and open issue with NVDA on Chrome, issue #8873
+   https://github.com/nvaccess/nvda/issues/8873 and
+   https://ux.stackexchange.com/questions/131889/accessible-way-of-notifying-a-screen-reader-about-loading-the-dynamic-web-page-u */}}
+    <div
+      class="improve-this-page__prompt clearfix link-adjust"
+      id="feedback-form-header"
+      role="status"
+      aria-live="assertive"
+      tabindex="-1"
+    >
+      <div class="improve-this-page__prompt_left">
+        <h2 class="improve-this-page__is-useful-question margin-right--1">
+          {{- localise "Helpful" .Language 1 -}}
+        </h2>
+        <a
+          id="feedback-form-yes"
+          class="improve-this-page__page-is-useful-button"
+          href="/feedback/thanks"
+          aria-label="{{ localise "YesAria" .Language 1 }}"
+        >
+          {{- localise "Yes" .Language 1 -}}
+        </a>
+        <span>|</span>
+        <a
+          id="feedback-form-no"
+          class="js-toggle"
+          href="/feedback"
+          aria-label="{{ localise "NoAria" .Language 1 }}"
+        >
+          {{- localise "No" .Language 1 -}}
+        </a>
+      </div>
+      <div class="improve-this-page__prompt_right">
+        <a
+          id="feedback-form-anything-wrong"
+          class="js-toggle improve-this-page__anything-wrong"
+          href="/feedback"
+        >
+          {{- localise "Report" .Language 1 -}}
+        </a>
+      </div>
+    </div>
+    <div
+      id="feedback-form"
+      class="improve-this-page__form js-hidden"
+    >
+      <div class="ons-col-8@m">
+        <form
+          id="feedback-form-container"
+          name="feedback-form"
+        >
+          {{ if and .FeatureFlags.EnableFeedbackAPI .FeatureFlags.FeedbackAPIURL}}
+          <input
+            type="hidden"
+            name="url"
+            id="feedback-api-enabled"
+            value="true"
+          >
+          <input
+            type="hidden"
+            name="url"
+            id="feedback-api-url"
+            value="{{.FeatureFlags.FeedbackAPIURL}}"
+          >
+          {{ end }}
+          <input
+            type="hidden"
+            name="feedback-form-type"
+            value="footer"
+          >
+          <input
+            type="hidden"
+            name="url"
+            id="feedback-form-url"
+            value=""
+          >
+          <input
+            type="hidden"
+            name="type"
+            value="A specific page"
+          >
+          {{ if .FeatureFlags.SixteensVersion }}
+          {{ template "partials/feedback/feedback-legacy-input" .}}
+          {{ else }}
+          {{ template "partials/feedback/feedback-input" . }}
+          {{ end }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
