@@ -1194,15 +1194,17 @@ Fields available:
 
 The inputs contained within the fields share a common model `input.go`, this allows [attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) to be set in a consistent way. However, there are circumstances where the attributes are not permitted and subsequently not rendered. Use the table below as a guide:
 
-| Attribute                                                                                 | Checkbox | Radio | Text | Textarea |
-| ----------------------------------------------------------------------------------------- | -------- | ----- | ---- | -------- |
-| [Autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | No       | No    | Yes  | Yes      |
-| ID (mandatory)                                                                            | Yes      | Yes   | Yes  | Yes      |
-| Checked                                                                                   | Yes      | Yes   | No   | No       |
-| Disabled                                                                                  | Yes      | Yes   | Yes  | Yes      |
-| Name (mandatory)                                                                          | Yes      | Yes   | Yes  | Yes      |
-| [Type](#input-type)                                                                       | No       | No    | Yes  | No       |
-| Value                                                                                     | Yes      | Yes   | Yes  | Yes      |
+| Attribute                                                                                 | Checkbox | Radio                                                                                 | Text | Textarea |
+| ----------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------- | ---- | -------- |
+| [Autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | No       | No                                                                                    | Yes  | Yes      |
+| ID (mandatory)                                                                            | Yes      | Yes                                                                                   | Yes  | Yes      |
+| Checked                                                                                   | Yes      | Yes                                                                                   | No   | No       |
+| [Dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)           | Yes      | Yes                                                                                   | Yes  | Yes      |
+| Disabled                                                                                  | Yes      | Yes                                                                                   | Yes  | Yes      |
+| Name (mandatory)                                                                          | Yes      | Yes                                                                                   | Yes  | Yes      |
+| [Type](#input-type)                                                                       | No       | No                                                                                    | Yes  | No       |
+| Required                                                                                  | Yes      | [Yes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#required) | Yes  | Yes      |
+| Value                                                                                     | Yes      | Yes                                                                                   | Yes  | Yes      |
 
 ### Input type
 
@@ -1233,6 +1235,16 @@ p.TextInput = core.TextField{
      LocaleKey: "LocaleKey",
      Plural:    1,
     },
+    DataAttributes: []DataAttribute{
+    {
+     Key: "value-missing", // "data" is automatically prefixed 
+     Value: Localisation{
+      LocaleKey: "FieldValidationLocaleKey",
+      Plural:    1,
+     },
+    },
+   },
+   IsRequired: true,
    },
   },
 ```
@@ -1259,6 +1271,8 @@ p.TextInput = core.TextField{
     id="text-field"
     value=""
     name="text"
+    required
+    data-value-missing="Validation message from locale file"
   />
 </div>
 ```
