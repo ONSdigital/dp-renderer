@@ -454,7 +454,7 @@ one = "Sut y dylem wella'r dudalen hon?"
 
 [ImproveThisPageInvalid]
 description = "Description validation error message"
-one = "Enter your feedback"
+one = "Ysgrifennwch adborth"
 
 [WantAReply]
 description = "Do you want a reply?"
@@ -474,7 +474,7 @@ one = "E-bost (dewisol)"
 
 [EmailInvalid]
 description = "Email type validation error message"
-one = "Enter an email address in a valid format, for example, name@example.com"
+one = "Rhowch gyfeiriad ebost ar ffurf ddilys, er enghraifft, enw@esiampl.com"
 
 [SendFeedback]
 description = "Send feedback"
