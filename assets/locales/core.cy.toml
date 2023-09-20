@@ -30,11 +30,11 @@ one = "The UK's largest independent producer of official statistics and the reco
 
 [Error]
 description = "Error"
-one = "Error"
+one = "Gwall"
 
 [PageProblem]
 description = "There is a problem with this page"
-one = "There is a problem with this page"
+one = "Mae problem gyda'r dudalen hon"
 
 [PageProblemCount]
 description = "There are {{.Count}} problems with this page"
