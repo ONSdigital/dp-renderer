@@ -680,3 +680,44 @@ one = "December"
 [TableScrollableDefaultAriaLabel]
 description = "Scrollable table"
 one = "Scrollable table"
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ERROR PAGES
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[401Title]
+description = "401 - Unauthorised"
+one = "401 - Unauthorised"
+
+[401Description]
+description = "The page you are requesting has restricted access, please <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">log in</a>."
+one = "The page you are requesting has restricted access, please <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">log in</a>."
+
+[404Title]
+description = "404 - The webpage you are requesting does not exist on the site"
+one = "404 - The webpage you are requesting does not exist on the site"
+
+[404Description1]
+description = "The page may have been moved, updated or deleted or you may have typed the web address incorrectly, please check the url and spelling. Alternatively, please try the <a href=\"#nav-search\">search</a>, or return to the <a href=\"/\" title=\"Our homepage\" target=\"_self\">homepage</a>."
+one = "The page may have been moved, updated or deleted or you may have typed the web address incorrectly, please check the url and spelling. Alternatively, please try the <a href=\"#nav-search\">search</a>, or return to the <a href=\"/\" title=\"Our homepage\" target=\"_self\">homepage</a>."
+
+[404Description2]
+description = "If you still encounter problems please <a href=\"mailto:web.comments@ons.gov.uk\" title=\"Contact Us\">contact us</a>. We apologise for any inconvenience this may have caused."
+one = "If you still encounter problems please <a href=\"mailto:web.comments@ons.gov.uk\" title=\"Contact Us\">contact us</a>. We apologise for any inconvenience this may have caused."
+
+[500Title]
+description = "Sorry, there is a problem with the service"
+one = "Sorry, there is a problem with the service"
+
+[500Description1]
+description = "Please try again later."
+one = "Please try again later."
+
+[500Description2]
+description = "If the problem persists, check our <a href=\"https://twitter.com/ONS\">twitter</a> feed for updates."
+one = "If the problem persists, check our <a href=\"https://twitter.com/ONS\">twitter</a> feed for updates."
+
+[500Description3]
+description = "Our scheduled publications can also be found on our <a href=\"https://backup.ons.gov.uk/\">backup site</a>."
+one = "Our scheduled publications can also be found on our <a href=\"https://backup.ons.gov.uk/\">backup site</a>."
