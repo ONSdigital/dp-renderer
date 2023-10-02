@@ -3,6 +3,7 @@ package render
 import (
 	"context"
 	"io"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -62,6 +63,33 @@ func (r *Render) BuildPage(w io.Writer, pageModel interface{}, templateName stri
 		return
 	}
 	log.Info(ctx, "rendered template", log.Data{"template": templateName})
+}
+
+// BuildErrorPage resolves the rendering of a specific page with a given model and template name
+func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode int) {
+	// set template name based on http status code
+	templateName := "error/" + strconv.Itoa(statusCode)
+
+	if statusCode == 401 {
+		pageModel.Error.Title = "401 - You do not have permission to view this web page"
+	} else if statusCode == 404 {
+		pageModel.Error.Title = "404 - The webpage you are requesting does not exist on the site"
+	} else if statusCode == 500 {
+		pageModel.Error.Title = "Sorry, there is a problem with the service"
+		pageModel.FeatureFlags.Enable500ErrorPageStyling = true
+	}
+
+	ctx := context.Background()
+	if err := r.render(w, statusCode, templateName, pageModel); err != nil {
+		log.Error(ctx, "failed to render error template", err, log.Data{"template": templateName})
+		if modelErr := r.error(w, 500, model.ErrorResponse{
+			Error: err.Error(),
+		}); modelErr != nil {
+			log.Error(ctx, "failed to set error response", modelErr)
+		}
+		return
+	}
+	log.Info(ctx, "rendered error template", log.Data{"template": templateName})
 }
 
 // NewBasePageModel wraps around the model package's NewPage function, but injects the assets path and site domain from the render struct.
