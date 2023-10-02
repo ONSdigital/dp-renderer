@@ -46,15 +46,16 @@ type NavigationItem struct {
 
 // FeatureFlags contains toggles for certain features on the website
 type FeatureFlags struct {
-	EnableCensusBanner     bool   `json:"enable_census_banner"`
-	EnableCensusTile       bool   `json:"enable_census_tile"`
-	EnableGetDataCard      bool   `json:"enable_get_data_card"`
-	HideCookieBanner       bool   `json:"hide_cookie_banner"`
-	ONSDesignSystemVersion string `json:"ons_design_system_version"`
-	SixteensVersion        string `json:"legacy_sixteens_version"`
-	EnableFeedbackAPI      bool   `json:"enable_feedback_api"`
-	FeedbackAPIURL         string `json:"feedback_api_url"` // technically not a feature flag, but used exclusivly with one
-	IsPublishing           bool   `json:"is_publishing"`
+	EnableCensusBanner        bool   `json:"enable_census_banner"`
+	EnableCensusTile          bool   `json:"enable_census_tile"`
+	EnableGetDataCard         bool   `json:"enable_get_data_card"`
+	HideCookieBanner          bool   `json:"hide_cookie_banner"`
+	ONSDesignSystemVersion    string `json:"ons_design_system_version"`
+	SixteensVersion           string `json:"legacy_sixteens_version"`
+	EnableFeedbackAPI         bool   `json:"enable_feedback_api"`
+	FeedbackAPIURL            string `json:"feedback_api_url"` // technically not a feature flag, but used exclusivly with one
+	IsPublishing              bool   `json:"is_publishing"`
+	Enable500ErrorPageStyling bool   `json:"enabled_500_error_page_styling"` // flag for hiding standard page "furniture" (header, nav, etc.)
 }
 
 // NewPage instantiates the base Page type with configurable fields
