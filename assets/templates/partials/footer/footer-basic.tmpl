@@ -1,0 +1,35 @@
+<footer class="print--hide padding-top--13">
+   <section>
+      <h2 class="visuallyhidden">{{ localise "FooterLinks" .Language 1 }}</h2>
+      <div class="footer">
+         <div class="wrapper">
+            <nav aria-label="Footer links">
+               <div class="footer-nav col-wrap">
+                  <div class="col col--lg-one-third col--md-one-third">
+                     {{ template "partials/footer/connect-with-us" . }}
+                  </div>
+               </div>
+            </nav>
+         </div>
+         <div class="wrapper">
+            {{ if not .FeatureFlags.SixteensVersion }}
+               <hr class="ons-footer__hr">
+            {{ end }}
+            <div class="footer-license">
+               {{ if .FeatureFlags.SixteensVersion }}
+                  <img class="footer-license__img" alt="OGL" width="60" src="https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg">
+               {{ else }}
+                  {{ template "icons/ogl" . }}
+               {{ end }}
+               <p class="footer-license__text margin-left-sm--0">
+                  {{ if .FeatureFlags.SixteensVersion }}
+                     {{ localise "OGLFull" .Language 1 | safeHTML }}
+                  {{ else }}
+                     {{ localise "OGLFull" .Language 4 | safeHTML }}
+                  {{ end }}
+               </p>
+            </div>
+         </div>
+      </div>
+   </section>
+</footer>
