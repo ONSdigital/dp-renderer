@@ -102,12 +102,20 @@
         {{ if (ne .FeatureFlags.HideCookieBanner true) }}
           {{ template "partials/banners/cookies" . }}
         {{ end }}
-        {{ template "partials/header" . }}
-        {{ template "partials/breadcrumb" . }}
+        {{ if not .FeatureFlags.Enable500ErrorPageStyling }}
+          {{ template "partials/header/header" . }}
+          {{ template "partials/breadcrumb" . }}
+        {{ else }}
+          {{ template "partials/header/header-basic" . }}
+        {{ end }}
         <main id="main" role="main" tabindex="-1">
           {{ yield }}
         </main>
-        {{ template "partials/footer" . }}
+        {{ if not .FeatureFlags.Enable500ErrorPageStyling }}
+          {{ template "partials/footer/footer" . }}
+        {{ else }}
+          {{ template "partials/footer/footer-basic" . }}
+        {{ end }}
         {{ if not .FeatureFlags.SixteensVersion }}
         </div>
       </div>
