@@ -30,11 +30,11 @@ one = "The UK's largest independent producer of official statistics and the reco
 
 [Error]
 description = "Error"
-one = "Error"
+one = "Gwall"
 
 [PageProblem]
 description = "There is a problem with this page"
-one = "There is a problem with this page"
+one = "Mae problem gyda'r dudalen hon"
 
 [PageProblemCount]
 description = "There are {{.Count}} problems with this page"
@@ -444,13 +444,17 @@ one = "Nac ydy"
 description = "No I didn't find this page useful"
 one = "Nac ydy, nid yw’r dudalen hon yn ddefnyddiol"
 
-[CantFind]
-description = "Can't find what you're looking for?"
-one = "Methu â dod o hyd i'r hyn rydych yn chwilio amdano?"
+[Report]
+description = "Report a problem with this page"
+one = "Adrodd problem gyda’r dudalen yma"
 
 [ImproveThisPage]
 description = "How should we improve this page?"
 one = "Sut y dylem wella'r dudalen hon?"
+
+[ImproveThisPageInvalid]
+description = "Description validation error message"
+one = "Ysgrifennwch adborth"
 
 [WantAReply]
 description = "Do you want a reply?"
@@ -467,6 +471,10 @@ one = "Enw (dewisol)"
 [EmailOpt]
 description = "Email (optional)"
 one = "E-bost (dewisol)"
+
+[EmailInvalid]
+description = "Email type validation error message"
+one = "Rhowch gyfeiriad ebost ar ffurf ddilys, er enghraifft, enw@esiampl.com"
 
 [SendFeedback]
 description = "Send feedback"

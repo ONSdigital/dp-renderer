@@ -22,7 +22,15 @@
     {{ if .IsDisabled }}
     disabled
     {{ end }}
+    {{ if .IsRequired }}
+    required
+    {{ end }}
     {{ if .Autocomplete }}
     autocomplete="{{- .Autocomplete -}}"
+    {{ end }}
+    {{ if .DataAttributes }}
+    {{ range .DataAttributes }}
+    data-{{- .Key -}}="{{- .Value.FuncLocalise $.Language -}}"
+    {{ end }}
     {{ end }}
 >{{- .Value -}}</textarea>

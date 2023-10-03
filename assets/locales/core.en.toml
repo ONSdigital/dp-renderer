@@ -438,13 +438,17 @@ one = "No"
 description = "No I didn't find this page useful"
 one = "No I didn't find this page useful"
 
-[CantFind]
-description = "Can't find what you're looking for?"
-one = "Can't find what you're looking for?"
+[Report]
+description = "Report a problem with this page"
+one = "Report a problem with this page"
 
 [ImproveThisPage]
 description = "How should we improve this page?"
 one = "How should we improve this page?"
+
+[ImproveThisPageInvalid]
+description = "Description validation error message"
+one = "Enter your feedback"
 
 [WantAReply]
 description = "Do you want a reply?"
@@ -461,6 +465,10 @@ one = "Name (optional)"
 [EmailOpt]
 description = "Email (optional)"
 one = "Email (optional)"
+
+[EmailInvalid]
+description = "Email type validation error message"
+one = "Enter an email address in a valid format, for example, name@example.com"
 
 [SendFeedback]
 description = "Send feedback"

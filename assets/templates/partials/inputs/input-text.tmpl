@@ -26,4 +26,12 @@
     {{ if .Autocomplete }}
     autocomplete="{{- .Autocomplete -}}"
     {{ end }}
+    {{ if .IsRequired }}
+    required
+    {{ end }}
+    {{ if .DataAttributes }}
+    {{ range .DataAttributes }}
+    data-{{- .Key -}}="{{- .Value.FuncLocalise $.Language -}}"
+    {{ end }}
+    {{ end }}
 >
