@@ -8,6 +8,7 @@ import (
 
 	render "github.com/ONSdigital/dp-renderer/v2"
 	"github.com/ONSdigital/dp-renderer/v2/model"
+	"github.com/davecgh/go-spew/spew"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -35,6 +36,18 @@ func TestRenderPageMethod(t *testing.T) {
 
 			Convey("Then the render client should set an error", func() {
 				So(mockClient.ValidBuildHTMLMethodCalls, ShouldEqual, 0)
+				So(mockClient.ValidSetErrorMethodCalls, ShouldEqual, 1)
+			})
+		})
+
+		Convey("When the renderer's build error page method is called", func() {
+			mockPage := renderer.NewBasePageModel()
+			renderer.BuildErrorPage(w, mockPage, 401)
+
+			spew.Dump(string(w.Body))
+
+			Convey("Then the render client should set an error", func() {
+				So(mockClient.ValidBuildHTMLMethodCalls, ShouldEqual, 2)
 				So(mockClient.ValidSetErrorMethodCalls, ShouldEqual, 1)
 			})
 		})

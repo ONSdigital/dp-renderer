@@ -78,7 +78,7 @@ func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode in
 		pageModel.Error.Title = "404 - The webpage you are requesting does not exist on the site"
 	case http.StatusInternalServerError:
 		pageModel.Error.Title = "Sorry, there is a problem with the service"
-		pageModel.FeatureFlags.Enable500ErrorPageStyling = true
+		pageModel.Enable500ErrorPageStyling = true
 	}
 
 	ctx := context.Background()
