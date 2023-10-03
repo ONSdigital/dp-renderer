@@ -3,6 +3,7 @@ package render
 import (
 	"context"
 	"io"
+	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -70,11 +71,12 @@ func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode in
 	// set template name based on http status code
 	templateName := "error/" + strconv.Itoa(statusCode)
 
-	if statusCode == 401 {
+	switch statusCode {
+	case http.StatusUnauthorized:
 		pageModel.Error.Title = "401 - You do not have permission to view this web page"
-	} else if statusCode == 404 {
+	case http.StatusNotFound:
 		pageModel.Error.Title = "404 - The webpage you are requesting does not exist on the site"
-	} else if statusCode == 500 {
+	case http.StatusInternalServerError:
 		pageModel.Error.Title = "Sorry, there is a problem with the service"
 		pageModel.FeatureFlags.Enable500ErrorPageStyling = true
 	}
