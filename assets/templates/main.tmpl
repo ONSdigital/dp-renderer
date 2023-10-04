@@ -102,7 +102,7 @@
         {{ if (ne .FeatureFlags.HideCookieBanner true) }}
           {{ template "partials/banners/cookies" . }}
         {{ end }}
-        {{ if not .FeatureFlags.Enable500ErrorPageStyling }}
+        {{ if not .Enable500ErrorPageStyling }}
           {{ template "partials/header/header" . }}
           {{ template "partials/breadcrumb" . }}
         {{ else }}
@@ -111,7 +111,7 @@
         <main id="main" role="main" tabindex="-1">
           {{ yield }}
         </main>
-        {{ if not .FeatureFlags.Enable500ErrorPageStyling }}
+        {{ if not .Enable500ErrorPageStyling }}
           {{ template "partials/footer/footer" . }}
         {{ else }}
           {{ template "partials/footer/footer-basic" . }}
