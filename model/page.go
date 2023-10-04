@@ -38,7 +38,7 @@ type Page struct {
 	PreGTMJavaScript                 []template.JS    `json:"pre_gtm_javascript"`
 	RemoveGalleryBackground          bool             `json:"remove_gallery_background"`
 	Feedback                         Feedback         `json:"feedback"`
-	Enable500ErrorPageStyling        bool             `json:"enabled_500_error_page_styling"` // flag for hiding standard page "furniture" (header, nav, etc.)
+	Enable500ErrorPageStyling        bool             `json:"enable_500_error_page_styling"` // flag for hiding standard page "furniture" (header, nav, etc.)
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus
