@@ -6,10 +6,13 @@ retract v2.0.0 // published version does not include v2
 
 require (
 	github.com/BurntSushi/toml v1.3.2
+	github.com/ONSdigital/dp-cookies v0.4.0
 	github.com/ONSdigital/dp-net/v2 v2.10.0
 	github.com/ONSdigital/log.go/v2 v2.4.1
 	github.com/c2h5oh/datasize v0.0.0-20220606134207-859f65c6625b
+	github.com/gorilla/mux v1.8.0
 	github.com/gosimple/slug v1.13.1
+	github.com/justinas/alice v1.2.0
 	github.com/nicksnyder/go-i18n/v2 v2.2.1
 	github.com/russross/blackfriday/v2 v2.1.0
 	github.com/smartystreets/goconvey v1.8.1
