@@ -35,7 +35,7 @@ func TestRenderPageMethod(t *testing.T) {
 			renderer.BuildPage(w, mockPage, "")
 
 			Convey("Then the render client should set an error", func() {
-				So(len(mockClient.ValidBuildHTMLMethodCalls), ShouldEqual, 0)
+				So(mockClient.ValidBuildHTMLMethodCalls, ShouldBeEmpty)
 				So(mockClient.ValidSetErrorMethodCalls, ShouldEqual, 1)
 			})
 		})
@@ -47,7 +47,7 @@ func TestRenderPageMethod(t *testing.T) {
 				Convey("for 401", func() {
 					renderer.BuildErrorPage(w, mockPage, http.StatusUnauthorized)
 					expectedPageModel := mockClient.ValidBuildHTMLMethodCalls[0].PageModel.(model.Page)
-					So(len(mockClient.ValidBuildHTMLMethodCalls), ShouldEqual, 1)
+					So(mockClient.ValidBuildHTMLMethodCalls, ShouldHaveLength, 1)
 					So(expectedPageModel.Error.Title, ShouldEqual, "401 - You do not have permission to view this web page")
 					So(expectedPageModel.Enable500ErrorPageStyling, ShouldBeFalse)
 					So(mockClient.ValidBuildHTMLMethodCalls[0].TemplateName, ShouldEqual, "error/401")
@@ -56,7 +56,7 @@ func TestRenderPageMethod(t *testing.T) {
 				Convey("for 404", func() {
 					renderer.BuildErrorPage(w, mockPage, http.StatusNotFound)
 					expectedPageModel := mockClient.ValidBuildHTMLMethodCalls[0].PageModel.(model.Page)
-					So(len(mockClient.ValidBuildHTMLMethodCalls), ShouldEqual, 1)
+					So(mockClient.ValidBuildHTMLMethodCalls, ShouldHaveLength, 1)
 					So(expectedPageModel.Error.Title, ShouldEqual, "404 - The webpage you are requesting does not exist on the site")
 					So(expectedPageModel.Enable500ErrorPageStyling, ShouldBeFalse)
 					So(mockClient.ValidBuildHTMLMethodCalls[0].TemplateName, ShouldEqual, "error/404")
@@ -65,7 +65,7 @@ func TestRenderPageMethod(t *testing.T) {
 				Convey("for 500", func() {
 					renderer.BuildErrorPage(w, mockPage, http.StatusInternalServerError)
 					expectedPageModel := mockClient.ValidBuildHTMLMethodCalls[0].PageModel.(model.Page)
-					So(len(mockClient.ValidBuildHTMLMethodCalls), ShouldEqual, 1)
+					So(mockClient.ValidBuildHTMLMethodCalls, ShouldHaveLength, 1)
 					So(expectedPageModel.Error.Title, ShouldEqual, "Sorry, there is a problem with the service")
 					So(expectedPageModel.Enable500ErrorPageStyling, ShouldBeTrue)
 					So(mockClient.ValidBuildHTMLMethodCalls[0].TemplateName, ShouldEqual, "error/500")
