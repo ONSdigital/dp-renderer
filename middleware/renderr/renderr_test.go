@@ -13,15 +13,14 @@ import (
 )
 
 func TestRenderr(t *testing.T) {
-	Convey("Test renderr middleware run correct", t, func() {
-
+	Convey("Test renderr middleware runs correctly", t, func() {
 		Convey("when getting a 200 status response", func() {
 			r, mockedRC := setupTest()
 			req, _ := http.NewRequest("GET", "/success", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
 			So(w.Code, ShouldEqual, 200)
-			So(len(mockedRC.calls.BuildHTML), ShouldEqual, 0)
+			So(mockedRC.calls.BuildHTML, ShouldBeEmpty)
 		})
 
 		Convey("when getting a 401 status response ", func() {
@@ -29,7 +28,7 @@ func TestRenderr(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/unauthorised", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
-			So(len(mockedRC.calls.BuildHTML), ShouldEqual, 1)
+			So(mockedRC.calls.BuildHTML, ShouldHaveLength, 1)
 			So(mockedRC.calls.BuildHTML[0].TemplateName, ShouldEqual, "error/401")
 		})
 
@@ -38,7 +37,7 @@ func TestRenderr(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/not-found", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
-			So(len(mockedRC.calls.BuildHTML), ShouldEqual, 1)
+			So(mockedRC.calls.BuildHTML, ShouldHaveLength, 1)
 			So(mockedRC.calls.BuildHTML[0].TemplateName, ShouldEqual, "error/404")
 		})
 
@@ -47,7 +46,7 @@ func TestRenderr(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/internal-server-error", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
-			So(len(mockedRC.calls.BuildHTML), ShouldEqual, 1)
+			So(mockedRC.calls.BuildHTML, ShouldHaveLength, 1)
 			So(mockedRC.calls.BuildHTML[0].TemplateName, ShouldEqual, "error/500")
 		})
 
