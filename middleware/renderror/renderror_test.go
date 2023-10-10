@@ -1,4 +1,4 @@
-package renderr
+package renderror
 
 import (
 	"io"
@@ -60,7 +60,7 @@ func setupTest() (http.Handler, *RenderClientMock) {
 	}
 	rendC := render.New(mockedRendererClient, "", "")
 	middleware := []alice.Constructor{
-		Renderr(rendC),
+		Handler(rendC),
 	}
 	testAlice := alice.New(middleware...).Then(router)
 

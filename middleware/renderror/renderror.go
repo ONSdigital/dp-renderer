@@ -1,4 +1,4 @@
-package renderr
+package renderror
 
 import (
 	"net/http"
@@ -69,8 +69,8 @@ func (rI *httpResponseInterceptor) Header() http.Header {
 	return rI.headerCache
 }
 
-// Renderr is middleware that renders error pages based on response status codes
-func Renderr(rendC *render.Render) func(http.Handler) http.Handler {
+// Handler is middleware that renders error pages based on response status codes
+func Handler(rendC *render.Render) func(http.Handler) http.Handler {
 	return func(h http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 			h.ServeHTTP(&httpResponseInterceptor{w, req, false, false, make(http.Header), rendC}, req)
