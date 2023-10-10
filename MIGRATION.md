@@ -194,3 +194,19 @@ func CreateCookieSettingPage(basePage core.Page, policy cookies.Policy, isUpdate
 ```
 
 Once you have made these updates, you should be able to run `make debug` and see that pages handled by your frontend service are presented without requiring `dp-frontend-renderer`.
+
+### Rendering error pages
+
+We use a HTTP middleware handler to intercept error status in controller then call `BuildErrorPage`. To set up the middleware we use [Alice](https://github.com/justinas/alice) when instantiating the router in our controllers. See [README](/README.md#instantiation) for setting up the render client that we pass to the middleware.
+
+```golang
+import renderermiddleware "github.com/ONSdigital/dp-renderer/v2/middleware/renderr"
+
+middleware := []alice.Constructor{
+  renderermiddleware.Renderr(rendC),
+}
+
+newAlice := alice.New(middleware...).Then(router)
+
+
+```
