@@ -197,16 +197,14 @@ Once you have made these updates, you should be able to run `make debug` and see
 
 ### Rendering error pages
 
-We use a HTTP middleware handler to intercept error status in controller then call `BuildErrorPage`. To set up the middleware we use [Alice](https://github.com/justinas/alice) when instantiating the router in our controllers. See [README](/README.md#instantiation) for setting up the render client that we pass to the middleware.
+We use a HTTP middleware handler to intercept error status in our controllers then call `BuildErrorPage` to render an error page. To set up the middleware we use [Alice](https://github.com/justinas/alice) when instantiating the router in our controllers. See [README](/README.md#instantiation) for setting up the render client that we pass to the middleware.
 
 ```golang
-import renderermiddleware "github.com/ONSdigital/dp-renderer/v2/middleware/renderr"
+import "github.com/ONSdigital/dp-renderer/v2/middleware/renderror"
 
 middleware := []alice.Constructor{
-  renderermiddleware.Renderr(rendC),
+  renderror.Handler(rendC),
 }
 
 newAlice := alice.New(middleware...).Then(router)
-
-
 ```
