@@ -7,7 +7,7 @@ retract v2.0.0 // published version does not include v2
 require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/ONSdigital/dp-cookies v0.4.0
-	github.com/ONSdigital/dp-net/v2 v2.10.0
+	github.com/ONSdigital/dp-net/v2 v2.11.1
 	github.com/ONSdigital/log.go/v2 v2.4.1
 	github.com/c2h5oh/datasize v0.0.0-20220606134207-859f65c6625b
 	github.com/gorilla/mux v1.8.0
@@ -31,5 +31,5 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/smarty/assertions v1.15.1 // indirect
-	golang.org/x/sys v0.11.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
 )

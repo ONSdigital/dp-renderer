@@ -5,8 +5,8 @@ github.com/ONSdigital/dp-api-clients-go/v2 v2.252.0 h1:lV+ENoQURWYx1BqAaRhiGV/yT
 github.com/ONSdigital/dp-api-clients-go/v2 v2.252.0/go.mod h1:p49IHBmIH5fbAHJ1PrqGbtoHS45jfkYQZeRuIB+CgPQ=
 github.com/ONSdigital/dp-cookies v0.4.0 h1:B938xsFzj9OVM5yIRVVyteYYKjWN4Oz7i+u9+PEF8nk=
 github.com/ONSdigital/dp-cookies v0.4.0/go.mod h1:1xf96apIPNeV0WJs0UtKyM09laewXVUm/9bh84wFu7w=
-github.com/ONSdigital/dp-net/v2 v2.10.0 h1:MwgTqQrPrBnMu1lqBVKsxD0TJg6R9KRQR2xM1RZEQPQ=
-github.com/ONSdigital/dp-net/v2 v2.10.0/go.mod h1:iy1XmnqC7aKwHCpbTDhfAVrlYDGJGkZl36zeXyHq+Hw=
+github.com/ONSdigital/dp-net/v2 v2.11.1 h1:9/G1MnofoqHaFtugOd6DJVsKfQumsYeDkMHnz66gOig=
+github.com/ONSdigital/dp-net/v2 v2.11.1/go.mod h1:DMWNEpS/HE42rZMDOMNBZF/iNuEMk/y4Ohejq8DHkNM=
 github.com/ONSdigital/log.go/v2 v2.4.1 h1:QAHQqtXgXx43OUTSebNAocVfN21RwrHzagN6zDAzwdo=
 github.com/ONSdigital/log.go/v2 v2.4.1/go.mod h1:hJTjxs9r8k49maNelGpL4SBWv8NG45vCKp15+6ce9bw=
 github.com/c2h5oh/datasize v0.0.0-20220606134207-859f65c6625b h1:6+ZFm0flnudZzdSE0JxlhR2hKnGPcNB35BjQf4RYQDY=
@@ -61,8 +61,8 @@ golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f/go.mod h1:oPkhp1MJrh7nUepCBc
 golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220908164124-27713097b956/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
-golang.org/x/sys v0.11.0 h1:eG7RXZHdqOJ1i+0lgLgCpSXAp6M3LYlAo6osgSi0xOM=
-golang.org/x/sys v0.11.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.13.0 h1:Af8nKPmuFypiUBjVoU9V20FiaFXOcuZI21p0ycVYYGE=
+golang.org/x/sys v0.13.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/term v0.0.0-20210927222741-03fcf44c2211/go.mod h1:jbD1KX2456YbFQfuXm/mYQcufACuNUgVhRMnK/tPxf8=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
