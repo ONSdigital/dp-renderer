@@ -2,6 +2,7 @@ package renderror
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
 	render "github.com/ONSdigital/dp-renderer/v2"
@@ -18,12 +19,11 @@ type httpResponseInterceptor struct {
 }
 
 func (rI *httpResponseInterceptor) WriteHeader(status int) {
-	if status >= 400 {
+	if status >= 400 && !strings.HasPrefix(rI.Header().Get("Content-Type"), "application/json") {
 		log.Info(rI.req.Context(), "Intercepted error response", log.Data{"status": status})
 		rI.intercepted = true
 		if status == 401 || status == 404 || status == 500 {
 			rI.renderErrorPage(status)
-			return
 		}
 	}
 	rI.writeHeaders()

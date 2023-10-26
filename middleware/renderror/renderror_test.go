@@ -28,6 +28,7 @@ func TestRenderr(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/unauthorised", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
+			So(w.Code, ShouldEqual, 401)
 			So(mockedRC.calls.BuildHTML, ShouldHaveLength, 1)
 			So(mockedRC.calls.BuildHTML[0].TemplateName, ShouldEqual, "error/401")
 		})
@@ -37,6 +38,7 @@ func TestRenderr(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/not-found", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
+			So(w.Code, ShouldEqual, 404)
 			So(mockedRC.calls.BuildHTML, ShouldHaveLength, 1)
 			So(mockedRC.calls.BuildHTML[0].TemplateName, ShouldEqual, "error/404")
 		})
@@ -46,8 +48,17 @@ func TestRenderr(t *testing.T) {
 			req, _ := http.NewRequest("GET", "/internal-server-error", http.NoBody)
 			w := httptest.NewRecorder()
 			r.ServeHTTP(w, req)
+			So(w.Code, ShouldEqual, 500)
 			So(mockedRC.calls.BuildHTML, ShouldHaveLength, 1)
 			So(mockedRC.calls.BuildHTML[0].TemplateName, ShouldEqual, "error/500")
+		})
+
+		Convey("when getting an error and JSON response ", func() {
+			r, mockedRC := setupTest()
+			req, _ := http.NewRequest("GET", "/json", http.NoBody)
+			w := httptest.NewRecorder()
+			r.ServeHTTP(w, req)
+			So(mockedRC.calls.BuildHTML, ShouldBeEmpty)
 		})
 
 	})
@@ -73,6 +84,10 @@ func setupTest() (http.Handler, *RenderClientMock) {
 	})
 	router.HandleFunc("/internal-server-error", func(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+	})
+	router.HandleFunc("/json", func(w http.ResponseWriter, req *http.Request) {
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.WriteHeader(http.StatusInternalServerError)
 	})
 
 	return testAlice, mockedRendererClient
