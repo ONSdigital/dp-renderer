@@ -707,16 +707,20 @@ description = "The page you are requesting has restricted access, please <a href
 one = "The page you are requesting has restricted access, please <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">log in</a>."
 
 [404Title]
-description = "404 - The webpage you are requesting does not exist on the site"
-one = "404 - The webpage you are requesting does not exist on the site"
+description = "Page not found"
+one = "Page not found"
 
 [404Description1]
-description = "The page may have been moved, updated or deleted or you may have typed the web address incorrectly, please check the url and spelling. Alternatively, please try the <a href=\"#nav-search\">search</a>, or return to the <a href=\"/\" title=\"Our homepage\" target=\"_self\">homepage</a>."
-one = "The page may have been moved, updated or deleted or you may have typed the web address incorrectly, please check the url and spelling. Alternatively, please try the <a href=\"#nav-search\">search</a>, or return to the <a href=\"/\" title=\"Our homepage\" target=\"_self\">homepage</a>."
+description = "If you entered a web address, check it is correct"
+one = "If you entered a web address, check it is correct."
 
 [404Description2]
-description = "If you still encounter problems please <a href=\"mailto:web.comments@ons.gov.uk\" title=\"Contact Us\">contact us</a>. We apologise for any inconvenience this may have caused."
-one = "If you still encounter problems please <a href=\"mailto:web.comments@ons.gov.uk\" title=\"Contact Us\">contact us</a>. We apologise for any inconvenience this may have caused."
+description = "If you pasted the web address, check you copied the whole address"
+one = "If you pasted the web address, check you copied the whole address."
+
+[404Description3]
+description = "If the web address is correct, or you selected a link or button, contact us."
+one = "If the web address is correct, or you selected a link or button, <a href=\"/aboutus/contactus/generalandstatisticalenquiries\">contact us</a>."
 
 [500Title]
 description = "Sorry, there is a problem with the service"
