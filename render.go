@@ -75,7 +75,7 @@ func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode in
 	case http.StatusUnauthorized:
 		pageModel.Error.Title = "401 - You do not have permission to view this web page"
 	case http.StatusNotFound:
-		pageModel.Error.Title = "404 - The webpage you are requesting does not exist on the site"
+		pageModel.Error.Title = "Page not found"
 	case http.StatusInternalServerError:
 		pageModel.Error.Title = "Sorry, there is a problem with the service"
 		pageModel.Enable500ErrorPageStyling = true

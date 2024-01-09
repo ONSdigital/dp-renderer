@@ -57,7 +57,7 @@ func TestRenderPageMethod(t *testing.T) {
 					renderer.BuildErrorPage(w, mockPage, http.StatusNotFound)
 					expectedPageModel := mockClient.ValidBuildHTMLMethodCalls[0].PageModel.(model.Page)
 					So(mockClient.ValidBuildHTMLMethodCalls, ShouldHaveLength, 1)
-					So(expectedPageModel.Error.Title, ShouldEqual, "404 - The webpage you are requesting does not exist on the site")
+					So(expectedPageModel.Error.Title, ShouldEqual, "Page not found")
 					So(expectedPageModel.Enable500ErrorPageStyling, ShouldBeFalse)
 					So(mockClient.ValidBuildHTMLMethodCalls[0].TemplateName, ShouldEqual, "error/404")
 					So(mockClient.ValidSetErrorMethodCalls, ShouldEqual, 0)
