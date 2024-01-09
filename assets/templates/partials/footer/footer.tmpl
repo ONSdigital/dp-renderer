@@ -1,6 +1,9 @@
 <footer class="print--hide padding-top--13">
    <section>
-      {{ if ne .Type "feedback" }}{{ template "partials/feedback/feedback" . }}{{ end }}
+      <!-- TODO: This should be a toggle -->
+      {{ if and (ne .Type "feedback") (ne .Type "")}}
+      {{ template "partials/feedback/feedback" . }}
+      {{ end }}
       <h2 class="visuallyhidden">{{ localise "FooterLinks" .Language 1 }}</h2>
       <div class="footer">
          <div class="wrapper">
@@ -39,7 +42,8 @@
                            <a href="/news">{{ localise "News" .Language 1 }}</a>
                         </li>
                         <li class="footer-nav__item">
-                           <a href="/aboutus/transparencyandgovernance/freedomofinformationfoi">{{ localise "FreedomInformation" .Language 1 }}</a>
+                           <a
+                              href="/aboutus/transparencyandgovernance/freedomofinformationfoi">{{ localise "FreedomInformation" .Language 1 }}</a>
                         </li>
                      </ul>
                   </div>
@@ -51,19 +55,24 @@
          </div>
          <div class="wrapper">
             {{ if not .FeatureFlags.SixteensVersion }}
-               <hr class="ons-footer__hr">
+            <hr class="ons-footer__hr">
             {{ end }}
             <div class="footer-license">
                {{ if .FeatureFlags.SixteensVersion }}
-                  <img class="footer-license__img" alt="OGL" width="60" src="https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg">
+               <img
+                  class="footer-license__img"
+                  alt="OGL"
+                  width="60"
+                  src="https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg"
+               >
                {{ else }}
-                  {{ template "icons/ogl" . }}
+               {{ template "icons/ogl" . }}
                {{ end }}
                <p class="footer-license__text margin-left-sm--0">
                   {{ if .FeatureFlags.SixteensVersion }}
-                     {{ localise "OGLFull" .Language 1 | safeHTML }}
+                  {{ localise "OGLFull" .Language 1 | safeHTML }}
                   {{ else }}
-                     {{ localise "OGLFull" .Language 4 | safeHTML }}
+                  {{ localise "OGLFull" .Language 4 | safeHTML }}
                   {{ end }}
                </p>
             </div>
