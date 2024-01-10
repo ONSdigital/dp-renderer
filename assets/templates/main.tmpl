@@ -3,7 +3,9 @@
   <head>
     <title>
       {{ if .Error.Title }}
+        {{ if and (ne .Error.ErrorCode 401) (ne .Error.ErrorCode 404) (ne .Error.ErrorCode 500)}}
         {{ localise "Error" .Language 1 }}:
+        {{ end }}
         {{ .Error.Title }}
       {{ else if .Metadata.Title }}
         {{ .Metadata.Title }}
