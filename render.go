@@ -73,7 +73,7 @@ func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode in
 
 	switch statusCode {
 	case http.StatusUnauthorized:
-		pageModel.Error.Title = "401 - You do not have permission to view this web page"
+		pageModel.Error.Title = "Access denied"
 	case http.StatusNotFound:
 		pageModel.Error.Title = "Page not found"
 	case http.StatusInternalServerError:
