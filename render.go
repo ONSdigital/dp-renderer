@@ -77,7 +77,7 @@ func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode in
 	case http.StatusNotFound:
 		pageModel.Error.Title = "Page not found"
 	case http.StatusInternalServerError:
-		pageModel.Error.Title = "Sorry, there is a problem with the service"
+		pageModel.Error.Title = "Sorry, there's a problem with the service"
 		pageModel.Enable500ErrorPageStyling = true
 	}
 
