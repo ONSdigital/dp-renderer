@@ -699,12 +699,12 @@ one = "Tabl y gellir sgrolio drwyddo"
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 [401Title]
-description = "401 - Unauthorised"
-one = "401 - Unauthorised"
+description = "Sorry, there is a problem"
+one = "Sorry, there is a problem"
 
 [401Description]
-description = "The page you are requesting has restricted access, please <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">log in</a>."
-one = "The page you are requesting has restricted access, please <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">log in</a>."
+description = "To access this page, you need to <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">sign in</a>."
+one = "To access this page, you need to <a href=\"/florence/index.html\" title=\"Florence\" target=\"_self\">sign in</a>."
 
 [404Title]
 description = "Page not found"
