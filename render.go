@@ -80,6 +80,7 @@ func (r *Render) BuildErrorPage(w io.Writer, pageModel model.Page, statusCode in
 		pageModel.Error.Title = "Sorry, there's a problem with the service"
 		pageModel.Enable500ErrorPageStyling = true
 	}
+	pageModel.Error.ErrorCode = statusCode
 
 	ctx := context.Background()
 	if err := r.render(w, statusCode, templateName, pageModel); err != nil {
