@@ -718,17 +718,17 @@ description = "If the web address is correct, or you selected a link or button, 
 one = "If the web address is correct, or you selected a link or button, <a href=\"/aboutus/contactus/generalandstatisticalenquiries\">contact us</a>."
 
 [500Title]
-description = "Sorry, there is a problem with the service"
-one = "Sorry, there is a problem with the service"
+description = "Sorry, there's a problem with the service"
+one = "Sorry, there's a problem with the service"
 
 [500Description1]
-description = "Please try again later."
-one = "Please try again later."
+description = "Try again later."
+one = "Try again later."
 
 [500Description2]
-description = "If the problem persists, check our <a href=\"https://twitter.com/ONS\">twitter</a> feed for updates."
-one = "If the problem persists, check our <a href=\"https://twitter.com/ONS\">twitter</a> feed for updates."
-
-[500Description3]
 description = "Our scheduled publications can also be found on our <a href=\"https://backup.ons.gov.uk/\">backup site</a>."
 one = "Our scheduled publications can also be found on our <a href=\"https://backup.ons.gov.uk/\">backup site</a>."
+
+[500Description3]
+description = "If you have any questions, contact us"
+one = "If you have any questions, <a href=\"/aboutus/contactus/generalandstatisticalenquiries\">contact us</a>."
