@@ -8,6 +8,7 @@ type Error struct {
 	Description string      `json:"description"` // Free text to describe the error
 	ErrorItems  []ErrorItem `json:"error_items"` // Array of error item
 	Language    string      `json:"language"`    // User defined language
+	ErrorCode   int         `json:"error_code"`  // Http error code e.g. 401, 404, 500
 }
 
 // ErrorItem represents an error item.
