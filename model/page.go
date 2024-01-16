@@ -39,6 +39,12 @@ type Page struct {
 	RemoveGalleryBackground          bool             `json:"remove_gallery_background"`
 	Feedback                         Feedback         `json:"feedback"`
 	Enable500ErrorPageStyling        bool             `json:"enable_500_error_page_styling"` // flag for hiding standard page "furniture" (header, nav, etc.)
+	ABTest
+}
+
+// ABTest contains all information needed for ABTesting - this is separated for expansion in future.
+type ABTest struct {
+	GTMKey string `json:"abtest_gtm_key"` // key for GTM to differentiate test pages.
 }
 
 // NavigationItem contains all information needed to render the navigation bar and submenus

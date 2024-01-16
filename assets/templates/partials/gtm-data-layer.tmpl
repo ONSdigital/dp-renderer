@@ -35,6 +35,9 @@ dataLayer = [{
         "numberOfResults": {{.Count}},
         "resultsPage": {{.Pagination.CurrentPage}},
     {{ end }}
+    {{ if .ABTest.GTMKey }}
+        "abTest": {{ .ABTest.GTMKey }},
+    {{ end }}
     {{ if .Type }}
         "contentType": {{ .Type }},
     {{ end }}
