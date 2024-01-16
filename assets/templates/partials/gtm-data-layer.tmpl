@@ -31,7 +31,6 @@ dataLayer = [{
         "releaseDate": {{dateFormatYYYYMMDD .ReleaseDate}},
     {{end}}
     {{ if eq .Type "search" }}
-        "newSearch": true,
         "numberOfResults": {{.Count}},
         "resultsPage": {{.Pagination.CurrentPage}},
     {{ end }}
