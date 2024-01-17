@@ -113,13 +113,15 @@
         <main id="main" role="main" tabindex="-1">
           {{ yield }}
         </main>
+        {{ if not .FeatureFlags.SixteensVersion }}
+        </div>
+        {{ end }}
         {{ if not .Enable500ErrorPageStyling }}
           {{ template "partials/footer/footer" . }}
         {{ else }}
           {{ template "partials/footer/footer-basic" . }}
         {{ end }}
         {{ if not .FeatureFlags.SixteensVersion }}
-        </div>
       </div>
       <script type="module" src="{{ .PatternLibraryAssetsPath }}/js/main.js"></script>
       <script nomodule src="{{ .PatternLibraryAssetsPath }}/js/main.es5.js"></script>
