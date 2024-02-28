@@ -1,26 +1,30 @@
 <div class="ons-field">
   <label
-    class="ons-label ons-u-pb-xs ons-u-fw-n"
+    class="ons-label ons-u-fw-n"
     for="{{ .ElementId }}"
   >
     {{- .Label.FuncLocalise .Language -}}
   </label>
-  <div class="ons-compact-search">
+  <span class="ons-grid--flex ons-input_search-button">
     <input
       type="search"
-      class="ons-compact-search__input"
+      class="ons-input ons-input--text ons-input-type__input ons-search__input"
       value="{{ .SearchTerm }}"
       id="{{ .ElementId }}"
       name="{{ .InputName }}"
     >
     <button
       type="submit"
-      class="ons-btn ons-compact-search__btn"
+      class="ons-btn ons-search__btn ons-btn--small"
     >
-      <span class="visuallyhidden">
-        {{ localise "Search" .Language 1 }}
+      <span class="ons-btn__inner">
+        {{ template "icons/search" }}
+        <span class="ons-btn__text ons-u-vh@xxs@s">
+          <span class="ons-u-vh">
+            {{ localise "Search" .Language 1 }}
+          </span>
+        </span>
       </span>
-      {{ template "icons/search" . }}
     </button>
-  </div>
+  </span>
 </div>
