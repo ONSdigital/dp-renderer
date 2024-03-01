@@ -1,4 +1,8 @@
-<fieldset id="{{ .Id }}" class="ons-fieldset">
+{{/* Use model.InputDate for model binding */}}
+<fieldset
+  id="{{ .Id }}"
+  class="ons-fieldset"
+>
   <legend class="ons-fieldset__legend">
     {{- .Title.FuncLocalise .Language -}}
     <div class="ons-fieldset__description">
@@ -16,7 +20,7 @@
       <input
         type="text"
         id="{{ .Id }}-day"
-        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2{{if .HasDayValidationErr}} ons-input--error{{end}}"
         name="{{ .InputNameDay }}"
         min="1"
         max="31"
@@ -37,7 +41,7 @@
       <input
         type="text"
         id="{{ .Id }}-month"
-        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2"
+        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2{{if .HasMonthValidationErr}} ons-input--error{{end}}"
         name="{{ .InputNameMonth }}"
         min="1"
         max="12"
@@ -58,7 +62,7 @@
       <input
         type="text"
         id="{{ .Id }}-year"
-        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4"
+        class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4{{if .HasYearValidationErr}} ons-input--error{{end}}"
         name="{{ .InputNameYear }}"
         min="1000"
         max="3000"
