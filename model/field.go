@@ -1,5 +1,14 @@
 package model
 
+// DateFieldset defines the HTML for a date input
+type DateFieldset struct {
+	ID                       string    `json:"id"`                         // HTML id attribute used within a field validation error
+	Input                    InputDate `json:"input"`                      // HTML date input attributes
+	HasValidationErr         bool      `json:"has_validation_err"`         // Bool check to display additional html required for a field error
+	Language                 string    `json:"language"`                   // Passed in from the Page model
+	ValidationErrDescription []string  `json:"validation_err_description"` // String array that describes the validation error
+}
+
 // Radio defines the fields for a radio input
 type Radio struct {
 	Input      Input `json:"input"`       // HTML input attributes
