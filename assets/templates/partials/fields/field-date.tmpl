@@ -10,7 +10,7 @@
         {{ $length := len .ValidationErrDescription }}
         {{ range $i, $d := .ValidationErrDescription }}
         <p class="ons-panel__error{{if notLastItem $length $i}} ons-u-mb-no{{end}}">
-            <strong>{{- $d -}}</strong>
+            <strong>{{- $d.FuncLocalise $.Language -}}</strong>
         </p>
         {{ end }}
         {{ template "partials/inputs/input-date" .Input }}
