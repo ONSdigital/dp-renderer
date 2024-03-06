@@ -284,6 +284,10 @@ page.PublicationDate = InputDate{
 All translations live in `assets/locales/core.<language>.toml` and
 are prefixed with `InputDate`.
 
+### Input validation
+
+Use the [date fieldset](#date-fieldset) to instantiate the date component with field validation.
+
 ## BackTo
 
 To instantiate the 'back to' UI component in your service:
@@ -1191,6 +1195,7 @@ Fields available:
 - [text](#text-input)
 - [textarea](#textarea)
 - [radios fieldset](#radios-fieldset)
+- [date fieldset](#date-fieldset)
 
 The inputs contained within the fields share a common model `input.go`, this allows [attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) to be set in a consistent way. However, there are circumstances where the attributes are not permitted and subsequently not rendered. Use the table below as a guide:
 
@@ -1651,5 +1656,94 @@ p.Radios = core.RadioFieldset{
       </div>
     </fieldset>
   </div>
+</div>
+```
+
+### Date fieldset
+
+To instantiate a [date fieldset](https://service-manual.ons.gov.uk/design-system/patterns/dates) UI component in your service:
+
+- In the `mapper.go` file in your service, populate the relevant fields
+  e.g.
+
+```go
+ p.DateField = core.DateFieldset{
+  Input: core.InputDate{
+   // See the Date component for example fields
+  },
+ }
+```
+
+- In the template file within your service, reference the `fieldset-date.tmpl` file
+  e.g.
+
+```tmpl
+<div>Some html</div>
+{{ template "partials/fields/fieldset-date" .DateField }}
+<div>Some more html</div>
+```
+
+#### Date fieldset validation
+
+If the field fails form validation, users need to be given the opportunity to [correct the error](https://service-manual.ons.gov.uk/design-system/patterns/correct-errors). The following mapped fields will render the date fieldset with a validation error:
+
+- In the `mapper.go` file in your service, populate the relevant fields.
+- **Note** that the although the individual fields (day/month/year) can be in 'error', the message sits at the parent level.
+  e.g.
+
+```go
+  p.DateField = core.DateFieldset{
+  ErrorID: "date-field-error",
+  Input: core.InputDate{
+    // See the Date component for example fields
+    HasDayValidationErr:   true, // each field can be individually in 'error'
+    HasMonthValidationErr: true, // toggle sets the css class `ons-input--error`
+    HasYearValidationErr:  false, // setting any one will make the entire fieldset in 'error'
+  },
+  Language: lang,
+  ValidationErrDescription: []core.Localisation{
+   { // validation messages sit at the parent level
+    Text: "Enter a number for day",
+   },
+   {
+    Text: "Enter a number for month",
+   },
+  },
+ }
+
+```
+
+- The above snippet will render the following html:
+
+```html
+<div class="ons-panel ons-panel--error ons-panel--no-title" id="date-field-error">
+    <span class="ons-panel__assistive-text ons-u-vh">Error:
+    </span>
+    <div class="ons-panel__body">
+      <p class="ons-panel__error ons-u-mb-no">
+          <strong>Enter a number for day</strong>
+      </p>
+      <p class="ons-panel__error">
+          <strong>Enter a number for month</strong>
+      </p>
+      <fieldset id="before-date" class="ons-fieldset">
+        <legend class="ons-fieldset__legend">Released before<div class="ons-fieldset__description">For example: 2006 or 19 07 2010</div>
+        </legend>
+        <div class="ons-field-group">
+          <div class="ons-field">
+            <label class="ons-label" for="before-date-day">Day</label>
+            <input type="text" id="before-date-day" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2 ons-input--error" name="before-day" min="1" max="31" maxlength="2" pattern="[0-9]*" inputmode="numeric" autocomplete="bday-day" value="as">
+          </div>
+          <div class="ons-field">
+            <label class="ons-label" for="before-date-month">Month</label>
+            <input type="text" id="before-date-month" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-2 ons-input--error" name="before-month" min="1" max="12" maxlength="2" pattern="[0-9]*" inputmode="numeric" autocomplete="bday-month" value="as">
+          </div>
+          <div class="ons-field">
+            <label class="ons-label" for="before-date-year">Year</label>
+            <input type="text" id="before-date-year" class="ons-input ons-input--text ons-input-type__input ons-input-number--w-4" name="before-year" min="1000" max="3000" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="bday-year" value="2023">
+          </div>
+        </div>
+      </fieldset>
+    </div>
 </div>
 ```
