@@ -1,6 +1,6 @@
 module github.com/ONSdigital/dp-renderer/v2
 
-go 1.21
+go 1.22
 
 retract v2.0.0 // published version does not include v2
 
