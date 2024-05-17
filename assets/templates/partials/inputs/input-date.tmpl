@@ -2,13 +2,18 @@
 <fieldset
   id="{{ .Id }}"
   class="ons-fieldset"
+  {{ if .DataAttributes }}
+  {{ range .DataAttributes }}
+  data-{{- .Key -}}="{{- .Value.FuncLocalise $.Language -}}"
+  {{ end }}
+  {{ end }}
 >
-  <legend class="ons-fieldset__legend">
+  <legend class="ons-fieldset__legend ons-fieldset__legend--with-description">
     {{- .Title.FuncLocalise .Language -}}
-    <div class="ons-fieldset__description">
-      {{- .Description.FuncLocalise .Language -}}
-    </div>
   </legend>
+  <div class="ons-fieldset__description">
+    {{- .Description.FuncLocalise .Language -}}
+  </div>
   <div class="ons-field-group">
     <div class="ons-field">
       <label
@@ -29,6 +34,11 @@
         inputmode="numeric"
         autocomplete="bday-day"
         value="{{ .InputValueDay }}"
+        {{ if .DayDataAttributes }}
+        {{ range .DayDataAttributes }}
+        data-{{- .Key -}}="{{- .Value.FuncLocalise $.Language -}}"
+        {{ end }}
+        {{ end }}
       >
     </div>
     <div class="ons-field">
@@ -50,6 +60,11 @@
         inputmode="numeric"
         autocomplete="bday-month"
         value="{{ .InputValueMonth }}"
+        {{ if .MonthDataAttributes }}
+        {{ range .MonthDataAttributes }}
+        data-{{- .Key -}}="{{- .Value.FuncLocalise $.Language -}}"
+        {{ end }}
+        {{ end }}
       >
     </div>
     <div class="ons-field">
@@ -71,6 +86,11 @@
         inputmode="numeric"
         autocomplete="bday-year"
         value="{{ .InputValueYear }}"
+        {{ if .YearDataAttributes }}
+        {{ range .YearDataAttributes }}
+        data-{{- .Key -}}="{{- .Value.FuncLocalise $.Language -}}"
+        {{ end }}
+        {{ end }}
       >
     </div>
   </div>
