@@ -39,6 +39,8 @@ one = "Mae problem gyda'r dudalen hon"
 [PageProblemCount]
 description = "There are {{.Count}} problems with this page"
 one = "There is {{.arg0}} problem with this page"
+two = "There are {{.arg0}} problems with this page" 
+three = "There are {{.arg0}} problems with this page" 
 other = "There are {{.arg0}} problems with this page" 
 
 [ONSLogoAlt]
