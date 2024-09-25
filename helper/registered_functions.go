@@ -14,6 +14,7 @@ var RegisteredFuncs template.FuncMap = template.FuncMap{
 	"dateTimeFormat":               DateTimeFormat,
 	"dateFormatYYYYMMDD":           DateFormatYYYYMMDD,
 	"dateFormatYYYYMMDDNoSlashes":  DateFormatYYYYMMDDNoSlash,
+	"dateFormatYYYYMMDDHyphenated": DateFormatYYYYMMDDHyphenated,
 	"datePeriodFormat":             DatePeriodFormat,
 	"dateTimeOnsDatePatternFormat": DateTimeOnsDatePatternFormat,
 	"last":                         Last,
