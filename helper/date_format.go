@@ -44,6 +44,10 @@ func DateFormatYYYYMMDD(s string) string {
 	return dateWithFormat(s, "2006/01/02")
 }
 
+func DateFormatYYYYMMDDHyphenated(s string) string {
+	return dateWithFormat(s, "2006-01-02")
+}
+
 func DateFormatYYYYMMDDNoSlash(s string) string {
 	return dateWithFormat(s, "20060102")
 }

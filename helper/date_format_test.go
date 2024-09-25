@@ -47,6 +47,15 @@ func TestDateFormatYYYYMMDD(t *testing.T) {
 		So(helper.DateFormatYYYYMMDD(""), ShouldEqual, "")
 	})
 }
+func TestDateFormatYYYYMMDDHyphenated(t *testing.T) {
+	Convey("Date format returns short date pattern without slashes", t, func() {
+		So(helper.DateFormatYYYYMMDDHyphenated("2019-08-15T00:00:00.000Z"), ShouldEqual, "2019-08-15")
+		So(helper.DateFormatYYYYMMDDHyphenated("2019-05-21T23:00:00.000Z"), ShouldEqual, "2019-05-22") // BST
+		So(helper.DateFormatYYYYMMDDHyphenated("2019-12-21T23:00:00.000Z"), ShouldEqual, "2019-12-21")
+		So(helper.DateFormatYYYYMMDDHyphenated("2019-08-15"), ShouldEqual, "2019-08-15")
+		So(helper.DateFormatYYYYMMDDHyphenated(""), ShouldEqual, "")
+	})
+}
 
 func TestDateFormatYYYYMMDDNoSlash(t *testing.T) {
 	Convey("Date format returns human readable string", t, func() {
