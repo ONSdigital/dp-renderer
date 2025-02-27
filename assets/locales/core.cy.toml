@@ -184,6 +184,10 @@ one = "Pobl nad ydynt mewn gwaith"
 description = "People, population and community"
 one = "Pobl, y boblogaeth a chymunedau"
 
+[ArmedForces]
+description = "Armed forces community"
+one = "Armed forces community"
+
 [BirthsDeathsMarriages]
 description = "Births, deaths and marriages"
 one = "Genedigaethau, marwolaethau a phriodasau"

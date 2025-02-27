@@ -177,6 +177,10 @@ one = "People not in work"
 description = "People, population and community"
 one = "People, population and community"
 
+[ArmedForces]
+description = "Armed forces community"
+one = "Armed forces community"
+
 [BirthsDeathsMarriages]
 description = "Births, deaths and marriages"
 one = "Births, deaths and marriages"
