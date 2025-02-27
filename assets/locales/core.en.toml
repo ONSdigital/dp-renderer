@@ -226,8 +226,8 @@ description = "Population and migration"
 one = "Population and migration"
 
 [Wellbeing]
-description = "Well-being"
-one = "Well-being"
+description = "Measuring progress, well-being and beyond GDP"
+one = "Measuring progress, well-being and beyond GDP"
 
 [Methodology]
 description = "Methodology"
