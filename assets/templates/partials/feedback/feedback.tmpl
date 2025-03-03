@@ -54,20 +54,12 @@
           id="feedback-form-container"
           name="feedback-form"
         >
-          {{ if and .FeatureFlags.EnableFeedbackAPI .FeatureFlags.FeedbackAPIURL}}
-          <input
-            type="hidden"
-            name="url"
-            id="feedback-api-enabled"
-            value="true"
-          >
           <input
             type="hidden"
             name="url"
             id="feedback-api-url"
             value="{{.FeatureFlags.FeedbackAPIURL}}"
           >
-          {{ end }}
           <input
             type="hidden"
             name="feedback-form-type"
