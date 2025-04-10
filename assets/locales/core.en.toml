@@ -381,8 +381,8 @@ description = "Taking part in a survey?"
 one = "Taking part in a survey?"
 
 [CookiesBannerHeading]
-description = "Tell us whether you accept cookies"
-one = "Tell us whether you accept cookies"
+description = "Cookies on ons.gov.uk"
+one = "Cookies on ons.gov.uk"
 
 [CookiesBannerOverview]
 description = "We would like to <a href=\"/cookies\">use cookies to collect information</a> about how you use <strong>ons.gov.uk</strong>."
