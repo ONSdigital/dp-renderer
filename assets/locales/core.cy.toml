@@ -407,12 +407,23 @@ one = "Accept all cookies"
 
 [CookiesBannerSetPreferencesAction]
 description = "Set cookie preferences"
-one = "Set cookie preference"
-other = "Set cookie preferences"
+one = "Reject additional cookies"
 
-[CookiesBannerSuccess]
-description = "You’ve accepted all cookies. You can <a href=\"/cookies\">change your cookie settings</a> at any time."
-one = "You’ve accepted all cookies. You can <a href=\"/cookies\">change your cookie settings</a> at any time."
+[CookiesBannerAccept]
+description = "You have accepted all additional cookies. "
+one = "You have accepted all additional cookies. "
+
+[CookiesBannerReject]
+description = "You have rejected all additional cookies. "
+one = "You have rejected all additional cookies. "
+
+[CookiesBannerChange]
+description = "You can <a href=\"/cookies\">change your cookie settings</a> at any time."
+one = "You can <a href=\"/cookies\">change your cookie settings</a> at any time."
+
+[CookiesBannerManageSettings]
+description = "Manage settings"
+one = "Manage settings
 
 [CookiesBannerHide]
 description = "Hide"
