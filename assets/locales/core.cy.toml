@@ -394,12 +394,12 @@ description = "Cookies on ons.gov.uk"
 one = "Cookies on ons.gov.uk"
 
 [CookiesBannerOverview]
-description = "We would like to <a href=\"/cookies\">use cookies to collect information</a> about how you use <strong>ons.gov.uk</strong>."
-one = "We would like to <a href=\"/cookies\">use cookies to collect information</a> about how you use <strong>ons.gov.uk</strong>."
+description = "Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work."
+one = "Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work."
 
 [CookiesBannerWhyWeUse]
-description = "We use this information to make the website work as well as possible and improve our services."
-one = "We use this information to make the website work as well as possible and improve our services."
+description = "We would like to set <a href=\"/cookies\">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services."
+one = "We would like to set <a href=\"/cookies\">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services."
 
 [CookiesBannerAcceptAllAction]
 description = "Accept all cookies"
