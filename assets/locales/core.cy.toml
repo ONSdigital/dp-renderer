@@ -402,11 +402,11 @@ description = "We would like to set <a href=\"/cookies\">additional cookies</a> 
 one = "We would like to set <a href=\"/cookies\">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services."
 
 [CookiesBannerAcceptAllAction]
-description = "Accept all cookies"
-one = "Accept all cookies"
+description = "Accept additional cookies"
+one = "Accept additional cookies"
 
-[CookiesBannerSetPreferencesAction]
-description = "Set cookie preferences"
+[CookiesBannerRejectAdditionalAction]
+description = "Reject additional cookies"
 one = "Reject additional cookies"
 
 [CookiesBannerAccept]
@@ -418,8 +418,8 @@ description = "You have rejected all additional cookies. "
 one = "You have rejected all additional cookies. "
 
 [CookiesBannerChange]
-description = "You can <a href=\"/cookies\">change your cookie settings</a> at any time."
-one = "You can <a href=\"/cookies\">change your cookie settings</a> at any time."
+description = "You can <a href=\"/cookies\">change your cookie preferences</a> at any time."
+one = "You can <a href=\"/cookies\">change your cookie preferences</a> at any time."
 
 [CookiesBannerManageSettings]
 description = "Manage settings"
