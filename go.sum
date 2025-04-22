@@ -4,12 +4,10 @@ github.com/ONSdigital/dp-api-clients-go/v2 v2.266.0 h1:NQbu+x2Q7ZhrjGKvN73qVxG/n
 github.com/ONSdigital/dp-api-clients-go/v2 v2.266.0/go.mod h1:bLseTP21r8LCStUEeOdVPyqtrTomOFP/azPjKWW4deA=
 github.com/ONSdigital/dp-cookies v0.5.0 h1:KRAWETSdkT18Ia8p+W7nXwvRn1waSaQjrFf6k+eWvws=
 github.com/ONSdigital/dp-cookies v0.5.0/go.mod h1:3Z+EevRMAd9f0nkIF31wkfiT2WInvCrY1W66zJgGIYM=
-github.com/ONSdigital/dp-net/v2 v2.13.0 h1:uYeoSTvmC9vb7YZRZWQ8NzZDl+eAU8gkKWhtq8Fagb8=
-github.com/ONSdigital/dp-net/v2 v2.13.0/go.mod h1:oN2p+QIKx0pz4K1bgHGvXA/9WkuMrh1F/3HtHoCc0CA=
-github.com/ONSdigital/dp-net/v3 v3.1.2 h1:p+pUgB3zg4CUNY7ndAaXOwvTfSS63neLWLo5MEASQKI=
-github.com/ONSdigital/dp-net/v3 v3.1.2/go.mod h1:f3HtQBYU8Uvl/pGlbbNbZ8IVhC0kEDBAkG65kG32Uzo=
-github.com/ONSdigital/log.go/v2 v2.4.4 h1:yQYdZAdsuLOCzrIdWnISkFmWLJZDvqgjuwI1y+BFUb4=
-github.com/ONSdigital/log.go/v2 v2.4.4/go.mod h1:bUKxmsY+5L39ESCdEFR3+XChKUmPbYWlU6Lw3sOLS6A=
+github.com/ONSdigital/dp-net/v3 v3.2.1 h1:nQeK92uVPpdlnMJ5AafQfYz27/EW4eVZBeqCo1EKARc=
+github.com/ONSdigital/dp-net/v3 v3.2.1/go.mod h1:ur4LLCvd2xW2jpa785pElE6HB2bPvszZxdAjqv0XFGg=
+github.com/ONSdigital/log.go/v2 v2.4.5 h1:LclSJUNHgbhgl386daHXNX9j3LOwXd/AeuiSSfEuclM=
+github.com/ONSdigital/log.go/v2 v2.4.5/go.mod h1:qaWY2DOgD/hIzas3m76WPye1HrrS3RLXQC7erxVL36Y=
 github.com/c2h5oh/datasize v0.0.0-20231215233829-aa82cc1e6500 h1:6lhrsTEnloDPXyeZBvSYvQf8u86jbKehZPVDDlkgDl4=
 github.com/c2h5oh/datasize v0.0.0-20231215233829-aa82cc1e6500/go.mod h1:S/7n9copUssQ56c7aAgHqftWO4LTf4xY6CGWt8Bc+3M=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

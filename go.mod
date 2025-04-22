@@ -7,8 +7,8 @@ retract v2.0.0 // published version does not include v2
 require (
 	github.com/BurntSushi/toml v1.4.0
 	github.com/ONSdigital/dp-cookies v0.5.0
-	github.com/ONSdigital/dp-net/v2 v2.13.0
-	github.com/ONSdigital/log.go/v2 v2.4.4
+	github.com/ONSdigital/dp-net/v3 v3.2.1
+	github.com/ONSdigital/log.go/v2 v2.4.5
 	github.com/c2h5oh/datasize v0.0.0-20231215233829-aa82cc1e6500
 	github.com/gorilla/mux v1.8.1
 	github.com/gosimple/slug v1.15.0
@@ -22,7 +22,6 @@ require (
 
 require (
 	github.com/ONSdigital/dp-api-clients-go/v2 v2.266.0 // indirect
-	github.com/ONSdigital/dp-net/v3 v3.1.2 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/fsnotify/fsnotify v1.8.0 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
