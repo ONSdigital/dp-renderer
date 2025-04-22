@@ -41,7 +41,7 @@ func DomainSetLang(domain string, uri string, language string) string {
 
 	domainWithTranslation := ""
 	if !languageSupported {
-		err := fmt.Errorf("Language: " + language + " is not supported resolving to " + request.DefaultLang)
+		err := fmt.Errorf("language: %s is not supported resolving to %s", language, request.DefaultLang)
 		log.Error(context.Background(), "language fail", err)
 	}
 	if language == request.DefaultLang || !languageSupported {

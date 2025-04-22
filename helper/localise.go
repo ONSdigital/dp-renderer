@@ -58,7 +58,7 @@ func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
 
 func Localise(key string, language string, plural int, templateArguments ...string) string {
 	if key == "" {
-		err := fmt.Errorf("key " + key + " not found in locale file")
+		err := fmt.Errorf("key %s not found in locale file", key)
 		log.Error(context.Background(), "no locale look up key provided", err)
 		return ""
 	}
