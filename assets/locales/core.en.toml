@@ -401,12 +401,12 @@ description = "Reject additional cookies"
 one = "Reject additional cookies"
 
 [CookiesBannerAccept]
-description = "You have accepted all additional cookies. "
-one = "You have accepted all additional cookies. "
+description = "You have accepted all additional cookies."
+one = "You have accepted all additional cookies."
 
 [CookiesBannerReject]
-description = "You have rejected all additional cookies. "
-one = "You have rejected all additional cookies. "
+description = "You have rejected all additional cookies."
+one = "You have rejected all additional cookies."
 
 [CookiesBannerChange]
 description = "You can <a href=\"/cookies\">change your cookie preferences</a> at any time."
