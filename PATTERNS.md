@@ -1460,13 +1460,19 @@ p.TextareaField = core.TextareaField{
 
 ### Radios fieldset
 
-To instantiate a [radios fieldset](https://service-manual.ons.gov.uk/design-system/components/radios) without a border that allows a conditionally revealed text input UI component in your service:
+There are two types of radio fieldset variants that can be instantiated:
+
+- [Radios without a border](https://service-manual.ons.gov.uk/design-system/components/radios#radios-without-a-border)
+- [Radios with a border](http://service-manual.ons.gov.uk/design-system/components/radios)
+
+To instantiate radios fieldset that allows a conditionally revealed text input UI component in your service:
 
 - In the `mapper.go` file in your service, populate the relevant fields
   e.g.
 
 ```go
 p.Radios = core.RadioFieldset{
+  HasBorder: false, // Set to true to display a border around the input & label
   Legend: core.Localisation{
    LocaleKey: "LegendLocaleKey", // Can be text instead of a locale
    Plural:    1,
@@ -1535,6 +1541,7 @@ p.Radios = core.RadioFieldset{
         </label>
       </div>
     </div>
+    <br>
     <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
       <div class="ons-radio ons-radio--no-border">
         <input
@@ -1623,6 +1630,7 @@ p.Radios = core.RadioFieldset{
             </label>
           </div>
         </div>
+        <br>
         <div class="ons-radios__item ons-radios__item--no-border ons-u-fw">
           <div class="ons-radio ons-radio--no-border">
             <input

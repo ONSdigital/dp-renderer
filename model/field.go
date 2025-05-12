@@ -8,6 +8,7 @@ type Radio struct {
 
 // RadioFieldset defines the HTML fieldset for radio inputs
 type RadioFieldset struct {
+	HasBorder     bool          `json:"has_border"`     // Check to display border around each radio
 	Language      string        `json:"language"`       // Passed in from the Page model
 	Legend        Localisation  `json:"legend"`         // Content within legend html element
 	Radios        []Radio       `json:"radios"`         // Radios within the fieldset
