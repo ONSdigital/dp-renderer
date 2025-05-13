@@ -1,5 +1,16 @@
 <script>
 
+    // extractValue extracts the value from a undecodeable json cookie string
+    function extractValue(key, extractionString) {
+        const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
+        const match = extractionString.match(extractionRegex)
+        if (match) {
+            return match[1]
+        }
+        
+        return null
+    }
+
     // getUsageCookieValue reads the legacy cookies_policy and ons_cookies_policy to determine the user's usage preference. 
     // The legacy policy takes precedence over the new policy. When no policy is found, the user is opted out by default.
     function getUsageCookieValue() {
@@ -14,12 +25,16 @@
         }
 
         // ons_cookie_policy handler
-        var policyCookie = document.cookie.match(/^(.*)?\s*'usage':true\s*[^;]+(.*)?$/);
+        var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
         if (policyCookie) {
-            console.debug('ons_cookie_policy found - opting in');
+            console.debug('ons_cookie_policy found');
+
+            var usageValue = extractValue("usage", policyCookie[1]);
+            console.debug('usage is', usageValue);
+
             // this needs to be the inverse - if usage is true the returned value is false and vice versa
             // user is stating whether they are opting out of usage cookie
-            return false
+            return !usageValue
         }
         console.debug('no cookie found - opting out');
         return true
