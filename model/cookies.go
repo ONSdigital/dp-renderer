@@ -2,6 +2,8 @@ package model
 
 // CookiesPolicy contains data for the users cookie policy
 type CookiesPolicy struct {
-	Essential bool `json:"essential"`
-	Usage     bool `json:"usage"`
+	Communications bool `json:"communications"`
+	Essential      bool `json:"essential"`
+	Settings       bool `json:"settings"`
+	Usage          bool `json:"usage"`
 }
