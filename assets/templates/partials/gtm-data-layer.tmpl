@@ -34,7 +34,7 @@
 
             // this needs to be the inverse - if usage is true the returned value is false and vice versa
             // user is stating whether they are opting out of usage cookie
-            return !usageValue
+            return (usageValue == "true") ? false : true
         }
         console.debug('no cookie found - opting out');
         return true
