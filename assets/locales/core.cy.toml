@@ -384,6 +384,7 @@ one = "Save change"
 two = "Save changes"
 few = "Save changes"
 other = "Save changes"
+many = "Save changes"
 
 [SurveyTakingPart]
 description = "Taking part in a survey?"
