@@ -1,6 +1,6 @@
 <script>
 
-    // extractValue extracts the value from a undecodeable json cookie string
+    // extractValue extracts the value from an undecodeable json cookie string
     function extractValue(key, extractionString) {
         const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
         const match = extractionString.match(extractionRegex)
@@ -11,19 +11,9 @@
         return null
     }
 
-    // getUsageCookieValue reads the legacy cookies_policy and ons_cookies_policy to determine the user's usage preference. 
-    // The legacy policy takes precedence over the new policy. When no policy is found, the user is opted out by default.
+    // getUsageCookieValue reads the ons_cookie_policy to determine the user's usage preference. 
+    // When no policy is found, the user is opted out by default.
     function getUsageCookieValue() {
-        // TODO: this is the legacy cookie (cookies_policy) handling and will be removed in due course
-        var legacyPolicyCookie = document.cookie.match('(^|;) ?cookies_policy=([^;]*)(;|$)');
-        if (legacyPolicyCookie) {
-            console.debug('legacy cookies_policy found');
-            var decodedCookie = decodeURIComponent(legacyPolicyCookie[2]);
-            var cookieValue = JSON.parse(decodedCookie);
-            console.debug('usage is', cookieValue.usage);
-            return !cookieValue.usage
-        }
-
         // ons_cookie_policy handler
         var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
         if (policyCookie) {
