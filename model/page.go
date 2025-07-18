@@ -18,7 +18,7 @@ type Page struct {
 	Metadata                         Metadata         `json:"metadata"`
 	SearchDisabled                   bool             `json:"search_disabled"`
 	SiteDomain                       string           `json:"-"`
-	PatternLibraryAssetsPath         string           `json:"-"`
+	PatternLibraryAssetsPath         string           `json:"pattern_library_assets_path"`
 	Language                         string           `json:"language"`
 	IncludeAssetsIntegrityAttributes bool             `json:"-"`
 	ReleaseDate                      string           `json:"release_date"`
