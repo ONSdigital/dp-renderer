@@ -1,5 +1,11 @@
 # dp-renderer
 
+---
+
+:warning: This library is deprecated and is no longer in active development. Use `dis-design-system-go` instead. Follow the [instructions](https://github.com/ONSdigital/dis-design-system-go/blob/main/MIGRATION.md) to migrate your app. :warning:
+
+---
+
 A rendering library for Digital Publishing frontend microservices. `dp-renderer` contains templates, localisations and model structs that are core to all `dp-frontend` services.
 
 `dp-renderer` is intended to be used instead of calling `dp-frontend-renderer` to generate HTML, which consequently means more explicit domain encapsulation of our frontend apps and the removal of a single point of failure within the DP frontend architecture.

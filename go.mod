@@ -1,3 +1,5 @@
+// Deprecated: use `dis-design-system-go` instead
+// See https://github.com/ONSdigital/dis-design-system-go/blob/main/MIGRATION.md for migration instructions.
 module github.com/ONSdigital/dp-renderer/v2
 
 go 1.24
